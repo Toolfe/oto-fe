@@ -1,0 +1,28 @@
+<div class="header">
+    <div id="title">
+        <span id="history">(History)</span>
+        {{task.taskCode+"-"+task.taskTitle}}
+    </div>
+
+</div>
+<div *ngIf="taskHistory$|async as histories" class="h-body" mat-dialog-content>
+    <li *ngFor="let history of histories" class="list">
+        <div class="card">
+            <div>
+                <span id="tag" [ngClass]="getStatusClass(history.type)">{{history.type | titlecase}}</span>
+            </div>
+            <div>{{getCurrentStatus(history.fromStatus)+" → "+getCurrentStatus(history.toStatus)}}
+                <div class="status">Status: {{getCurrentStatus(history.subtaskStatusId)}}</div>
+            </div>
+            <div>{{history.createdAt| date : 'MMM d, y, h:mm a'}}
+                <div class="status">By:
+                    <span class="modifier">{{history.createdBy}}</span>
+                </div>
+            </div>
+        </div>
+    </li>
+</div>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

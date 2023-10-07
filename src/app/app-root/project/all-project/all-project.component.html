@@ -1,0 +1,112 @@
+<div>
+  <mat-toolbar style="height: fit-content; padding: 10px;">
+    <div class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+      (keyup)="applyFilter($event)" #input>
+    </div>
+    
+ 
+    <span class="flex-spacer"></span>
+    <button mat-button color='primary' style="margin-right: 12px;" (click)=' addNew()' >New</button>
+  </mat-toolbar>
+  
+  <div >
+  
+    <div  class="table-container" >
+  
+      <ng-container *ngIf="(project$ |async) as project; else loading">
+        <ng-container *ngIf="project==='error'; else table">
+          <app-error></app-error>
+        </ng-container>
+       
+
+        <ng-template #table> 
+          <ng-container *ngIf="dataSource.data.length>0; else noData">
+            <table mat-table [dataSource]="dataSource" matSort  (matSortChange)="sortData(dataSource)">
+            
+             <!--project code Column -->
+             <ng-container matColumnDef="code">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Project Code </th>
+              <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+            </ng-container>
+          
+            <!-- project Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Project Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+          
+          <!-- project order number Column -->
+          <ng-container matColumnDef="orderNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Project Order Number </th>
+            <td mat-cell *matCellDef="let element"> {{element.projectOrderNo}} </td>
+          </ng-container>
+          
+            <!-- business partners Column -->
+            <ng-container matColumnDef="businessPartners">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Business Partners </th>
+              <td mat-cell *matCellDef="let element">
+                <li *ngFor="let partner of  element.businessCategory">
+                  {{partner.businessPartner}}
+                </li>
+              </td>
+            </ng-container>
+          
+              <!-- task group Column -->
+              <ng-container matColumnDef="taskGroup">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Task Group </th>
+                <td mat-cell *matCellDef="let element">
+                  <li >
+                    {{element.taskGroupName}}
+                  </li>
+                </td>
+              </ng-container>
+          
+          <!--   Action Column -->
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let element"> 
+                <span><button mat-icon-button matTooltipClass="example-tooltip-red" matTooltipPosition='right'
+                   matTooltip='Edit' (click)="edit(element)"[disabled]="isEnable('updation')"><i class="bi bi-pencil-fill"></i></button></span>
+              <button mat-icon-button matTooltipClass="example-tooltip-red" matTooltipPosition='right' matTooltip='Delete'
+               (click)="deleteItem(element)"[disabled]="isEnable('deletion')"><i class="bi bi-trash-fill"></i></button>
+              </td>
+            </ng-container> 
+          
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+            class="element-row"></tr>
+            <tr class="mat-row" *matNoDataRow>
+              
+            </tr>
+            </table>
+          </ng-container>
+          <ng-template #noData>
+            <div class="nodata-container">
+              <img src="./../../../../assets/icons/no-data-01.svg" alt="No Data" class="no-data">
+              <div>Oops! Seems like there's<br>nothing in this folder yet. </div>
+              <button mat-flat-button color="primary" (click)="addNew()" [disabled]="isEnable('creation')">Add New</button>
+            </div>
+          </ng-template>
+        </ng-template>
+        
+      </ng-container>
+      <ng-template #loading>
+        <ng-container >
+           <app-table-loading></app-table-loading>
+        </ng-container>
+
+      </ng-template>
+    </div>
+  
+  </div>
+</div> 
+
+
+<mat-paginator [pageSizeOptions]="[10 ,30, 50, 100]" (page)="pageChanged($event)"aria-label="Select page of users"></mat-paginator>
+
+
+
+
+

@@ -1,0 +1,94 @@
+
+
+
+  <div class="folder-container">
+    <div class="path-grid">
+    <ul><li>My docs /></li> 
+      <li>
+       <span class="selected">trash</span>>&nbsp;</li>
+  </ul>
+    </div>
+
+
+      <ng-container *ngIf="trashDocs$ | async as docs; else load">
+        <ng-container *ngIf="docs=='error'; else table">
+          <app-error></app-error>
+        </ng-container>
+        <ng-template #table>
+          <ng-container *ngIf="docs?.length==0; else loadData">
+            <div class="nodata-container">
+              <img src="./../../../../assets/icons/no-data-01.svg" alt="No Data" class="no-data">
+              <div>Your Trash is Empty!</div>
+            
+            </div>
+          </ng-container>
+          <ng-template #loadData >
+            <div class="grid-container">
+    
+              <div style="visibility: hidden; position: fixed"
+              [style.left]="contextMenuPosition.x"
+              [style.top]="contextMenuPosition.y"
+              [matMenuTriggerFor]="trashMenu">
+              </div>
+        
+              <mat-menu #trashMenu="matMenu">
+                <ng-template matMenuContent>
+                  <div class="menu">
+                    <button mat-menu-item (click)="restoreDoc(selectedDoc)">   <mat-icon>restore_from_trash</mat-icon>Restore</button>
+                    <button mat-menu-item [disabled]="isEnable('deletion')"> <mat-icon>delete</mat-icon>Delete</button>
+                    <mat-divider></mat-divider>
+                    <button mat-menu-item (click)="showProperty(selectedDoc)"> <mat-icon>info</mat-icon>Properties</button>
+        
+                  </div>
+                </ng-template>
+              </mat-menu> 
+              <ng-container *ngFor="let doc of docs" >
+                 <!---*******************Files **********************-->
+              <div class="outer" (contextmenu)="onContextMenu($event,doc)">
+                <div class="grid-item">
+                  <div class="item-container" [ngSwitch]="getType(doc.fileName)">
+                    <i class="bi bi-file-earmark-excel-fill excel" *ngSwitchCase="'xl'"></i>
+                    <i class="bi bi-file-earmark-word word" *ngSwitchCase="'do'"></i>
+                    <i class="bi bi-filetype-pdf pdf" *ngSwitchCase="'pd'"></i>
+                    <i class="bi bi-file-earmark-image image" *ngSwitchCase="'jp'"></i>         
+                    <i class="bi bi-file-earmark-ppt-fill ppt"  *ngSwitchCase="'pp'"></i>
+                    <i class="bi bi-file-earmark-image image" *ngSwitchCase="'pn'"></i>         
+                    <i class="bi bi-file-earmark-ppt-fill ppt"  *ngSwitchCase="'po'"></i>
+                    <i class="bi bi-file-zip-fill zip" *ngSwitchCase="'zi'"></i>
+                    <i class="bi bi-file-earmark-text file"  *ngSwitchDefault></i>
+                  </div>
+                  <div class="item-name">{{getFileName(doc.fileName)}}</div>
+                </div>
+              </div>
+              </ng-container>
+            </div>
+
+          </ng-template>
+        </ng-template>
+      </ng-container>
+      <ng-template #load>
+        <div class="grid-container">
+    
+          <ng-container *ngFor="let item of loadArray" >
+            <div  class="outer" >
+              <div class="grid-item">
+                <div class="item-container">
+                  <span class="loading" loading> </span>
+                </div>
+                <div class="item-name"></div>
+              </div>
+            </div>
+          </ng-container>
+              
+        </div>
+      </ng-template>
+
+  </div>
+
+
+
+
+
+
+
+

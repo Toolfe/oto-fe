@@ -1,0 +1,31 @@
+{
+    "success": true,
+    "message": "task-type listing",
+    "data": [
+        {
+            "id": 22,
+            "taskTypeCode": "REC03",
+            "taskTypeName": "Recycle Waste - Records and Accounts"
+        },
+        {
+            "id": 14,
+            "taskTypeCode": "REC02",
+            "taskTypeName": "Recycle Waste - Physical review"
+        },
+        {
+            "id": 16,
+            "taskTypeCode": "REC01",
+            "taskTypeName": "Recyle Waste Collections"	
+        },
+        {
+            "id": 12,
+            "taskTypeCode": "PUR02",
+            "taskTypeName": "Purchase - Utility items"	
+        },
+        {
+            "id": 17,
+            "taskTypeCode": "PUR03",
+            "taskTypeName": "Purchase - Garment prodn items"	
+        }
+    ]
+}

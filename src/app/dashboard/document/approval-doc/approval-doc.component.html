@@ -1,0 +1,162 @@
+
+
+
+  <div>
+    <div class="grid">
+    <ul><li [routerLink]="'../all-files'">My docs /> &nbsp;</li> 
+      <li>
+       <span class="selected">Approval</span></li>
+  </ul>
+<div class="chip-conatiner">
+  <mat-chip-list multiple>
+  <mat-chip>
+    All
+   </mat-chip>
+  <mat-chip>
+   Pending
+  </mat-chip>
+  <mat-chip>
+    Approved
+   </mat-chip>
+   <mat-chip>
+    Denied
+   </mat-chip>
+</mat-chip-list>
+</div>
+<div>
+  <input class="search-bar" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchText">
+</div>
+    </div>
+
+
+   
+   
+
+      <ng-container *ngIf="approvalDocs$ | async as docs; else load">
+        <ng-container *ngIf="docs=='error'; else table">
+          <app-error></app-error>
+        </ng-container>
+        <ng-template #table>
+          <ng-container *ngIf="docs?.length==0; else loadData">
+            <div class="nodata-container">
+              <img src="./../../../../assets/icons/no-data-01.svg" alt="No Data" class="no-data">
+              <div>There is nothing for Approval!</div>
+            
+            </div>
+          </ng-container>
+          <ng-template #loadData >
+            <div class="approval-container">
+ 
+              <ng-container *ngFor="let doc of docs | filter:searchText" >
+                 <!---*******************Files **********************-->
+                 <div >
+               <div class="list">
+                <div>
+                  <div  class="fileName"placement="bottom"
+                tooltip="Click to download" [delay]="800">
+                <span (click)="downloadFile(doc)">{{doc.fileName}}</span>
+              </div>
+                  <div class="subTitle"><span>Created: </span> 
+                    <span>{{doc.firstName +' '+doc.lastName+' | '}} </span>
+                    <span>{{doc.createdAt | date}}</span>
+                  </div>
+                </div>
+                <div style="align-items: center;">Type: Loan doc</div>
+                <div  *ngIf="getStatus(doc)==null" class="pending-container"> 
+                  <span class="pending">Pending</span>
+                </div>
+                <div align="end">
+                  <span *ngIf="getStatus(doc)==null; else approved">
+                    <button mat-flat-button color="primary" (click)="onApprove(doc,'approved')">Approve</button> &nbsp;
+                    <button mat-button color="warn" (click)="onApprove(doc,'denied')">Deny</button>
+                  </span>
+                  <ng-template #approved>
+                    <span *ngIf="getStatus(doc)=='approved'" style="color: green;">
+                      Approved <mat-icon>verified</mat-icon>
+                    </span>
+                    <span *ngIf="getStatus(doc)=='denied'" style="color: red;">
+                      Denied <mat-icon >cancel</mat-icon>
+                    </span>
+                  </ng-template>
+
+                  <span>
+
+                  </span>
+                  
+                </div>
+               </div>
+              </div>
+
+              </ng-container>
+            </div>
+
+          </ng-template>
+        </ng-template>
+      </ng-container>
+      <ng-template #load>
+        <div class="grid-container">
+    
+          <ng-container *ngFor="let item of loader" >
+            <div  class="outer" >
+              <div class="grid-item">
+                <div class="item-container">
+                  <span class="loading" loading> </span>
+                </div>
+                <div class="item-name"></div>
+              </div>
+            </div>
+          </ng-container>
+          
+         
+            
+    
+        
+      
+          <div style="visibility: hidden; position: fixed"
+          [style.left]="contextMenuPosition.x"
+          [style.top]="contextMenuPosition.y"
+          [matMenuTriggerFor]="fileMenu">
+          </div>
+    
+    
+      <mat-menu #fileMenu="matMenu">
+        <ng-template matMenuContent>
+          <div class="menu">
+            <button mat-menu-item (click)="addNew()" [disabled]="isEnable('creation')">   <mat-icon>create_new_folder</mat-icon> New Folder</button>
+            <button mat-menu-item > <mat-icon>upload</mat-icon>New Document</button>
+            <mat-divider>    </mat-divider>
+          
+            <mat-divider>    </mat-divider>
+            <button mat-menu-item (click)="showProperty(selectedDoc)"><mat-icon>info</mat-icon>Properties</button>
+          </div>
+        </ng-template>
+      </mat-menu> 
+      
+      <!-- <mat-menu #create="matMenu">
+        <button mat-menu-item  (click)="addNew()">
+          <mat-icon>create_new_folder</mat-icon>
+          <span>Folder</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>article</mat-icon>
+          <span>Text Document</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="uploadFile()">
+          <mat-icon>upload</mat-icon>
+          <span>Upload File</span>
+        </button>
+         
+      </mat-menu> -->               
+        </div>
+      </ng-template>
+
+  </div>
+
+
+
+
+
+
+
+

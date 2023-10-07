@@ -1,0 +1,31 @@
+.container {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background-color: whitesmoke;
+     width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+     .container {
+          width: 65%;
+     }
+}
+
+.search-bar {
+     width: 500px;
+     background: rgba($color: #ffffff, $alpha: 1.0);
+     display: flex;
+     align-items: center;
+     border-radius: 70px;
+     border: 1.5px solid #4c1784;
+     padding: 0 20px;
+}
+
+.search-bar input {
+     padding: 12px;
+     background: transparent;
+     flex: auto 1 1;
+     border: 0;
+     outline: none;
+}

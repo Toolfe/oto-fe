@@ -1,0 +1,19 @@
+tbody{
+    font-size: 14px;
+    .t-row{
+        height: 30px;
+        width: 100%;
+    }
+    .title{
+        color: rgb(105, 105, 105);
+    }
+    .value{
+        padding-left: 32px;
+        color: black;
+    }
+}
+
+mat-divider{
+    margin: 6px 0px;
+    width: 100%;
+}

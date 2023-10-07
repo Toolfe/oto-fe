@@ -1,0 +1,49 @@
+<div style="height: 83vh; background-color: whitesmoke;">
+ <mat-toolbar>
+    <div class="col-5 search">
+        <input type="search" class="form-control" placeholder="Search">
+      </div>
+      <span class='flex-spacer'></span>
+      <button mat-button>Import</button>
+      <button mat-button (click)='addNew()'>New</button>
+  </mat-toolbar>
+  
+  <div  style=" overflow-y: scroll;">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Generic Role</th>
+          <th scope="col">Module</th>
+          <th scope="col">Screen</th>
+          <th scope="col">Table</th>
+          <th scope="col">Data Field</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let item of $define'>
+          <td>{{item.genericRole}}</td>
+          <td><li *ngFor='let item2 of item.module'>
+            {{item2.name}}
+          </li></td>
+          <td><li *ngFor='let item3 of item.screen'>
+            {{item3.name}}
+          </li></td>
+          <td><li *ngFor='let item4 of item.table'>
+            {{item4.name}}
+          </li></td>
+          <td><li *ngFor='let item5 of item.dataField'>
+            {{item5.name}}
+          </li></td>
+          <td>
+          <button mat-icon-button matTooltipClass="example-tooltip-red" matTooltipPosition='right'
+          matTooltip='Edit'><i class="bi bi-pencil-fill"></i></button> 
+        <button mat-icon-button matTooltipClass="example-tooltip-red" matTooltipPosition='right'
+          matTooltip='Delete' (click)="removeItem(item)"><i class="bi bi-trash-fill"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

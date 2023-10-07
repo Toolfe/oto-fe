@@ -1,0 +1,22 @@
+@use 'src/styles/variables' as var;
+thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: white;
+    color: #662d91;
+  }
+  .form-control{
+    width: 25vw;
+  }
+  .form-control:focus {
+    border-color: var.$primary;
+    box-shadow: 0 0 0 0.1rem rgba(74, 40, 167, 0.25);
+    width: 28vw;
+  } 
+
+.table-container
+{
+height:58vh;
+overflow-y: scroll;
+}

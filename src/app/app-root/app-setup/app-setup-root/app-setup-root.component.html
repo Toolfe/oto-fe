@@ -1,0 +1,16 @@
+
+<mat-tab-group [(selectedIndex)]='selectedIndex' backgroundColor='primary'
+(selectedTabChange)='tabChanged($event)'>
+        <form [formGroup]='appSetupForm'>
+            <mat-tab label="Basic">
+                <app-basic [parent]="appSetupForm">
+                </app-basic>
+            </mat-tab>
+            <mat-tab label="Modules">
+                <app-modules [parent]="appSetupForm"></app-modules>   
+            </mat-tab>
+            <mat-tab label="Subscription">
+                <app-subscription [parent]="appSetupForm"></app-subscription>
+            </mat-tab>
+        </form>
+</mat-tab-group>

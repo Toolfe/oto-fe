@@ -1,0 +1,73 @@
+<mat-dialog-content >
+    <div [formGroup]="unitForm" class="container" fxLayoutAlign="center center" fxFlexFill fxLayout='column'>
+        <div class="row">
+            <div class="col">
+              <mat-form-field  appearance="standard" class="full-width">
+                <mat-label>Select Division</mat-label>
+                  <mat-select required formControlName="divisionId">
+                    <div class="sticky">
+                    <input matInput style="width: 100%; padding: 15px;"  placeholder="Search Division" #division (keyup)="getDivision(division)">
+                  </div>
+                    <mat-option *ngFor= "let item of division$ |async |search:'name':division.value" searchDivision [value]="item.id" (click)="getId(item, 'div')" >
+                    {{item.name}}
+                   </mat-option>  
+                   </mat-select>
+                   <mat-error>
+                    Please Select Division
+                  </mat-error>
+            </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field  appearance="standard" class="full-width">
+                <mat-label>Select Location</mat-label>
+                <mat-select required formControlName="locationId" >
+                  <div class="sticky">
+                  <input matInput style="width: 100%; padding: 15px;" required placeholder="Search Location" #location (keyup)="getLocation(location)">
+                </div>
+                    <mat-option  *ngFor= "let item of location$|async |search:'name':location.value" searchLocation [value]="item.id" (click)="getId(item,'loc')" >
+                      {{item.name}}
+                   </mat-option>  
+                   </mat-select>
+                   <mat-error>
+                    Please Select Location
+                  </mat-error>
+               </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Unit Code</mat-label>
+                <input matInput required formControlName="code">
+                <mat-error>
+                  Please Enter Unit Code
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Unit Name</mat-label>
+                <input matInput required formControlName="name">
+                <mat-error>
+                  Please Enter Unit Name
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+               
+                <mat-form-field class="full-width" appearance="standard">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput formControlName="description"></textarea>
+                  </mat-form-field>
+              </div>         
+ 
+           
+    
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-flat-button color='primary' *ngIf='!update'
+  (click)="addItem()" >Add</button>
+  <button mat-flat-button color='primary' *ngIf='update'
+  (click)="updateUnit()">Update</button>
+</mat-dialog-actions>

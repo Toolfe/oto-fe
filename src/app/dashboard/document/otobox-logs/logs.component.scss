@@ -1,0 +1,103 @@
+.folder-container{
+    height: 85vh;
+    padding: 0px;
+
+    .path{
+
+        padding: 4px;
+        border-bottom: 1px solid #e0e0e0;
+        cursor: pointer;
+    }
+
+    .outer{
+        padding: 0px;
+    }
+    .outer:hover{
+        background-color: aliceblue;
+        cursor: pointer;
+    }
+    /* .outer:active{
+        background-color: #e0e0e0;
+    } */
+    .grid-container {
+        height: 80vh;
+        overflow-y: scroll;
+        display: grid;
+        padding: 8px;
+        grid-template-columns: repeat(auto-fill, 90px);
+        grid-template-rows: repeat(auto-fill, 90px);
+        column-gap: 8px;
+        row-gap: 15px;
+        .grid-item {
+            padding: 4px;
+            font-size: 30px;
+            text-align: center;
+          }
+      }
+
+    .list-container{
+        height: 77vh;
+        //background-color: antiquewhite;
+        overflow-y: auto;
+        .list-grid{
+            display: grid;
+            grid-template-columns:  2fr 1fr 1fr 1fr 1fr 1fr;
+            padding: 8px;
+            margin: auto;
+
+            .header-title{
+                color: rgb(100, 100, 100);
+                font-weight: 500;
+            }
+
+            .file-name{
+                margin-left: 4px;
+            }
+        }
+    }
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 6px;
+    border-bottom: 1px solid #e0e0e0;
+    li{
+        display: inline;
+        cursor: pointer;
+    }
+  }
+    
+
+
+
+.menu{
+    width: 250px !important;
+
+    button{
+        height:44px;
+    }
+}
+
+.mat-drawer-backdrop.mat-drawer-shown {
+    background-color: none !important;
+}
+
+.parent {
+    display: grid;
+    padding: 12px;
+    grid-template-columns: repeat(auto-fill, 90px);
+    grid-template-rows: repeat(auto-fill, 90px);
+  /*   column-gap: 8px;
+    row-gap: 15px; */
+    .grid-item {
+        height: 60px;
+        width: 60px;
+      }
+    }
+    
+  .loading{
+    width: 50px;
+    height: 60px;
+  }

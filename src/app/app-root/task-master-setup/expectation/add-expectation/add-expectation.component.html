@@ -1,0 +1,21 @@
+<mat-dialog-content>
+    <form  [formGroup]='expectationForm'>
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Expectation</mat-label>
+                        <input matInput required formControlName="name"  >
+                        <mat-error>
+                        
+                        </mat-error>
+                      </mat-form-field>
+                </div>                 
+     </form> 
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-flat-button color='primary' *ngIf='!update'
+    (click)="addItem()" >Add</button>
+    <button mat-flat-button color='primary' *ngIf='update'
+    (click)="updateExpectation()">Update</button>
+  </mat-dialog-actions>

@@ -1,0 +1,79 @@
+<form   >
+    <div class="row">
+        <div class="col">
+            <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Task Initiator</mat-label>
+                <mat-select  required>
+                    <mat-option *ngFor="let item of emp$ | async" [value]="item.id">
+                        {{item.fname}}
+                    </mat-option>
+                </mat-select>
+                <mat-error>
+                    please enter task initiator
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Priority Factor</mat-label>
+               <mat-select  >
+                <mat-option *ngFor="let item of priority " [value]="item">
+                    {{item}}
+                </mat-option>
+            </mat-select>
+               <mat-error>
+    
+               </mat-error>
+            </mat-form-field>
+        </div>
+    
+    </div>
+
+    <div class="row">
+        <div class="col" >
+            <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Task Type</mat-label>
+                <mat-select  multiple >
+                    <mat-option *ngFor="let item of type$ | async" [value]="item">
+                        {{item.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error>
+                  please select your task type
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col" >
+            <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Task Group</mat-label>
+                <mat-select  required>
+                    <mat-option *ngFor="let item of group$ |async" [value]="item.id">
+                        {{item.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error>
+                   please select task group
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col" >
+            <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Project</mat-label>
+                <mat-select required>
+                    <mat-option *ngFor="let item of projects$ |async" [value]="item.id">
+                        {{item.projectName}}
+                    </mat-option>
+                </mat-select>
+                <mat-error>
+
+                </mat-error>
+            </mat-form-field>
+        </div>
+       
+    </div>
+ 
+
+    </form>

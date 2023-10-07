@@ -1,0 +1,72 @@
+.icon{
+    height: 50px;
+    padding: 5px;
+    margin: 7px ;
+}
+
+.card{
+    padding: 16px;
+}
+  /* fill button */
+  
+  .fill-button {
+    position: relative;
+    overflow:hidden;
+    display:inline-block;
+    width:70px;
+    height:20px;
+    border:1px solid #662d91;
+    text-align:center;
+    text-decoration:none;
+    cursor: pointer;
+    line-height:18px;
+    font-family: 'arial';
+    border-radius: 4px;
+  }
+  .fill-button > span {
+    display:block;
+  }
+  .fill-button > .fill-button-hover:after, .fill-button > .fill-button-hover:before {
+    position:absolute;
+    top:0;
+    opacity:0;
+    display:block;
+    content:"";
+    width:0;
+    height:30px;
+  }
+  .fill-button > .fill-button-hover:after {
+    background-color:#662d91;
+    transform:skewX(45deg);
+    transform-origin:center center;
+    transition:all .35s, opacity .4s;
+    left:60%;
+  }
+  .fill-button .fill-button-hover:before {
+    background-color:#ffffff;
+    transition:opacity 1s;
+  }
+  
+  .fill-button .fill-button-text {
+    z-index:1;
+    position:relative;
+    color:#35495e;
+    transition:color .35s;
+    font-size: 10px;
+  }
+  .fill-button:hover .fill-button-text {
+    color:#ffffff;
+  }
+  .fill-button .fill-button-hover:hover:after {
+    opacity:1;
+    left:7%;
+    width:105%;
+    transform:skewX(45deg);
+  }
+  .fill-button > .fill-button-hover:hover:before {
+    opacity: 1;
+    left: 0;
+    width:100%;
+  }
+  
+  

@@ -1,0 +1,40 @@
+<!-- <div>
+  <b>To Start</b>
+  <button mat-button class="float-rt cls-button" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</div> -->
+
+
+<!-- <mat-divider></mat-divider> -->
+
+
+<div class="comment-box">
+  <!-- <div class="user-avatar"></div> -->
+  <textarea
+    class="comment-input"
+    placeholder="Write a comment..."
+    [(ngModel)]="comment"
+    #commentInput="ngModel"
+    name="comment"
+    required
+  >
+</textarea>
+</div>
+  <div class="error-message" *ngIf="commentInput.invalid && (commentInput.dirty || commentInput.touched)">
+    <div *ngIf="commentInput.errors.required">Comment is required.</div>
+  </div>
+
+
+<!-- <button class="submit-button">Submit</button> -->
+
+
+<div >
+  <div style="padding: 10px;">
+    <span>
+
+      <button [disabled]="commentInput.invalid" style="margin-left: 10px;"  mat-flat-button  class="float-rt" color="primary" (click)="updateTask()" mat-dialog-close>Save</button>
+      <!-- <button mat-button class="float-rt cls-button" mat-dialog-close> Close </button> -->
+    </span>
+  </div>
+</div>

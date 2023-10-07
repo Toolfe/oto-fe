@@ -1,0 +1,22 @@
+
+<h2>{{request+" Folder"}}</h2>
+    <div [formGroup]="folderForm" >
+           <mat-form-field appearance="standard" class="full-width">
+                  <mat-label>Folder Name </mat-label>
+                  <input matInput required formControlName="folderName" cdkFocusInitial>
+                  <mat-error>
+                    <span *ngIf="folderForm.controls.folderName.errors?.required">
+                      Folder Name is required
+                    </span>
+                  </mat-error>
+                </mat-form-field>
+      </div>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-flat-button color='primary' (click)="addItem()" 
+    *ngIf="request=='Create'; else update">Create</button>
+    <ng-template #update>
+      <button mat-flat-button color='primary' (click)="renameFolder()">Rename</button>
+    </ng-template>
+  </mat-dialog-actions>

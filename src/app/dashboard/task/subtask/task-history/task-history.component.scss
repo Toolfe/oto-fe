@@ -1,0 +1,82 @@
+@use 'src/styles/variables' as var;
+
+.mat-dialog-container{
+    padding: 0 !important;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    overflow: hidden;
+
+    #title{
+        font-weight: bold;
+        font-size: 16px;
+        padding-bottom: 8px;
+        max-width: 90%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        #history{
+            color: rgb(83, 83, 83);
+        }
+    }
+    #close-btn{
+        color: red;
+        padding: 6px;
+        cursor: pointer;
+    }
+}
+
+
+
+.list{
+    padding: 8px 2px !important;
+}
+
+.h-body{
+    padding-top: 8px;
+    max-height: 58vh;
+    overflow-y: scroll;
+
+    li{
+        list-style-type: none;
+    }
+
+    .card{
+        border: 0;
+        display: grid;
+        grid-template-columns: 1fr 3fr 3fr;
+        grid-column-gap: 10px;
+
+        #tag{
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            position: relative;
+            top:10px;
+        }
+            .status{
+                font-size: 12px;
+                font-weight: 400 !important;
+                color: rgb(101, 99, 99);
+            }
+    }
+}
+
+
+.create{
+    color: var.$primary;
+    background-color: rgb(228, 228, 255);
+}
+
+.update{
+    color: var.$secondary;
+    background-color: rgb(255, 208, 254);
+}
+
+.modifier:hover{
+    color: var.$primary;
+    cursor: pointer;
+}

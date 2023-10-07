@@ -1,0 +1,376 @@
+@use 'src/styles/variables' as var;
+
+.task-container{
+  height: max-content;
+  overflow: scroll;
+}
+.sec-1{
+    //position: absolute;
+    padding-left: 6px;
+    padding: 12px;
+    top: 12px;
+    margin-left: 15px;
+}
+
+
+.mat-chip{
+    background-color: white;
+    border: 0.2px solid gray ;
+    margin: 6px 3px;
+}
+
+
+.task-title-container{
+    padding-left: 15px;
+}
+
+#subtask-title{
+    margin-left: 12px;
+    font-weight: bold;
+    white-space: nowrap; 
+    width: 40%;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.description{
+    white-space: nowrap; 
+    width: 90%; 
+    margin-right: 20px;
+    overflow: hidden;
+    text-overflow: clip; 
+}
+.projectName{
+    white-space: nowrap; 
+    width: 90%; 
+    margin-right: 20px;
+    overflow: hidden;
+    text-overflow: clip; 
+    color: gray;
+    font-style: oblique;
+    
+}
+
+.loading-grid{
+    padding:10px;
+    display: grid;
+    grid-template-columns: 1fr 7fr 2fr; 
+    grid-column-gap: 25px; 
+} 
+.div2{
+    padding:10px;
+    height: 30px;
+    border-radius: 12px;
+    
+}
+.div3{
+    padding:10px;
+    border-radius: 12px;
+   
+}
+  
+.div4{
+    padding:10px;
+    border-radius: 12px;
+  
+   }
+
+   .status{
+    white-space: nowrap; 
+
+    overflow: hidden;
+    text-overflow: ellipsis; 
+   }
+
+
+   .example-box.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  
+  .example-chip .cdk-drop-list-dragging {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+
+  /////search  
+
+ 
+  
+  .search__box {
+    float: left;
+    background: none;
+    color: #000000;
+    font-size: 15px;
+    border-radius: 2rem;
+    outline: none;
+    border: none;
+    opacity: 1;
+    padding: 10px;
+    width: 50%;
+
+  }
+  
+
+  .search__icon {
+  
+    display: inline-block;
+    cursor: pointer;
+    color: #000000;
+    transition: all .78s ease-in;
+    padding: .5rem;
+    border-radius: 50%;
+  }
+  
+
+  .mat-card {
+    padding: 5px;
+  }
+ 
+  
+  .header-grid{
+    display: grid;
+    overflow: scroll;
+    grid-template-columns:5fr 4fr 0.5fr 4fr ;
+    height: fit-content;
+    // padding:10px;
+    align-items: center;
+    box-shadow: rgba(63, 44, 44, 0.15) 0px 1px 2px 0.2px;
+    cursor: pointer;
+    position: relative;
+    height: 80px;
+    // z-index: 1;
+    // *{
+    //     zoom: 0.95;
+    // }
+  }
+  #create-btn{
+    margin-left: 16px;
+    width: 120px;
+    background-image: linear-gradient(to left, #662d91, #8d0466);
+    color: white;
+    border-radius: 50px;
+}
+
+  //dropdown
+
+  :host {
+    >.container {
+        max-width: 1264px;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        background: none;
+    }
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    flex: 1 0 auto;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#content {
+    box-sizing: content-box;
+    margin: 0 auto;
+    width: 1264px;
+    background-color: #ffffff;
+}
+
+#content {
+    max-width: 1100px;
+    width: 100%;
+    background-color: #ffffff;
+
+    box-sizing: border-box;
+}
+
+#content,
+#main-content {
+    &::before,
+    &::after {
+        content: "";
+        display: table;
+    }
+    &::after {
+        clear: both;
+    }
+    button{
+        margin-left: 12px;
+    }
+    bottom:last-child{
+        margin-right: 8px;
+        background-color: whitesmoke;
+
+    }
+}
+
+.dropdown {
+  padding: 10px;
+}
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 4.5fr 3fr 3fr 2fr 1.5fr;
+    align-items: center;
+    padding: 2px;
+    padding-left: 10px;
+    border-bottom: 0.1px solid gainsboro;
+    cursor: pointer;
+}
+.sub-taks-grid{
+    display: grid;
+    grid-template-columns: 1fr 4.5fr 3fr 3fr 2fr 1.5fr;
+    padding: 2px;
+    padding-left: 10px;
+    align-items: center;
+    border-bottom: 0.1px solid gainsboro;
+    cursor: pointer;
+}
+.theader-grid{
+    display: grid;
+    grid-template-columns:1fr 4.5fr 3fr 3fr 2fr 1.5fr;
+    padding: 15px;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    background-color: whitesmoke;
+   
+}
+.table-container
+{
+height: 62vh;
+ overflow-y: scroll;
+}
+
+.expandable-content {
+    overflow: hidden;
+  }
+th.mat-header-cell {
+    color:black;
+    font-size: 0.9rem;
+    font-weight: bold;
+    background-color:rgb(243, 243, 243)
+}
+
+
+#task-title{
+    cursor: pointer;
+    font-weight: 500;
+    color: var.$primary;
+    width: 100px;
+    overflow: hidden;
+   
+}
+#parent-title{
+    width:5px;
+}
+#task-title:hover{
+    color: var.$secondary;
+    text-decoration: underline;
+}
+
+table{
+    zoom: 0.9;
+}
+
+td
+{
+ max-width: 0;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+ padding-right: 24px !important;
+}
+td.t-Title {
+width: 35%;
+}
+
+#start{
+    color: var.$blue;
+  }
+  div.sticky {
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    z-index: 3; 
+    background: whitesmoke
+  
+  }
+
+
+/* Pagination style */
+
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; 
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.items-per-page {
+  display: flex;
+  align-items: center;
+  margin-right: 20px; 
+}
+
+.items-per-page label {
+  margin-right: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.items-per-page select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+  color: #333;
+}
+
+.items-per-page select {
+  font-size: 14px;
+  padding: 6px 10px; 
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333; 
+}
+
+.page-info {
+  font-size: 14px;
+  color: #666;
+  margin-right: 20px;
+}
+
+.pagination-buttons button {
+  border: none;
+  font-size: 10px;
+  padding: 5x;
+  cursor: pointer;
+}
+
+.prev-button[disabled],
+.next-button[disabled]{
+  cursor: not-allowed;
+}
+.horizontal-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start; 
+  margin-left: 20px;
+  padding: 2px; /* Add padding for spacing */
+}
+.custom-dropdown {
+  width: 110px; 
+  font-size: 13px;
+}
+
+.small-icon {
+  font-size: 16px; /* Adjust the font size as needed */
+}
+
+
+
+

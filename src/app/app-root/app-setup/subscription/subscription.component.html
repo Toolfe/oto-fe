@@ -1,0 +1,60 @@
+<div>
+  <div fxLayoutAlign="center center" fxFlexfill fxLayout='column' style="height: 90vh;">
+      <mat-card  class="col-md-6" >
+          <form [formGroup]="parent" >
+            <div formGroupName="appSetup">
+                <div formGroupName="planDetails">
+                  <div class="row">
+                    <div class="col">
+                        <mat-form-field  appearance="legacy" class="col-12">
+                            <mat-label>From Date</mat-label>
+                            <input matInput type="date"
+                            formControlName="fromDate">
+                          </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="legacy" class="col-12">
+                            <mat-label>To Date</mat-label>
+                            <input matInput type="date"
+                            formControlName="toDate" required>
+                          </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <mat-form-field appearance="legacy" class="col-12">
+                          <mat-label>Payment Period</mat-label>
+                          <mat-select formControlName="paymentPeriod">
+                            <mat-option *ngFor="let period of Period" [value]="period.value">
+                              {{period.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                  </div>
+                  <div class="col">
+                      <mat-form-field appearance="legacy" class="col-12">
+                          <mat-label>Payment Status</mat-label>
+                          <input matInput  readonly>
+                        </mat-form-field>
+                  </div>
+                  </div>
+                <div class="col">
+                    <mat-form-field appearance="legacy" class="col-12">
+                        <mat-label>Activation</mat-label>
+                        <input matInput formControlName="active" readonly>
+                      </mat-form-field>
+                </div>
+                </div>
+            </div>
+            
+      <button mat-button (click)="onPrevious()">Back</button>
+      <button *ngIf="!submitted" mat-flat-button  color='primary' type="submit"  (click)="onSubmit()"
+      style="float: right;" >Submit</button>
+      <button *ngIf="submitted" mat-flat-button  color='primary' type="submit" 
+      style="float: right;">Submitting...</button>
+                    
+            </form>
+          </mat-card>
+  </div>
+</div>

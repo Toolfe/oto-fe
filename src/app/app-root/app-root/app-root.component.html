@@ -1,0 +1,211 @@
+
+ <mat-toolbar  class="header" color="primary">
+  <button type="button" mat-icon-button (click)="snav.toggle()"><mat-icon class="header-icon">menu</mat-icon></button>
+  <span><img src="./../../../assets/icons/product-logo.svg"  style="height: 1.8rem;"></span>
+  <span class="flex-spacer"></span>
+
+<!--   <form class="d-flex">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+  </form> -->
+  <a mat-icon-button target="_blank" [routerLink]="'../help/setup'">
+      <mat-icon class="header-icon">help</mat-icon>
+  </a>
+  
+  <button mat-button (click)='exitAdmin()'>Exit</button>
+</mat-toolbar>
+
+<mat-sidenav-container  >
+  <mat-sidenav #snav mode='side'  opened class=" primary-bg">
+    
+    <mat-accordion>
+     <!-- Setup-->
+     
+     <mat-expansion-panel class="side-menu" id="menu" [expanded]="step === '0'" (opened)="setStep('0')">
+       <!--App setup-->
+      <mat-expansion-panel-header [routerLink]="'orgsetup'">
+        <mat-panel-title >
+          <mat-icon class="nav-icon">tune</mat-icon>
+          <span>Basic Setup</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>   
+      <ng-container class="mat-expansion-panel-body">
+        <mat-nav-list >
+          <a mat-list-item [routerLink]="'orgsetup'"
+          [routerLinkActive]="'active'">
+          <div class="text">
+            Organization Setup
+          </div></a>
+          <!-- <a mat-list-item [routerLink]="'contact-setup'"
+         [routerLinkActive]="['active']">
+         <div class="text">
+          Contacts setup
+         </div>
+        </a> -->
+        <a mat-list-item [routerLink]="'business-master'"
+               [routerLinkActive]="['active']">
+               <div class="text">
+                Business Partner Setup
+               </div></a>
+
+         <a mat-list-item [routerLink]="'task-master'"
+               [routerLinkActive]="['active']">
+               <div class="text">
+              Task Master Setup
+               </div></a>
+
+               <a mat-list-item [routerLink]="'doc-master'"
+               [routerLinkActive]="['active']"> <div class="text">Document Master Setup </div></a>
+
+             <!--   <a mat-list-item [routerLink]="'report-type'"
+               [routerLinkActive]="['active']">
+               <div class="text">
+              Report type setup
+               </div></a> -->
+
+          </mat-nav-list>
+        </ng-container>
+  </mat-expansion-panel>
+
+      <!--Add Employee & Business Partners-->
+     <mat-expansion-panel [expanded]="step === '1'" (opened)="setStep('1')">
+        <mat-expansion-panel-header [routerLink]="'roles-profile'">
+          <mat-panel-title>
+            <mat-icon class="nav-icon">group_add</mat-icon>
+            <span>Manage Employe..</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>   
+          <mat-nav-list >
+            <a mat-list-item [routerLink]="'roles-profile'"
+            [routerLinkActive]="'active'">
+            <div class="text">
+              Roles And Profiles
+            </div></a>
+
+            <a mat-list-item [routerLink]="'empsetup'"
+            [routerLinkActive]="['active']">
+            <div class="text">
+              Employee details
+            </div>
+          </a>
+<!-- 
+             <a mat-list-item [routerLink]="'roles-profile'"
+            [routerLinkActive]="['active']">
+            <div class="text">
+              Roles and profiles
+            </div>
+          </a> -->
+             <a mat-list-item [routerLink]="'assign-escalate'"
+            [routerLinkActive]="['active']">
+            <div class="text">
+              Assign escalate approval
+            </div>
+          </a>
+        </mat-nav-list>
+
+    </mat-expansion-panel>
+
+        <!--Task Master Setup-->
+        <mat-expansion-panel [expanded]="step === '2'" (opened)="setStep('2')">
+          <mat-expansion-panel-header [routerLink]="'businessPartners/add-contact'">
+            <mat-panel-title>
+              <mat-icon class="nav-icon">supervised_user_circle</mat-icon>
+              <span>Business Partners</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>   
+          <mat-nav-list >
+            <!-- <a mat-list-item [routerLink]="'businessPartners/partners'"
+            [routerLinkActive]="['active']">
+            <div class="text">
+              Business Partner
+            </div></a> -->
+            <a mat-list-item [routerLink]="'businessPartners/add-contact'"
+            [routerLinkActive]="['active']">
+            <div class="text">
+              Business Partners
+            </div></a>
+            <!-- <a mat-list-item [routerLink]="'businessPartners/contacts'"
+           [routerLinkActive]="['active']">
+           <div class="text">Business Partners List</div></a> -->
+
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+    
+
+
+        <!--Project Setup-->
+        <mat-expansion-panel [expanded]="step === '3'" (opened)="setStep('3')">
+          <mat-expansion-panel-header [routerLink]="'project/all-projects'">
+            <mat-panel-title>
+              <mat-icon class="nav-icon">workspaces</mat-icon>
+              <span>Projects</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>   
+          <mat-nav-list >
+            <a mat-list-item [routerLink]="'project/all-projects'"
+            [routerLinkActive]="['active']">
+            <div class="text">
+              All Projects
+            </div></a>
+            <a mat-list-item [routerLink]="'project/order-number'"
+            [routerLinkActive]="['active']">
+            <div class="text">
+              Order Number
+            </div></a>
+           
+
+        </mat-nav-list>
+
+          
+<!-- report Type setup -->
+      </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="step === '5'" (opened)="setStep('5')">
+        <mat-expansion-panel-header [routerLink]="'report-type'" >
+          <mat-panel-title>
+            <mat-icon class="nav-icon"> flag_circle</mat-icon>
+           
+            <span>Report Setup</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>   
+        <mat-nav-list >
+      <a mat-list-item [routerLink]="'report-type'"
+      [routerLinkActive]="['active']">
+      <div class="text">
+     Report  
+      </div></a>
+      </mat-nav-list>
+    </mat-expansion-panel>
+      
+          <!--Doc Master Setup-->
+          <!-- <mat-expansion-panel [expanded]="step === '6'" (opened)="setStep('6')">
+            <mat-expansion-panel-header [routerLink]="'doc-master'" >
+              <mat-panel-title>
+                <mat-icon class="nav-icon">corporate_fare</mat-icon>
+                <span>Document Setup</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>   
+            <mat-nav-list >
+          <a mat-list-item [routerLink]="'doc-master'"
+         [routerLinkActive]="['active']"> <div class="text">Document Master</div></a>
+  
+          </mat-nav-list>
+        </mat-expansion-panel> -->
+
+     <!--    <a mat-list-item [routerLink]="'doc-recording'"
+         [routerLinkActive]="['active']">Document Recording</a>
+          <a mat-list-item [routerLink]="'/doc-listing'" 
+         [routerLinkActive]="['active']">Document Listing</a>
+          <a mat-list-item [routerLink]="'/doc-search'"
+         [routerLinkActive]="['active']">Document Search</a> -->
+
+    </mat-accordion>
+</mat-sidenav>
+
+  <mat-sidenav-content>
+  
+      <router-outlet></router-outlet>
+    
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

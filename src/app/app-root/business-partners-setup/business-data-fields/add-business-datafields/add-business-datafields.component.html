@@ -1,0 +1,136 @@
+<mat-dialog-content style="width: 40vw; max-height: 70vh; overflow-y: auto; overflow-x: hidden;">
+
+  <div [formGroup]="businessDataFieldForm">
+    <mat-form-field appearance="standard" class="full-width">
+      <mat-label>Business Partner Category</mat-label>
+      <input matInput required formControlName="name">
+      <mat-error>
+        Enter Business Partner Category
+      </mat-error>
+    </mat-form-field>
+
+
+   <mat-form-field class="full-width" appearance="standard">
+      <mat-label>Description </mat-label>
+      <textarea matInput required style="min-height: 30px;
+        max-height: 100px;" formControlName="description"></textarea>
+      <mat-error>
+        Enter Business Partner Description
+      </mat-error>
+    </mat-form-field> 
+    <div formArrayName="fields">
+      <div *ngFor="let fields of fieldForms.controls; let i=index" [formGroupName]="i" style="margin: 12px 1px;" (mouseenter)='showIcon(i)'>
+        <div [ngClass]="{'active-card': i == index}" class="field">
+          <div class="row">
+            <div class="col">
+              <mat-form-field appearance="legacy" class="full-width">
+                <mat-label>Field Name</mat-label>
+                <input matInput formControlName="name" required>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field appearance="legacy" class="full-width">
+                <mat-label>Field type</mat-label>
+                <mat-select #field formControlName="type" required >
+                  <mat-option value="text">
+                    <!--<mat-icon>short_text</mat-icon> -->
+                    Short Answer
+                  </mat-option>
+                  <mat-option value="number">
+                    <!-- <mat-icon>pin</mat-icon> -->
+                    Number
+                  </mat-option>
+                  <mat-option value="email">
+                    <!-- <mat-icon>pin</mat-icon> -->
+                    Email
+                  </mat-option>
+                  <mat-option value="tel">
+                    <!-- <mat-icon>pin</mat-icon> -->
+                    Tel
+                  </mat-option>
+                  <mat-option value="date">
+                    <!-- <mat-icon>arrow_drop_down_circle</mat-icon> -->
+                    Date
+                  </mat-option>
+                  <mat-option value="select">
+                    <!-- <mat-icon>arrow_drop_down_circle</mat-icon> -->
+                    Drop-down
+                  </mat-option>
+                  <mat-option value="radio">
+                    <!-- <mat-icon>radio_button_checked</mat-icon> -->
+                    Radio Group
+                  </mat-option>
+                  <mat-option value="textarea">
+                    <!--  <mat-icon>subject</mat-icon>  -->
+                    Paragraph
+                  </mat-option>
+                  <!-- <ng-container *ngIf="i!=0">
+                 </ng-container>  chnage orgate for get type and comment container-->
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div *ngIf="i==index || i!=0">   
+              <div class="row">
+                <div class="col" *ngIf="field.value=='select'">
+                  <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Select Reference</mat-label>
+                    <mat-select formControlName="reference" required>
+                      <mat-option *ngFor='let item of $fields' [value]="item.value">{{item.name}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <!-- <div formGroupName="validators"> -->
+                  <div class="col" *ngIf="field.value=='text' || field.value=='number'">
+                    <mat-form-field appearance="standard" class="full-width">
+                      <mat-label>Length of this field</mat-label>
+                      <input type="text"matInput formControlName="maxLength" required [readonly] numberOnly >
+                    </mat-form-field>
+                  </div>
+                  <div class="col" *ngIf="field.value!=null">
+                    <mat-form-field appearance="standard" class="full-width">
+                      <mat-label>Required Status</mat-label>
+                      <mat-select  formControlName="required" required >
+                        <mat-option [value]=true>Mandatory</mat-option>
+                        <mat-option [value]=false >Not Mandatory</mat-option>
+                      
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                <!-- </div> -->
+              </div>
+
+              <span class="remove">
+                <button mat-icon-button color="warn" (click)="onDelete(i)" >
+                  <mat-icon color="warn">remove_circle</mat-icon>
+                  <span>Remove</span>
+                </button>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<div class="footer">
+  <a color='primary' [matMenuTriggerFor]="fields">Add new field</a>
+
+    <!--Menu fields-->
+    <mat-menu #fields="matMenu">
+      <div id="field">
+        <button mat-menu-item (click)="addField()">Custom Field</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)='addDefinedField(item)' *ngFor="let item of formControls">{{item.name}}</button>
+      </div>
+
+    </mat-menu>
+    <div class="float-rt">
+      <button mat-button mat-dialog-close>Close</button>
+
+      <button mat-flat-button color='primary' *ngIf="update" (click)="updateItem()">Update</button>
+      <button mat-flat-button color='primary' (click)='save()' *ngIf="!update">Save</button>
+    </div>
+</div>    
+    

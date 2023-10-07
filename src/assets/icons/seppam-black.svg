@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 457.33 169.73">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f26419;
+      }
+
+      .cls-2 {
+        font-family: NexaText-Trial-Black, 'Nexa Text-Trial';
+        font-size: 66.09px;
+        font-weight: 800;
+      }
+
+      .cls-3 {
+        fill: #662d91;
+      }
+
+      .cls-4 {
+        fill: #f6ae2d;
+      }
+    </style>
+  </defs>
+  <g>
+    <circle class="cls-3" cx="80.08" cy="84.86" r="75.29"/>
+    <path class="cls-4" d="m37.68,107.35v-50.02h21.24l-.07,46.66c0,1.85,1.5,3.36,3.36,3.36h39.11v17.7h-60.35c-1.85,0-3.36-1.5-3.36-3.36v-14.34h.07Z"/>
+    <path class="cls-1" d="m122.56,57.33v50.02h-21.24l.07-46.66c0-1.85-1.5-3.36-3.36-3.36h-39.11v-17.7h60.35c1.85,0,3.36,1.5,3.36,3.36v14.34h-.07Z"/>
+  </g>
+  <text class="cls-2" transform="translate(188.39 104.86)"><tspan x="0" y="0">Seppam</tspan></text>
+</svg>

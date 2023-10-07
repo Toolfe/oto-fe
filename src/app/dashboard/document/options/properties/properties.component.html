@@ -1,0 +1,66 @@
+<div>
+    <tbody>
+        <tr class='t-row'>
+            <td class="title">Name</td>
+            <td class="value">
+                <span>{{getFoldername()}}</span>
+                <span>{{getFilename()}}</span>
+
+            </td>
+        </tr>
+        <tr class='t-row'>
+            <td class="title">Type</td>
+            <td *ngIf="getFoldername()" class="value">Folder</td>
+            <td *ngIf="getFilename()" class="value">{{data.fileType}}</td>
+        </tr>
+        <tr class='t-row'>
+            <td class="title">Size</td>
+            <td class="value">{{getFilesize(data. fileSize)}}</td>
+        </tr>
+    </tbody>
+   <!--  <mat-divider></mat-divider>
+    <tbody>
+            <tr class='t-row'>
+                <td class="title">Shared</td>
+                <td class="value" *ngIf="data.shared==null">
+                        Not Shared 
+                </td>
+                <td class="value" *ngIf="data.shared">
+                    hello
+            </td>
+            </tr>
+            <tr class='t-row'>
+                <td class="title">Permisions</td>
+                <td class="value">{{data.modified}}</td>
+            </tr>
+    </tbody> -->
+    <mat-divider></mat-divider>
+    <tbody>
+        <tr class='t-row'>
+            <td class="title">Created</td>
+            <td class="value">
+                <span>{{getFolderCreated() | date}}</span>
+                <span>{{getFileCreated() | date}}</span>
+                
+            </td>
+        </tr>
+        <tr class='t-row'>
+            <td class="title">Modified</td>
+            <td class="value">
+                <span>{{getFolderModified() | date}}</span>
+                <span>{{getFileModified() | date}}</span>
+            </td>
+        </tr>
+        <tr class='t-row' *ngIf="sharedBy">
+            <td class="title">Shared By</td>
+            <td class="value">
+                <span *ngIf="sharedUserName.name1=='undefined undefined'">{{sharedUserName.name}}</span>
+                <span *ngIf="sharedUserName.name=='undefined undefined'">{{sharedUserName.name1}}</span>
+            </td>
+        </tr>
+       
+    </tbody>
+</div>
+<mat-dialog-actions align="end">
+    <button mat-button color="primary" mat-dialog-close>Close</button>
+</mat-dialog-actions>

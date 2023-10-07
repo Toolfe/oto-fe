@@ -1,0 +1,92 @@
+
+
+  <div class="info">
+        <ng-container *ngIf="orgBasicInfo as orgBasicInfo; else loading">
+            <div class="row">
+           
+                <div class="col" style="margin: 15px;">
+                    Company Name :&nbsp; &nbsp; <span class="cName">{{orgBasicInfo.companyName}}</span>
+                </div>
+                <div class="col" style="margin: 15px;">
+                 Legal Entity Reference &nbsp;  :&nbsp; &nbsp; {{orgBasicInfo.legalEntityReference}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" style="margin: 15px;">
+                    Business Nature : &nbsp; &nbsp; {{orgBasicInfo.businessNature}}
+                </div>
+                <div class="col" style="margin: 15px;">
+                    Reporting Currency &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  : &nbsp; &nbsp; {{orgBasicInfo.name}} - {{orgBasicInfo.code}}
+                </div>
+    
+             </div>
+        </ng-container>
+        <ng-template #loading>
+            <table>
+                <tr>
+                    <td loading></td>
+                    <td loading></td>
+                </tr>
+            </table>
+        </ng-template>
+        <hr>
+    
+  <div class="row" style="margin: 20px;">
+      <div class="col" style="height: 30%; ">
+          <span class="label" id="branch">Branch Address</span><br><br>
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th class="col-8">Address Details</th>
+                      <th class="col-2">Action</th>
+                  </tr>
+              </thead>
+              <tbody >
+                  <tr style="top: 18px;" *ngIf="orgBasicInfo as orgBasicInfo; else loading">
+                      <td>{{orgBasicInfo.address}}</td>
+                      <td>
+                          <span style="background-color: gold; padding: 4px 4px;">Headquarters</span>
+                        </td> 
+                  </tr>
+                  <ng-container *ngIf="orgAddresses as orgAddresses; else loadingTable" >
+                  <tr *ngFor="let item of orgAddresses">
+                      <td><span>{{item.address}}</span></td>
+                      <td>
+                          <span><button mat-icon-button matTooltipClass="example-tooltip-red" matTooltipPosition='right' id="editbtn"
+                            [disabled]="isEnable('updation')"  matTooltip='Edit' (click)="editData(item)"><i class="bi bi-pencil-fill"></i></button></span>
+                             <button mat-icon-button matTooltipClass="example-tooltip-red" matTooltipPosition='right'
+                             [disabled]="isEnable('deletion')"matTooltip='Delete' (click)="deleteItem(item)"><i class="bi bi-trash-fill"></i></button>
+                        </td> 
+                  </tr>
+                  </ng-container>
+                  <ng-template #loadingTable>
+                    <tr><span id="branch-address">Loading..</span></tr>
+                </ng-template>
+              </tbody>
+          </table>  
+      </div>
+      <div class="col" [formGroup]="addresses" >
+          <div>
+              <span class="label" id="address">Add new Address</span><br><br>
+              <mat-form-field  appearance="fill" style="width: 80%;">
+                  <mat-label>Enter Your Address Here</mat-label>
+                  <textarea class="address" matInput formControlName="address" required></textarea>
+                </mat-form-field>
+                <div class="float-rt" style="width: 50%;">
+                    <button mat-button (click)="clearAddress()">Clear</button>
+            
+                    <span *ngIf="!update">
+                        <button mat-flat-button color='primary' (click)=" addItem()" [disabled]="isEnable('creation')">
+                            Add
+                        </button>
+                    </span>
+                        <button mat-flat-button color='primary'  (click)=" updateAddress()" *ngIf="update ">
+                            Update
+                        </button>
+                   
+                </div>
+          </div>
+      </div>
+
+  </div>
+  </div>

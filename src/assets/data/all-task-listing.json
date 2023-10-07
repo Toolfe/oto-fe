@@ -1,0 +1,111 @@
+
+{
+    "success": true,
+    "message": "all task list",
+    "data": [
+        {
+            "taskId" : 1,
+            "isSubtask" : true,
+            "taskName" : "Jan 2023 : Monthly Reporting Activities",
+            "projectName" :"Accounts-Jan 2023",
+            "initiatorName": "Shuvro kumar Shaha",
+            "priority" : "Priority",
+            "targetDate": "2023-01-07T18:00",
+            "taskDuration": 489,
+            "status" : 1,
+            "subTasks" : []
+
+        },
+        {
+            "taskId" : 2,
+            "isSubtask" : true,
+            "taskName" : "Finance : Monthly Activities",
+            "projectName" :"Accounts-Jan 2023",
+            "initiatorName": "Shuvro kumar Shaha",
+            "priority" : "Priority",
+            "targetDate": "2023-01-07T18:00",
+            "taskDuration": 3489,
+            "status" : 1,
+            "subTasks" : []
+
+        },
+        {
+            "taskId" : 3,
+            "isSubtask" : true,
+            "taskName" : "Finance : Specfic Activities",
+            "projectName" :"Accounts-Jan 2023",
+            "initiatorName": "Shuvro kumar Shaha",
+            "priority" : "Priority",
+            "targetDate": "2023-01-07T18:00",
+            "taskDuration": 489,
+            "status" : 1,
+            "subTasks" : []
+
+        },
+        {
+            "taskId" : 4,
+            "isSubtask" : true,
+            "taskName" : "HR Admin : Worker Monitoring Activities",
+            "projectName" :"WorkerMonitoring-Jan2023",
+            "initiatorName": "Shuvro kumar Shaha",
+            "priority" : "Priority",
+            "targetDate": "2023-01-07T18:00",
+            "taskDuration": 1489,
+            "status" : 1,
+            "subTasks" : []
+
+        },
+        {
+            "taskId" : 5,
+            "isSubtask" : true,
+            "taskName" : "HR Admin : General Adminstration Activities",
+            "projectName" :"AdminMonitor-Jan 2023",
+            "initiatorName": "Shuvro kumar Shaha",
+            "priority" : "Priority",
+            "targetDate": "2023-01-07T18:00",
+            "taskDuration": 489,
+            "status" : 1,
+            "subTasks" : []
+
+        },
+        {
+            "taskId" : 6,
+            "isSubtask" : true,
+            "taskName" : "Finance : Regular Monitoring Activities",
+            "projectName" :"Accounts-Jan 2023",
+            "initiatorName": "Shuvro kumar Shaha",
+            "priority" : "Priority",
+            "targetDate": "2023-01-30",
+            "taskDuration": 4589,
+            "status" : 1,
+            "subTasks" : []
+
+        },
+        {
+            "taskId" : 7,
+            "isSubtask" : true,
+            "taskName" : "Finance : Regular Accounts and Tally Update",
+            "projectName" :"Accounts-Jan 2023",
+            "initiatorName": "Shuvro kumar Shaha",
+            "priority" : "Priority",
+            "targetDate": "2023-01-30",
+            "taskDuration": 4895,
+            "status" : 1,
+            "subTasks" : []
+
+        },
+        {
+            "taskId" : 8,
+            "isSubtask" : true,
+            "taskName" : "Checking 001",
+            "projectName" :"Banking - 2023",
+            "initiatorName": "Shuvro kumar Shaha",
+            "priority" : "Priority",
+            "targetDate": "2023-01-30",
+            "taskDuration": 4819,
+            "status" : 1,
+            "subTasks" : []
+
+        }
+    ]
+}

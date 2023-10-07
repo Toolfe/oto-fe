@@ -1,0 +1,23 @@
+<div [formGroup]="subCategoryForm">
+    <mat-form-field appearance="standard" class="full-width">
+      <mat-label> Contact Sub Category</mat-label>
+      <input matInput required formControlName='name' >
+      <mat-error>
+    </mat-error>
+</mat-form-field>
+  <mat-form-field class="full-width" appearance="standard" >
+      <mat-label>Description </mat-label>
+       <textarea matInput style="min-height: 30px;
+        max-height: 100px;"  formControlName="description"></textarea>
+       <mat-error>
+           
+       </mat-error>
+  </mat-form-field>
+  </div>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-flat-button color='primary' *ngIf='!update'
+    (click)="addItem()" >Add</button>
+    <button mat-flat-button color='primary' *ngIf='update'
+    (click)="updateSubCategory()">Update</button>
+  </mat-dialog-actions>

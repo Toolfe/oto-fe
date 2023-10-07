@@ -1,0 +1,35 @@
+    <ul class="nav header" >
+        
+        <li  *ngFor='let item of menuList; index as i' [ngClass]="{'active':selectedList===item}" >
+            <ng-template [ngIf]="tabVisible(item)" >
+                <span [ngClass]="{'title':selectedList!=item}" (click)='openMenuList(item, i)'>{{item}}</span>
+            </ng-template>
+            
+        </li>
+    </ul>
+   
+    <ng-container *ngIf='selectedList ==="Basic Info"' >
+            <app-basic ></app-basic>  
+    </ng-container>
+ 
+    <ng-container *ngIf='selectedList ==="Location"'>
+        <app-location ></app-location> 
+    </ng-container>
+    <ng-container *ngIf='selectedList ==="Division"'>
+        <app-division></app-division>
+    </ng-container>
+    <ng-container *ngIf='selectedList ==="Business Unit"'>
+        <app-unit></app-unit>
+    </ng-container>
+    <ng-container *ngIf='selectedList ==="Department"'>
+        <app-department></app-department>
+    </ng-container>
+    <ng-container *ngIf='selectedList ==="Sub Department"'>
+        <app-sub-dept></app-sub-dept>
+    </ng-container>
+    <ng-container *ngIf='selectedList ==="Currency"'>
+        <app-currency></app-currency>
+    </ng-container>
+    <ng-container *ngIf='selectedList ==="Employee Group"'>
+        <app-emp-group></app-emp-group>
+    </ng-container>

@@ -1,0 +1,36 @@
+.title{
+    font-size: 1.2rem;
+    //text-align: center;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+#header{
+    //padding: 1rem;
+    margin-bottom: 1rem;
+}
+    div{
+        .sub-title{
+            color: gray;
+            margin-right: 12px;
+        }
+    
+        #name{
+            font-size: 1rem;
+            font-weight: 400;
+            color: #000;
+        }
+        
+    }
+
+mat-divider{
+    margin-top: 1rem;
+}
+.radio-btn{
+    margin:1rem 0;
+}
+
+.permissions{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}

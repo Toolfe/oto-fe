@@ -1,0 +1,68 @@
+<h2 mat-dialog-title>Share Folder</h2>
+<div mat-dialog-content style="width:35vw">
+  <form [formGroup]="folderSharingForm">
+    <mat-form-field appearance="standard" class="full-width">
+      <mat-label>Share With</mat-label>
+      <mat-select formControlName="shareWith">
+        <mat-option [value]="1">Employee</mat-option>
+        <!-- <mat-option [value]="2">Working Group</mat-option> -->
+        <mat-option [value]="3">Reporting Group</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+      <mat-form-field appearance="standard" class="full-width" *ngIf="folderSharingForm.controls['shareWith'].value==1">
+          <mat-label>Employee</mat-label>
+          <mat-select multiple formControlName="shareWithUser" (selectionChange)="filterEmployeesById($event.value)">
+            <mat-select-trigger>
+              <mat-chip-list>
+                <mat-chip *ngFor="let user of selectedUser"
+                  [removable]="false" (removed)="onUserRemoved(user)">
+                  {{ user }}
+                  <!-- <mat-icon matChipRemove>cancel</mat-icon> -->
+                </mat-chip>
+              </mat-chip-list>
+            </mat-select-trigger>
+            <mat-option *ngFor="let emp of employee$ | async" [value]="emp.id">{{emp.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field appearance="standard" class="full-width" *ngIf="folderSharingForm.controls['shareWith'].value==2">
+          <mat-label>Working Group</mat-label>
+          <mat-select multiple formControlName="shareWithUserWorkGroup">
+            <mat-select-trigger>
+              <mat-chip-list>
+                <mat-chip *ngFor="let group of shareWithUserWorkGroup.value"
+                  [removable]="true" (removed)="onWorkGroupRemoved(group)">
+                  {{ group.name }}
+                  <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+              </mat-chip-list>
+            </mat-select-trigger>
+            <mat-option [value]="group" *ngFor="let group of empGroup$ | async">{{group.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <ng-container *ngIf="folderSharingForm.controls['shareWith'].value==3">
+          <ng-container *ngIf="currentUser$| async as user">
+            <div class="report-container">
+              <label>Business Reporting: &nbsp;</label>
+              <span>{{user.businessReporting}}</span><br>
+            </div>
+            <div class="report-container">
+             <label>Functional Reporting: &nbsp;</label>
+              <span>{{user.functionalReporting}}</span><br>
+            </div>
+          </ng-container> 
+        </ng-container>
+
+        <div formGroupName="permission" class="permissions" >Permissions Allowed: &nbsp;
+         <mat-checkbox formControlName="viewPermission">Read</mat-checkbox> &nbsp; &nbsp; 
+         <mat-checkbox formControlName="editPermission">Write</mat-checkbox> &nbsp; &nbsp; 
+         <mat-checkbox formControlName="deletePermission">Delete</mat-checkbox> &nbsp; &nbsp; 
+       </div>
+  </form>
+</div>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-flat-button color="primary" (click)="onFileShare()">Share</button>
+    </mat-dialog-actions>

@@ -1,0 +1,136 @@
+{
+    "id": 10001,
+    "modules": [
+      {
+        "id": 1001,
+        "moduleName": "appsetup",
+        "screens": [
+          {
+            "id": 2001,
+            "screenName": "basic",
+            "parentCategory": "module",
+            "parentId": 1001,
+            "dataFields": [
+              {
+                "id": 7001,
+                "dataFieldName": "company_name",
+                "parentCategory": "screen",
+                "parentId": 2001
+              },
+              {
+                "id": 7002,
+                "dataFieldName": "leagal_entity_ref",
+                "parentCategory": "screen",
+                "parentId": 2001
+              },
+              {
+                "id": 7003,
+                "dataFieldName": "business_nature",
+                "parentCategory": "screen",
+                "parentId": 2001
+              },
+              {
+                "id": 7004,
+                "dataFieldName": "reporting_currency",
+                "parentCategory": "screen",
+                "parentId": 2001
+              },
+              {
+                "id": 7005,
+                "dataFieldName": "address",
+                "parentCategory": "screen",
+                "parentId": 2001
+              }
+            ]
+          },
+          {
+            "id": 2002,
+            "screenName": "modules",
+            "parentCategory": "module",
+            "parentId": 1001,
+            "dataFields": [
+              {
+                "id": 7006,
+                "dataFieldName": "plan",
+                "parentCategory": "screen",
+                "parentId": 2022
+              }
+            ]
+          },
+          {
+            "id": 2003,
+            "screenName": "subscription",
+            "parentCategory": "module",
+            "parentId": 1001,
+            "dataFields": [
+              {
+                "id": 7007,
+                "dataFieldName": "form_date",
+                "parentCategory": "screen",
+                "parentId": 2003
+              },
+              {
+                "id": 7008,
+                "dataFieldName": "to_date",
+                "parentCategory": "screen",
+                "parentId": 2003
+              },
+              {
+                "id": 7009,
+                "dataFieldName": "payment_method",
+                "parentCategory": "screen",
+                "parentId": 2003
+              },
+              {
+                "id": 7010,
+                "dataFieldName": "payment_status",
+                "parentCategory": "screen",
+                "parentId": 2003
+              },
+              {
+                "id": 7011,
+                "dataFieldName": "activation",
+                "parentCategory": "screen",
+                "parentId": 2003
+              }
+            ]
+          }
+        ],
+        "tables": [
+          {
+            "id": 5001,
+            "tableName": "app_setup_info",
+            "parentCategory": "module",
+            "api": "app/api/v1/setup",
+            "parentId": 1001
+          },
+          {
+            "id": 5002,
+            "tableName": "plan_info",
+            "parentCategory": "screen",
+            "api": "app/api/v1/plan",
+            "parentId": 2002
+          },
+          {
+            "id": 5003,
+            "tableName": "payment_info",
+            "parentCategory": "screen",
+            "api": "app/api/v1/payment",
+            "parentId": 2003
+          },
+          {
+            "id": 5004,
+            "tableName": "plan_details",
+            "parentCategory": "screen",
+            "api": "app/api/v1/plan-details",
+            "parentId": 2003
+          },
+          {
+            "id": 5005,
+            "tableName": "subscription",
+            "parentCategory": "screen",
+            "api": "app/api/v1/subscription",
+            "parentId": 2003
+          }
+        ]
+      },

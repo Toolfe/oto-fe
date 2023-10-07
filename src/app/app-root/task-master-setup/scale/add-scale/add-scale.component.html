@@ -1,0 +1,40 @@
+<mat-dialog-content>
+  <form [formGroup]='scaleForm'>
+    <div class="col">
+      <mat-form-field appearance="standard" class="full-width">
+        <mat-label> Task Type</mat-label>
+        <mat-select required  formControlName="taskType">
+          <mat-option *ngFor="let item of type$ | async" [value]="item.name">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          please select task type
+        </mat-error>
+      </mat-form-field>
+    </div>
+    
+   
+    <div class="col">
+      <mat-form-field appearance="standard" class="full-width">
+        <mat-label>Scale Value</mat-label>
+        <input matInput required formControlName="scaleValue">
+        <mat-hint *ngFor="let item of scalerange$ | async" >
+         Scale value should be <span ><b>{{item.minimumRange}} to {{item.maximumRange}}</b></span>
+        </mat-hint>
+      </mat-form-field>
+    </div>
+
+
+
+  </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-flat-button color='primary' *ngIf='!update'
+  (click)="addItem()" >Add</button>
+  <button mat-flat-button color='primary' *ngIf='update'
+  (click)="updateScale()">Update</button>
+</mat-dialog-actions>

@@ -1,0 +1,314 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+@use 'src/styles/variables' as var;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$Otomate-primary: mat.define-palette(mat.$purple-palette, 900);
+$Otomate-accent: mat.define-palette(mat.$pink-palette, 900);
+
+// The warn palette is optional (defaults to red).
+$Otomate-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$Otomate-theme: mat.define-light-theme((
+  color: (
+    primary: $Otomate-primary,
+    accent: $Otomate-accent,
+    warn: $Otomate-warn
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($Otomate-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%;
+              overflow-x: hidden;
+            overflow-block: none;
+          }
+body { margin: 0; 
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important }
+
+ /* scroll bar  */
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+  height: 1px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 2px;
+  background: whitesmoke; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #a3a3a3; 
+  border-radius: 1px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #9b9b9b; 
+}
+
+/*Skeleton Loading*/
+.skeleton-box {
+  display: inline-block;
+ //height: 1em;
+  position: relative;
+  overflow: hidden;
+  background-color: #ebe9eb;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+      90deg,
+      rgba(#fff, 0) 0,
+      rgba(#fff, 0.2) 20%,
+      rgba(#fff, 0.5) 60%,
+      rgba(#fff, 0)
+    );
+    animation: shimmer 2s infinite;
+    content: '';
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
+.primary-bg{
+  background-color: var.$primary;
+}
+
+.primary-fg{
+  color: var.$primary;
+}
+
+.bg{
+  height: 100vh;
+  background-image: url('../assets/images/bg-01.svg');
+  background-size: cover;
+  position: relative;
+}
+
+.wt{
+  color: white;
+}
+.green{
+  background-color: var.$green;
+  color: white;
+}
+.orange{
+  background-color: var.$orange;
+  color: white;
+}
+th{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight:bold;
+}-primary
+
+.logo{
+  height: 2.7rem;
+}
+.gradient{
+  background-image: linear-gradient(to left, var.$primary, var.$secondary);
+}
+
+.flex-spacer {
+  flex: 1 1 auto;
+}
+
+.full-width{
+  width: 100%;
+}
+
+.wt{
+  color: white;
+}
+
+.size{
+  font-size: 1.5rem;
+}
+
+.todo{
+  padding: 2px 8px;
+  background-color: var.$blue;
+  color: white;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.inprogress{
+  padding: 2px 8px;
+  background-color: var.$secondary;
+  color: white;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.done{
+  padding: 2px 8px;
+  background-color: var.$green;
+  color: white;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.task-id{
+  color: white;
+  padding: 2px 8px;
+  margin-right: 12px;
+}
+
+.float-rt{
+  float: right;
+}
+
+.mat-expansion-panel-header-description {
+  justify-content:end;
+}
+
+.example-tooltip-red {
+  white-space: pre-line;
+  color: black;
+  background-color: #a3a3a3;
+
+ // background-image: linear-gradient(to left, #662d91, var.$secondary);
+  padding: 2px 12px;
+}
+table {
+  width: 100%;
+}
+ thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  color: var.$primary;
+  background-color: whitesmoke;
+} 
+
+.box{
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 16px;
+  border-radius: 8px;
+}
+.container{
+  background-color: white;
+}
+
+.primary.mat-snack-bar-container{
+  background-color:var.$primary;
+  color:white;
+}
+
+.success.mat-snack-bar-container{
+  background-color:var.$green;
+  color:white;
+}
+
+.error.mat-snack-bar-container{
+  background-color:var.$red;
+  color:white;
+}
+
+.warn.mat-snack-bar-container{
+  background-color:var.$secondary;
+  color:white;
+}
+
+.btn-blue{
+  background-color: var.$blue;
+  color: white;
+}
+
+.btn-blue:hover{
+  background-color: var.$blue-hover;
+  color: white;
+}
+.btn-green{
+  background-color: var.$green;
+  color: white;
+}
+
+.full-width{
+  width: 100%;
+}
+
+.confirm-dialog-container .mat-dialog-container{
+  padding: 0px;
+}
+
+#docs-titlebar-container{
+  display:none;
+}
+
+.form-control{
+  width: 25vw;
+}
+.form-control:focus {
+  border-color: var.$primary;
+  box-shadow: 0 0 0 0.1rem rgba(74, 40, 167, 0.25);
+  width: 28vw;
+} 
+
+.dropdown-search{
+  width:100%;
+  height: 40px !important;
+  padding: 14px 6px;
+  outline: none;
+  border: none;
+}
+.main-container{
+  height: 100vh;
+  background-color: whitesmoke;
+}
+.nodata-container{
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .no-data{
+    height: 25%;
+  }
+
+  div{
+    padding: none !important;
+  }
+
+  button{
+    border-radius: 30px;
+    margin-top: 16px;
+  }
+}
+
+.task-container{
+  height: 85vh;
+  overflow: hidden !important;
+}
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";

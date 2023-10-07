@@ -1,0 +1,46 @@
+<div fxLayoutAlign="center center" fxFlexFill fxLayout='column'>
+            <mat-card style="width: 30vw;" [formGroup]='partnerForm'>
+                <div *ngFor='let data of formFields'> 
+    
+                        <div [ngSwitch]="data.type" > 
+                            <div class="col" *ngSwitchCase="'1'"> 
+                            <mat-form-field appearance="legacy" class="full-width">
+                                <mat-label *ngIf="data.label !== ''">{{data.name}}</mat-label>
+                                <input matInput [formControlName]="data.name">
+                              </mat-form-field>
+                            </div>
+                
+                            <div class="col" *ngSwitchCase="'2'" > 
+                            <mat-form-field appearance="legacy" class="full-width">
+                                <mat-label *ngIf="data.label !== ''">{{data.name}}</mat-label>
+                                <mat-select [formControlName]="data.name">
+                                  <mat-option value="item" *ngFor="let item of currentData(data.ref)" [value]="item.code">
+                                    {{item.name}}</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>  
+                            <div class="col" *ngSwitchCase="'3'"> 
+                              <mat-form-field appearance="legacy" class="full-width">
+                                <mat-label *ngIf="data.label !== ''">{{data.name}}</mat-label>
+                                <input matInput type="number" [formControlName]="data.name">
+                              </mat-form-field>
+                            </div>  
+                            <div class="col"  *ngSwitchCase="'4'">
+                                <div>
+                                    <span>{{data.name}} : &nbsp; &nbsp;</span>
+                                    <mat-radio-group aria-label="Select an option" class="full-width" [formControlName]="data.name">
+                                        <mat-radio-button value="1" style="margin-right: 30px;">Yes</mat-radio-button>
+                                        <mat-radio-button value="2">No</mat-radio-button>
+                                      </mat-radio-group><br><br>
+                                </div>
+
+                            </div> 
+                    </div>
+    
+                </div>
+                <div class="float-rt">
+                    <button mat-flat-button color='primary' (click)="onSubmit()"  >Submit</button>
+                </div>
+            </mat-card>
+
+        </div> 

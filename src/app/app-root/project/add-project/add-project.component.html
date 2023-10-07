@@ -1,0 +1,80 @@
+
+<div fxLayoutAlign="center center" fxFlexfill fxLayout='column'>
+    <form  [formGroup]='projectForm'>
+       
+           <div class="row">
+               <div class="col">
+                   <mat-form-field appearance="standard" class="full-width">
+                       <mat-label>Project Code</mat-label>
+                       <input matInput required formControlName="projectCode"  >
+                       <mat-error>
+                           Please Enter Project  Code
+                       </mat-error>
+                     </mat-form-field>
+               </div>
+               <div class="col">
+                   <mat-form-field appearance="standard" class="full-width">
+                       <mat-label>Project Name</mat-label>
+                       <input matInput required formControlName="projectName" >
+                       <mat-error>
+                           Please Enter Project Name
+                       </mat-error>
+                     </mat-form-field>
+               </div>
+               <div class="col">
+                   <mat-form-field  appearance="standard" class="full-width">
+                       <mat-label>Customer Reference Number</mat-label>
+                       <input  matInput required formControlName="projectOrderNo">
+                       <mat-error>
+                           Please Customer Reference Number
+                       </mat-error>
+                   </mat-form-field>
+               </div>
+             
+           </div>
+          <div class="row">
+           <div class="col">
+               <mat-form-field appearance="standard" class="full-width">
+                   <mat-label>Business Partners</mat-label>
+                   <mat-select multiple  formControlName="brandContacts" >
+                       <div class="sticky">
+                   <input matInput style="width: 100%; padding: 15px;" required placeholder="Search category" #category (keyup)=" getCategory(category)">
+               </div>
+                    <mat-option *ngFor= "let item of category$|async|search:'name':category.value"  searchPartner [value]="item.id" >
+                        {{item.name}}
+                    </mat-option>
+                </mat-select>
+                   <mat-error>
+                      Please Select Business Partners
+                   </mat-error>
+                 </mat-form-field>
+           </div> 
+            <div class="col" formGroupName="group">
+               <mat-form-field class="full-width" appearance="standard">
+                   <mat-label>Task Group </mat-label>
+                   <mat-select required   formControlName="id">
+                       <div class="sticky">
+                       <input matInput style="width: 100%; padding: 15px;" required placeholder="Search Group" #group (keyup)="getGroup(group)">
+                   </div>
+                       <mat-option *ngFor= "let item of taskGroup$|async |search:'name':group.value" searchGroup [value]="item.id">
+                           {{item.name}}
+                       </mat-option>
+                   </mat-select>
+                    <mat-error>
+                        Please Select task type
+                    </mat-error>
+               </mat-form-field>
+           </div> 
+            
+
+       </div>             
+    </form>
+</div>
+<mat-dialog-actions align="end">
+   <button mat-button mat-dialog-close>Close</button>
+   <button mat-flat-button color='primary' *ngIf='!update'
+   (click)="addItem()" >Add</button>
+   <button mat-flat-button color='primary' *ngIf='update'
+  (click)="updateProject()" >Update</button>
+ </mat-dialog-actions>
+

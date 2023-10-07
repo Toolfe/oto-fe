@@ -1,0 +1,389 @@
+<div>
+  <button mat-button class="float-rt cls-button" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+  <div class="title" *ngIf='!statusField'>{{title}}</div>
+  <div class="title" *ngIf='statusField'>{{task.subtaskTitle |titlecase }}
+    <div class="sub-title" *ngIf="task.subtaskCode">{{task.subtaskCode}}</div>
+    <div class="sub-title" *ngIf="task.taskCode">{{task.taskCode}}</div>
+  </div>
+</div>
+<mat-divider></mat-divider>
+
+<div mat-dialog-content class="main-div">
+  <ng-container *ngIf='statusField'>
+    <div>
+      <div class="key">Description:</div>
+      <div class="value">{{task.subtaskDescription}}</div>
+    </div>
+
+    <div class="grid">
+      <div class="key">Initiator
+        <div class="value">{{task.initiatorName}}</div>
+      </div>
+      <div class="key">Assignee
+        <div class="value">{{task.assigneeName}}</div>
+      </div>
+      <div class="key">Project
+        <div class="value">{{task.projectName}}</div>
+      </div>
+      <div class="key">Sub Department
+        <div class="value">{{task.subDepartmentName}}</div>
+      </div>
+      <div class="key">Initiation Date
+        <div class="value">{{task.createdAt | date:'medium'}}</div>
+      </div>
+      <div class="key">Priority
+        <div class="value">{{task.priorityName}}</div>
+      </div>
+
+
+      <div class="key">
+        Observers
+        <div class="value">
+          <ng-container *ngIf="task.observers?.length>0; else none">
+            <ng-container *ngIf="task.observers?.length==1;  else list">
+              <div *ngFor="let observer of task.observers">{{observer.observerName}}</div>
+            </ng-container>
+            <ng-template #list>
+              <li *ngFor="let observer of task.observers">{{observer.observerName}}</li>
+            </ng-template>
+          </ng-container>
+          <ng-template #none>
+            -
+          </ng-template>
+        </div>
+      </div>
+
+      <div class="key">Target Date
+        <div class="value">{{task.subtaskTargetDate | date:'medium'}}</div>
+      </div>
+      <div class="key">
+        Dependencies
+        <div class="value">
+          <ng-container *ngIf="task.dependencies.length>0; else none">
+            <ng-container *ngIf="task.dependencies.length==1;  else list">
+              <div *ngFor="let dependency of dependencies">{{dependency.title+" ("+getStatus(dependency.status)+")"}}
+              </div>
+            </ng-container>
+            <ng-template #list>
+              <li *ngFor="let dependency of dependencies">{{dependency.title+" ("+getStatus(dependency.status)+")"}}</li>
+            </ng-template>
+          </ng-container>
+          <ng-template #none>
+            -
+          </ng-template>
+        </div>
+      </div>
+      <div class="key">Business Partner
+        <div class="value">{{task.BusinessPartner}}</div>
+      </div>
+    </div>
+   
+  </ng-container>
+
+  <div class="body">
+    <form [formGroup]="subTaskForm">
+
+      <div class="col-12" *ngIf='!statusField'>
+        <mat-form-field appearance="fill" class="full-width" style="padding-bottom: none;">
+          <input matInput formControlName="title">
+          <mat-label>Sub-Task Title</mat-label>
+          <mat-error>
+            please enter sub task title
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12" *ngIf='!statusField'>
+        <mat-form-field appearance="fill" class="full-width" style="padding-bottom: none;">
+          <mat-label>Task Description</mat-label>
+          <textarea matInput required style="height:20vh;" formControlName="description"></textarea>
+          <mat-error>
+            please enter task title
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row" *ngIf='!statusField'>
+
+        <div class="col" formGroupName="initiator">
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Task Initiator</mat-label>
+            <mat-select formControlName="id">
+              <mat-option *ngFor="let item of employee" [value]="item.id">
+                {{item.fname}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+
+      <div class="row">
+        <div class="col" *ngIf='!statusField'>
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Sub Department</mat-label>
+            <mat-select formControlName="subDepartment">
+              <mat-option *ngFor="let item of subDept$" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              please select your Sub Department type
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="standard" class="full-width" style="display:none;">
+            <mat-label>Task Type</mat-label>
+            <mat-select required formControlName="taskTypeId">
+              <mat-option *ngFor="let type of taskTypes" [value]="type.id" (onSelectionChange)="dropdownChange(type.id)"
+                (click)="dropdownChange(type.id)">{{type.name}}</mat-option>
+            </mat-select>
+            <mat-error>
+              please select your task type
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <form [formGroup]="typeFieldsForm">
+        <div *ngFor='let control of formFields'>
+
+          <div [ngSwitch]="control.type">
+            <div class="col" *ngSwitchCase="'text'">
+              <mat-form-field appearance="legacy" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <input type="text" matInput [formControlName]="control.name" [required]="control.required">
+                <mat-error>{{"Please enter "+control.name}}</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col" *ngSwitchCase="'select'">
+              <mat-form-field appearance="legacy" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <mat-select
+                  [formControlName]="control.fname||control.name || control.partnerName || control.orderDetails">
+                  <mat-option *ngFor="let item of currentControl(control.reference)|async"
+                    [value]="item.fname||item.name || item.partnerName || item.orderDetails">
+                    {{item.fname|| item.partnerName||item.name ||item.orderDetails }}
+                  </mat-option>
+                </mat-select>
+                <mat-error>{{"Please select "+control.name ||
+                  control.fname||control.partnerName||control.orderDetails}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col" *ngSwitchCase="'number'">
+              <mat-form-field appearance="legacy" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <input matInput type="number" [formControlName]="control.name" [required]="control.required">
+                <mat-error>{{"Please enter "+control.name}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col" *ngSwitchCase="'email'">
+              <mat-form-field appearance="legacy" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <input matInput type="email" name="email" [formControlName]="control.name"
+                  [required]="control.required">
+                <mat-error>Invalid email!</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col" *ngSwitchCase="'tel'">
+              <mat-form-field appearance="legacy" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <input matInput type="tel" [formControlName]="control.name" [required]="control.required" numberOnly>
+                <mat-error>{{"Please enter "+control.name}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col" *ngSwitchCase="'date'">
+              <mat-form-field appearance="legacy" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <input matInput [matDatepicker]="picker" (focus)="picker.open()" [formControlName]="control.name"
+                  [required]="control.required">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error>{{"Please enter "+control.name}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col" *ngSwitchCase="'textarea'">
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <textarea matInput [formControlName]="control.name" [required]="control.required"></textarea>
+                <mat-error>{{"Please enter "+control.name}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col" *ngSwitchCase="'radio'">
+              <div>
+                <span>{{control.name}} : &nbsp; &nbsp;</span>
+                <mat-radio-group aria-label="Select an option" class="full-width" [formControlName]="control.name"
+                  [required]="control.required">
+                  <mat-radio-button value="Yes" style="margin-right: 30px;">Yes</mat-radio-button>
+                  <mat-radio-button value="No">No</mat-radio-button>
+                </mat-radio-group><br><br>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </form>
+
+
+
+
+
+      <div class="row" *ngIf='!statusField'>
+        <div class="col">
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Task Assignee</mat-label>
+            <mat-select formControlName="assignees" multiple>
+              <ng-container>
+                <mat-option *ngFor="let employee of emp$ |async" [value]="employee.id">{{employee.fname+'
+                  '+employee.lname}}</mat-option>
+              </ng-container>
+            </mat-select>
+            <mat-error>
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Task Observers</mat-label>
+            <mat-select formControlName="observers" multiple>
+              <ng-container>
+                <mat-option *ngFor="let employee of emp$ |async" [value]="employee.id">{{employee.fname+'
+                  '+employee.lname}}</mat-option>
+              </ng-container>
+            </mat-select>
+            <mat-error>
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="row" *ngIf='!statusField'>
+        <div class="col">
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Task Initiation Date</mat-label>
+            <input matInput [matDatepicker]="picker1" [min]="minDate" placeholder="Task initiation date "
+              formControlName="initDate">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+
+        </div>
+        <div class="col">
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Task Initiation Time</mat-label>
+            <input matInput type="time" value="00:00:00" step="1" required formControlName="initTime">
+            <mat-error>
+              please choose estimated date and time
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row" *ngIf='!statusField'>
+        <div class="col">
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Task completion Date </mat-label>
+            <input matInput [matDatepicker]="picker2" [min]="minDate" placeholder="Task completion Date "
+              formControlName="completedDate">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Task completion Time </mat-label>
+            <input matInput type="time" value="00:00:00" step="1" required formControlName="completedTime">
+            <mat-error>
+              please choose completion time
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+      <div class="col" *ngIf='!statusField'>
+        <mat-form-field appearance="standard" class="full-width">
+          <mat-label>Task Dependence</mat-label>
+          <mat-select formControlName="dependencies" multiple>
+            <mat-option *ngFor="let item of subTaskDependency" [value]="item.id">
+              {{item.title}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+
+          </mat-error>
+
+        </mat-form-field>
+      </div>
+
+
+
+
+
+
+
+
+
+      <div class="row" *ngIf='!statusField'>
+        <div class="col">
+
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Target date</mat-label>
+            <input matInput [matDatepicker]="picker3" [min]="minDate" placeholder="Target date"
+              formControlName="target">
+            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Priority Factor</mat-label>
+            <mat-select formControlName="priorityFactor">
+              <mat-option *ngFor="let item of taskPriority" [value]="item">
+                {{item}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+
+      <mat-menu #tabledriven="matMenu">
+        <ng-container *ngFor="let status of  status$ |async">
+          <div *ngIf=!status.templateName mat-menu-item (click)="selectStatus(task.id,status.id,status.name)">{{
+            status.name}}</div>
+        </ng-container>
+      </mat-menu>
+    </form>
+  </div>
+</div>
+<div class="grid-footer">
+  <div>
+    <span [matMenuTriggerFor]="tabledriven" *ngIf="statusField" class="status">
+      <span mat-flat-button>Customized Status<i class="bi bi-caret-down-fill status"></i>
+        <span class="customizedStatus"> {{task.statusName}}</span>
+      </span>
+    </span>
+  </div>
+  <div>
+    <span>
+      <button mat-flat-button color="primary" (click)="updateTask()" mat-dialog-close>Save</button>
+    </span>
+  </div>
+</div>

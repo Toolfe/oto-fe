@@ -1,0 +1,27 @@
+
+<h2>Assignment Files</h2>
+<mat-nav-list [formGroup]="fileForm">
+    <div class="list" *ngFor="let _file of data.fileFields">
+      <div class="key">{{_file.name | titlecase }}</div>
+      <div class="upload">
+       <ng-container *ngIf="!isFilePresent(_file.name); else filePresent;">
+        <input type="file" [formControlName]=_file.name  (change)="onSelectFile($event, _file.name)">
+        <button mat-button (click)="onFileUpload(_file.name)" color="primary" 
+        [disabled]="!fileForm.controls[_file.name].value" *ngIf="!isUploading(_file.name); else uploading">
+          <mat-icon>file_upload</mat-icon>Upload
+        </button>
+        <ng-template #uploading>
+          <span>Uploading..</span>
+        </ng-template>
+       </ng-container>
+       <ng-template #filePresent>
+          <span class="fileName">{{getFileDetail(_file.name,"fileName",0)}}</span>
+          <button mat-button color="primary" (click)="onFileDownload(_file.name)">
+            <mat-icon>file_download</mat-icon>Download
+          </button>
+       </ng-template>
+      </div>
+    </div>
+
+  
+  </mat-nav-list>

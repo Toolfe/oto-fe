@@ -1,0 +1,85 @@
+
+<div style="height: 76vh;"  fxLayoutAlign="center center" fxFlexfill fxLayout='column'>
+
+    <mat-card style="width: 30%;" >
+          <form  #priorityForm="ngForm" >
+            <div class="row">
+              <div class="col-4">
+                <mat-label>OverRiding</mat-label>
+              </div>
+              <div class="col-6">
+                <span>
+                  <input type="text" id="priority1" name="priority1" matInput [(ngModel)]='priority.priority1'  class="pre-input" > 
+                </span>
+              </div>
+              <div class="col-2">
+                <mat-icon matTooltipClass="example-tooltip-red" matTooltipPosition='right'
+                matTooltip='First Priority'>error_outline</mat-icon>   
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="col-4">
+                <mat-label>Over Whelming</mat-label>
+              </div>
+              <div class="col-6">
+                <span>
+                  <input matInput type="text" id="priority2" name="priority2" [(ngModel)]='priority.priority2' class="pre-input" >    
+                </span>
+              </div>
+              <div class="col-2">
+                <mat-icon>error_outline</mat-icon>   
+              </div>
+
+            </div><br>
+            <div class="row">
+              <div class="col-4">
+                <mat-label>Moderate Priority</mat-label>
+              </div>
+              <div class="col-6">
+                <span>
+                  <input matInput type="text" id="priority3" name="priority3" [(ngModel)]='priority.priority3' class="pre-input" >    
+                </span>
+              </div>
+              <div class="col-2">
+                <mat-icon>error_outline</mat-icon>   
+              </div>
+
+            </div><br>
+            <div class="row">
+              <div class="col-4">
+                <mat-label>Subjective </mat-label>
+              </div>
+              <div class="col-6">
+                <span>
+                  <input matInput type="text" id="priority4" name="priority4" [(ngModel)]='priority.priority4' class="pre-input" >    
+                </span>
+              </div>
+              <div class="col-2">
+                <mat-icon>error_outline</mat-icon>   
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="col-4">
+                <mat-label>Normal
+                </mat-label>
+              </div>
+              <div class="col-6">
+                <span>
+                  <input matInput type="text" id="priority5" name="priority5" [(ngModel)]='priority.priority5'  class="pre-input" >    
+                </span>
+              </div>
+              <div class="col-2">
+                <mat-icon>error_outline</mat-icon>   
+              </div>
+            </div>
+           </form><br>
+     
+        <div align="end">
+            <button mat-flat-button color='primary' (click)="addItem()" [disabled]="isEnable('creation')">Save</button>
+          <!--   <button mat-button color='primary'>Edit</button> -->
+         </div> 
+    </mat-card>
+</div>
+
+ 
+  

@@ -1,0 +1,205 @@
+{
+    "id": "1001",
+    "companyName": "1010",
+    "businessNature": "234235",
+    "legalEntityRef": "123",
+    "currencyCode": "INR",
+    "addresses": [
+      {
+        "address": "3423r32",
+        "active": true
+      }
+    ],
+    "divisions": [
+      {
+        "code": "d1",
+        "name": "11",
+        "description": "5225",
+        "active": true
+      },
+      {
+        "code": "d2",
+        "name": "1122",
+        "description": "5225",
+        "active": true
+      }
+    ],
+    "locations": [
+      {
+        "name": "l1",
+        "code": "l1",
+        "description": "5325",
+        "active": true
+      },
+      {
+        "name": "l2",
+        "code": "l2",
+        "description": "5325",
+        "active": true
+      }
+    ],
+    "units": [
+      {
+        "divisionCode": "d1",
+        "locationCode": "l1",
+        "code": "u1",
+        "name": "352",
+        "description": "2525",
+        "active": true
+      },{
+        "divisionCode": "d2",
+        "locationCode": "l1",
+        "code": "u2",
+        "name": "352",
+        "description": "2525",
+        "active": true
+      },{
+        "divisionCode": "d1",
+        "locationCode": "l2",
+        "code": "u3",
+        "name": "352",
+        "description": "2525",
+        "active": true
+      } 
+    ],"departments": [
+      { 
+        "unitCode": "u3",
+        "code": "d1",
+        "name": "352",
+        "description": "2525",
+        "active": true
+      },{ 
+        "unitCode": "u1",
+        "code": "d2",
+        "name": "352",
+        "description": "2525",
+        "active": true
+      }
+    ]
+    ,"subDepartments": [
+      {
+        "departmentCode": "d1", 
+        "code": "s1",
+        "name": "352",
+        "description": "2525",
+        "active": true
+      },{
+        "departmentCode": "d2", 
+        "code": "s2",
+        "name": "352",
+        "description": "2525",
+        "active": true
+      }
+    ]
+    ,
+    "currencies": [
+      { 
+          "currencyName": "US Dollar",
+          "currencyCode": "USD", 
+          "currencyValue": 8,
+          "active": true
+      }
+    ],
+    "employeeGroups": [
+      {
+        "name": "3434",
+        "description": "5435",
+        "active": true
+      }
+    ],
+    "categories": [
+      {
+        "name": "345",
+        "description": "353",
+        "active": true
+      }
+    ],
+    "empTypes": [
+      {
+        "name": "345",
+        "description": "353",
+        "active": true
+      }
+    ],
+    "workGroups": [
+      {
+        "name": "34534",
+        "description": "4535",
+        "active": true
+      }
+    ],
+    "qualifications": [
+      {
+        "name": "343",
+        "description": "4535",
+        "active": true
+      }
+    ],
+    "skillSets": [
+      {
+        "name": "3443",
+        "description": "435435",
+        "active": true
+      }
+    ],
+    "skills": [
+      {
+        "name": "3453",
+        "description": "34535",
+        "active": true
+      }
+    ],
+    "languages": [
+      {
+        "name": "34543",
+        "description": "43534",
+        "active": true
+      }
+    ],
+    "companies": [
+      {
+        "name": "343",
+        "description": "443",
+        "active": true
+      }
+    ],
+    "industries": [
+      {
+        "name": "34r34",
+        "description": "445",
+        "active": true
+      }
+    ],
+    "desginations": [
+      {
+        "name": "44",
+        "description": "34r4",
+        "active": true
+      }
+    ],
+    "workProcesses": [
+      {
+        "name": "534",
+        "description": "43345",
+        "active": true
+      }
+    ],
+    "resources": [
+      {
+        "name": "534",
+        "description": "43345",
+        "active": true
+      }
+    ],
+    "uoms": [
+      {
+        "name": "4343",
+        "description": "345345",
+        "active": true
+      }
+    ],
+    "createdBy": "1",
+    "modifiedBy":1,
+    "active": true
+  
+  }

@@ -1,0 +1,200 @@
+<!-- <div class="row">
+    <mat-toolbar class="header" >
+      <mat-toolbar-row>
+        <span (mouseover)="navMenu.open()">
+          <button mat-icon-button>
+            <mat-icon>menu</mat-icon>
+          </button>
+                <span [routerLink]="'/home'" style="cursor: pointer;">
+                  <img src='./../../../assets/icons/product-logo.svg'
+                  [ngStyle]="{'marginLeft': mobileQuery.matches==true ?'2px' : '20px'}" style="height: 1.9em;">
+                </span>
+        </span>
+       
+          <span class="flex-spacer"></span>
+         <button mat-button [routerLink]="'/dashboard'">Exit</button>
+      </mat-toolbar-row>
+     
+      
+      </mat-toolbar>
+  </div>  -->
+
+<div class="row">
+  <mat-toolbar class="header">
+    <mat-toolbar-row>
+      <button *ngIf="!mobileQuery.matches" mat-icon-button (click)="navMenu.toggle()">
+        <span>
+          <mat-icon>menu</mat-icon>
+        </span>
+
+      </button>
+      <span [routerLink]="'/home'" style="cursor: pointer;">
+        <img src='./../../../assets/icons/product-logo.svg'
+          [ngStyle]="{'marginLeft': mobileQuery.matches==true ?'2px' : '20px'}" style="height: 1.9em;">
+      </span>
+      <span class="flex-spacer"></span>
+      <app-break-timer></app-break-timer>
+      <button mat-icon-button [routerLink]="'/home'">
+        <mat-icon>home</mat-icon>
+      </button>
+      <span style="font-size: 22px;" matTooltip="Dashboard" matTooltipClass="example-tooltip-red">
+        <button  *ngIf="!mobileQuery.matches" mat-icon-button [routerLink]="'/dashboard'">
+          <mat-icon>dashboard</mat-icon>
+        </button>
+      </span>
+      <span matTooltip="Admin" matTooltipClass="example-tooltip-red">
+        <button *ngIf="!mobileQuery.matches" mat-icon-button [routerLink]="'/setup'">
+          <mat-icon>admin_panel_settings</mat-icon>
+        </button>
+      </span>
+
+
+
+      <button *ngIf="!mobileQuery.matches" mat-icon-button matTooltip="notifications" matTooltipClass="example-tooltip-red">
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <div class="profile-container" [matMenuTriggerFor]="profile" matTooltip="profie"
+        matTooltipClass="example-tooltip-red">
+        {{userName?.charAt(0)|uppercase}}
+      </div>
+    </mat-toolbar-row>
+
+  </mat-toolbar>
+</div>
+
+<mat-sidenav-container class="task-container">
+  <mat-sidenav mode='side' opened #navMenu>
+    <mat-nav-list>
+      <div>
+
+        <!-- <a mat-list-item class="nav-list" [routerLink]="'assign-to-me'" [routerLinkActive]="['active-route']"
+          data-toggle="tooltip" data-placement="right" title="My Tasks">
+          <mat-icon mat-list-icon>
+            add_task
+          </mat-icon>
+        </a> -->
+
+        <a mat-list-item  class="nav-list" [routerLink]="'assign-to-me'" [routerLinkActive]="['active-route']">
+          <div style="margin-left: 20px;" fxLayout="column" fxLayoutAlign="space-around center" class="menu-item" class="active">
+            <div class="centre">
+              <mat-icon>add_task</mat-icon>
+            </div>
+            <div class="text-1 centre">My Tasks</div>
+          </div>
+        </a>
+        <a mat-list-item  class="nav-list" [routerLink]="'created-by-me'" [routerLinkActive]="['active-route']">
+          <div style="margin-left: 8px;" fxLayout="column" fxLayoutAlign="space-around center" class="menu-item" class="active">
+            <div class="centre">
+              <mat-icon>account_circle</mat-icon>
+            </div>
+            <div class="text-1 centre">Created by me</div>
+          </div>
+        </a>
+        <a mat-list-item  class="nav-list" [routerLink]="'completed-task'" [routerLinkActive]="['active-route']">
+          <div fxLayout="column" fxLayoutAlign="space-around center" class="menu-item" class="active">
+            <div class="centre">
+              <mat-icon>library_add_check</mat-icon>
+            </div>
+            <div class="text-1 centre">Completed Tasks</div>
+          </div>
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item  class="nav-list" [routerLink]="'shared-with-me'" [routerLinkActive]="['active-route']">
+          <div fxLayout="column" fxLayoutAlign="space-around center" class="menu-item" class="active">
+            <div class="centre">
+              <mat-icon>people</mat-icon>
+            </div>
+            <div class="text-1 centre">Observed Tasks</div>
+          </div>
+        </a>
+        <a mat-list-item  class="nav-list" [routerLink]="'all-task'" [routerLinkActive]="['active-route']">
+          <div style="margin-left: 20px;" fxLayout="column" fxLayoutAlign="space-around center" class="menu-item" class="active">
+            <div class="centre">
+              <mat-icon>rule</mat-icon>
+            </div>
+            <div class="text-1 centre">All Task</div>
+          </div>
+        </a>
+        <a mat-list-item  class="nav-list" [routerLink]="'quick-access'" [routerLinkActive]="['active-route']">
+          <div fxLayout="column" fxLayoutAlign="space-around center" class="menu-item" class="active">
+            <div class="centre">
+              <mat-icon>stars</mat-icon>
+            </div>
+            <div class="text-1 centre">Quick-Access</div>
+          </div>
+        </a>
+
+        <!-- <a mat-list-item class="nav-list" [routerLink]="'created-by-me'" [routerLinkActive]="['active-route']"
+          data-toggle="tooltip" data-placement="right" title="Created by me">
+          <mat-icon mat-list-icon>account_circle</mat-icon>
+        </a>
+        <a mat-list-item class="nav-list" [routerLink]="'completed-task'" [routerLinkActive]="['active-route']"
+          data-toggle="tooltip" data-placement="right" title="Completed Tasks">
+          <mat-icon mat-list-icon>library_add_check</mat-icon>
+        </a>
+        <mat-divider></mat-divider>
+
+        <a mat-list-item class="nav-list" [routerLink]="'shared-with-me'" [routerLinkActive]="['active-route']"
+          data-toggle="tooltip" data-placement="right" title="Observed Tasks">
+          <mat-icon mat-list-icon>people</mat-icon>
+        </a>
+        <a mat-list-item class="nav-list" [routerLink]="'all-task'" [routerLinkActive]="['active-route']"
+          data-toggle="tooltip" data-placement="right" title="All Task">
+          <mat-icon mat-list-icon>rule</mat-icon>
+        </a> -->
+
+        <!--     <a mat-list-item class="nav-list"  [routerLink]="'saved-task'" [routerLinkActive]="['active']">
+            <mat-icon mat-list-icon>collections_bookmark</mat-icon>
+            <span class="text">Saved</span>
+        </a> -->
+
+
+        <!--    <a mat-list-item class="nav-list"  [routerLink]="'rattings'" [routerLinkActive]="['active']">
+        <mat-icon mat-list-icon>star_outline</mat-icon>
+        <span class="text">My Ratings</span>
+    </a> -->
+      </div>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+
+  <mat-sidenav-content>
+    <ng-container style="position: relative;">
+      <router-outlet></router-outlet>
+    </ng-container>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+<!--Define menu-->
+<!--Profile Menu-->
+<mat-menu #profile="matMenu">
+  <div class="row matmenuview" style="padding: 12px;">
+    <div class="col-4">
+      <div class="profile-view">
+        {{userName?.charAt(0)|uppercase}}
+      </div>
+    </div>
+    <div class="col">
+      <span style="font-weight: bold; text-transform: capitalize;">
+        {{userName}}
+      </span> <br>
+      <span style="font-style: oblique;">
+        OT00{{id}}
+      </span>
+
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div>
+    <!-- <button mat-menu-item>
+              <mat-icon>settings</mat-icon>
+              Settings</button> -->
+    <button mat-menu-item (click)='logOut()'>
+      <mat-icon>logout</mat-icon>
+      Logout</button>
+  </div>
+</mat-menu>

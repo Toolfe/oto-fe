@@ -1,0 +1,180 @@
+
+
+
+  <div class="folder-container">
+    <div class="path-grid">
+    <ul><li (click)="getSharedFolder()">Shared /></li> 
+      <li *ngFor="let folder of selectedFolders" (click)="getlistFolder(folder.id)">
+       <span class="selected">{{folder.folderName}}</span>>&nbsp;</li>
+  </ul>
+    </div>
+
+
+   
+   
+
+      <ng-container *ngIf="allDocs$ | async as docs; else load">
+        <ng-container *ngIf="docs=='error'; else table">
+          <app-error></app-error>
+        </ng-container>
+        <ng-template #table>
+          <ng-container *ngIf="docs?.length==0; else loadData">
+            <div class="nodata-container">
+              <img src="./../../../../assets/icons/no-data-01.svg" alt="No Data" class="no-data">
+              <div>There is nothing in this folder yet!</div>
+             <!--  <button mat-flat-button color="primary" [matMenuTriggerFor]="create">Add New</button> -->
+              <mat-menu #create="matMenu">
+                <button mat-menu-item  (click)="addNew()">
+                  <mat-icon>create_new_folder</mat-icon>
+                  <span>Folder</span>
+                </button>
+                <!-- <button mat-menu-item>
+                  <mat-icon>article</mat-icon>
+                  <span>Text Document</span>
+                </button> -->
+                <mat-divider></mat-divider>
+                <button mat-menu-item (click)="uploadFile()">
+                  <mat-icon>upload</mat-icon>
+                  <span>Upload File</span>
+                </button>
+                
+              </mat-menu> 
+            
+            </div>
+          </ng-container>
+          <ng-template #loadData>
+            <div class="list-container" >
+    
+
+              <div class="outer">
+                <div class="list-grid">
+                  <div>
+                    <span class="header-title">Name</span>
+                  </div>
+                  <div class="header-title">Type</div>
+                  <div class="header-title">Created</div>
+                  <div class="header-title">Shared By</div>
+                  <div></div>
+                </div>
+              </div>
+
+             <div>
+              <ng-container *ngFor="let doc of docs; index as i" >
+                
+                <div *ngIf="doc.folderName" class="outer" (dblclick)="openFolder(doc)">
+                  <!--Folder name-->
+                  <div class="list-grid">
+                    <div>
+                      <!-- <i class="bi bi-folder-fill folder"></i> -->
+                      <img src="./../../../../assets/icons/orange.svg" alt="No Data" class="no-data" style="height: 17px;margin-top: -9px;">
+                      <span class="file-name">&nbsp;{{doc.folderName}}</span>
+                    </div>
+                    <!--Doc Type-->
+                    <div>Folder</div>
+                    <!--Folder Created-->
+                    <div>{{doc.createdAt | date}}</div>
+                    <!--Folder Shared-->
+                    <div>{{doc.firstName+' '+doc.lastName |titlecase}}</div>
+                    <div>
+                      <span  style="padding: 16px;" [matMenuTriggerFor]="folder">
+                        <i class="bi bi-three-dots"></i>
+                      </span>
+                      <mat-menu #folder="matMenu">
+                        <button mat-menu-item (click)="showProperty(doc)"><mat-icon>info</mat-icon>Properties</button>
+                      </mat-menu>
+                    </div>
+                  </div>
+                </div>
+
+
+                 <!---*******************Files **********************-->
+              
+              <div class="outer" *ngIf="doc.fileName" (dblclick)="downloadFile(doc.fileUpload)">
+                <div class="list-grid">
+                  <div  [ngSwitch]="getType(doc.fileName)">
+                    <i class="bi bi-file-earmark-excel-fill excel" *ngSwitchCase="'xl'"> </i>
+                    <i class="bi bi-file-earmark-word word" *ngSwitchCase="'do'"></i>
+                    <i class="bi bi-filetype-pdf pdf" *ngSwitchCase="'pd'"></i>
+                    <i class="bi bi-file-earmark-image image" *ngSwitchCase="'jp'"></i>         
+                    <i class="bi bi-file-earmark-ppt-fill ppt"  *ngSwitchCase="'pp'"></i>
+                    <i class="bi bi-file-earmark-image image" *ngSwitchCase="'pn'"></i>         
+                    <i class="bi bi-file-earmark-ppt-fill ppt"  *ngSwitchCase="'po'"></i>
+                    <i class="bi bi-file-zip-fill zip" *ngSwitchCase="'zi'"></i>
+                    <i class="bi bi-file-earmark-text file"  *ngSwitchDefault></i>
+                    <span class="file-name">&nbsp;{{doc.fileName}}</span>
+                  </div>
+                  <ng-container *ngIf="doc.fileType; else file ">
+                    <div>{{ getFileNameWithoutExtension(doc.fileName).toUpperCase() }}</div>
+                   </ng-container>
+                   <ng-template #file>
+                    <div>OTX</div>
+                   </ng-template>
+                  <div>{{doc.createdAt | date}}</div>
+                  <div>{{doc.firstName+' '+doc.lastName |titlecase}}</div>
+                  <!--  <div>{{doc.createdOn | date}}</div> -->
+                  <div>
+                    <span  style="padding: 16px;" [matMenuTriggerFor]="fileMenu">
+                      <i class="bi bi-three-dots"></i>
+                    </span>
+                  </div>
+                  <mat-menu #fileMenu="matMenu">
+                    <ng-template matMenuContent>
+                      <div class="menu">
+                        <button mat-menu-item (click)="addNew()" [disabled]="isEnable('creation')">   <mat-icon>create_new_folder</mat-icon> New Folder</button>
+                        <button mat-menu-item (click)="uploadFile()"> <mat-icon>upload</mat-icon>New Document</button>
+                       <mat-divider>    </mat-divider>                     
+                           <button mat-menu-item (click)="saveFile(doc)">
+                             <ng-container *ngIf="!doc.fileAccessManagement.saved"><mat-icon>bookmark_add</mat-icon>Save Document</ng-container>
+                             <ng-container *ngIf="doc.fileAccessManagement.saved"><mat-icon>bookmark_added</mat-icon>Remove from saved</ng-container>
+                           </button>
+                         
+                       
+                         <button mat-menu-item  (click)="downloadFile(doc)"><mat-icon>download</mat-icon>Download</button>
+                         <button mat-menu-item  (click)="deleteDoc(doc)" 
+                         [disabled]="isEnable('deletion')" ><mat-icon>delete</mat-icon>Delete</button>
+                         <mat-divider *ngIf="isFile">    </mat-divider>
+                         <button mat-menu-item (click)="showProperty(doc)" ><mat-icon>info</mat-icon>Properties</button> 
+           
+                      </div>
+                    </ng-template>
+                  </mat-menu> 
+                </div>
+              </div>
+              </ng-container>
+             </div>   
+            </div>
+
+          </ng-template>
+        </ng-template>
+      </ng-container>
+      <ng-template #load>
+        Loading..
+
+
+      <!-- <mat-menu #create="matMenu">
+        <button mat-menu-item  (click)="addNew()">
+          <mat-icon>create_new_folder</mat-icon>
+          <span>Folder</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>article</mat-icon>
+          <span>Text Document</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="uploadFile()">
+          <mat-icon>upload</mat-icon>
+          <span>Upload File</span>
+        </button>
+         
+      </mat-menu> -->               
+      </ng-template>
+
+  </div>
+
+
+
+
+
+
+
+

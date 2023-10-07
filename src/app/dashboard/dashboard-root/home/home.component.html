@@ -1,0 +1,288 @@
+<div class="grid-container">
+  <mat-grid-list cols="6" rowHeight="120px">
+    <mat-grid-tile [colspan]='card[0].cols' [rowspan]="card[0].rows">
+      <mat-card class="dashboard-card">
+        <div>
+          <span class="card-title">Tasks Management</span>
+
+        </div>
+        <mat-card-content class="dashboard-card-content">
+          <div style="text-align:center">
+
+            <button mat-button (click)="viewTask()" color="primary">View Task</button>
+            <button mat-flat-button color="primary" style="width:250px" (click)="createTask()">Create Task</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]='card[1].cols' [rowspan]="card[1].rows">
+      <mat-card class="dashboard-card">
+        <div>
+          <span class="card-title"> Documents Management</span>
+
+        </div>
+        <mat-card-content class="dashboard-card-content">
+          <div style="text-align:center">
+            <button mat-button color="primary" (click)="viewDocument()">View Documents</button>
+            <button mat-flat-button color="primary" style="width:230px" (click)="createDocument()">Create
+              Document</button>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]='card[2].cols' [rowspan]="card[2].rows">
+      <mat-card class="dashboard-card">
+        <div>
+          <div class="status-container" fxLayout="row" fxLayoutAlign="start center">
+            <!-- <span class="card-title">Employee Status</span> -->
+            
+            <mat-chip-list fxLayout="row" fxLayoutGap="8px">
+              <mat-chip (click)="tableSelection('checkIn')" style="cursor:pointer;" [selected]="checkIn" color="primary">
+                Check-In({{dataCount?.checkInCount}})
+              </mat-chip>
+              <mat-chip (click)="tableSelection('break')" style="cursor:pointer;" [selected]="break" color="primary">
+                Break({{dataCount?.breakCount}})
+              </mat-chip>
+              <mat-chip (click)="tableSelection('checkOut')" style="cursor:pointer;" [selected]="checkOut" color="primary">
+                Check-Out({{dataCount?.checkOutCount}})
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+          <mat-divider style="margin-top: 10px;"></mat-divider>
+          <div style="margin-top: 10px;" class="table-content">
+            <table mat-table matSort [dataSource]="dataSource">
+
+              <ng-container  matColumnDef="name">
+                <!-- <th style="display: none;" mat-header-cell *matHeaderCellDef>
+                  <span>Name</span>
+                </th> -->
+                <td id="emp-name" mat-cell *matCellDef="let data" (click)="selectedEmp(data)">
+                  {{data.userName}}</td>
+              </ng-container>
+  
+              <ng-container matColumnDef="state">
+                <!-- <th style="display: none;" mat-header-cell *matHeaderCellDef>
+                  <span>State</span>
+                </th> -->
+                <td class="state-cell" mat-cell *matCellDef="let data">
+                  <svg height="14" width="14">
+                    <circle cx="7" cy="7" r="7" [ngClass]="getStateColor()" />
+                  </svg>
+                </td>
+              </ng-container>
+  
+  
+              <!-- <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr> -->
+              <tr mat-row *matRowDef="let request; columns: columnsToDisplay"></tr>
+  
+            </table>
+          </div>
+          
+        </div>
+       
+      </mat-card>
+
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]='card[3].cols' [rowspan]="card[3].rows">
+      <mat-card class="dashboard-card">
+
+        <mat-card-content class="dashboard-card-content">
+          <div>
+            <span class="card-title">Project Status</span>
+            <mat-card class="content float-rt" (click)="select.open()">
+              Project Preference
+              <div class="float-rt" [formGroup]="projectStatusForm">
+                <div style="zoom:1.3">
+                  <mat-select #select multiple formControlName="projectId"
+                    (selectionChange)="getprojectStatusId(select)">
+                    <div class="sticky">
+                      <input matInput style="width: 100%; padding:15px; border-style: hidden;"   required  #projects placeholder="Search Projects" autocomplete="off">
+                  </div>
+                    <mat-option *ngFor="let project of  projects$ |async | search:'projectName':projects.value" [value]="project.id">
+                      {{project.projectName}}
+                    </mat-option>
+                    <div class="sticky float-rt" style="width: 100%;padding:10px">
+                        <button mat-button (click)="select.close()">Cancel</button>
+                        <button mat-flat-button class="btn-blue" (click)="select.close()"
+                          (click)="postProjectStatus()">Save</button>
+                      </div>
+                 
+                  </mat-select>
+
+                </div>
+              </div>
+            </mat-card>
+          </div>
+
+          <ngx-charts-bar-horizontal [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient"
+            [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+            (select)="onSelect($event)" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+          </ngx-charts-bar-horizontal>
+
+        </mat-card-content>
+
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]='card[4].cols' [rowspan]="card[4].rows">
+      <mat-card class="dashboard-card">
+
+        <mat-card-content class="dashboard-card-content">
+          <div class="project-grid">
+            <div>
+              <span class="card-title">Project Level</span>
+            </div>
+            <div>
+
+              <mat-card class="content float-rt" (click)="selectProject.open()">
+                Projects
+                <div class="float-rt" [formGroup]="projectLevelForm">
+                  <div style="zoom:1.3">
+                    <mat-select #selectProject multiple formControlName="projectId"
+                      (selectionChange)="getProjectLevelId(selectProject)">
+                      <div class="sticky">
+                        <input  matInput style="width: 100%; padding: 15px; border-style: hidden;"  matInput required  #project placeholder="Search Projects" autocomplete="off">
+                    </div>
+                      <mat-option *ngFor="let project of  projects$ | async | search:'projectName':project.value" [value]="project.id">
+                        {{project.projectName}}
+                      </mat-option>
+                    <div class="sticky float-rt" style="width: 100%;padding:10px">
+                        <button mat-button (click)="selectProject.close()">Cancel</button>
+                        <button mat-flat-button class="btn-blue" (click)="selectProject.close()"
+                          (click)="postProjectLevel()">Save</button>
+
+                      </div>
+                    </mat-select>
+
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+          </div>
+          <br>
+          
+
+            <div class="table-content" >
+              <ng-container *ngIf="dataSource1?.data.length>0; else noData">
+              <table mat-table matSort [dataSource]="dataSource1">
+
+                <ng-container matColumnDef="project">
+                  <th class="header" mat-header-cell *matHeaderCellDef>
+                    <span>project Name</span>
+                  </th>
+                  <td mat-cell *matCellDef="let request" >{{request.projectName}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="taskname">
+                  <th class="header name-column" mat-header-cell *matHeaderCellDef>
+                    <span>Task Name</span>
+                  </th>
+                  <td i mat-cell *matCellDef="let data">{{data.taskName}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="timespent">
+                  <th class="header" style="width:100px" mat-header-cell *matHeaderCellDef>
+                    <span>Time Spent</span>
+                  </th>
+                  <td mat-cell *matCellDef="let request">
+                    <div *ngIf="request.taskId!=0"> {{request.taskDuration | secsToMin}}</div>
+                    <div *ngIf="request.taskId==0">-</div>
+                  </td>
+
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplays"></tr>
+                <tr mat-row *matRowDef="let request; columns: columnsToDisplays"></tr>
+
+              </table>
+            </ng-container>
+              <ng-template #noData >
+                <div class="nodata">
+                  <img src="./../../../../assets/icons/no-data-01.svg" alt="No Data" class="no-data">
+                  <div>Oops! Seems like there's<br>nothing in this folder yet. </div>
+                </div>
+              </ng-template>
+            </div>
+      
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]='card[5].cols' [rowspan]="card[5].rows">
+      <mat-card class="dashboard-card">
+        <div>
+          <span class="card-title">Overriding Priority Tasks</span><br><br>
+          <div class="table-content">
+           
+            <ng-container *ngIf="dataSource2?.data.length>0; else noData">
+
+              <table mat-table matSort [dataSource]="dataSource2">
+  
+                <ng-container matColumnDef="taskname">
+                  <th class="header name-column" mat-header-cell *matHeaderCellDef>
+                    <span>Task Name</span>
+                  </th>
+                  <td i mat-cell *matCellDef="let data">{{data.taskTitle}}</td>
+                </ng-container>
+  
+                <ng-container matColumnDef="name">
+                  <th class="header name-column" mat-header-cell *matHeaderCellDef>
+                    <span>Assignment Name</span>
+                  </th>
+                  <td i mat-cell *matCellDef="let data">{{data.subtaskTitle}}</td>
+                </ng-container>
+  
+  
+  
+                <ng-container matColumnDef="status">
+                  <th class="header name-column" mat-header-cell *matHeaderCellDef>
+                    <span>Status</span>
+                  </th>
+                  <td mat-cell *matCellDef="let data">{{data.statusName}}</td>
+                    <!-- <div *ngIf='data.status==0'>Todo</div>
+                    <div *ngIf='data.status==1'>Inprogress</div>
+                    <div *ngIf='data.status==2'>Done</div>
+                  </td> -->
+                </ng-container>
+  
+                <ng-container matColumnDef="completeBy">
+                  <th class="header name-column" mat-header-cell *matHeaderCellDef>
+                    <span>Assignee</span>
+                  </th>
+                  <td mat-cell *matCellDef="let data">{{data.assigneeName}}</td>
+                </ng-container>
+  
+                <ng-container matColumnDef="date">
+                  <th class="header name-column" mat-header-cell *matHeaderCellDef>
+                    <span>Target Date</span>
+                  </th>
+                  <td mat-cell *matCellDef="let data">{{data.subtaskTargetDate | date}}</td>
+                </ng-container>
+
+                <tr id="header" mat-header-row *matHeaderRowDef="columnsToDisplays1"></tr>
+                <tr mat-row *matRowDef="let request; columns: columnsToDisplays1"></tr>
+  
+              </table>
+              </ng-container>
+  
+              <ng-template #noData >
+                <div class="no-data">
+                  <img src="./../../../../assets/icons/no-data-01.svg" alt="No Data" class="no-data">
+                  <div>Oops! Seems like there's<br>nothing in this folder yet. </div>
+                </div>
+              </ng-template>
+
+          </div>
+        </div>
+      
+      </mat-card>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
+</div>

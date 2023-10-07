@@ -1,0 +1,22 @@
+<mat-dialog-content >
+  <div [formGroup]="currencyForm"  class="container" fxLayoutAlign="center center" fxFlexFill fxLayout='column'>
+    <div class="row">
+      <mat-form-field appearance="standard" class="full-width">
+        <mat-label>Currency Code</mat-label>
+        <mat-select formControlName="currency" required >
+          <div class="sticky">
+          <input autofocus type="search" placeholder="Search here" class="dropdown-search" >
+          </div>
+          <mat-option *ngFor='let data of allCurrencies$ | async |filter:searchCurrency' [value]='data' >
+        {{data.currencyName}}-{{data.currencyCode}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+</div>
+</div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-flat-button color='primary'(click)="addItem()"*ngIf="!update" >Save</button>
+  <button mat-flat-button color='primary'(click)="updateCurrency()" *ngIf="update">Update</button>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

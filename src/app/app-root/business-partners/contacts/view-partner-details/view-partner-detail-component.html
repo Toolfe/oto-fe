@@ -1,0 +1,47 @@
+<mat-tab-group>
+  <!-- Tab 1: Business Fields -->
+  <mat-tab label="Business Fields">
+    <h3><strong  class="labelhead" > Business Partner Details</strong></h3>
+    <div>
+      <ul>
+        <p><mat-icon class="icon">account_circle</mat-icon><span class="label">Name :</span> {{ data.name }}</p>
+        <p><mat-icon class="icon">confirmation_number</mat-icon> <span class="label">Code :</span> {{ data.code }}</p>
+        <p><mat-icon class="icon">location_on</mat-icon><span class="label">Address :</span> {{ data.address }}</p>
+        <p><mat-icon class="icon" >supervisor_account</mat-icon> <span class="label">Sub Category Name :</span> {{ data.subCategoryName }}</p>
+      </ul>
+      <!-- Business Fields Values -->
+      <h3><strong class="labelhead" > Business Fields </strong></h3>
+      <div *ngIf="data.datavalues">
+        <ul *ngFor="let datavalue of data.datavalues">
+            <p><mat-icon class="icon" >done</mat-icon> <span class="label">{{ datavalue.name || 'Not Available' }} :</span>   {{ datavalue.value || 'Not Available' }}</p>        </ul>
+      </div>
+    </div>
+
+    <button class="float-rt" color="primary" mat-raised-button [mat-dialog-close]="true">Close</button>
+  </mat-tab>
+
+  <!-- Tab 2: Contact Details -->
+  <mat-tab label="Contact Details">
+    <!-- Contact Data Values -->
+    <h3><strong class="labelhead">Contact Details</strong></h3>
+<div *ngIf="data.contactDataValues && data.contactDataValues.length > 0">
+  <div style="display: flex; flex-wrap: wrap;">
+    <div style="flex: 50%; padding: 5px;" *ngFor="let contactData of data.contactDataValues" class="contact-row">
+      <ul style="list-style-type: none; padding-left: 0;">
+
+            <p><mat-icon class="icon">account_circle</mat-icon> <span class="label">Name :</span> {{ contactData.name || 'Not Available' }}</p>
+            <p><mat-icon class="icon">email</mat-icon> <span class="label"> Email :</span> {{ contactData.email || 'Not Available' }}</p>
+            <p><mat-icon class="icon">phone</mat-icon> <span class="label"> Phone :</span> {{ contactData.phone || 'Not Available' }}</p>
+            <p><mat-icon class="icon">reorder</mat-icon><span class="label"> Category :</span> {{ contactData.categoryName || 'Not Available' }}</p>
+            <p><mat-icon class="icon">work</mat-icon> <span class="label"> Functionality :</span> {{ contactData.functionalityName || 'Not Available' }}</p>
+         
+          </ul>
+        </div>
+        <br>
+      </div>
+      <br>
+    </div>
+
+    <button class="float-rt" color="primary" mat-raised-button [mat-dialog-close]="true">Close</button>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,20 @@
+<form class="d-flex">
+  
+  <span *ngIf="breakStop" style="margin-top: 5px;
+  margin-right: -10px;">
+    <span *ngIf="getElapsedTime(d) as elapsed" class="elapsed-time">
+      {{elapsed.hours | number:'2.0-2'}} : {{elapsed.minutes| number:'2.0-2'}} : {{elapsed.seconds| number:'2.0-2'}} Hrs
+    </span>
+  </span>
+
+  <button *ngIf="break" mat-flat-button color="primary" (click)="onCheckInOut(1)"
+    style="border-radius: 50px;margin-left: 10px; height: 35px;">
+    <mat-icon style="margin-left: -10px;">play_arrow</mat-icon>Check-In
+  </button>
+
+  <button *ngIf="breakStop" mat-flat-button color="primary" (click)="onCheckInOut(0)"
+    style="border-radius: 50px;margin-left: 10px;height: 35px;">
+    <mat-icon style="margin-left: -9px;">stop</mat-icon>Check-Out
+  </button>
+
+</form>

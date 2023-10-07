@@ -1,0 +1,277 @@
+<!-- <div class="header-grid">
+  <div>
+    <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal"
+      (cdkDropListDropped)="drop($event)">
+      <mat-chip class="example-box" cdkDrag *ngFor="let task of tasks" (click)="filter(task)">
+        {{task.name}}
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+
+  <div>
+    <span id="content">
+
+      <button mat-flat-button class="btn-blue" #ddTrigger="matMenuTrigger"
+      *ngIf="!selectedProject&&!selectedPriority" [matMenuTriggerFor]="dd">Created By <span *ngIf="selectedEmp">:&nbsp;{{selectedEmp}}</span></button>
+      <button mat-flat-button class="btn-blue" #ddTrigger2="matMenuTrigger"
+       *ngIf="!selectedEmp&&!selectedPriority" [matMenuTriggerFor]="dd2">Project  <span *ngIf="selectedProject">:&nbsp;{{selectedProject}}</span></button>
+      <button mat-flat-button class="btn-blue" #ddTrigger="matMenuTrigger"
+      *ngIf="!selectedEmp&&!selectedProject"  [matMenuTriggerFor]="dd4">priority<span *ngIf="selectedPriority">:&nbsp;{{selectedPriority}}</span></button>
+        <button mat-button color="primary" (click)="onReset()">Reset</button>
+
+    </span>
+
+  </div>
+  <div>
+  </div>
+    <mat-card>
+      <input type="text" id="box" placeholder="Search Tasks..." class="search__box" #task (keyup)="applyFilter(task)">
+      <button mat-icon-button class="float-rt" >
+         <mat-icon>search</mat-icon>
+      </button>
+    </mat-card>
+  <div class="float-rt">
+
+
+    <button mat-button id="create-btn" (click)="createTask()" [disabled]="isEnable('creation')" [ngStyle]="{'cursor': isEnable('creation') ? 'no-drop' : 'pointer' }">Create Task</button>
+  </div>
+
+
+
+</div>
+
+<mat-menu #dd="matMenu" [overlapTrigger]="false">
+  <div (click)="cancelClick($event)" class="dropdown">
+    <mat-form-field>
+      <mat-label>created By</mat-label>
+      <mat-select [(ngModel)]="selectedEmpvalue">
+        <div class="sticky">
+          <input matInput style="width: 100%; padding:15px; border-style: hidden;"  #emp placeholder="Search Created By" autocomplete="off">
+
+      </div>
+        <mat-option *ngFor="let user of emp$ |async|search:'fname':emp.value" [value]="user.fname">
+          {{user.fname}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div>
+      <button mat-flat-button class="btn-blue" (click)="onSearchCreatedBy()">search</button>
+      <button mat-button (click)="onCancel()">Cancel</button>
+    </div>
+  </div>
+</mat-menu>
+
+<mat-menu #dd2="matMenu" [overlapTrigger]="false">
+  <div class="dropdown">
+    <mat-form-field (click)="cancelClick($event)">
+      <mat-label>Project</mat-label>
+
+      <mat-select [(ngModel)]="selectedProjectValue" (click)="cancelClick($event)">
+        <div class="sticky">
+          <input matInput style="width: 100%; padding:15px; border-style: hidden;"  #project placeholder="Search Created By" autocomplete="off">
+
+      </div>
+        <mat-option *ngFor="let project of project$ |async|search:'projectName':project.value" [value]="project.projectName">
+          {{project.projectName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+
+    <div>
+      <button mat-flat-button class="btn-blue" (click)="onSearchProject()">search</button>
+      <button mat-button>Cancel</button>
+    </div>
+  </div>
+</mat-menu>
+
+<mat-menu #dd4="matMenu" [overlapTrigger]="false">
+  <div class="dropdown">
+    <mat-form-field (click)="cancelClick($event)">
+      <mat-label>Priority</mat-label>
+      <mat-select [(ngModel)]="selectedPriorityValue" (click)="cancelClick($event)">
+        <div class="sticky">
+        <mat-option *ngFor="let priority of priority" [value]="priority">
+          {{priority}}
+        </mat-option>
+      </div>
+      </mat-select>
+    </mat-form-field>
+    <div>
+      <button mat-flat-button class="btn-blue" (click)="onSearchPriority()">search</button>
+      <button mat-button>Cancel</button>
+    </div>
+  </div>
+</mat-menu>
+
+
+
+
+
+
+
+
+
+
+
+<div >
+
+
+  <ng-container *ngIf="(task$ | async) as tasklist;else loading;">
+
+    <ng-container *ngIf="tasklist==='error' ; else table">
+      <app-error></app-error>
+    </ng-container>
+
+    <ng-template #table> 
+      <ng-container *ngIf="dataSource.data.length>0; else noData">
+      
+        <table mat-table [dataSource]="dataSource" matSort  class="mat-elevation-z1"> 
+          <ng-container matColumnDef="title" >
+            <th mat-header-cell *matHeaderCellDef>
+              <span [style.paddingLeft.px]="40"> Title </span>
+            </th>
+            <td mat-cell *matCellDef="let element;" class="t-Title">
+            
+              <button
+                mat-icon-button
+                [style.visibility]="!element.expandable ? 'hidden' : ''"
+                [style.marginLeft.px]="element.level * 32"
+                (click)="treeControl.toggle(element)" (click)="clicktask(element); getsubtaskList(element);"
+              >
+                <mat-icon class="mat-icon-rtl-mirror">
+                  {{treeControl.isExpanded(element) ? 'expand_more' : 'chevron_right'}}
+                </mat-icon>
+              </button>
+              <span id="task-title" (click)=" selectedTask(element)"  >{{element.taskTitle}}</span>
+            </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="project">
+            <th mat-header-cell *matHeaderCellDef>Project</th>
+            <td mat-cell *matCellDef="let element">
+              {{element.projectName}}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="initiator">
+            <th mat-header-cell *matHeaderCellDef>Initiator</th>
+            <td mat-cell *matCellDef="let element">{{element.initiatorName}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="target">
+            <th mat-header-cell *matHeaderCellDef>Target</th>
+            <td mat-cell *matCellDef="let element">
+              <span *ngIf="element.target">{{element.target | date}}</span>
+              <span *ngIf="element.targetDate">{{element.targetDate | date}}</span>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="timeSpend">
+            <th mat-header-cell *matHeaderCellDef>Time Taken</th>
+            <td mat-cell *matCellDef="let element">
+              <span >{{element.duration | secsToMin}}</span>
+              !-- <span *ngIf="element.type==undefined">{{element.taskTimer|secsToMin}}</span>
+              <span>{{element.duration | number:'1.0-0'}}</span> --
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">
+              <span class="todo" *ngIf="element.statusId==1">Todo</span>
+              <span class="inprogress" *ngIf="element.statusId==2">Inprogress</span>
+              <span class="done" *ngIf="element.statusId==3">Done</span>
+             </td>
+          </ng-container>
+          <ng-container matColumnDef="priority">
+            <th mat-header-cell *matHeaderCellDef>Priority</th>
+            <td mat-cell *matCellDef="let element">{{element.priorityName}}</td>
+          </ng-container>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element"> 
+              <button *ngIf="element.type=='task'"  mat-button (click)="editData(element)">Edit</button>
+              <button *ngIf="!element.type"  mat-button (click)="editsubtask(element)">Edit</button>
+               <ng-container *ngIf="element.type=='subtask'">
+                <button *ngIf="!element.activeStatus" mat-button id="start" (click)="onStartStop(element.id,1)">Start</button>
+                <button *ngIf="element.activeStatus" mat-button color="accent" (click)="onStartStop(element.id,0)">Stop</button>
+              </ng-container>
+            
+            <button *ngIf="element.type=='task'; else attachment" mat-button  [matMenuTriggerFor]="menu" >
+              <mat-icon  style="color: gray;"> more_vert</mat-icon>
+            </button>
+            <ng-template #attachment>
+              <button mat-button (click)="openTaskFiles(element)"  *ngIf="element.type!='subTask'">
+                <mat-icon  style="color: gray;">attach_file</mat-icon>
+              </button>
+            </ng-template>
+
+            <mat-menu #menu="matMenu">
+              <button  mat-menu-item (click)="copyTask(element)">Duplicate</button>
+              <button  mat-menu-item [disabled]="isEnable('deletion')" (click)="deleteItem(element)">Delete
+              </button>
+             </mat-menu>
+             <button *ngIf="element.type=='subTask'" mat-button  [matMenuTriggerFor]="menu1" >
+              <mat-icon  style="color: gray;"> more_vert</mat-icon>
+            </button>
+            <mat-menu #menu1="matMenu">
+              <button  mat-menu-item (click)="editSubTaskData(element)">Edit</button>
+              <button mat-menu-item (click)="openTaskFiles(element)" >Attachments</button>
+             </mat-menu>
+            </td>
+          </ng-container> 
+                
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+        </table> 
+      </ng-container>
+      <ng-template #noData>
+        <div class="nodata-container">
+          <img src="./../../../../assets/icons/no-data-01.svg" alt="No Data" class="no-data">
+          <div>Oops! Seems like there's<br>nothing in this folder yet. </div>
+!--           <button mat-flat-button color="primary" (click)="addNew()" [disabled]="isEnable('creation')">Add New</button>
+ --        </div>
+      </ng-template>
+    </ng-template>
+
+
+
+  </ng-container>
+
+
+  <ng-template #loading>
+    <ng-container *ngFor="let item of Refreshing">
+      <div class="loading-grid">
+        <span class="div2" loading></span>
+        <span class="div3" loading></span>
+        <span class="div4" loading></span>
+      </div>
+    </ng-container> 
+
+  </ng-template>
+
+
+
+</div> -->
+
+
+
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+    <button mat-icon-button disabled></button>
+    {{node.item}} {{node.isLoading}}
+  </mat-tree-node>
+  <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+    <button mat-icon-button [attr.aria-label]="'toggle ' + node.filename" matTreeNodeToggle>
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+      </mat-icon>
+    </button>
+    {{node.item}} {{node.isLoading}}
+    <mat-progress-spinner diameter="20" *ngIf="node.isLoading" mode="indeterminate"
+      class="example-tree-progress-bar"></mat-progress-spinner>
+  </mat-tree-node>
+</mat-tree>

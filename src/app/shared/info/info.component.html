@@ -1,0 +1,10 @@
+<div style="font-size: medium;font-weight: bold;">
+  Dear <span style="color: #4c1487;">{{dialogdata.userName}}</span>
+</div>
+<div style="font-size: medium;font-weight: bold; padding: 10px;">
+  {{dialogdata.subtaskTitle}} <span *ngIf="dialogdata.status == 1" style="color: red;"> Kept Hold...</span>
+  <span *ngIf="dialogdata.status == 0" style="color: darkgreen;">Resumed </span>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" mat-dialog-close='true'>Okay</button>
+</mat-dialog-actions>

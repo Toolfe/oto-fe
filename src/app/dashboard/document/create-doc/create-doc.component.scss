@@ -1,0 +1,49 @@
+.toolbar{
+    //height: 50px;
+    background-color: white;
+    padding: 7px;
+    .icon-btn {
+        background-color: DodgerBlue;
+        border: none;
+        color: white;
+        //padding: 4px 6px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      
+      /* Darker background on mouse-over */
+      .icon-btn:hover {
+        background-color: RoyalBlue;
+      }
+}
+.radio-btn{
+  margin-top: 18px;
+}
+.mat-radio-button mat-checkbox{
+  margin: 0 18px;
+}
+
+#divider{
+  padding-top: 16px;
+}
+
+.permissions{
+  margin-top: 16px;
+}
+
+.footer{
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+}
+
+#drag_zone{
+  width:100%;
+  height: 200px;
+  margin: auto;
+  padding: 8px;
+  text-align: center;
+  background-color: #f0f0f0;
+  border: 2px dashed gray;
+  border-radius: 8px;
+  color: black;
+}

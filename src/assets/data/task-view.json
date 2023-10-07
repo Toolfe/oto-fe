@@ -1,0 +1,1672 @@
+{
+    "success": true,
+    "message": "task-type listing",
+    "data": [
+        {
+            "id": 22,
+            "initiator": "Shuvro kumar shaha",
+            "title": "Jan 2023 : Monthly Reporting Activities",
+            "description": "Reports",
+            "taskCode": "O1001T0022",
+            "projectName": "Accounts-Jan 2023",
+            "estimatedDate": "2023-01-14",
+            "createdBy" : "Shuvro kumar shaha",
+            "priorityFactor": "Priority",
+        "status": 1,
+            "subTasks": [
+                {
+                    "id": 158,
+                    "title": "Monthly Financial Meeting Reports",
+                    "code": "O1001ST00158",
+                    "assignee": {
+                        "id": 108,
+                        "orgId": 1001,
+                        "empId": "9",
+                        "fname": "Piash",
+                        "lname": "Imran Ali",
+                        "primaryEmail": "accounts@scandexbd.com",
+                        "photo": null,
+                        "role": "employee"
+                    },
+                    "observers": [
+                        {
+                            "id": 107,
+                            "orgId": 1001,
+                            "empId": "8",
+                            "fname": "Kayoum",
+                            "lname": "Khan",
+                            "primaryEmail": "kayoum@scandexbd.com",
+                            "photo": null,
+                            "role": "employee"
+                        },
+                        {
+                            "id": 143,
+                            "orgId": 1001,
+                            "empId": "1",
+                            "fname": "Farid Ahmed",
+                            "lname": "Patwary",
+                            "primaryEmail": "farid_scan@yahoo.com",
+                            "photo": null,
+                            "role": "employee"
+                        },
+                        {
+                            "id": 144,
+                            "orgId": 1001,
+                            "empId": "45",
+                            "fname": "Khalid",
+                            "lname": "Hassan",
+                            "primaryEmail": "khaled@scandexbd.com",
+                            "photo": null,
+                            "role": "employee"
+                        }
+                    ],
+                    "initDate": "12/31/2022, 3:10:25 PM",
+                    "completedDate": null,
+                    "subDepartment": {
+                        "id": 30,
+                        "code": "ACC",
+                        "name": "Accounts"
+                    },
+                    "taskType": {
+                        "id": 25,
+                        "code": "ACC01",
+                        "name": "Accounts Activities Monthly",
+                        "department": {
+                            "id": 7,
+                            "code": "FIN",
+                            "name": "Finance",
+                            "subdepartments": [
+                                {
+                                    "id": 30,
+                                    "code": "ACC",
+                                    "name": "Accounts"
+                                },
+                                {
+                                    "id": 31,
+                                    "code": "SUC",
+                                    "name": "Supply Chain"
+                                },
+                                {
+                                    "id": 32,
+                                    "code": "FIM",
+                                    "name": "Finance Monitoring"
+                                },
+                                {
+                                    "id": 35,
+                                    "code": "COM",
+                                    "name": "Commercial"
+                                },
+                                {
+                                    "id": 36,
+                                    "code": "PUR",
+                                    "name": "Purchase"
+                                }
+                            ]
+                        },
+                        "recurrence": {
+                            "id": 25,
+                            "type": "monthly",
+                            "repeatEvery": null,
+                            "repeatEveryWeek": null,
+                            "repeatEveryMonth": 1,
+                            "repeatEveryYear": null,
+                            "occurOnDays": [],
+                            "week": null,
+                            "endsOn": "true",
+                            "months": null,
+                            "years": null,
+                            "day": null,
+                            "dateByte": 10,
+                            "endAfter": null,
+                            "endDate": null,
+                            "neverEnds": true,
+                            "saveTime": "10:00:00"
+                        },
+                        "scaleValue": "9",
+                        "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Requirements :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 200, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee\", \"type\": \"textarea\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Docs attached :\", \"type\": \"file\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Feedback from Initiator\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer Notes\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}]",
+                        "active": true
+                    },
+                    "description": "Reports",
+                    "target": "2023-01-06T15:10",
+                    "priorityFactor": "Priority",
+                    "parentId": null,
+                    "haveGrandParentId": null,
+                    "dependencies": [],
+                    "project": {
+                        "id": 7,
+                        "projectCode": "ACC-Jan 2023",
+                        "projectName": "Accounts-Jan 2023",
+                        "projectOrderNo": "Accounts-Jan 2023",
+                        "group": {
+                            "id": 8,
+                            "name": "Accounts Activity",
+                            "taskType": [
+                                {
+                                    "id": 28,
+                                    "code": "ACC04",
+                                    "name": "Accounts Activity Specific",
+                                    "department": {
+                                        "id": 7,
+                                        "code": "FIN",
+                                        "name": "Finance",
+                                        "subdepartments": [
+                                            {
+                                                "id": 30,
+                                                "code": "ACC",
+                                                "name": "Accounts"
+                                            },
+                                            {
+                                                "id": 31,
+                                                "code": "SUC",
+                                                "name": "Supply Chain"
+                                            },
+                                            {
+                                                "id": 32,
+                                                "code": "FIM",
+                                                "name": "Finance Monitoring"
+                                            },
+                                            {
+                                                "id": 35,
+                                                "code": "COM",
+                                                "name": "Commercial"
+                                            },
+                                            {
+                                                "id": 36,
+                                                "code": "PUR",
+                                                "name": "Purchase"
+                                            }
+                                        ]
+                                    },
+                                    "recurrence": {
+                                        "id": 28,
+                                        "type": "noFixed",
+                                        "repeatEvery": 1,
+                                        "repeatEveryWeek": null,
+                                        "repeatEveryMonth": null,
+                                        "repeatEveryYear": null,
+                                        "occurOnDays": [],
+                                        "week": null,
+                                        "endsOn": "TRUE",
+                                        "months": null,
+                                        "years": null,
+                                        "day": null,
+                                        "dateByte": 0,
+                                        "endAfter": null,
+                                        "endDate": null,
+                                        "neverEnds": true,
+                                        "saveTime": "00:00:12"
+                                    },
+                                    "scaleValue": "8",
+                                    "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Work Requirements : \", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 300, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Documents attached :\", \"type\": \"file\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Initiator feedback :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer notes\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}]",
+                                    "active": true
+                                },
+                                {
+                                    "id": 27,
+                                    "code": "ACC03",
+                                    "name": "Accounts Activities Daily",
+                                    "department": {
+                                        "id": 7,
+                                        "code": "FIN",
+                                        "name": "Finance",
+                                        "subdepartments": [
+                                            {
+                                                "id": 30,
+                                                "code": "ACC",
+                                                "name": "Accounts"
+                                            },
+                                            {
+                                                "id": 31,
+                                                "code": "SUC",
+                                                "name": "Supply Chain"
+                                            },
+                                            {
+                                                "id": 32,
+                                                "code": "FIM",
+                                                "name": "Finance Monitoring"
+                                            },
+                                            {
+                                                "id": 35,
+                                                "code": "COM",
+                                                "name": "Commercial"
+                                            },
+                                            {
+                                                "id": 36,
+                                                "code": "PUR",
+                                                "name": "Purchase"
+                                            }
+                                        ]
+                                    },
+                                    "recurrence": {
+                                        "id": 27,
+                                        "type": "daily",
+                                        "repeatEvery": 1,
+                                        "repeatEveryWeek": null,
+                                        "repeatEveryMonth": null,
+                                        "repeatEveryYear": null,
+                                        "occurOnDays": [],
+                                        "week": null,
+                                        "endsOn": "true",
+                                        "months": null,
+                                        "years": null,
+                                        "day": null,
+                                        "dateByte": 0,
+                                        "endAfter": null,
+                                        "endDate": null,
+                                        "neverEnds": true,
+                                        "saveTime": "08:00:00"
+                                    },
+                                    "scaleValue": "7",
+                                    "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Requirements\", \"type\": \"text\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 200, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee :\", \"type\": \"text\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": 500, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Feedback from Initiator :\", \"type\": \"text\", \"validators\": {\"enterBy\": false, \"required\": false, \"maxLength\": 500, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer notes : \", \"type\": \"text\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": 500, \"minLength\": null}}]",
+                                    "active": true
+                                },
+                                {
+                                    "id": 26,
+                                    "code": "ACC02",
+                                    "name": "Accounts Activities Weekly",
+                                    "department": {
+                                        "id": 7,
+                                        "code": "FIN",
+                                        "name": "Finance",
+                                        "subdepartments": [
+                                            {
+                                                "id": 30,
+                                                "code": "ACC",
+                                                "name": "Accounts"
+                                            },
+                                            {
+                                                "id": 31,
+                                                "code": "SUC",
+                                                "name": "Supply Chain"
+                                            },
+                                            {
+                                                "id": 32,
+                                                "code": "FIM",
+                                                "name": "Finance Monitoring"
+                                            },
+                                            {
+                                                "id": 35,
+                                                "code": "COM",
+                                                "name": "Commercial"
+                                            },
+                                            {
+                                                "id": 36,
+                                                "code": "PUR",
+                                                "name": "Purchase"
+                                            }
+                                        ]
+                                    },
+                                    "recurrence": {
+                                        "id": 26,
+                                        "type": "weekly",
+                                        "repeatEvery": null,
+                                        "repeatEveryWeek": 1,
+                                        "repeatEveryMonth": null,
+                                        "repeatEveryYear": null,
+                                        "occurOnDays": [
+                                            "SATURDAY"
+                                        ],
+                                        "week": null,
+                                        "endsOn": "true",
+                                        "months": null,
+                                        "years": null,
+                                        "day": null,
+                                        "dateByte": 0,
+                                        "endAfter": null,
+                                        "endDate": null,
+                                        "neverEnds": true,
+                                        "saveTime": "11:00:00"
+                                    },
+                                    "scaleValue": "8",
+                                    "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Requirements : \", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 200, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Files Attached :\", \"type\": \"file\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Feedback from Initiator\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer notes\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}]",
+                                    "active": true
+                                },
+                                {
+                                    "id": 25,
+                                    "code": "ACC01",
+                                    "name": "Accounts Activities Monthly",
+                                    "department": {
+                                        "id": 7,
+                                        "code": "FIN",
+                                        "name": "Finance",
+                                        "subdepartments": [
+                                            {
+                                                "id": 30,
+                                                "code": "ACC",
+                                                "name": "Accounts"
+                                            },
+                                            {
+                                                "id": 31,
+                                                "code": "SUC",
+                                                "name": "Supply Chain"
+                                            },
+                                            {
+                                                "id": 32,
+                                                "code": "FIM",
+                                                "name": "Finance Monitoring"
+                                            },
+                                            {
+                                                "id": 35,
+                                                "code": "COM",
+                                                "name": "Commercial"
+                                            },
+                                            {
+                                                "id": 36,
+                                                "code": "PUR",
+                                                "name": "Purchase"
+                                            }
+                                        ]
+                                    },
+                                    "recurrence": {
+                                        "id": 25,
+                                        "type": "monthly",
+                                        "repeatEvery": null,
+                                        "repeatEveryWeek": null,
+                                        "repeatEveryMonth": 1,
+                                        "repeatEveryYear": null,
+                                        "occurOnDays": [],
+                                        "week": null,
+                                        "endsOn": "true",
+                                        "months": null,
+                                        "years": null,
+                                        "day": null,
+                                        "dateByte": 10,
+                                        "endAfter": null,
+                                        "endDate": null,
+                                        "neverEnds": true,
+                                        "saveTime": "10:00:00"
+                                    },
+                                    "scaleValue": "9",
+                                    "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Requirements :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 200, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee\", \"type\": \"textarea\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Docs attached :\", \"type\": \"file\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Feedback from Initiator\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer Notes\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}]",
+                                    "active": true
+                                }
+                            ]
+                        }
+                    },
+                    "status": 1,
+                    "customizedStatus": "Done",
+                    "initiator": {
+                        "id": 145,
+                        "orgId": 1001,
+                        "empId": "46",
+                        "fname": "Shuvro",
+                        "lname": "kumar shaha",
+                        "primaryEmail": "shuvro@scandexbd.com",
+                        "photo": null,
+                        "role": "employee"
+                    },
+                    "typeFields": "{\"Observer Notes\": \"\", \"Requirements :\": \"\", \"Docs attached :\": \"\", \"Reply from Assignee\": \"\", \"Feedback from Initiator\": \"\"}",
+                    "taskid": 22,
+                    "taskName": "Jan 2023 : Monthly Reporting Activities",
+                    "taskFiles": [],
+                    "subtaskRating": {
+                        "id": 219,
+                        "scaleValue": null,
+                        "ratingValue": "0",
+                        "rating": null
+                    },
+                    "subTasks": [],
+                    "createdOn": "2022-12-31T14:43:15.398+00:00",
+                    "modifiedOn": "2023-02-24T14:05:51.984+00:00",
+                    "createdBy": {
+                        "id": 145,
+                        "orgId": 1001,
+                        "empId": "46",
+                        "fname": "Shuvro",
+                        "lname": "kumar shaha",
+                        "primaryEmail": "shuvro@scandexbd.com",
+                        "photo": null,
+                        "role": "employee"
+                    },
+                    "modifiedBy": {
+                        "id": 145,
+                        "orgId": 1001,
+                        "empId": "46",
+                        "fname": "Shuvro",
+                        "lname": "kumar shaha",
+                        "primaryEmail": "shuvro@scandexbd.com",
+                        "photo": null,
+                        "role": "employee"
+                    },
+                    "active": true,
+                    "activeStatus": null,
+                    "startTime": 0,
+                    "stopTime": 0,
+                    "taskTimer": 0,
+                    "todayTaskHistory": 0,
+                    "totalTaskHistory": 0,
+                    "isRecurred": true
+                },
+                {
+                    "id": 160,
+                    "title": "Monthly Bank Reconciliation",
+                    "code": "O1001ST00160",
+                    "assignee": {
+                        "id": 108,
+                        "orgId": 1001,
+                        "empId": "9",
+                        "fname": "Piash",
+                        "lname": "Imran Ali",
+                        "primaryEmail": "accounts@scandexbd.com",
+                        "photo": null,
+                        "role": "employee"
+                    },
+                    "observers": [
+                        {
+                            "id": 107,
+                            "orgId": 1001,
+                            "empId": "8",
+                            "fname": "Kayoum",
+                            "lname": "Khan",
+                            "primaryEmail": "kayoum@scandexbd.com",
+                            "photo": null,
+                            "role": "employee"
+                        }
+                    ],
+                    "initDate": "12/31/2022, 3:14:17 PM",
+                    "completedDate": null,
+                    "subDepartment": {
+                        "id": 30,
+                        "code": "ACC",
+                        "name": "Accounts"
+                    },
+                    "taskType": {
+                        "id": 25,
+                        "code": "ACC01",
+                        "name": "Accounts Activities Monthly",
+                        "department": {
+                            "id": 7,
+                            "code": "FIN",
+                            "name": "Finance",
+                            "subdepartments": [
+                                {
+                                    "id": 30,
+                                    "code": "ACC",
+                                    "name": "Accounts"
+                                },
+                                {
+                                    "id": 31,
+                                    "code": "SUC",
+                                    "name": "Supply Chain"
+                                },
+                                {
+                                    "id": 32,
+                                    "code": "FIM",
+                                    "name": "Finance Monitoring"
+                                },
+                                {
+                                    "id": 35,
+                                    "code": "COM",
+                                    "name": "Commercial"
+                                },
+                                {
+                                    "id": 36,
+                                    "code": "PUR",
+                                    "name": "Purchase"
+                                }
+                            ]
+                        },
+                        "recurrence": {
+                            "id": 25,
+                            "type": "monthly",
+                            "repeatEvery": null,
+                            "repeatEveryWeek": null,
+                            "repeatEveryMonth": 1,
+                            "repeatEveryYear": null,
+                            "occurOnDays": [],
+                            "week": null,
+                            "endsOn": "true",
+                            "months": null,
+                            "years": null,
+                            "day": null,
+                            "dateByte": 10,
+                            "endAfter": null,
+                            "endDate": null,
+                            "neverEnds": true,
+                            "saveTime": "10:00:00"
+                        },
+                        "scaleValue": "9",
+                        "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Requirements :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 200, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee\", \"type\": \"textarea\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Docs attached :\", \"type\": \"file\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Feedback from Initiator\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer Notes\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}]",
+                        "active": true
+                    },
+                    "description": "All Banks",
+                    "target": "2023-01-07T16:00",
+                    "priorityFactor": "Priority",
+                    "parentId": null,
+                    "haveGrandParentId": null,
+                    "dependencies": [],
+                    "project": {
+                        "id": 7,
+                        "projectCode": "ACC-Jan 2023",
+                        "projectName": "Accounts-Jan 2023",
+                        "projectOrderNo": "Accounts-Jan 2023",
+                        "group": {
+                            "id": 8,
+                            "name": "Accounts Activity",
+                            "taskType": [
+                                {
+                                    "id": 28,
+                                    "code": "ACC04",
+                                    "name": "Accounts Activity Specific",
+                                    "department": {
+                                        "id": 7,
+                                        "code": "FIN",
+                                        "name": "Finance",
+                                        "subdepartments": [
+                                            {
+                                                "id": 30,
+                                                "code": "ACC",
+                                                "name": "Accounts"
+                                            },
+                                            {
+                                                "id": 31,
+                                                "code": "SUC",
+                                                "name": "Supply Chain"
+                                            },
+                                            {
+                                                "id": 32,
+                                                "code": "FIM",
+                                                "name": "Finance Monitoring"
+                                            },
+                                            {
+                                                "id": 35,
+                                                "code": "COM",
+                                                "name": "Commercial"
+                                            },
+                                            {
+                                                "id": 36,
+                                                "code": "PUR",
+                                                "name": "Purchase"
+                                            }
+                                        ]
+                                    },
+                                    "recurrence": {
+                                        "id": 28,
+                                        "type": "noFixed",
+                                        "repeatEvery": 1,
+                                        "repeatEveryWeek": null,
+                                        "repeatEveryMonth": null,
+                                        "repeatEveryYear": null,
+                                        "occurOnDays": [],
+                                        "week": null,
+                                        "endsOn": "TRUE",
+                                        "months": null,
+                                        "years": null,
+                                        "day": null,
+                                        "dateByte": 0,
+                                        "endAfter": null,
+                                        "endDate": null,
+                                        "neverEnds": true,
+                                        "saveTime": "00:00:12"
+                                    },
+                                    "scaleValue": "8",
+                                    "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Work Requirements : \", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 300, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Documents attached :\", \"type\": \"file\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Initiator feedback :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer notes\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}]",
+                                    "active": true
+                                },
+                                {
+                                    "id": 27,
+                                    "code": "ACC03",
+                                    "name": "Accounts Activities Daily",
+                                    "department": {
+                                        "id": 7,
+                                        "code": "FIN",
+                                        "name": "Finance",
+                                        "subdepartments": [
+                                            {
+                                                "id": 30,
+                                                "code": "ACC",
+                                                "name": "Accounts"
+                                            },
+                                            {
+                                                "id": 31,
+                                                "code": "SUC",
+                                                "name": "Supply Chain"
+                                            },
+                                            {
+                                                "id": 32,
+                                                "code": "FIM",
+                                                "name": "Finance Monitoring"
+                                            },
+                                            {
+                                                "id": 35,
+                                                "code": "COM",
+                                                "name": "Commercial"
+                                            },
+                                            {
+                                                "id": 36,
+                                                "code": "PUR",
+                                                "name": "Purchase"
+                                            }
+                                        ]
+                                    },
+                                    "recurrence": {
+                                        "id": 27,
+                                        "type": "daily",
+                                        "repeatEvery": 1,
+                                        "repeatEveryWeek": null,
+                                        "repeatEveryMonth": null,
+                                        "repeatEveryYear": null,
+                                        "occurOnDays": [],
+                                        "week": null,
+                                        "endsOn": "true",
+                                        "months": null,
+                                        "years": null,
+                                        "day": null,
+                                        "dateByte": 0,
+                                        "endAfter": null,
+                                        "endDate": null,
+                                        "neverEnds": true,
+                                        "saveTime": "08:00:00"
+                                    },
+                                    "scaleValue": "7",
+                                    "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Requirements\", \"type\": \"text\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 200, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee :\", \"type\": \"text\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": 500, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Feedback from Initiator :\", \"type\": \"text\", \"validators\": {\"enterBy\": false, \"required\": false, \"maxLength\": 500, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer notes : \", \"type\": \"text\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": 500, \"minLength\": null}}]",
+                                    "active": true
+                                },
+                                {
+                                    "id": 26,
+                                    "code": "ACC02",
+                                    "name": "Accounts Activities Weekly",
+                                    "department": {
+                                        "id": 7,
+                                        "code": "FIN",
+                                        "name": "Finance",
+                                        "subdepartments": [
+                                            {
+                                                "id": 30,
+                                                "code": "ACC",
+                                                "name": "Accounts"
+                                            },
+                                            {
+                                                "id": 31,
+                                                "code": "SUC",
+                                                "name": "Supply Chain"
+                                            },
+                                            {
+                                                "id": 32,
+                                                "code": "FIM",
+                                                "name": "Finance Monitoring"
+                                            },
+                                            {
+                                                "id": 35,
+                                                "code": "COM",
+                                                "name": "Commercial"
+                                            },
+                                            {
+                                                "id": 36,
+                                                "code": "PUR",
+                                                "name": "Purchase"
+                                            }
+                                        ]
+                                    },
+                                    "recurrence": {
+                                        "id": 26,
+                                        "type": "weekly",
+                                        "repeatEvery": null,
+                                        "repeatEveryWeek": 1,
+                                        "repeatEveryMonth": null,
+                                        "repeatEveryYear": null,
+                                        "occurOnDays": [
+                                            "SATURDAY"
+                                        ],
+                                        "week": null,
+                                        "endsOn": "true",
+                                        "months": null,
+                                        "years": null,
+                                        "day": null,
+                                        "dateByte": 0,
+                                        "endAfter": null,
+                                        "endDate": null,
+                                        "neverEnds": true,
+                                        "saveTime": "11:00:00"
+                                    },
+                                    "scaleValue": "8",
+                                    "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Requirements : \", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 200, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Files Attached :\", \"type\": \"file\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Feedback from Initiator\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer notes\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}]",
+                                    "active": true
+                                },
+                                {
+                                    "id": 25,
+                                    "code": "ACC01",
+                                    "name": "Accounts Activities Monthly",
+                                    "department": {
+                                        "id": 7,
+                                        "code": "FIN",
+                                        "name": "Finance",
+                                        "subdepartments": [
+                                            {
+                                                "id": 30,
+                                                "code": "ACC",
+                                                "name": "Accounts"
+                                            },
+                                            {
+                                                "id": 31,
+                                                "code": "SUC",
+                                                "name": "Supply Chain"
+                                            },
+                                            {
+                                                "id": 32,
+                                                "code": "FIM",
+                                                "name": "Finance Monitoring"
+                                            },
+                                            {
+                                                "id": 35,
+                                                "code": "COM",
+                                                "name": "Commercial"
+                                            },
+                                            {
+                                                "id": 36,
+                                                "code": "PUR",
+                                                "name": "Purchase"
+                                            }
+                                        ]
+                                    },
+                                    "recurrence": {
+                                        "id": 25,
+                                        "type": "monthly",
+                                        "repeatEvery": null,
+                                        "repeatEveryWeek": null,
+                                        "repeatEveryMonth": 1,
+                                        "repeatEveryYear": null,
+                                        "occurOnDays": [],
+                                        "week": null,
+                                        "endsOn": "true",
+                                        "months": null,
+                                        "years": null,
+                                        "day": null,
+                                        "dateByte": 10,
+                                        "endAfter": null,
+                                        "endDate": null,
+                                        "neverEnds": true,
+                                        "saveTime": "10:00:00"
+                                    },
+                                    "scaleValue": "9",
+                                    "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Requirements :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 200, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee\", \"type\": \"textarea\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Docs attached :\", \"type\": \"file\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Feedback from Initiator\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer Notes\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}]",
+                                    "active": true
+                                }
+                            ]
+                        }
+                    },
+                    "status": 1,
+                    "customizedStatus": "Done",
+                    "initiator": {
+                        "id": 145,
+                        "orgId": 1001,
+                        "empId": "46",
+                        "fname": "Shuvro",
+                        "lname": "kumar shaha",
+                        "primaryEmail": "shuvro@scandexbd.com",
+                        "photo": null,
+                        "role": "employee"
+                    },
+                    "typeFields": "{\"Observer Notes\": \"\", \"Requirements :\": \"\", \"Docs attached :\": \"\", \"Reply from Assignee\": \"\", \"Feedback from Initiator\": \"\"}",
+                    "taskid": 22,
+                    "taskName": "Jan 2023 : Monthly Reporting Activities",
+                    "taskFiles": [],
+                    "subtaskRating": {
+                        "id": 221,
+                        "scaleValue": null,
+                        "ratingValue": "0",
+                        "rating": null
+                    },
+                    "subTasks": [],
+                    "createdOn": "2022-12-31T14:45:22.149+00:00",
+                    "modifiedOn": "2023-02-24T14:05:51.985+00:00",
+                    "createdBy": {
+                        "id": 145,
+                        "orgId": 1001,
+                        "empId": "46",
+                        "fname": "Shuvro",
+                        "lname": "kumar shaha",
+                        "primaryEmail": "shuvro@scandexbd.com",
+                        "photo": null,
+                        "role": "employee"
+                    },
+                    "modifiedBy": {
+                        "id": 145,
+                        "orgId": 1001,
+                        "empId": "46",
+                        "fname": "Shuvro",
+                        "lname": "kumar shaha",
+                        "primaryEmail": "shuvro@scandexbd.com",
+                        "photo": null,
+                        "role": "employee"
+                    },
+                    "active": true,
+                    "activeStatus": null,
+                    "startTime": 0,
+                    "stopTime": 0,
+                    "taskTimer": 0,
+                    "todayTaskHistory": 0,
+                    "totalTaskHistory": 0,
+                    "isRecurred": true
+                },
+                {
+                    "id": 531,
+                    "title": "JAN 2023 - Monthly Financial Meeting Reports",
+                    "code": "O1001ST00531",
+                    "assignee": {
+                        "id": 108,
+                        "orgId": 1001,
+                        "empId": "9",
+                        "fname": "Piash",
+                        "lname": "Imran Ali",
+                        "primaryEmail": "accounts@scandexbd.com",
+                        "photo": null,
+                        "role": "employee"
+                    },
+                    "observers": [
+                        {
+                            "id": 107,
+                            "orgId": 1001,
+                            "empId": "8",
+                            "fname": "Kayoum",
+                            "lname": "Khan",
+                            "primaryEmail": "kayoum@scandexbd.com",
+                            "photo": null,
+                            "role": "employee"
+                        },
+                        {
+                            "id": 143,
+                            "orgId": 1001,
+                            "empId": "1",
+                            "fname": "Farid Ahmed",
+                            "lname": "Patwary",
+                            "primaryEmail": "farid_scan@yahoo.com",
+                            "photo": null,
+                            "role": "employee"
+                        },
+                        {
+                            "id": 144,
+                            "orgId": 1001,
+                            "empId": "45",
+                            "fname": "Khalid",
+                            "lname": "Hassan",
+                            "primaryEmail": "khaled@scandexbd.com",
+                            "photo": null,
+                            "role": "employee"
+                        }
+                    ],
+                    "initDate": "2023-01-10T10:00",
+                    "completedDate": null,
+                    "subDepartment": {
+                        "id": 30,
+                        "code": "ACC",
+                        "name": "Accounts"
+                    },
+                    "taskType": {
+                        "id": 25,
+                        "code": "ACC01",
+                        "name": "Accounts Activities Monthly",
+                        "department": {
+                            "id": 7,
+                            "code": "FIN",
+                            "name": "Finance",
+                            "subdepartments": [
+                                {
+                                    "id": 30,
+                                    "code": "ACC",
+                                    "name": "Accounts"
+                                },
+                                {
+                                    "id": 31,
+                                    "code": "SUC",
+                                    "name": "Supply Chain"
+                                },
+                                {
+                                    "id": 32,
+                                    "code": "FIM",
+                                    "name": "Finance Monitoring"
+                                },
+                                {
+                                    "id": 35,
+                                    "code": "COM",
+                                    "name": "Commercial"
+                                },
+                                {
+                                    "id": 36,
+                                    "code": "PUR",
+                                    "name": "Purchase"
+                                }
+                            ]
+                        },
+                        "recurrence": {
+                            "id": 25,
+                            "type": "monthly",
+                            "repeatEvery": null,
+                            "repeatEveryWeek": null,
+                            "repeatEveryMonth": 1,
+                            "repeatEveryYear": null,
+                            "occurOnDays": [],
+                            "week": null,
+                            "endsOn": "true",
+                            "months": null,
+                            "years": null,
+                            "day": null,
+                            "dateByte": 10,
+                            "endAfter": null,
+                            "endDate": null,
+                            "neverEnds": true,
+                            "saveTime": "10:00:00"
+                        },
+                        "scaleValue": "9",
+                        "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Requirements :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 200, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee\", \"type\": \"textarea\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Docs attached :\", \"type\": \"file\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Feedback from Initiator\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer Notes\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}]",
+                        "active": true
+                    },
+                    "description": "Reports",
+                    "target": "2023-01-10T15:10",
+                    "priorityFactor": "Priority",
+                    "parentId": null,
+                    "haveGrandParentId": null,
+                    "dependencies": [],
+                    "project": {
+                        "id": 7,
+                        "projectCode": "ACC-Jan 2023",
+                        "projectName": "Accounts-Jan 2023",
+                        "projectOrderNo": "Accounts-Jan 2023",
+                        "group": {
+                            "id": 8,
+                            "name": "Accounts Activity",
+                            "taskType": [
+                                {
+                                    "id": 28,
+                                    "code": "ACC04",
+                                    "name": "Accounts Activity Specific",
+                                    "department": {
+                                        "id": 7,
+                                        "code": "FIN",
+                                        "name": "Finance",
+                                        "subdepartments": [
+                                            {
+                                                "id": 30,
+                                                "code": "ACC",
+                                                "name": "Accounts"
+                                            },
+                                            {
+                                                "id": 31,
+                                                "code": "SUC",
+                                                "name": "Supply Chain"
+                                            },
+                                            {
+                                                "id": 32,
+                                                "code": "FIM",
+                                                "name": "Finance Monitoring"
+                                            },
+                                            {
+                                                "id": 35,
+                                                "code": "COM",
+                                                "name": "Commercial"
+                                            },
+                                            {
+                                                "id": 36,
+                                                "code": "PUR",
+                                                "name": "Purchase"
+                                            }
+                                        ]
+                                    },
+                                    "recurrence": {
+                                        "id": 28,
+                                        "type": "noFixed",
+                                        "repeatEvery": 1,
+                                        "repeatEveryWeek": null,
+                                        "repeatEveryMonth": null,
+                                        "repeatEveryYear": null,
+                                        "occurOnDays": [],
+                                        "week": null,
+                                        "endsOn": "TRUE",
+                                        "months": null,
+                                        "years": null,
+                                        "day": null,
+                                        "dateByte": 0,
+                                        "endAfter": null,
+                                        "endDate": null,
+                                        "neverEnds": true,
+                                        "saveTime": "00:00:12"
+                                    },
+                                    "scaleValue": "8",
+                                    "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Work Requirements : \", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 300, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Documents attached :\", \"type\": \"file\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Initiator feedback :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer notes\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}]",
+                                    "active": true
+                                },
+                                {
+                                    "id": 27,
+                                    "code": "ACC03",
+                                    "name": "Accounts Activities Daily",
+                                    "department": {
+                                        "id": 7,
+                                        "code": "FIN",
+                                        "name": "Finance",
+                                        "subdepartments": [
+                                            {
+                                                "id": 30,
+                                                "code": "ACC",
+                                                "name": "Accounts"
+                                            },
+                                            {
+                                                "id": 31,
+                                                "code": "SUC",
+                                                "name": "Supply Chain"
+                                            },
+                                            {
+                                                "id": 32,
+                                                "code": "FIM",
+                                                "name": "Finance Monitoring"
+                                            },
+                                            {
+                                                "id": 35,
+                                                "code": "COM",
+                                                "name": "Commercial"
+                                            },
+                                            {
+                                                "id": 36,
+                                                "code": "PUR",
+                                                "name": "Purchase"
+                                            }
+                                        ]
+                                    },
+                                    "recurrence": {
+                                        "id": 27,
+                                        "type": "daily",
+                                        "repeatEvery": 1,
+                                        "repeatEveryWeek": null,
+                                        "repeatEveryMonth": null,
+                                        "repeatEveryYear": null,
+                                        "occurOnDays": [],
+                                        "week": null,
+                                        "endsOn": "true",
+                                        "months": null,
+                                        "years": null,
+                                        "day": null,
+                                        "dateByte": 0,
+                                        "endAfter": null,
+                                        "endDate": null,
+                                        "neverEnds": true,
+                                        "saveTime": "08:00:00"
+                                    },
+                                    "scaleValue": "7",
+                                    "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Requirements\", \"type\": \"text\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 200, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee :\", \"type\": \"text\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": 500, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Feedback from Initiator :\", \"type\": \"text\", \"validators\": {\"enterBy\": false, \"required\": false, \"maxLength\": 500, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer notes : \", \"type\": \"text\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": 500, \"minLength\": null}}]",
+                                    "active": true
+                                },
+                                {
+                                    "id": 26,
+                                    "code": "ACC02",
+                                    "name": "Accounts Activities Weekly",
+                                    "department": {
+                                        "id": 7,
+                                        "code": "FIN",
+                                        "name": "Finance",
+                                        "subdepartments": [
+                                            {
+                                                "id": 30,
+                                                "code": "ACC",
+                                                "name": "Accounts"
+                                            },
+                                            {
+                                                "id": 31,
+                                                "code": "SUC",
+                                                "name": "Supply Chain"
+                                            },
+                                            {
+                                                "id": 32,
+                                                "code": "FIM",
+                                                "name": "Finance Monitoring"
+                                            },
+                                            {
+                                                "id": 35,
+                                                "code": "COM",
+                                                "name": "Commercial"
+                                            },
+                                            {
+                                                "id": 36,
+                                                "code": "PUR",
+                                                "name": "Purchase"
+                                            }
+                                        ]
+                                    },
+                                    "recurrence": {
+                                        "id": 26,
+                                        "type": "weekly",
+                                        "repeatEvery": null,
+                                        "repeatEveryWeek": 1,
+                                        "repeatEveryMonth": null,
+                                        "repeatEveryYear": null,
+                                        "occurOnDays": [
+                                            "SATURDAY"
+                                        ],
+                                        "week": null,
+                                        "endsOn": "true",
+                                        "months": null,
+                                        "years": null,
+                                        "day": null,
+                                        "dateByte": 0,
+                                        "endAfter": null,
+                                        "endDate": null,
+                                        "neverEnds": true,
+                                        "saveTime": "11:00:00"
+                                    },
+                                    "scaleValue": "8",
+                                    "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Requirements : \", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 200, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Files Attached :\", \"type\": \"file\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Feedback from Initiator\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer notes\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}]",
+                                    "active": true
+                                },
+                                {
+                                    "id": 25,
+                                    "code": "ACC01",
+                                    "name": "Accounts Activities Monthly",
+                                    "department": {
+                                        "id": 7,
+                                        "code": "FIN",
+                                        "name": "Finance",
+                                        "subdepartments": [
+                                            {
+                                                "id": 30,
+                                                "code": "ACC",
+                                                "name": "Accounts"
+                                            },
+                                            {
+                                                "id": 31,
+                                                "code": "SUC",
+                                                "name": "Supply Chain"
+                                            },
+                                            {
+                                                "id": 32,
+                                                "code": "FIM",
+                                                "name": "Finance Monitoring"
+                                            },
+                                            {
+                                                "id": 35,
+                                                "code": "COM",
+                                                "name": "Commercial"
+                                            },
+                                            {
+                                                "id": 36,
+                                                "code": "PUR",
+                                                "name": "Purchase"
+                                            }
+                                        ]
+                                    },
+                                    "recurrence": {
+                                        "id": 25,
+                                        "type": "monthly",
+                                        "repeatEvery": null,
+                                        "repeatEveryWeek": null,
+                                        "repeatEveryMonth": 1,
+                                        "repeatEveryYear": null,
+                                        "occurOnDays": [],
+                                        "week": null,
+                                        "endsOn": "true",
+                                        "months": null,
+                                        "years": null,
+                                        "day": null,
+                                        "dateByte": 10,
+                                        "endAfter": null,
+                                        "endDate": null,
+                                        "neverEnds": true,
+                                        "saveTime": "10:00:00"
+                                    },
+                                    "scaleValue": "9",
+                                    "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Requirements :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 200, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee\", \"type\": \"textarea\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Docs attached :\", \"type\": \"file\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Feedback from Initiator\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer Notes\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}]",
+                                    "active": true
+                                }
+                            ]
+                        }
+                    },
+                    "status": 1,
+                    "customizedStatus": "Done",
+                    "initiator": {
+                        "id": 145,
+                        "orgId": 1001,
+                        "empId": "46",
+                        "fname": "Shuvro",
+                        "lname": "kumar shaha",
+                        "primaryEmail": "shuvro@scandexbd.com",
+                        "photo": null,
+                        "role": "employee"
+                    },
+                    "typeFields": "{\"Observer Notes\": \"\", \"Requirements :\": \"\", \"Docs attached :\": \"\", \"Reply from Assignee\": \"\", \"Feedback from Initiator\": \"\"}",
+                    "taskid": 22,
+                    "taskName": "Jan 2023 : Monthly Reporting Activities",
+                    "taskFiles": [],
+                    "subtaskRating": {
+                        "id": 219,
+                        "scaleValue": null,
+                        "ratingValue": "0",
+                        "rating": null
+                    },
+                    "subTasks": [],
+                    "createdOn": "2022-12-31T14:43:15.398+00:00",
+                    "modifiedOn": "2023-02-24T14:05:51.985+00:00",
+                    "createdBy": {
+                        "id": 145,
+                        "orgId": 1001,
+                        "empId": "46",
+                        "fname": "Shuvro",
+                        "lname": "kumar shaha",
+                        "primaryEmail": "shuvro@scandexbd.com",
+                        "photo": null,
+                        "role": "employee"
+                    },
+                    "modifiedBy": {
+                        "id": 145,
+                        "orgId": 1001,
+                        "empId": "46",
+                        "fname": "Shuvro",
+                        "lname": "kumar shaha",
+                        "primaryEmail": "shuvro@scandexbd.com",
+                        "photo": null,
+                        "role": "employee"
+                    },
+                    "active": true,
+                    "activeStatus": null,
+                    "startTime": 0,
+                    "stopTime": 0,
+                    "taskTimer": 0,
+                    "todayTaskHistory": 0,
+                    "totalTaskHistory": 0,
+                    "isRecurred": true
+                },
+                {
+                    "id": 532,
+                    "title": "JAN 2023 - Monthly Bank Reconciliation",
+                    "code": "O1001ST00532",
+                    "assignee": {
+                        "id": 108,
+                        "orgId": 1001,
+                        "empId": "9",
+                        "fname": "Piash",
+                        "lname": "Imran Ali",
+                        "primaryEmail": "accounts@scandexbd.com",
+                        "photo": null,
+                        "role": "employee"
+                    },
+                    "observers": [
+                        {
+                            "id": 107,
+                            "orgId": 1001,
+                            "empId": "8",
+                            "fname": "Kayoum",
+                            "lname": "Khan",
+                            "primaryEmail": "kayoum@scandexbd.com",
+                            "photo": null,
+                            "role": "employee"
+                        }
+                    ],
+                    "initDate": "2023-01-10T10:00",
+                    "completedDate": null,
+                    "subDepartment": {
+                        "id": 30,
+                        "code": "ACC",
+                        "name": "Accounts"
+                    },
+                    "taskType": {
+                        "id": 25,
+                        "code": "ACC01",
+                        "name": "Accounts Activities Monthly",
+                        "department": {
+                            "id": 7,
+                            "code": "FIN",
+                            "name": "Finance",
+                            "subdepartments": [
+                                {
+                                    "id": 30,
+                                    "code": "ACC",
+                                    "name": "Accounts"
+                                },
+                                {
+                                    "id": 31,
+                                    "code": "SUC",
+                                    "name": "Supply Chain"
+                                },
+                                {
+                                    "id": 32,
+                                    "code": "FIM",
+                                    "name": "Finance Monitoring"
+                                },
+                                {
+                                    "id": 35,
+                                    "code": "COM",
+                                    "name": "Commercial"
+                                },
+                                {
+                                    "id": 36,
+                                    "code": "PUR",
+                                    "name": "Purchase"
+                                }
+                            ]
+                        },
+                        "recurrence": {
+                            "id": 25,
+                            "type": "monthly",
+                            "repeatEvery": null,
+                            "repeatEveryWeek": null,
+                            "repeatEveryMonth": 1,
+                            "repeatEveryYear": null,
+                            "occurOnDays": [],
+                            "week": null,
+                            "endsOn": "true",
+                            "months": null,
+                            "years": null,
+                            "day": null,
+                            "dateByte": 10,
+                            "endAfter": null,
+                            "endDate": null,
+                            "neverEnds": true,
+                            "saveTime": "10:00:00"
+                        },
+                        "scaleValue": "9",
+                        "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Requirements :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 200, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee\", \"type\": \"textarea\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Docs attached :\", \"type\": \"file\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Feedback from Initiator\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer Notes\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}]",
+                        "active": true
+                    },
+                    "description": "All Banks",
+                    "target": "2023-01-10T16:00",
+                    "priorityFactor": "Priority",
+                    "parentId": null,
+                    "haveGrandParentId": null,
+                    "dependencies": [],
+                    "project": {
+                        "id": 7,
+                        "projectCode": "ACC-Jan 2023",
+                        "projectName": "Accounts-Jan 2023",
+                        "projectOrderNo": "Accounts-Jan 2023",
+                        "group": {
+                            "id": 8,
+                            "name": "Accounts Activity",
+                            "taskType": [
+                                {
+                                    "id": 28,
+                                    "code": "ACC04",
+                                    "name": "Accounts Activity Specific",
+                                    "department": {
+                                        "id": 7,
+                                        "code": "FIN",
+                                        "name": "Finance",
+                                        "subdepartments": [
+                                            {
+                                                "id": 30,
+                                                "code": "ACC",
+                                                "name": "Accounts"
+                                            },
+                                            {
+                                                "id": 31,
+                                                "code": "SUC",
+                                                "name": "Supply Chain"
+                                            },
+                                            {
+                                                "id": 32,
+                                                "code": "FIM",
+                                                "name": "Finance Monitoring"
+                                            },
+                                            {
+                                                "id": 35,
+                                                "code": "COM",
+                                                "name": "Commercial"
+                                            },
+                                            {
+                                                "id": 36,
+                                                "code": "PUR",
+                                                "name": "Purchase"
+                                            }
+                                        ]
+                                    },
+                                    "recurrence": {
+                                        "id": 28,
+                                        "type": "noFixed",
+                                        "repeatEvery": 1,
+                                        "repeatEveryWeek": null,
+                                        "repeatEveryMonth": null,
+                                        "repeatEveryYear": null,
+                                        "occurOnDays": [],
+                                        "week": null,
+                                        "endsOn": "TRUE",
+                                        "months": null,
+                                        "years": null,
+                                        "day": null,
+                                        "dateByte": 0,
+                                        "endAfter": null,
+                                        "endDate": null,
+                                        "neverEnds": true,
+                                        "saveTime": "00:00:12"
+                                    },
+                                    "scaleValue": "8",
+                                    "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Work Requirements : \", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 300, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Documents attached :\", \"type\": \"file\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Initiator feedback :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer notes\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}]",
+                                    "active": true
+                                },
+                                {
+                                    "id": 27,
+                                    "code": "ACC03",
+                                    "name": "Accounts Activities Daily",
+                                    "department": {
+                                        "id": 7,
+                                        "code": "FIN",
+                                        "name": "Finance",
+                                        "subdepartments": [
+                                            {
+                                                "id": 30,
+                                                "code": "ACC",
+                                                "name": "Accounts"
+                                            },
+                                            {
+                                                "id": 31,
+                                                "code": "SUC",
+                                                "name": "Supply Chain"
+                                            },
+                                            {
+                                                "id": 32,
+                                                "code": "FIM",
+                                                "name": "Finance Monitoring"
+                                            },
+                                            {
+                                                "id": 35,
+                                                "code": "COM",
+                                                "name": "Commercial"
+                                            },
+                                            {
+                                                "id": 36,
+                                                "code": "PUR",
+                                                "name": "Purchase"
+                                            }
+                                        ]
+                                    },
+                                    "recurrence": {
+                                        "id": 27,
+                                        "type": "daily",
+                                        "repeatEvery": 1,
+                                        "repeatEveryWeek": null,
+                                        "repeatEveryMonth": null,
+                                        "repeatEveryYear": null,
+                                        "occurOnDays": [],
+                                        "week": null,
+                                        "endsOn": "true",
+                                        "months": null,
+                                        "years": null,
+                                        "day": null,
+                                        "dateByte": 0,
+                                        "endAfter": null,
+                                        "endDate": null,
+                                        "neverEnds": true,
+                                        "saveTime": "08:00:00"
+                                    },
+                                    "scaleValue": "7",
+                                    "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Requirements\", \"type\": \"text\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 200, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee :\", \"type\": \"text\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": 500, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Feedback from Initiator :\", \"type\": \"text\", \"validators\": {\"enterBy\": false, \"required\": false, \"maxLength\": 500, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer notes : \", \"type\": \"text\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": 500, \"minLength\": null}}]",
+                                    "active": true
+                                },
+                                {
+                                    "id": 26,
+                                    "code": "ACC02",
+                                    "name": "Accounts Activities Weekly",
+                                    "department": {
+                                        "id": 7,
+                                        "code": "FIN",
+                                        "name": "Finance",
+                                        "subdepartments": [
+                                            {
+                                                "id": 30,
+                                                "code": "ACC",
+                                                "name": "Accounts"
+                                            },
+                                            {
+                                                "id": 31,
+                                                "code": "SUC",
+                                                "name": "Supply Chain"
+                                            },
+                                            {
+                                                "id": 32,
+                                                "code": "FIM",
+                                                "name": "Finance Monitoring"
+                                            },
+                                            {
+                                                "id": 35,
+                                                "code": "COM",
+                                                "name": "Commercial"
+                                            },
+                                            {
+                                                "id": 36,
+                                                "code": "PUR",
+                                                "name": "Purchase"
+                                            }
+                                        ]
+                                    },
+                                    "recurrence": {
+                                        "id": 26,
+                                        "type": "weekly",
+                                        "repeatEvery": null,
+                                        "repeatEveryWeek": 1,
+                                        "repeatEveryMonth": null,
+                                        "repeatEveryYear": null,
+                                        "occurOnDays": [
+                                            "SATURDAY"
+                                        ],
+                                        "week": null,
+                                        "endsOn": "true",
+                                        "months": null,
+                                        "years": null,
+                                        "day": null,
+                                        "dateByte": 0,
+                                        "endAfter": null,
+                                        "endDate": null,
+                                        "neverEnds": true,
+                                        "saveTime": "11:00:00"
+                                    },
+                                    "scaleValue": "8",
+                                    "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Requirements : \", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 200, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Files Attached :\", \"type\": \"file\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Feedback from Initiator\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer notes\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}]",
+                                    "active": true
+                                },
+                                {
+                                    "id": 25,
+                                    "code": "ACC01",
+                                    "name": "Accounts Activities Monthly",
+                                    "department": {
+                                        "id": 7,
+                                        "code": "FIN",
+                                        "name": "Finance",
+                                        "subdepartments": [
+                                            {
+                                                "id": 30,
+                                                "code": "ACC",
+                                                "name": "Accounts"
+                                            },
+                                            {
+                                                "id": 31,
+                                                "code": "SUC",
+                                                "name": "Supply Chain"
+                                            },
+                                            {
+                                                "id": 32,
+                                                "code": "FIM",
+                                                "name": "Finance Monitoring"
+                                            },
+                                            {
+                                                "id": 35,
+                                                "code": "COM",
+                                                "name": "Commercial"
+                                            },
+                                            {
+                                                "id": 36,
+                                                "code": "PUR",
+                                                "name": "Purchase"
+                                            }
+                                        ]
+                                    },
+                                    "recurrence": {
+                                        "id": 25,
+                                        "type": "monthly",
+                                        "repeatEvery": null,
+                                        "repeatEveryWeek": null,
+                                        "repeatEveryMonth": 1,
+                                        "repeatEveryYear": null,
+                                        "occurOnDays": [],
+                                        "week": null,
+                                        "endsOn": "true",
+                                        "months": null,
+                                        "years": null,
+                                        "day": null,
+                                        "dateByte": 10,
+                                        "endAfter": null,
+                                        "endDate": null,
+                                        "neverEnds": true,
+                                        "saveTime": "10:00:00"
+                                    },
+                                    "scaleValue": "9",
+                                    "customFields": "[{\"id\": null, \"ref\": \"\", \"name\": \"Requirements :\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": true, \"maxLength\": 200, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Reply from Assignee\", \"type\": \"textarea\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Docs attached :\", \"type\": \"file\", \"validators\": {\"enterBy\": true, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Feedback from Initiator\", \"type\": \"textarea\", \"validators\": {\"enterBy\": false, \"required\": false, \"maxLength\": null, \"minLength\": null}}, {\"id\": null, \"ref\": \"\", \"name\": \"Observer Notes\", \"type\": \"textarea\", \"validators\": {\"enterBy\": \"observer\", \"required\": false, \"maxLength\": null, \"minLength\": null}}]",
+                                    "active": true
+                                }
+                            ]
+                        }
+                    },
+                    "status": 1,
+                    "customizedStatus": "Done",
+                    "initiator": {
+                        "id": 145,
+                        "orgId": 1001,
+                        "empId": "46",
+                        "fname": "Shuvro",
+                        "lname": "kumar shaha",
+                        "primaryEmail": "shuvro@scandexbd.com",
+                        "photo": null,
+                        "role": "employee"
+                    },
+                    "typeFields": "{\"Observer Notes\": \"\", \"Requirements :\": \"\", \"Docs attached :\": \"\", \"Reply from Assignee\": \"\", \"Feedback from Initiator\": \"\"}",
+                    "taskid": 22,
+                    "taskName": "Jan 2023 : Monthly Reporting Activities",
+                    "taskFiles": [],
+                    "subtaskRating": {
+                        "id": 221,
+                        "scaleValue": null,
+                        "ratingValue": "0",
+                        "rating": null
+                    },
+                    "subTasks": [],
+                    "createdOn": "2022-12-31T14:45:22.149+00:00",
+                    "modifiedOn": "2023-02-24T14:05:51.986+00:00",
+                    "createdBy": {
+                        "id": 145,
+                        "orgId": 1001,
+                        "empId": "46",
+                        "fname": "Shuvro",
+                        "lname": "kumar shaha",
+                        "primaryEmail": "shuvro@scandexbd.com",
+                        "photo": null,
+                        "role": "employee"
+                    },
+                    "modifiedBy": {
+                        "id": 145,
+                        "orgId": 1001,
+                        "empId": "46",
+                        "fname": "Shuvro",
+                        "lname": "kumar shaha",
+                        "primaryEmail": "shuvro@scandexbd.com",
+                        "photo": null,
+                        "role": "employee"
+                    },
+                    "active": true,
+                    "activeStatus": null,
+                    "startTime": 0,
+                    "stopTime": 0,
+                    "taskTimer": 0,
+                    "todayTaskHistory": 0,
+                    "totalTaskHistory": 0,
+                    "isRecurred": true
+                }
+            ],
+            "createdOn": "2022-12-31T14:33:39.603+00:00",
+            "modifiedOn": "2023-02-24T14:05:51.984+00:00",
+            "modifiedBy": 145,
+            "active": true
+        }
+    ]
+}

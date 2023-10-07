@@ -1,0 +1,14 @@
+@use 'src/styles/variables' as var;
+.form-control{
+    width: 25vw;
+  }
+  .form-control:focus {
+    border-color: var.$primary;
+    box-shadow: 0 0 0 0.1rem rgba(74, 40, 167, 0.25);
+    width: 28vw;
+  } 
+  .table-container
+{
+height: 62vh;
+ overflow-y: scroll;
+}

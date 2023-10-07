@@ -1,0 +1,80 @@
+@use 'src/styles/variables' as var;
+.view-task{
+    padding: 8px;
+    height: 100%;
+    overflow-x: auto;
+    //border: 2px solid gray;
+    //background-color: antiquewhite;
+}
+.header{
+    padding: 8px;
+}
+.title{
+    font-weight: bold;
+    font-size: large;
+    margin-left: 4px;
+    margin-right: 6px;
+   
+}
+
+.id{
+    margin-left: 45px;
+    position: relative;
+    top:-10px;
+    //font-style: oblique;
+    font-size: 12px;
+}
+.create-info{
+    font-style: oblique;
+    font-size: 12px;
+}
+
+.subtask-container{
+    //width: 90%;
+    padding: 8px;
+   // padding-bottom: 24px;
+   // max-height: 270px;
+    margin-bottom: 20px;
+    //border: 0.6px solid rgb(201, 201, 201);
+}
+
+.more{
+    font-style: oblique;
+    //text-decoration: underline;
+    font-size: small;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 10px;
+    background-color: rgb(75, 75, 75);
+    color: white;
+}
+
+.more-details{
+    padding-top: 16px;
+    border-top: 0.2px solid rgba(156, 156, 156, 0.808);
+    padding-bottom: 14px;
+}
+.approval-container{
+    padding: 16px;
+    border-top: 0.2px solid rgba(156, 156, 156, 0.808);
+
+    .approval{
+        font-style: oblique;
+    //text-decoration: underline;
+    font-size: small;
+    padding-top: 4px;
+    padding-bottom: 6px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 10px;
+    background-color: rgb(35, 150, 0);
+    color: white;
+    }
+
+  
+}
+.chat-button {
+    background-color: var.$blue;
+    color: white;
+  }

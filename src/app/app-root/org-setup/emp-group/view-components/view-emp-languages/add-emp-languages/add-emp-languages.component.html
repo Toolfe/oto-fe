@@ -1,0 +1,29 @@
+
+<mat-dialog-content >
+    <div [formGroup]="languageForm" class="container" fxLayoutAlign="center center" fxFlexFill fxLayout='column'>
+        <div>
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Language</mat-label>
+            <input matInput required [formControl]="myControl" [matAutocomplete]="auto" >
+            <mat-autocomplete #auto="matAutocomplete" >
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+              <mat-error>Please Enter Your Language</mat-error>
+                    </mat-form-field>
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Description</mat-label>
+            <input matInput required formControlName="description" >
+            <mat-error>Please Description </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-flat-button color='primary' *ngIf='!update'
+  (click)="addItem()" >Add</button>
+  <button mat-flat-button color='primary' *ngIf='update'
+  (click)="updateLanguage()">Update</button>
+</mat-dialog-actions>

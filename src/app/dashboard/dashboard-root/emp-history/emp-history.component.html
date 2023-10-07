@@ -1,0 +1,161 @@
+<mat-toolbar>
+  <div class="float-rt">
+    <span id="content">
+      <button mat-flat-button class="btn-blue" #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd">Employee <span
+          *ngIf="reportexcel.creator">:&nbsp;{{reportexcel.creator}}</span></button>
+    </span>
+  </div>
+  <mat-menu #dd="matMenu" [overlapTrigger]="false">
+    <div (click)="cancelClick($event)" class="dropdown">
+      <mat-form-field>
+        <mat-label>created By</mat-label>
+        <mat-select [(ngModel)]="reportexcel.creator">
+          <div class="sticky">
+            <input style="width: 100%; padding: 15px;" required placeholder="Search Created By" #emp>
+          </div>
+          <mat-option *ngFor="let user of $employee |async|search:'name':emp.value" [value]="user.name"
+            (click)="onSearchEmp(user)">
+            {{user.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+  </mat-menu>
+
+  <div style="padding: 10px;">
+    <mat-chip-list>
+      <mat-chip (click)="onChipClicked('summary')" [selected]="reportexcel.type === 'summary'"
+        color="primary">Summary</mat-chip>
+      <mat-chip (click)="onChipClicked('detail')" [selected]="reportexcel.type === 'detail'"
+        color="primary">Details</mat-chip>
+    </mat-chip-list>
+  </div>
+
+  <mat-form-field style="margin-left: 10px;font-size: 15px;">
+    <mat-label>Date Range</mat-label>
+    <mat-date-range-input style="width: 80%;" [rangePicker]="picker">
+      <input [(ngModel)]="reportexcel.startDate" matStartDate placeholder="Start Date" (focus)="picker.open()" readonly>
+      <input [(ngModel)]="reportexcel.endDate" matEndDate placeholder="End Date" (focus)="picker.open()" readonly>
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+
+
+  <button mat-flat-button color="primary" (click)="onSubmit()" style="border-radius: 50px;margin-left: 10px;"><mat-icon
+      style="margin-left: -10px;">search</mat-icon>Search</button>
+  <button [disabled]="isButtonDisabled" mat-flat-button color="primary" (click)="onExportExcel()"
+    style="border-radius: 50px;margin-left: 10px;"><mat-icon style="margin-left: -9px;">report</mat-icon>Export</button>
+  <mat-icon (click)="onRefresh()" style="margin-left: 10px; cursor: pointer;">refresh</mat-icon>
+  <!-- <p>Selected Fish: {{ selectedFish.value }}</p> -->
+
+
+
+</mat-toolbar>
+<div>
+  <ng-container *ngIf="reportexcel.type === 'detail'">
+    <table mat-table matSort [dataSource]="dataSource">
+      <ng-container matColumnDef="name">
+        <th class="header name-column" mat-header-cell *matHeaderCellDef>
+          <span>Task Name</span>
+        </th>
+        <td mat-cell *matCellDef="let data" mat-cell [matTooltipClass]="'custom-tooltip'" matTooltipPosition="above" matTooltip={{data.comment}} style="cursor: pointer;" >{{data.subtaskTitle}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="start time">
+        <th class="header " mat-header-cell *matHeaderCellDef>
+          <span>Start Time</span>
+        </th>
+        <td mat-cell *matCellDef="let data">{{convertTimestampToDateTime(data.startTime) |date:'short':'+0000'}}</td>
+      </ng-container>
+      <ng-container matColumnDef="stop time">
+        <th class="header" mat-header-cell *matHeaderCellDef>
+          <span>Stop Time</span>
+        </th>
+        <!-- <td mat-cell *matCellDef="let data">{{convertTimestampToDateTime(data.stopTime)| date:'short':'+0000'}}</td> -->
+        <td mat-cell *matCellDef="let data">{{ data.stopTime ? (convertTimestampToDateTime(data.stopTime) |
+          date:'short':'+0000') : '-' }}</td>
+
+      </ng-container>
+      <ng-container matColumnDef="timeSpent">
+        <th class="header" mat-headr-cell *matHeaderCellDef>
+          <span>Time Spent</span>
+        </th>
+        <td mat-cell *matCellDef="let data">{{data.timeSpent}} Mins</td>
+      </ng-container>
+      <ng-container matColumnDef="date">
+        <th class="header" mat-header-cell *matHeaderCellDef>
+          <span>Created Date</span>
+        </th>
+        <td mat-cell *matCellDef="let data">{{data.createdAt | date}}</td>
+      </ng-container>
+      <ng-container matColumnDef="assignee">
+        <th class="header" mat-header-cell *matHeaderCellDef>
+          <span>Assignee</span>
+        </th>
+        <td mat-cell *matCellDef="let data">{{data.assignee}}</td>
+      </ng-container>
+      <ng-container matColumnDef="creator">
+        <th class="header" mat-header-cell *matHeaderCellDef>
+          <span>Creator</span>
+        </th>
+        <td mat-cell *matCellDef="let data">{{data.creator}}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let request; columns: columnsToDisplay"></tr>
+    </table>
+  </ng-container>
+
+  <ng-container *ngIf="reportexcel.type === 'summary'">
+    <table mat-table matSort [dataSource]="dataSource">
+      <ng-container matColumnDef="name">
+        <th class="header name-column" mat-header-cell *matHeaderCellDef>
+          <span>Task Name</span>
+        </th>
+        <td mat-cell *matCellDef="let data">{{data.subtaskTitle}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="timeSpent">
+        <th class="header " mat-header-cell *matHeaderCellDef>
+          <span>Time Spent</span>
+        </th>
+        <td mat-cell *matCellDef="let data">{{data.timeSpent}} Mins</td>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="status">
+         <th class="header" mat-headr-cell *matHeaderCellDef>
+           <span>status</span>
+         </th>
+         <td mat-cell *matCellDef="let data">{{data.status}}</td>
+        </ng-container> -->
+
+      <ng-container matColumnDef="date">
+        <th class="header" mat-header-cell *matHeaderCellDef>
+          <span>Created Date</span>
+        </th>
+        <td mat-cell *matCellDef="let data">{{data.createdAt | date}}</td>
+      </ng-container>
+      <ng-container matColumnDef="assignee">
+        <th class="header" mat-header-cell *matHeaderCellDef>
+          <span>Assignee</span>
+        </th>
+        <td mat-cell *matCellDef="let data">{{data.assignee}}</td>
+      </ng-container>
+      <ng-container matColumnDef="creator">
+        <th class="header" mat-header-cell *matHeaderCellDef>
+          <span>Creator</span>
+        </th>
+        <td mat-cell *matCellDef="let data">{{data.creator}}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplaySummary"></tr>
+      <tr mat-row *matRowDef="let request; columns: columnsToDisplaySummary"></tr>
+    </table>
+  </ng-container>
+  <ng-template #noData>
+    <div class="nodata-container">
+      <img src="./../../../../assets/icons/no-data-01.svg" alt="No Data" class="no-data">
+      <div>Oops! Seems like there's<br>nothing in this folder yet. </div>
+    </div>
+  </ng-template>
+</div>

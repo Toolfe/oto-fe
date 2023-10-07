@@ -1,0 +1,39 @@
+<div [formGroup]="subCategoryForm">
+    <mat-form-field appearance="standard" class="full-width">
+      <mat-label> Partner Sub Category</mat-label>
+      <input matInput required formControlName='name' >
+      <mat-error>
+        <mat-error>
+          Please Enter Partner Sub Category
+        </mat-error>
+    </mat-error>
+</mat-form-field>
+  <mat-form-field class="full-width" appearance="standard" >
+      <mat-label>Description </mat-label>
+      <input matInput required  formControlName="description">
+       <mat-error>
+        Please Enter Description
+       </mat-error>
+  </mat-form-field>
+
+  
+  <mat-form-field class="full-width" appearance="standard">
+    <mat-label>Business Partner Category</mat-label>
+    <mat-select required  formControlName="businessPartnerCategory" >            
+      <input matInput style="width: 100%; padding: 15px;" #category placeholder="Search category">
+      <mat-option *ngFor="let item of category$ |async|search:'name':category.value" [value]="item.id">
+       {{item.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error> Business Partner Category Required</mat-error>
+  </mat-form-field>
+
+
+  </div>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-flat-button color='primary' *ngIf='!update'
+    (click)="addItem()" >Add</button>
+    <button mat-flat-button color='primary' *ngIf='update'
+    (click)="updateSubCategory()">Update</button>
+  </mat-dialog-actions>

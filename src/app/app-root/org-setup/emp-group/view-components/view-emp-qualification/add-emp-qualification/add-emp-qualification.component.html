@@ -1,0 +1,29 @@
+
+<mat-dialog-content >
+    <div [formGroup]="qualificationForm" class="container" fxLayoutAlign="center center" fxFlexFill fxLayout='column'>
+        <div>
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Qualification</mat-label>
+            <input matInput required formControlName="name">
+            <mat-error>
+              Please Enter Your Qualification
+            </mat-error>
+          </mat-form-field>
+  
+        <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Description</mat-label>
+            <input matInput required formControlName="description" >
+            <mat-error>
+              Please Enter Description
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-flat-button color='primary' *ngIf='!update'
+  (click)="addItem()" >Add</button>
+  <button mat-flat-button color='primary' *ngIf='update'
+  (click)="updateQualification()">Update</button>
+</mat-dialog-actions>

@@ -1,0 +1,28 @@
+
+  <mat-tab-group    [(selectedIndex)]="selectedIndex" (selectedTabChange)="tabChanged($event)">
+    <mat-tab label="Set Range">
+      <app-scale *ngIf='selectedTab ==="Set Range"'></app-scale>
+   </mat-tab>
+   <mat-tab label="Rating">
+    <app-rating *ngIf='selectedTab ==="Rating"'></app-rating>
+ </mat-tab>
+ <mat-tab label="Expectation">
+  <app-expectation *ngIf='selectedTab ==="Expectation"'></app-expectation>
+</mat-tab>
+    <mat-tab label="Type">
+      <app-type *ngIf='selectedTab ==="Type"'></app-type>
+    </mat-tab>
+    <mat-tab label="Group">
+    <app-group *ngIf='selectedTab ==="Group"'></app-group>
+    </mat-tab>
+    <mat-tab label="KPI">
+        <app-kpi *ngIf='selectedTab ==="KPI"'></app-kpi>
+    </mat-tab>
+    <mat-tab label="Priority">
+       <app-priority *ngIf='selectedTab ==="Priority"'></app-priority>
+    </mat-tab>
+ 
+    <mat-tab label="Status">
+      <app-status *ngIf='selectedTab ==="Status"'></app-status>
+    </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,4 @@
+<div [formGroup]="parent">
+    <mat-label>Photo:&nbsp;</mat-label>
+    <input (change)="picked($event, 1)" type="file" formControlName="photo" >
+</div>

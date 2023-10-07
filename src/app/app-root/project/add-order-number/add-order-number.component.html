@@ -1,0 +1,53 @@
+
+<div fxLayoutAlign="center center" fxFlexfill fxLayout='column'>
+    <form  [formGroup]='projectOrderForm'>
+
+       <div  formGroupName="project">
+        <mat-form-field appearance="standard" class="full-width">
+          <mat-label>Project Code</mat-label>
+          <mat-select required   formControlName="id">
+            <div class="sticky">
+            <input matInput style="width: 100%; padding: 15px;" required placeholder="Search Project Code"  #project (click)="getProject(project)">
+          </div>
+            <mat-option *ngFor="let item of project$|async|search:'projectCode':project.value"  searchProject [value]="item.id" >
+            {{item.code}}
+            </mat-option>
+        </mat-select>
+           <mat-error>
+              Please Select Project Code
+          </mat-error>
+        </mat-form-field>
+       </div>
+              
+       <div >
+        <mat-form-field appearance="standard" class="full-width">
+          <mat-label>Order Number</mat-label>
+            <input matInput formControlName="orderNo">
+           <mat-error>
+              Please Enter Order Number
+          </mat-error>
+        </mat-form-field>
+       </div>
+               <div class="col" >
+                <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Order Details</mat-label>
+                      <input matInput formControlName="orderDetails">
+                     <mat-error>
+                        Please Enter Order Details
+                    </mat-error>
+                  </mat-form-field>
+            </div>
+            
+             
+          
+                    
+    </form>
+</div>
+<mat-dialog-actions align="end">
+   <button mat-button mat-dialog-close>Close</button>
+   <button mat-flat-button color='primary' *ngIf='!update'
+   (click)="addItem()">Add</button>
+  <button mat-flat-button color='primary' *ngIf='update' 
+  (click)="updateOrder()" >Update</button> 
+ </mat-dialog-actions>
+

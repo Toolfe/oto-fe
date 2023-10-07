@@ -1,0 +1,11 @@
+{
+    "success": true,
+    "message": "Welcome To Lentera Product!",
+    "token": "eyJhbGciOiJIUzUxMiJ9.eyJlbXBJZCI6IjEiLCJzdWIiOiJzYmliaW4wMEBnbWFpbC5jb20iLCJyb2xlSWQiOiIxIiwiaXNzIjoiT1RPTUFURSIsImV4cCI6MTg1Njk4OTIwNCwiaWF0IjoxNjc2OTg5MjA0LCJvcmdJZCI6MTAwMH0.6eWckLdZWjUMxnX76L8n745vSTf82IJcQm3rdLxOgeBjiEfxDTG6oVNdKKY-4SDAvBF6BSrmmTsRyiLQobR7KQ",
+    "userContext": {
+        "name": "Bibin S",
+        "loginId": 1,
+        "role": "admin",
+        "userName": "sbibin00@gmail.com"
+    }
+}

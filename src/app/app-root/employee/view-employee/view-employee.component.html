@@ -1,0 +1,138 @@
+<div>
+  <mat-toolbar style="height: fit-content; padding: 10px;">
+    <div class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+      (keyup)="applyFilter($event)" #input>
+    </div>
+    <span class="flex-spacer"></span>
+    <button mat-button color='primary' style="margin-right: 12px;" (click)=' addNew()' [disabled]="isEnable('creation')">New</button>
+  </mat-toolbar>
+  
+  <div >
+  
+    <div  class="table-container" >
+  
+      <ng-container *ngIf="(employee$ | async) as employee; else loading">
+        <ng-container *ngIf="employee==='error'; else table">
+          <app-error></app-error>
+        </ng-container>
+        <ng-template #table> 
+          <ng-container *ngIf="dataSource.data.length>0; else noData">
+            <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData(dataSource)">
+
+              <!-- Employee Id Column -->
+              <ng-container matColumnDef="code">
+               <th mat-header-cell *matHeaderCellDef mat-sort-header> Emp Id </th>
+               <td mat-cell *matCellDef="let element"> {{element.employeeCode}} </td>
+             </ng-container>
+          
+             <!-- Empolyee Name Column -->
+             <ng-container matColumnDef="name">
+               <th mat-header-cell *matHeaderCellDef mat-sort-header> Employee Name </th>
+               <td mat-cell *matCellDef="let element"> {{element.firstName+" "+element.lastName}} </td>
+             </ng-container>
+          
+                 <!-- Email Column -->
+                 <ng-container matColumnDef="email">
+                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Primary Email </th>
+                   <td mat-cell *matCellDef="let element"> {{element.primaryEmail}} </td>
+                 </ng-container>
+
+                   <!-- Department Column -->
+                   <ng-container matColumnDef="department">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+                    <td mat-cell *matCellDef="let element" >
+                      <span>{{element.departmentName}}</span> 
+
+                    </td>
+                  </ng-container>
+
+                    <!-- Designation Column -->
+                    <ng-container matColumnDef="designation">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Designation </th>
+                      <td mat-cell *matCellDef="let element" >
+                        <span>{{element.designationName}}</span> 
+  
+                      </td>
+                    </ng-container>
+
+
+                     <!--Sub Department Column -->
+                     <!--  <ng-container matColumnDef="subDepartment">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Sub Department </th>
+                      <td mat-cell *matCellDef="let element">
+                        <span *ngIf="element.role!='admin'">{{element.subDepartmentCode?.name}}</span>
+                      </td>
+                    </ng-container>  -->
+
+                
+           <!-- division Name Column 
+           <ng-container matColumnDef="division" >
+             <th mat-header-cell *matHeaderCellDef mat-sort-header> Division </th>
+             <td mat-cell *matCellDef="let element"> {{element.divisionCode}} </td>
+           </ng-container>-->
+          
+          
+          <!-- location Column
+          <ng-container matColumnDef="location">
+           <th mat-header-cell *matHeaderCellDef mat-sort-header> Location </th>
+           <td mat-cell *matCellDef="let element"> {{element.locationCode}} </td>
+          </ng-container>-->
+          
+          <!--   Action Column -->
+           <ng-container matColumnDef="action">
+             <th mat-header-cell *matHeaderCellDef> Action </th>
+             <td mat-cell *matCellDef="let element"> 
+               <span><button mat-icon-button matTooltipClass="example-tooltip-red" matTooltipPosition='right'
+                 matTooltip='Edit'(click)="edit(element)"[disabled]="isEnable('updation')"><i class="bi bi-pencil-fill"></i></button></span>
+              <ng-container>
+                <span>
+                  <button mat-icon-button matTooltipClass="example-tooltip-red" matTooltipPosition='right'
+                 matTooltip='Delete' (click)="deleteItem(element)"[disabled]="isEnable('deletion')"><i class="bi bi-trash-fill"></i></button>
+                </span>
+              </ng-container>
+          
+            <span>
+             <button mat-icon-button matTooltipClass="example-tooltip-red" matTooltipPosition='right' matTooltip='View More'
+             (click)="viewMore(element)">
+             <mat-icon>remove_red_eye</mat-icon></button>
+           </span>
+             </td>
+           </ng-container> 
+          
+          
+          
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+          class="element-row"></tr>
+          <tr class="mat-row" *matNoDataRow>
+           <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+          </table>
+          </ng-container>
+          <ng-template #noData>
+            <div class="nodata-container">
+              <img src="./../../../../assets/icons/no-data-01.svg" alt="No Data" class="no-data">
+              <div>Oops! Seems like there's<br>nothing in this folder yet. </div>
+              <button mat-flat-button color="primary" (click)="addNew()" [disabled]="isEnable('creation')">Add New</button>
+            </div>
+          </ng-template>
+        </ng-template>
+        
+      </ng-container>
+      <ng-template #loading>
+        <ng-container >
+           <app-table-loading></app-table-loading>
+        </ng-container>
+
+      </ng-template>
+    </div>
+  
+  </div>
+</div> 
+
+
+<mat-paginator [pageSizeOptions]="[10,30, 25, 100]" (page)="pageChanged($event)"aria-label="Select page of users"></mat-paginator>
+
+  
+  

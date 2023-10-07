@@ -1,0 +1,41 @@
+<div>
+            <button mat-icon-button [routerLink]="'/task'">
+              <mat-icon>west</mat-icon>
+            </button>
+            
+            <span class="header-title">{{tasks.title}}</span>
+            <span class="todo" *ngIf="todostatus ">Todo</span> &nbsp;
+            <span class="inprogress" *ngIf="inprogressStatus ">Inprogress</span> &nbsp;
+            <span class="done" *ngIf="doneStatus">Done</span> &nbsp;
+          </div>
+
+          <div style="padding:10px">
+           <em > Task Priority :</em><span style="font-weight:bold">&nbsp;{{tasks.priorityFactor}}</span>
+          </div>
+          <div style="padding:10px">
+            <span>
+              <em >Created by :</em><span style="font-weight:bold">&nbsp;{{tasks.createdBy.fname}} <i class="bi bi-person-fill"
+                style="color: rgb(95, 95, 95);"></i></span>
+            </span>&nbsp;
+            <!--    <span><button mat-flat-button class="btn-blue" (click)="crateSubtask()">Create Subtask</button></span> -->
+
+
+          </div>
+
+          <br>
+
+        <div class="des-grid">
+          <div>
+            <i style="font-weight:normal"> Description : </i>
+            {{tasks.description}}
+           
+          </div>
+         
+          <div>
+            <em >Project Name :</em> <span style="font-weight:bold">&nbsp;{{tasks.project.projectName}}</span>
+          </div>
+          <div>
+            <em >Task Group :</em><span style="font-weight:bold">&nbsp;{{tasks.taskGroup.name}}</span>
+          </div>
+
+        </div>

@@ -1,0 +1,38 @@
+@use 'src/styles/variables' as var;
+
+table{
+    thead{
+        background-color: #f5f5f5;
+    }
+}
+
+.info{
+    background-color: whitesmoke;
+    padding: 30px;
+    width: 100%;
+}
+.address{
+    height: 20vh;
+}
+
+.cName{
+    font-weight: bold;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: capitalize;
+    font-size: larger;
+}
+.label{
+    color: white;
+    padding: 5px 15px;
+    border-radius: 30px;
+}
+#address{
+    background-color:var.$secondary;
+}
+#branch{
+    background-color:var.$primary;
+}
+#branch-address{
+    width: 90%;
+    border-radius:30px
+}

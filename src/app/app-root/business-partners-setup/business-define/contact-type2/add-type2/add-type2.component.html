@@ -1,0 +1,26 @@
+
+<div [formGroup]="contactType2">
+    <mat-form-field appearance="standard" class="full-width">
+      <mat-label>Partner Type 2</mat-label>
+      <input matInput required formControlName='name' >
+      <mat-error>
+        Please Enter Partner Type 2
+      </mat-error>
+    </mat-form-field>
+
+
+  <mat-form-field class="full-width" appearance="standard" >
+      <mat-label>Description </mat-label>
+       <textarea matInput required style="min-height: 30px;
+        max-height: 100px;"  formControlName="description"></textarea>
+       <mat-error>
+        Please Enter Description 
+       </mat-error>
+  </mat-form-field>
+  </div>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-flat-button color='primary'(click)="addItem()" *ngIf='!update'>Add</button>
+    <button mat-flat-button color='primary'(click)="updateType1()" *ngIf='update'>Update</button>
+
+  </mat-dialog-actions>

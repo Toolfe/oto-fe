@@ -1,0 +1,57 @@
+{
+    "success": true,
+    "message": "dashboard project status",
+    "data" :
+    [
+        {
+            "name": "Project 1",
+            "value": 4
+        },
+        {
+            "name": "Project001",
+            "value": 0
+        },
+        {
+            "name": "Test",
+            "value": 9
+        },
+        {
+            "name": "Test1",
+            "value": 9
+        },
+        {
+            "name": "Test3",
+            "value": 9
+        },
+        {
+            "name": "werwer",
+            "value": 343
+        },
+        {
+            "name": "ewrrwerewr",
+            "value": 232
+        },
+        {
+            "name": "ewrewr",
+            "value": 349
+        },
+        {
+            "name": "erwer",
+            "value": 234
+        },
+        {
+            "name": "2131",
+            "value": 213
+        },
+        {
+            "name": "213",
+            "value": 213
+        },
+        {
+            "name": "Test6",
+            "value": 349
+        }
+        
+        
+    ]
+}

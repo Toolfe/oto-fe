@@ -1,0 +1,258 @@
+<div>
+  <h2 *ngIf="!update">Assignment<button mat-icon-button class="float-rt close-btn" mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button></h2>
+  <h2 *ngIf="update">Assignment<button mat-icon-button class="float-rt close-btn" mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button></h2>
+
+  <mat-divider></mat-divider>
+</div>
+<div mat-dialog-content>
+  <div class="body">
+    <form [formGroup]="subTaskForm">
+
+      <div class="col-12">
+        <mat-form-field appearance="standard" class="full-width">
+          <mat-label>Tasks</mat-label>
+          <mat-select formControlName="taskId" required>
+            <div class="sticky">
+              <input matInput style="width: 100%; padding: 15px;" required #taskId placeholder="Search Tasks">
+            </div>
+            <ng-container>
+              <mat-option *ngFor="let task of tasks |search:'taskTitle':taskId.value" [value]="task.id"
+                (onSelectionChange)="taskSelection(task)">
+                {{task.taskTitle}}</mat-option>
+            </ng-container>
+          </mat-select>
+          <mat-error></mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12">
+        <mat-form-field appearance="fill" class="full-width" style="padding-bottom: none;">
+          <input matInput required formControlName="subtaskTitle">
+          <mat-label>Sub-Task Title</mat-label>
+          <mat-error>
+            please enter sub task title
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Order No</mat-label>
+            <mat-select formControlName="orderId" required>
+              <div class="sticky">
+                <input matInput style="width: 100%; padding: 15px;" required #orderId placeholder="Search Order No">
+              </div>
+              <ng-container>
+                <mat-option *ngFor="let order of orders |search:'name':orderId.value" [value]="order.id">
+                  {{order.orderNumber}}</mat-option>
+              </ng-container>
+            </mat-select>
+            <mat-error></mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Task Type</mat-label>
+            <mat-select required formControlName="taskTypeId">
+              <mat-option *ngFor="let item of taskTypes" [value]="item.id" (onSelectionChange)="dropdownChange(item.id)"
+                (click)="dropdownChange(item.id)">{{item.name}}</mat-option>
+            </mat-select>
+            <mat-error>
+              please select your task type
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="custom-form">
+        <form [formGroup]="typeFieldsForm">
+          <div *ngFor='let control of formFields'>
+            <div [ngSwitch]="control.type">
+              <!-- <ng-container *ngIf="control.type!='file'"> -->
+
+              <div class="col" *ngSwitchCase="'text'">
+                <mat-form-field appearance="legacy" class="full-width">
+                  <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                  <input type="text" matInput [formControlName]="control.name">
+                  <mat-error>{{"Please enter "+control.name}}</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col" *ngSwitchCase="'select'">
+                <mat-form-field appearance="legacy" class="full-width">
+                  <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                  <mat-select
+                    [formControlName]="control.fname||control.name || control.partnerName || control.orderDetails">
+                    <mat-option *ngFor="let item of currentControl(control.reference)|async"
+                      [value]="item.fname||item.name || item.partnerName || item.orderDetails">
+                      {{item.fname|| item.partnerName||item.name ||item.orderDetails }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>{{"Please select "+control.name ||
+                    control.fname||control.partnerName||control.orderDetails}}</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col" *ngSwitchCase="'number'">
+                <mat-form-field appearance="legacy" class="full-width">
+                  <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                  <input matInput type="number" [formControlName]="control.name">
+                  <mat-error>{{"Please enter "+control.name}}</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col" *ngSwitchCase="'file'">
+                <mat-form-field appearance="legacy" class="full-width">
+                  <mat-label>{{control.name}}</mat-label>
+                  <br>
+                  <div class="file-input-container">
+
+                    <!-- Use a button to trigger file selection -->
+
+                    <button mat-icon-button matSuffix (click)="fileInput.click()">
+                      <mat-icon>attach_file</mat-icon>
+                    </button>
+
+                    <!-- Allow selecting multiple files -->
+
+                    <input #fileInput type="file" (change)="onFilesSelected($event, control)" style="display:none"
+                      multiple>
+
+                    <!-- Display selected file names in the input field -->
+
+                    <input style="cursor: pointer;" (click)="fileInput.click()" matInput
+                      [value]="getSelectedFileNames()" [placeholder]="selectedFiles?.length === 0 ? 'Select Files' : ' '"
+                      readonly>
+                  </div>
+                </mat-form-field>
+
+                <!-- Display selected file names in a list -->
+
+                <div *ngFor="let file of selectedFiles; let i = index">
+                  <div *ngIf="file.fieldName == control.name">
+                    <span style="cursor: pointer;" (dblclick)="downloadFile(file)"><mat-icon
+                        class="file-icon">description</mat-icon>
+                      {{file.filedata?.name || file.fileName }}</span>
+                    <button mat-icon-button (click)="removeFile(i)">
+                      <mat-icon class="remove-icon">cancel</mat-icon>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col" *ngSwitchCase="'email'">
+                <mat-form-field appearance="legacy" class="full-width">
+                  <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                  <input matInput type="email" name="email" [formControlName]="control.name">
+                  <mat-error>Invalid email!</mat-error>
+                </mat-form-field>
+              </div>
+
+
+              <div class="col" *ngSwitchCase="'tel'">
+                <mat-form-field appearance="legacy" class="full-width">
+                  <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                  <input matInput type="tel" [formControlName]="control.name" numberOnly>
+                  <mat-error>{{"Please enter "+control.name}}</mat-error>
+                </mat-form-field>
+              </div>
+
+
+              <div class="col" *ngSwitchCase="'date'">
+                <mat-form-field appearance="legacy" class="full-width">
+                  <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                  <input matInput [matDatepicker]="picker" (focus)="picker.open()" [formControlName]="control.name">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error>{{"Please enter "+control.name}}</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col" *ngSwitchCase="'textarea'">
+                <mat-form-field appearance="standard" class="full-width">
+                  <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                  <textarea matInput [formControlName]="control.name"></textarea>
+                  <mat-error>{{"Please enter "+control.name}}</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col" *ngSwitchCase="'radio'">
+                <div>
+                  <span>{{control.name}} : &nbsp; &nbsp;</span>
+                  <mat-radio-group aria-label="Select an option" class="full-width" [formControlName]="control.name">
+                    <mat-radio-button value="Yes" style="margin-right: 30px;">Yes</mat-radio-button>
+                    <mat-radio-button value="No">No</mat-radio-button>
+                  </mat-radio-group><br><br>
+                </div>
+
+              </div>
+              <!-- </ng-container> -->
+
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+      <!-- <div class="row"> -->
+        <div class="col-12">
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Task Assignee</mat-label>
+            <mat-select formControlName="assigneeId" required>
+              <div class="sticky">
+                <input matInput style="width: 100%; padding: 15px;" required #assignee placeholder="Search Assignee">
+              </div>
+
+              <ng-container>
+                <mat-option *ngFor="let employee of assignee$ | async |search:'name':assignee.value"
+                  [value]="employee.id">
+                  {{employee.name}}</mat-option>
+              </ng-container>
+
+            </mat-select>
+            <mat-error>
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+      <!-- </div> -->
+
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Target Date and Time</mat-label>
+            <input matInput type="datetime-local" placeholder="Target date and Time"
+              formControlName="subtaskTargetDate">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Priority Factor</mat-label>
+            <mat-select formControlName="subtaskPriorityId" required>
+              <mat-option *ngFor="let item of priority$ | async" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<mat-dialog-actions class="footer float-rt">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-flat-button type="submit" color="primary" (click)="addItem()" [disabled]="isEnable('creation')"
+    *ngIf="!update">Create</button>
+  <button mat-flat-button color='primary' *ngIf="update" (click)="updateTask()" [disabled]="isEnable('updation')">Update
+    Task</button>
+</mat-dialog-actions>

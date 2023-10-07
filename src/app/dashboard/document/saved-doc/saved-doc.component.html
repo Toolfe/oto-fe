@@ -1,0 +1,121 @@
+
+
+
+  <div class="folder-container">
+    <div class="path-grid">
+    <ul><li [routerLink]="'../all-files'">My docs /></li> 
+      <li>
+       <span class="selected">Saved</span>>&nbsp;</li>
+  </ul>
+    </div>
+
+
+   
+   
+
+      <ng-container *ngIf="savedDocs$ | async as docs; else load">
+        <ng-container *ngIf="docs=='error'; else table">
+          <app-error></app-error>
+        </ng-container>
+        <ng-template #table>
+          <ng-container *ngIf="docs?.length==0; else loadData">
+            <div class="nodata-container">
+              <img src="./../../../../assets/icons/no-data-01.svg" alt="No Data" class="no-data">
+              <div>There is nothing in Trash!</div>
+            
+            </div>
+          </ng-container>
+          <ng-template #loadData >
+            <div class="grid-container">
+    
+              <ng-container *ngFor="let doc of docs" >
+                 <!---*******************Files **********************-->
+              <div class="outer" (contextmenu)="onContextMenu($event,doc)">
+                <div class="grid-item">
+                  <div class="item-container" [ngSwitch]="getType(doc.fileName)">
+                    <i class="bi bi-file-earmark-excel-fill excel" *ngSwitchCase="'xl'"></i>
+                    <i class="bi bi-file-earmark-word word" *ngSwitchCase="'do'"></i>
+                    <i class="bi bi-filetype-pdf pdf" *ngSwitchCase="'pd'"></i>
+                    <i class="bi bi-file-earmark-image image" *ngSwitchCase="'jp'"></i>         
+                    <i class="bi bi-file-earmark-ppt-fill ppt"  *ngSwitchCase="'pp'"></i>
+                    <i class="bi bi-file-earmark-image image" *ngSwitchCase="'pn'"></i>         
+                    <i class="bi bi-file-earmark-ppt-fill ppt"  *ngSwitchCase="'po'"></i>
+                    <i class="bi bi-file-zip-fill zip" *ngSwitchCase="'zi'"></i>
+                    <i class="bi bi-file-earmark-text file"  *ngSwitchDefault></i>
+                  </div>
+                  <div class="item-name">{{getFileName(doc.fileName)}}</div>
+                </div>
+              </div>
+              </ng-container>
+            </div>
+
+          </ng-template>
+        </ng-template>
+      </ng-container>
+      <ng-template #load>
+        <div class="grid-container">
+    
+          <ng-container *ngFor="let item of loadArray" >
+            <div  class="outer" >
+              <div class="grid-item">
+                <div class="item-container">
+                  <span class="loading" loading> </span>
+                </div>
+                <div class="item-name"></div>
+              </div>
+            </div>
+          </ng-container>
+          
+         
+            
+    
+        
+      
+          <div style="visibility: hidden; position: fixed"
+          [style.left]="contextMenuPosition.x"
+          [style.top]="contextMenuPosition.y"
+          [matMenuTriggerFor]="fileMenu">
+          </div>
+    
+    
+      <mat-menu #fileMenu="matMenu">
+        <ng-template matMenuContent>
+          <div class="menu">
+            <button mat-menu-item (click)="addNew()" [disabled]="isEnable('creation')">   <mat-icon>create_new_folder</mat-icon> New Folder</button>
+            <button mat-menu-item > <mat-icon>upload</mat-icon>New Document</button>
+            <mat-divider>    </mat-divider>
+          
+            <mat-divider>    </mat-divider>
+            <button mat-menu-item (click)="showProperty(selectedDoc)"><mat-icon>info</mat-icon>Properties</button>
+          </div>
+        </ng-template>
+      </mat-menu> 
+      
+      <!-- <mat-menu #create="matMenu">
+        <button mat-menu-item  (click)="addNew()">
+          <mat-icon>create_new_folder</mat-icon>
+          <span>Folder</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>article</mat-icon>
+          <span>Text Document</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="uploadFile()">
+          <mat-icon>upload</mat-icon>
+          <span>Upload File</span>
+        </button>
+         
+      </mat-menu> -->               
+        </div>
+      </ng-template>
+
+  </div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,242 @@
+
+
+  * {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+:root {
+	--hue: 223;
+	--bg: hsl(var(--hue),90%,20%);
+	--fg: hsl(var(--hue),10%,90%);
+	--primary: hsl(var(--hue),90%,55%);
+	--primary-dn: hsl(var(--hue),90%,45%);
+	font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320));
+}
+/* body, button {
+	font: 1em/1.5 Hind, sans-serif;
+} */
+
+/* button {
+	animation: reappear 3s steps(1) forwards;
+	
+	border-radius: 0.2em;
+	color: rgb(21, 61, 194);
+	padding: 0.5em 1em;
+	transition: background-color 0.1s linear;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+button:focus {
+	outline: none;
+}
+button, */
+.check-spinner__worm-a,
+.check-spinner__worm-b {
+	visibility: hidden;
+}
+.check-spinner {
+	margin-bottom: 3em;
+	overflow: visible;
+	width: 6.25em;
+	height: 6.25em;
+}
+.check-spinner__worm-a {
+	animation: worm-a 1.2s linear;
+}
+.check-spinner__worm-b {
+	animation: worm-b 1.2s 1.2s linear forwards;
+	stroke-dashoffset: 0.01;
+}
+.check-spinner__circle {
+	animation: circle 0.2s 2.3s cubic-bezier(0,0,.42,1.33) forwards;
+}
+
+/* Animations */
+@keyframes worm-a {
+	from {
+		stroke-dashoffset: 36.1;
+		visibility: visible;
+	}
+	to {
+		stroke-dashoffset: -252.9;
+		visibility: visible;
+	}
+}
+@keyframes worm-b {
+	from {
+		animation-timing-function: linear;
+		stroke-dasharray: 0 0 72.2 341.3;
+		visibility: visible;
+	}
+	69.7% {
+		animation-timing-function: ease-out;
+		stroke-dasharray: 0 207 45 341.3;
+		visibility: visible;
+	}
+	to {
+		animation-timing-function: ease-out;
+		stroke-dasharray: 0 297 45 341.3;
+		visibility: visible;
+	}
+}
+@keyframes circle {
+	from { r: 0; }
+	to { r: 50px; }
+}
+@keyframes reappear {
+	from { visibility: hidden; }
+	to { visibility: visible; }
+}
+
+
+
+
+
+
+
+  ////@at-root
+
+  svg {
+	width: 100px;
+	display: block;
+	margin: 40px auto 0;
+  }
+  
+  .path {
+	stroke-dasharray: 1000;
+	stroke-dashoffset: 0;
+	&.circle {
+	  -webkit-animation: dash .9s ease-in-out;
+	  animation: dash .9s ease-in-out;
+	}
+	&.line {
+	  stroke-dashoffset: 1000;
+	  -webkit-animation: dash .9s .35s ease-in-out forwards;
+	  animation: dash .9s .35s ease-in-out forwards;
+	}
+	&.check {
+	  stroke-dashoffset: -100;
+	  -webkit-animation: dash-check .9s .35s ease-in-out forwards;
+	  animation: dash-check .9s .35s ease-in-out forwards;
+	}
+  }
+		   
+  p {
+	text-align: center;
+	margin: 20px 0 60px;
+	font-size: 1.25em;
+	&.success {
+	  color: #73AF55;
+	}
+	&.error {
+	  color: #D06079;
+	}
+  }
+  
+  
+  @-webkit-keyframes dash {
+	0% {
+	  stroke-dashoffset: 1000;
+	}
+	100% {
+	  stroke-dashoffset: 0;
+	}
+  }
+  
+  @keyframes dash {
+	0% {
+	  stroke-dashoffset: 1000;
+	}
+	100% {
+	  stroke-dashoffset: 0;
+	}
+  }
+  
+  @-webkit-keyframes dash-check {
+	0% {
+	  stroke-dashoffset: -100;
+	}
+	100% {
+	  stroke-dashoffset: 900;
+	}
+  }
+  
+  @keyframes dash-check {
+	0% {
+	  stroke-dashoffset: -100;
+	}
+	100% {
+	  stroke-dashoffset: 900;
+	}
+  }
+
+
+  .loader {
+	height: 5rem;
+	width: 5rem;
+	border-radius: 50%;
+	border: 10px solid orange;
+	border-top-color: #002147;
+	box-sizing: border-box;
+	background: transparent;
+	animation: loading 1s linear infinite;
+  }
+  
+  @keyframes loading {
+	0% {
+	  transform: rotate(0deg);
+	}
+	0% {
+	  transform: rotate(360deg);
+	}
+  }
+  
+
+
+  .ui-error{
+	width: 100px; height: 100px;
+	margin: 40px;
+	&-circle{
+		stroke-dasharray:260.75219024795285px, 260.75219024795285px;
+		stroke-dashoffset: 260.75219024795285px;
+		animation: ani-error-circle 1.2s linear;
+	}
+	&-line1{
+		stroke-dasharray: 54px 55px;
+		stroke-dashoffset: 55px;
+		stroke-linecap: round;
+		animation: ani-error-line .15s 1.2s linear both;
+	}
+	&-line2{
+		stroke-dasharray: 54px 55px;
+		stroke-dashoffset: 55px;
+		stroke-linecap: round;
+		animation: ani-error-line .2s .9s linear both;
+	}
+}
+
+@keyframes ani-error-line{
+	to { stroke-dashoffset: 0; }
+}
+
+ @keyframes ani-error-circle {
+		0% {
+				stroke-dasharray: 0, 260.75219024795285px;
+				stroke-dashoffset: 0;
+		}
+		35% {
+				stroke-dasharray: 120px, 120px;
+				stroke-dashoffset: -120px;
+		}
+		70% {
+				stroke-dasharray: 0, 260.75219024795285px;
+				stroke-dashoffset: -260.75219024795285px;
+		}
+		100% {
+				stroke-dasharray: 260.75219024795285px, 0;
+				stroke-dashoffset: -260.75219024795285px;
+		}
+}

@@ -1,0 +1,46 @@
+<div fxLayoutAlign="center center" fxFlexFill fxLayout='column'><br><br><br><br>
+  <img src="./../../../assets/icons/product-logo.svg" class="oto-logo">
+  <div class="box1">
+
+    <form fxLayout="column" [formGroup]="loginForm">
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>  
+        <input matInput type="email" name="email" required formControlName="userName">
+        <mat-error>
+          <div *ngIf="email.errors?.required && email.touched">
+            This field can't be empty
+          </div>
+          <div *ngIf="email.errors?.email">Invalid Email
+          </div>
+        </mat-error>
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+        <mat-error *ngIf="password.errors?.required && password.touched">
+          Password can't be Empty!
+        </mat-error>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <div>
+
+      </div>
+
+
+      <button mat-flat-button color="primary" type="submit" (click)=" logSubmit()" *ngIf="!loading">Login</button>
+      <div class="loader" *ngIf="loading"></div>
+
+      <br>
+      <div class="popup">Forgot your password?<span>&nbsp;&nbsp;
+          <a mat-button color="accent" routerLink="/reset-password">Reset</a>
+        </span>
+      </div>
+    </form>
+  </div>
+</div>

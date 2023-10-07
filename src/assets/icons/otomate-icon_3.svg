@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 407.17 190.78">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f26419;
+      }
+
+      .cls-2 {
+        fill: #231f20;
+        font-family: NexaText-Trial-Black, 'Nexa Text-Trial';
+        font-size: 46.05px;
+        font-weight: 800;
+      }
+
+      .cls-3 {
+        fill: #662d91;
+      }
+
+      .cls-4 {
+        letter-spacing: 0em;
+      }
+
+      .cls-5 {
+        fill: #f6ae2d;
+      }
+
+      .cls-6 {
+        letter-spacing: 0em;
+      }
+    </style>
+  </defs>
+  <text class="cls-2" transform="translate(176.19 80.69)"><tspan x="0" y="0">O</tspan><tspan class="cls-4" x="38.59" y="0">t</tspan><tspan x="58.38" y="0">oma</tspan><tspan class="cls-4" x="155.63" y="0">t</tspan><tspan x="175.43" y="0">e </tspan><tspan class="cls-6" x="0" y="55.06">L</tspan><tspan x="28.18" y="55.06">ogiclab</tspan></text>
+  <g>
+    <circle class="cls-3" cx="85.2" cy="94.29" r="66.48"/>
+    <g>
+      <path class="cls-5" d="m47.77,116.11v-44.17h18.75l-.06,41.2c0,1.64,1.32,2.97,2.96,2.97h34.54v15.63h-53.29c-1.64,0-2.96-1.33-2.96-2.96v-12.66h.06Z"/>
+      <path class="cls-1" d="m122.64,72.47v44.17h-18.75l.06-41.2c0-1.64-1.32-2.97-2.96-2.97h-34.54v-15.63h53.29c1.64,0,2.96,1.33,2.96,2.96v12.66h-.06Z"/>
+    </g>
+  </g>
+</svg>

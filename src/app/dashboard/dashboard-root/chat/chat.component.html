@@ -1,0 +1,126 @@
+<div id="chat-header" >
+  User
+  <span class="float-rt">
+      <i class="bi bi-x-circle close" mat-dialog-close></i>
+  </span>
+</div>
+
+<div class="pattern" id="chat-body" #scrollMe [scrollTop]="scrollMe.scrollHeight"  >
+<div class="row" >
+  <div *ngFor="let item of messages" >
+    <div class="bubble" [ngClass]="item.createdBy == currentUser ? 'others ' : 'currentUser' " >
+      <div class="text">{{item.text}}</div>
+      <div class="attachment" *ngIf="item.attachment">
+        <div class="row" [ngClass]="item.createdBy == currentUser ? 'fileLeft' : 'fileRight' ">
+          <div class="col-1">
+            <span >
+              <mat-icon >description</mat-icon>
+            </span>
+          </div>
+          <div class="col-8 fileName"  >
+            <span style="margin-left: 10px;">{{item.attachment.docFileName}}</span>
+          </div>
+          <div class="col-1">
+            <span mat-icon-button [matMenuTriggerFor]="menu" >
+                <mat-icon style=" cursor: pointer;" 
+               >more_horiz</mat-icon>
+            </span>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>download</mat-icon>
+                <span >Download</span>
+              </button>
+              <button mat-menu-item >
+                <mat-icon>delete</mat-icon>
+                <span  >Delete</span>
+              </button>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+      <div class="footer"  [ngClass]="item.createdBy == currentUser ? 'left' : 'right' " >{{item. timeStamp | date:'h:mm a' }} </div>
+    </div>
+  </div>
+<!--   <div *ngFor="let item of empMessages" >
+    <div class="bubble" [ngClass]="item.createdBy == currentUser ? 'others' : 'currentUser' " >
+      <div class="text">{{item.text}}</div>
+      <div class="attachment" *ngIf="item.attachment">
+        <div class="row" [ngClass]="item.createdBy == currentUser ? 'fileLeft' : 'fileRight' ">
+          <div class="col-1">
+            <span >
+              <mat-icon >description</mat-icon>
+            </span>
+          </div>
+          <div class="col-8 fileName"  >
+            <span style="margin-left: 10px;">{{item.attachment.docFileName}}</span>
+          </div>
+          <div class="col-1">
+            <span mat-icon-button [matMenuTriggerFor]="menu" >
+                <mat-icon style=" cursor: pointer;" 
+               >more_horiz</mat-icon>
+            </span>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>download</mat-icon>
+                <span >Download</span>
+              </button>
+              <button mat-menu-item >
+                <mat-icon>delete</mat-icon>
+                <span  >Delete</span>
+              </button>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+      <div class="footer"  [ngClass]="item.createdBy == currentUser ? 'left' : 'right' " >{{item. timeStamp | date:'h:mm a' }} </div>
+    </div>
+  </div> -->
+</div>
+</div>
+<div id="chat-footer" [formGroup]="chatForm">
+  <div class="parent">
+    <div class="text"   >
+      <textarea type="text" class="input" formControlName="text"  placeholder="Type a message" (keyup.enter)="sendMessage()" autofocus></textarea>
+      <div  *ngFor="let f of filesData"  fxLayoutAlign="center center" style="border:1px solid black">
+        <div class="row file "  *ngIf="isHidden" >
+            <div class="col-2">
+              <span >
+                <mat-icon >description</mat-icon>
+              </span>
+            </div>
+            <div class="col-8 fileName">
+              <span >{{f.name}}</span>
+            </div>
+            <div class="col-2">
+            <span style="cursor: pointer;"
+              mat-icon-button
+              color="primary"
+              [attr.title]="deleteButtonLabel ? deleteButtonLabel : null"
+              (click)="removeFile( f)"
+             >
+             <mat-icon >{{ deleteButtonIcon }}</mat-icon>
+              </span> 
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="buttons">
+      <input   #fileUpload
+      type="file"
+      style="display: none;"
+      (change)="onFileSelected($event)">
+     <div Style="margin-top: 10px; margin-left: 15px;" >
+     <span mat-icon-button  
+     (click)="onClick()" style="cursor: pointer;">
+       <mat-icon>attach_file</mat-icon>
+     </span>
+     </div>
+   
+    </div>
+    <div class="buttons">
+      <button mat-icon-button (click)="sendMessage()">
+        <mat-icon >send</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

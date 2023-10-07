@@ -1,0 +1,193 @@
+<div>
+  <button mat-button class="float-rt cls-button" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+  <div class="title">{{task?.subtaskTitle |titlecase }}
+    <div class="sub-title">{{task.subtaskCode}}</div>
+  </div>
+</div>
+<mat-divider></mat-divider>
+<div mat-dialog-content class="main-div">
+
+  <div class="grid">
+    <div class="key">Initiator
+      <div class="value">{{task.initiatorName}}</div>
+    </div>
+    <div class="key">Assignee
+      <div class="value">{{task.assigneeName}}</div>
+    </div>
+    <div class="key">Project
+      <div class="value">{{task.projectName}}</div>
+    </div>
+    <div class="key">Sub Department
+      <div class="value">{{task.subDepartmentName}}</div>
+    </div>
+    <div class="key">Initiation Date
+      <div class="value">{{task.createdAt | date:'medium'}}</div>
+    </div>
+    <div class="key">Priority
+      <div class="value">{{task.priorityName}}</div>
+    </div>
+    <div class="key">
+      Observers
+      <div class="value">
+        <ng-container *ngIf="task.observers?.length>0; else none">
+          <ng-container *ngIf="task.observers?.length==1;  else list">
+            <div *ngFor="let observer of task.observers">{{observer.observerName}}</div>
+          </ng-container>
+          <ng-template #list>
+            <li *ngFor="let observer of task.observers">{{observer.observerName}}</li>
+          </ng-template>
+        </ng-container>
+        <ng-template #none>
+          -
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="key">Target Date
+      <div class="value">{{task.subtaskTargetDate | date:'medium'}}</div>
+    </div>
+
+    <div class="key">Scale Value
+      <div class="value">{{task.scaleValue}}</div>
+    </div>
+
+    <div class="key">Completed Date
+      <div class="value">{{task.completedDate}}</div>
+    </div>
+  </div>
+  <div class="key"> Dependencies
+    <div class="value">
+      <ng-container *ngIf="task.dependencies.length>0; else none">
+        <ng-container *ngIf="task.dependencies.length==1;  else list">
+          <div *ngFor="let dependency of task.dependencies">{{dependency.subtaskTitle+" ("+getStatus(dependency.subtaskStatusId)+")"}}</div>
+        </ng-container>
+        <ng-template #list>
+          <li *ngFor="let dependency of task.dependencies">{{dependency.subtaskTitle+" ("+getStatus(dependency.subtaskStatusId)+")"}}</li>
+        </ng-template>
+      </ng-container>
+      <ng-template #none>
+        -
+      </ng-template>
+    </div>
+  </div>
+  <div class="body">
+    <div class="row" [formGroup]="subTaskForm">
+
+      <div class="col">
+        <mat-form-field appearance="standard" class="full-width">
+          <mat-label>Task Type</mat-label>
+          <mat-select required formControlName="taskTypeId">
+            <mat-option *ngFor="let type of taskTypes " [value]="type.id" (onSelectionChange)="dropdownChange(type.id)"
+              (click)="dropdownChange(type.id)">{{type.name}}</mat-option>
+          </mat-select>
+          <mat-error>
+            please select your task type
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <form [formGroup]="typeFieldsForm">
+        <div *ngFor='let control of formFields'>
+          <div [ngSwitch]="control.type">
+            <div class="col" *ngSwitchCase="'text'">
+              <mat-form-field appearance="legacy" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <input type="text" matInput [formControlName]="control.name" [required]="control.required">
+                <mat-error>{{"Please enter "+control.name}}</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col" *ngSwitchCase="'select'">
+              <mat-form-field appearance="legacy" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <mat-select
+                  [formControlName]="control.fname||control.name || control.partnerName || control.orderDetails">
+                  <mat-option *ngFor="let item of currentControl(control.reference)|async"
+                    [value]="item.fname||item.name || item.partnerName || item.orderDetails">
+                    {{item.fname|| item.partnerName||item.name ||item.orderDetails }}
+                  </mat-option>
+                </mat-select>
+                <mat-error>{{"Please select "+control.name ||
+                  control.fname||control.partnerName||control.orderDetails}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col" *ngSwitchCase="'number'">
+              <mat-form-field appearance="legacy" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <input matInput type="number" [formControlName]="control.name" [required]="control.required">
+                <mat-error>{{"Please enter "+control.name}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col" *ngSwitchCase="'email'">
+              <mat-form-field appearance="legacy" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <input matInput type="email" name="email" [formControlName]="control.name"
+                  [required]="control.required">
+                <mat-error>Invalid email!</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col" *ngSwitchCase="'tel'">
+              <mat-form-field appearance="legacy" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <input matInput type="tel" [formControlName]="control.name" [required]="control.required" numberOnly>
+                <mat-error>{{"Please enter "+control.name}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col" *ngSwitchCase="'date'">
+              <mat-form-field appearance="legacy" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <input matInput [matDatepicker]="picker" (focus)="picker.open()" [formControlName]="control.name"
+                  [required]="control.required">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error>{{"Please enter "+control.name}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col" *ngSwitchCase="'textarea'">
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <textarea matInput [formControlName]="control.name" [required]="control.required"></textarea>
+                <mat-error>{{"Please enter "+control.name}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col" *ngSwitchCase="'radio'">
+              <div>
+                <span>{{control.name}} : &nbsp; &nbsp;</span>
+                <mat-radio-group aria-label="Select an option" class="full-width" [formControlName]="control.name"
+                  [required]="control.required">
+                  <mat-radio-button value="Yes" style="margin-right: 30px;">Yes</mat-radio-button>
+                  <mat-radio-button value="No">No</mat-radio-button>
+                </mat-radio-group><br><br>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </form>
+
+
+
+      <div class="col">
+        <mat-form-field appearance="standard" class="full-width">
+          <mat-label>Rating</mat-label>
+          <mat-select formControlName="rating">
+            <mat-option *ngFor='let item of rating$ | async' [value]="item.value">
+              {{item.value}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+<mat-dialog-actions align="end">
+  <button mat-button color='primary' mat-dialog-close>Cancel</button>
+  <button mat-flat-button color='primary' (click)="submitRatingCalculation()">Save</button>
+</mat-dialog-actions>

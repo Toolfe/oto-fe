@@ -1,0 +1,199 @@
+<div class="table-container">
+
+  <ng-container *ngIf="(viewTask$ |async) as task; else loading">
+    <ng-container *ngIf="task==='error'; else viewtask">
+      <app-error></app-error>
+    </ng-container>
+    <ng-template #viewtask>
+      <ng-container>
+        <div class="header-grid">
+          <div class="container-1">
+            <div>
+              <button mat-icon-button (click)="onBack()">
+                <mat-icon>west</mat-icon>
+              </button>
+            </div>
+            <div class="header-title">
+              <div class="title">{{tasks.taskCode+"-"+tasks.taskTitle}}</div>
+              <div>
+                Created by,
+                <span class="created">{{tasks.createdBy}}</span>
+              </div>
+            </div>
+            <span class="todo status-tag" *ngIf="todostatus ">Todo</span> &nbsp;
+            <span class="inprogress status-tag" *ngIf="inprogressStatus ">Inprogress</span> &nbsp;
+            <span class="done status-tag" *ngIf="doneStatus">Done</span>
+          </div>
+          <div class="container-2">
+            <span>
+              <span class="key">Priority: </span>
+              <span class="priority" [ngClass]="getPriority(tasks.priorityId)">{{tasks.priorityName | titlecase}}
+                <span id="dot" *ngIf="isOverriding"> &#11044; </span>
+              </span>
+            </span>
+
+            <span>
+              <span class="key">Project: </span><span class="value">{{tasks.projectName | titlecase}}</span>
+            </span>
+          </div>
+        </div>
+
+
+
+        <div class="mid-container">
+          <div>
+            <span *ngIf="!isReadMore">
+              <span class="description">Description</span> :
+              {{tasks.taskDescription | characterLimit :250}}...
+              <a *ngIf="tasks.taskDescription?.length>250" class="read" (click)="readMore()">Read more</a>
+            </span>
+            <span *ngIf="isReadMore">
+              <span class="description">Description</span> : {{tasks.taskDescription | characterLimit}}
+              <a class="read" (click)="readLess()">Read Less</a>
+            </span>
+          </div>
+          <div>
+            <button mat-flat-button class="btn-blue" (click)="crateSubtask(tasks.id,tasks.projectId)">
+              Assignment</button>
+          </div>
+
+        </div>
+
+
+
+
+        <div class="accordian-container">
+          <cdk-accordion id="cdk-accordion">
+            <cdk-accordion-item #accordionItem="cdkAccordionItem" class="task-accordion-item" role="button" tabindex="0"
+              [expanded]="panelOpenState" [attr.id]="'accordion-header-' " [attr.aria-expanded]="accordionItem.expanded"
+              [attr.aria-controls]="'accordion-body-'">
+              <div class="task-accordion-item-header" (click)="accordionItem.toggle()">
+                Sub Tasks - {{subtasks.length}}
+                <span class="task-accordion-item-description">
+                  Click to {{ accordionItem.expanded ? 'close' : 'open' }}
+                </span>
+              </div>
+              <div class="task-accordion-item-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none'"
+                [attr.id]="'accordion-body-' " [attr.aria-labelledby]="'accordion-header-'">
+                <div class="subtask-container">
+
+                  <div class="row" cdkDropListGroup>
+
+                    <div class="col-4">
+                      <div class="list-container">
+                        <!--  <span class="todo">Todo</span><br><br> -->
+                        <div id="todo" class="tag">Todo</div>
+                        <div #container1 id="toDo" cdkDropList [cdkDropListData]="todo" class="list"
+                          (cdkDropListDropped)="drop($event)">
+                          <div class="list-box row-12" cdkDrag *ngFor="let item of todo"
+                            (cdkDragDropped)="onDrop($event,item)">
+                            <div class="col-6 task-title">
+                              {{item.taskTitle}}
+                            </div>
+                            <div class="col-4 todo-status">
+                              {{item.statusName}}
+                            </div>
+
+                            <div class="col-2">
+                              <mat-icon class="float-rt icons card-icon" [matMenuTriggerFor]="cardMenu"
+                                (click)="selectedTask(item)">more_vert</mat-icon>
+                              <mat-icon class="float-rt icons card-icon" (click)="editData(item)">edit</mat-icon>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <div class="col-4">
+                      <div class="list-container">
+                        <div id="inprogress" class="tag">In-Progress</div>
+                        <div id="inProgress" #container2 cdkDropList [cdkDropListData]="inprogress" class="list"
+                          (cdkDropListDropped)="drop($event)">
+                          <div class="list-box row-12" *ngFor="let item of inprogress" cdkDrag
+                            (cdkDragDropped)="onDrop($event,item)">
+                            <div class="col-6 task-title">
+                              {{item.taskTitle}}
+                            </div>
+                            <div class="col-4 inprogress-status">
+                              {{item.statusName}}
+                            </div>
+                            <div class="col-2">
+                              <mat-icon class="float-rt icons card-icon" [matMenuTriggerFor]="cardMenu"
+                                (click)="selectedTask(item)">more_vert</mat-icon>
+                              <mat-icon class="float-rt icons" (click)="editData(item)">edit</mat-icon>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="list-container">
+                        <div id="Done" class="tag">Done</div>
+                        <div id="done" #container3 cdkDropList [cdkDropListData]="done" class="list"
+                          (cdkDropListDropped)="drop($event)">
+
+                          <div class="list-box row-12" *ngFor="let item of done" cdkDrag
+                            (cdkDragDropped)="onDrop($event,item)">
+                            <div class="col-6 task-title">
+                              {{item?.taskTitle}}
+                            </div>
+                            <div class="col-4">
+                              <span>Rating :
+                                <span *ngIf="item?.ratingValue">{{item?.ratingValue}}</span>
+                                <span *ngIf="!item?.ratingValue">0.0</span>
+                              </span>
+                            </div>
+                            <div class="col-2">
+                              <mat-icon class="float-rt icons card-icon" [matMenuTriggerFor]="cardMenu"
+                                (click)="selectedTask(item)">more_vert</mat-icon>
+                              <mat-icon class="priority_high float-rt " *ngIf="item?.ratingValue>0"
+                                class="check float-rt " (click)="onClick(item)">check_circle</mat-icon>
+                              <mat-icon *ngIf="item?.ratingValue<=0" tooltip="Click to Confirm "
+                                class="priority_high float-rt " placement="top"
+                                (click)="onClick(item)">warning</mat-icon>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <mat-menu #cardMenu="matMenu">
+                    <button mat-menu-item (click)="taskHistory()">
+                      <mat-icon>history</mat-icon>
+                      History</button>
+                    <button mat-menu-item [disabled]="!allowDelete" (click)=" deleteItem(currentTask)">
+                      <mat-icon>delete</mat-icon>
+                      Delete</button>
+                  </mat-menu>
+
+
+
+                </div>
+
+              </div>
+            </cdk-accordion-item>
+          </cdk-accordion>
+        </div>
+
+        <div class="float-rt" id="chat" cdkDrag>
+          <button mat-fab class="chat-button">
+            <mat-icon (click)="openChat()">chat</mat-icon>
+          </button>
+        </div>
+      </ng-container>
+
+    </ng-template>
+
+  </ng-container>
+  <ng-template #loading>
+    <ng-container>
+      <app-table-loading></app-table-loading>
+    </ng-container>
+
+  </ng-template>
+
+</div>

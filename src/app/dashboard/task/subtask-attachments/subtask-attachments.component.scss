@@ -1,0 +1,25 @@
+.remove-icon {
+    font-size: 15px;
+    color: red; /* Set the color of the remove icon to red */
+  }
+  
+  .file-icon {
+    font-size: 15px;
+    color: hsl(0, 3%, 58%);
+  }
+  .download-icon{
+    font-size: 15px;
+    color: hsl(104, 77%, 69%);
+  }
+
+  .attachments-container {
+    max-height: 200px; /* Adjust the maximum height to control vertical scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: auto; /* Enable horizontal scrolling if necessary */
+  }
+  
+  /* Individual attachment item */
+  .attachment-item {
+    max-width: 200px; /* Adjust the maximum width of the attachment item */
+    white-space: nowrap; /* Prevent file names from wrapping to the next line */
+  }

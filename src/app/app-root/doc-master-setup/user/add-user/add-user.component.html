@@ -1,0 +1,21 @@
+
+  <mat-dialog-content >
+    <div [formGroup]="userForm" class="container" fxLayoutAlign="center center" fxFlexFill fxLayout='column'>
+      
+
+        <mat-form-field appearance="standard" class="full-width">
+            <mat-label>User Type</mat-label>
+         <mat-select required formControlName="userType">
+             <mat-option *ngFor="let item of userType" [value]="item">
+                 {{item}}
+             </mat-option>
+         </mat-select>
+          </mat-form-field>
+       
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-flat-button color='primary' (click)="addItem()">Save</button>
+    <button mat-button mat-dialog-close>Close</button>
+   
+  </mat-dialog-actions>

@@ -1,0 +1,31 @@
+{
+    "success": true,
+    "message": "priority listing",
+    "data": [
+        {
+            "id": 1,
+            "priorityName": "Overriding",
+            "priorityType": "overriding"
+        },
+        {
+            "id": 2, 
+            "priorityName": "Overwhelming",
+            "priorityType": "Overwhelming"
+        },
+        {
+            "id": 3,
+            "priorityName": "Moderate Priority",
+            "priorityType": "moderatepriority"
+        },
+        {
+            "id": 4,
+            "priorityName": "Subjective",
+            "priorityType": "subjective"
+        },
+        {
+            "id": 5, 
+            "priorityName": "Normal",
+            "priorityType": "normal"
+        }
+    ]
+}

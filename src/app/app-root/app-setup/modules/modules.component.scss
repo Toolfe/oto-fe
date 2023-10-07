@@ -1,0 +1,87 @@
+
+.box{
+    border: 3px solid #8d0466;
+    padding: 18px;
+    animation:box-plan 2s infinite;
+
+}
+
+@keyframes box-plan{
+    0%{border-color:  #662d91};
+    50%{ border-color: #d40098};
+    100%{border-color:  #662d91};
+
+}
+
+.font{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+#plan{
+    text-align: center;
+    font-size: 40px;
+    color: #662d91;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.plan{
+    align-self: center;
+    color: white;
+    border-radius: 12px;
+    font-size: 30px;
+    text-align: center;
+    padding: 16px 10px;
+}
+
+.basic-plan{
+          background-color: #af007e;
+          border: 2px solid white;
+}
+
+.premium-plan{
+          background-color: #e0b12d;
+          border: 2px solid rgb(255, 208, 0);
+}
+
+.plan:hover{
+    color: white;
+    background-color: #662d91;
+}
+
+.select{
+    position: relative;
+    top: 40px;
+    border: #662d91 2px solid;
+    padding: 12px;
+    background-color: white;
+    border-radius: 18px;
+}
+
+.rate{
+    font-size: 50px;
+    color: #662d91;
+    font-weight: bold;
+    padding-top: 30px;
+}
+
+.description{
+    position: relative;
+    top: 30px;
+    color: #e0b12d;
+}
+.x{
+    color: rgb(197, 0, 0);
+}
+.tick{
+    color: rgb(0, 160, 0);
+}
+thead {
+    position: relative;
+    top: 0;
+    z-index: 1;
+    color: indigo;
+    background-color: white;
+  } 

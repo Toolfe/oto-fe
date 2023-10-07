@@ -1,0 +1,22 @@
+<div role="group" class="tel-input-container"
+     [formGroup]="parts"
+     [attr.aria-labelledby]="_formField?.getLabelId()" 
+     (focusin)="onFocusIn($event)"
+     (focusout)="onFocusOut($event)">
+     <mat-select  class="tel-input-element select tel-input-spacer"
+         formControlName="code" 
+         aria-label="code code"
+         #code (selectionChange)="phoneInput(code.value, number.value)" >
+         <input    [(ngModel)]="searchDiv" class="tel-country"  placeholder="Search Country Code"  formControlName="code">
+         <mat-option   *ngFor="let code of country|filter:searchDiv" [value]="code.calling_code">
+             {{'(+' + code.calling_code + ') '+ code.country}}
+         </mat-option>
+     </mat-select>
+  <span class="tel-input-spacer"></span>
+  <input class="tel-input-element"
+         formControlName="number" 
+         (blur)="phoneInput(code.value, number.value)"
+         #number numberOnly  >
+       
+</div>
+

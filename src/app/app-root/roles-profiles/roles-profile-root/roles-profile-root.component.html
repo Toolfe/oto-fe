@@ -1,0 +1,33 @@
+<!-- <ul class="nav header" >
+        
+  <li  *ngFor='let item of menuList' [ngClass]="{'active':selectedList===item}" >
+      <span [ngClass]="{'title':selectedList!=item}" (click)='openMenuList(item)'>{{item}}</span>
+  </li>
+</ul> -->
+
+<!-- <div class="col" style="height: 86vh;"> -->
+<!--   <ng-container *ngIf='selectedList ==="Define"'>
+     <app-define-root></app-define-root>
+  </ng-container> -->
+ <!--  <ng-container *ngIf='selectedList ==="Profiles"'>
+    <app-profiles></app-profiles>
+  </ng-container>
+  <ng-container *ngIf='selectedList ==="Roles"'>
+     <app-roles></app-roles>
+  </ng-container>
+ -->
+ <!--  <ng-container *ngIf='selectedList ==="Role Employee"'>
+    <app-role-employee></app-role-employee>
+  </ng-container> -->
+<!-- </div>  -->
+
+ <div style="background-color: white;">
+  <mat-tab-group>
+    <mat-tab label="Profiles" *ngIf="Profile">
+      <app-profiles></app-profiles>
+    </mat-tab>
+    <mat-tab label="Roles" *ngIf="Role">
+      <app-roles></app-roles>
+    </mat-tab>
+  </mat-tab-group>
+</div> 

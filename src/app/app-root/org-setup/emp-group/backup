@@ -1,0 +1,391 @@
+<div class="container" style="justify-content: space-around;display: flex; ">
+
+  <div class="row" style="margin-top: 75px;" style="height: 80vh;" cdkScroll>
+
+        <div class="col-md-12">
+  
+        <div class="row">
+          <div class="col">
+            <mat-card [formGroup]="employeeGroupForm"  class="full-width">
+              <mat-card-title>1. Employee Group</mat-card-title>
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Employee Group</mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+  
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description" ></textarea>
+              </mat-form-field>
+  
+  
+              <mat-card-actions align="end">
+                <button color='primary' mat-icon-button (click)="addItem()"><mat-icon>
+                  add_circle
+                </mat-icon></button>
+                <button color='primary' mat-icon-button (click)="openEmpGroup()"><mat-icon>
+                  fullscreen
+                </mat-icon></button>
+              </mat-card-actions>
+            </mat-card><br>
+          </div>
+  
+          <div class="col">
+            <mat-card [formGroup]="empCategoryForm"  class="full-width">
+              <mat-card-title>2. Employee Category</mat-card-title>
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label> Employee Category</mat-label>
+                <input matInput formControlName="name" >
+              </mat-form-field>
+  
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+              </mat-form-field>
+  
+  
+              <mat-card-actions align="end">
+                <button color='primary' mat-icon-button (click)="addItem1()"><mat-icon>
+                  add_circle
+                </mat-icon></button>
+                <button color='primary' mat-icon-button (click)="openEmpCategory()"><mat-icon>
+                  fullscreen
+                </mat-icon></button>
+              </mat-card-actions>
+            </mat-card><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-card [formGroup]="empTypeForm" class="full-width">
+              <mat-card-title>3. Employee Type</mat-card-title>
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Employee Type</mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+  
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description" ></textarea>
+              </mat-form-field>
+  
+  
+              <mat-card-actions align="end">
+                <button color='primary' mat-icon-button (click)="addItem2()" ><mat-icon>
+                  add_circle
+                </mat-icon></button>
+                <button color='primary' mat-icon-button (click)="openEmpType()"><mat-icon>
+                  fullscreen
+                </mat-icon></button>
+              </mat-card-actions>
+            </mat-card><br>
+          </div>
+  
+          <div class="col">
+            <mat-card [formGroup]="workingGroupForm" class="full-width">
+              <mat-card-title>4. Working Group</mat-card-title>
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Working Group</mat-label>
+                <input matInput formControlName="name" >
+              </mat-form-field>
+  
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description" ></textarea>
+              </mat-form-field>
+  
+  
+              <mat-card-actions align="end">
+                <button color='primary' mat-icon-button (click)="addItem3()" ><mat-icon>
+                  add_circle
+                </mat-icon></button>
+                <button color='primary' mat-icon-button (click)="openEmpWork()"><mat-icon>
+                  fullscreen
+                </mat-icon></button>
+              </mat-card-actions>
+            </mat-card><br>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col">
+            <mat-card  [formGroup]="qualificationForm"  class="full-width">
+              <mat-card-title>5. Qualification</mat-card-title>
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Qualification</mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+  
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>Description</mat-label>
+                <textarea matInput  formControlName="description"></textarea>
+              </mat-form-field>
+  
+  
+              <mat-card-actions align="end">
+                <button color='primary' mat-icon-button (click)="addItem4()"><mat-icon>
+                  add_circle
+                </mat-icon></button>
+                <button color='primary' mat-icon-button (click)="openEmpqualification()"><mat-icon>
+                  fullscreen
+                </mat-icon></button>
+              </mat-card-actions>
+            </mat-card><br>
+          </div>
+  
+          <div class="col">
+            <mat-card  [formGroup]="skillSetForm"  class="full-width">
+              <mat-card-title>6. Skill Set</mat-card-title>
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Skill Set</mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+  
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>Description</mat-label>
+                <textarea matInput  formControlName="description"></textarea>
+              </mat-form-field>
+  
+  
+              <mat-card-actions align="end">
+                <button color='primary' mat-icon-button (click)="addItem5()"><mat-icon>
+                  add_circle
+                </mat-icon></button>
+                <button color='primary' mat-icon-button (click)="openEmpSkillSet()"><mat-icon>
+                  fullscreen
+                </mat-icon></button>
+              </mat-card-actions>
+            </mat-card><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-card  [formGroup]="skillForm"  class="full-width">
+              <mat-card-title>7. Industry Specific Skill</mat-card-title>
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Industry Specific Skill</mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+  
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description" ></textarea>
+              </mat-form-field>
+  
+  
+              <mat-card-actions align="end">
+                <button color='primary' mat-icon-button (click)="addItem6()"><mat-icon>
+                  add_circle
+                </mat-icon></button>
+                <button color='primary' mat-icon-button (click)="openEmpSkills()"><mat-icon>
+                  fullscreen
+                </mat-icon></button>
+              </mat-card-actions>
+            </mat-card><br>
+          </div>
+  
+          <div class="col">
+            <mat-card [formGroup]="languageForm" class="full-width">
+              <mat-card-title>8. Language</mat-card-title>
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label>CLanguage</mat-label>
+                <input matInput formControlName="name" >
+              </mat-form-field>
+  
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+              </mat-form-field>
+  
+  
+              <mat-card-actions align="end">
+                <button color='primary' mat-icon-button (click)="addItem7()"><mat-icon>
+                  add_circle
+                </mat-icon></button>
+                <button color='primary' mat-icon-button (click)="openEmplanguage()"><mat-icon>
+                  fullscreen
+                </mat-icon></button>
+              </mat-card-actions>
+            </mat-card><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-card [formGroup]="companyForm" class="full-width">
+              <mat-card-title>9. Company</mat-card-title>
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Company</mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+  
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>Description</mat-label>
+                <textarea matInput  formControlName="description" ></textarea>
+              </mat-form-field>
+  
+  
+              <mat-card-actions align="end">
+                <button color='primary' mat-icon-button (click)="addItem8()"><mat-icon>
+                  add_circle
+                </mat-icon></button>
+                <button color='primary' mat-icon-button (click)="openEmpcompany()"><mat-icon>
+                  fullscreen
+                </mat-icon></button>
+              </mat-card-actions>
+            </mat-card><br>
+          </div>
+  
+          <div class="col">
+            <mat-card  class="full-width">
+              <mat-card-title>10. Industry</mat-card-title>
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Contact Category</mat-label>
+                <input matInput>
+              </mat-form-field>
+  
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>Description</mat-label>
+                <textarea matInput ></textarea>
+              </mat-form-field>
+  
+  
+              <mat-card-actions align="end">
+                <button color='primary' mat-icon-button><mat-icon>
+                  add_circle
+                </mat-icon></button>
+                <button color='primary' mat-icon-button><mat-icon>
+                  fullscreen
+                </mat-icon></button>
+              </mat-card-actions>
+            </mat-card><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-card [formGroup]="designationForm" class="full-width">
+              <mat-card-title>11. Designation</mat-card-title>
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Designation</mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+  
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description" ></textarea>
+              </mat-form-field>
+  
+  
+              <mat-card-actions align="end">
+                <button color='primary' mat-icon-button  (click)="addItem10()"><mat-icon>
+                  add_circle
+                </mat-icon></button>
+                <button color='primary' mat-icon-button (click)="openEmpDesignation()" ><mat-icon>
+                  fullscreen
+                </mat-icon></button>
+              </mat-card-actions>
+            </mat-card><br>
+          </div>
+  
+          <div class="col">
+            <mat-card  [formGroup]="workProcessForm"  class="full-width">
+              <mat-card-title>12. Work Process</mat-card-title>
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Work Process</mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+  
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+              </mat-form-field>
+  
+  
+              <mat-card-actions align="end">
+                <button color='primary' mat-icon-button (click)="addItem11()"><mat-icon>
+                  add_circle
+                </mat-icon></button>
+                <button color='primary' mat-icon-button (click)="openEmpWorkProcess()"><mat-icon>
+                  fullscreen
+                </mat-icon></button>
+              </mat-card-actions>
+            </mat-card><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-card [formGroup]="resourcesForm" class="full-width">
+              <mat-card-title>13. Resource</mat-card-title>
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Resource</mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+  
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>Description</mat-label>
+                <textarea matInput  formControlName="description"></textarea>
+              </mat-form-field>
+  
+  
+              <mat-card-actions align="end">
+                <button color='primary' mat-icon-button (click)="addItem12()"><mat-icon>
+                  add_circle
+                </mat-icon></button>
+                <button color='primary' mat-icon-button (click)="openEmpResource()"><mat-icon>
+                  fullscreen
+                </mat-icon></button>
+              </mat-card-actions>
+            </mat-card><br>
+          </div>
+  
+          <div class="col">
+            <mat-card [formGroup]="uomsForm" class="full-width">
+              <mat-card-title>14. UOMS</mat-card-title>
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label>UOMS</mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+  
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>Description</mat-label>
+                <textarea matInput  formControlName="description"></textarea>
+              </mat-form-field>
+  
+  
+              <mat-card-actions align="end">
+                <button color='primary' mat-icon-button (click)="addItem13()"><mat-icon>
+                  add_circle
+                </mat-icon></button>
+                <button color='primary' mat-icon-button (click)="openEmpUoms()"><mat-icon>
+                  fullscreen
+                </mat-icon></button>
+              </mat-card-actions>
+            </mat-card><br>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-12">
+          <button mat-button color="primary" >Back</button>
+          <button mat-flat-button color="primary" (click)='onSubmit()'
+           style="float: right;">Submit</button>
+        </div>
+      </div>
+      <br><br>
+        </div>
+  
+  <div class="col-md-1"></div>
+  </div>
+  
+  </div>
+
+
+
+  -----------------------------------------------------------------------
+
+  

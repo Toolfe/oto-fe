@@ -1,0 +1,94 @@
+@use 'src/styles/variables' as var;
+
+.container{
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 1000px;
+
+}
+.heading{
+    padding-top: 15px;
+    font-family: 'Trocchi', serif;
+    background: #5961CF;
+    background: -webkit-linear-gradient(to right, #5961CF 0%, #A04FCF 100%);
+    background: -moz-linear-gradient(to right, #5961CF 0%, #A04FCF 100%);
+    background: linear-gradient(to right, #5961CF 0%, #A04FCF 100%);
+     -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+     font-size: 34px; font-weight: normal; line-height: 22px;
+}
+span.topic{
+    font-weight: bold;
+   
+
+}
+.container .child1{
+    position: relative;
+    display: flex;
+    grid-template-columns:  1fr 2fr;
+    height: 400px;
+    font-size: 17px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    align-items: center;
+    
+}
+.container .child1 .grid-image{
+    max-width:400px;
+    flex: 0 0 400px;
+    
+    
+}
+.container .child1 .grid-image img{
+    max-width: 100%; 
+}
+.grid-content{
+    margin-left: 20px;
+
+}
+
+.child2{
+    display: grid;
+    height: 300px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-column-gap: 50px;
+}
+a{
+    display: flex;
+    
+    color:black;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+}
+a:hover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#5fa1e4 ;
+    padding:4px;
+    border-radius: 5px;
+}
+.grid-item{
+    height: 250px;
+    padding: 10px;
+    border-radius: 15px;
+    padding-left: 10px;
+    border-bottom: 10px;
+   
+}
+.grid-item:hover{
+    background-image: linear-gradient(to right top, #6d3794, #7835ad, #8639c7, #933fe3, #a044ff);
+    color: white;
+    transition: 0.4s ease-in-out all;
+    transform: scale(1.05);
+}

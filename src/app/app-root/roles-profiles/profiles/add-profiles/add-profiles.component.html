@@ -1,0 +1,663 @@
+
+<div [formGroup]="profileForm" >
+  <div class="header-grid">
+    <div>
+      <button mat-icon-button (click)="backBtn()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <span class="create-profile">Create Profile</span>
+      <button mat-icon-button>
+        <mat-icon>double_arrow</mat-icon>
+      </button>
+
+      <mat-form-field appearance="standard">
+        <input matInput id="name" name="name" required="" formControlName="profileName" cdkFocusInitial>
+        <mat-error>please enter profile name</mat-error>
+      </mat-form-field>
+
+    </div>
+  </div>
+
+
+
+  <div class="grid">
+
+    <div style="font-weight:bold">Create</div>
+    <div style="font-weight:bold">Read</div>
+    <div style="font-weight:bold">Update</div>
+    <div style="font-weight:bold">Delete</div>
+
+  </div>
+
+  <div class="module-container">
+    <cdk-accordion class="cdk-accordion">
+
+      <cdk-accordion-item *ngFor="let item of  orgModule; let index = index;" #accordionItem="cdkAccordionItem"
+        class="cdk-accordion-item" tabindex="0" [attr.id]="'accordion-header-' + index"
+        [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' + index"
+        formGroupName={{item.id}}>
+        <ng-container>
+          <div>
+            <div class="screen-grid">
+              <div (click)="accordionItem.toggle()">{{item.title}}</div>
+
+              <div>
+                <input type="checkbox" name="checkboxe" (change)="toggleCheckboxAll($event,item,'creation')" [checked]="org[0].creation">
+              </div>
+
+
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'selection')" [checked]="org[0].selection">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'updation')" [checked]="org[0].updation">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'deletion')" [checked]="org[0].deletion">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="cdk-accordion-item-body" [style.display]="accordionItem.expanded ? '' : 'none'"
+            [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
+
+            <div class="screen-grid" *ngFor="let item of item.screens" formGroupName={{item.id}}>
+              <div>{{item.title}}</div>
+              <div>
+                <input type="checkbox" formControlName="creation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="selection" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="updation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="deletion" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </cdk-accordion-item>
+
+
+      <cdk-accordion-item *ngFor="let item of  contactModule; let index = index;" #accordionItem="cdkAccordionItem"
+        class="cdk-accordion-item" tabindex="0" [attr.id]="'accordion-header-' + index"
+        [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' + index"
+        formGroupName={{item.id}}>
+        <ng-container>
+          <div>
+            <div class="screen-grid">
+              <div (click)="accordionItem.toggle()">{{item.title}}</div>
+
+              <div>
+                <input type="checkbox" name="checkboxe" (change)="toggleCheckboxAll($event,item,'creation')" [checked]="contact[0].creation">
+              </div>
+
+
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'selection')" [checked]="contact[0].selection">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'updation')" [checked]="contact[0].updation">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'deletion')" [checked]="contact[0].deletion">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="cdk-accordion-item-body" [style.display]="accordionItem.expanded ? '' : 'none'"
+            [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
+
+            <div class="screen-grid" *ngFor="let item of item.screens" formGroupName={{item.id}}>
+              <div>{{item.title}}</div>
+              <div>
+                <input type="checkbox" formControlName="creation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="selection" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="updation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="deletion" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </cdk-accordion-item>
+
+
+      <cdk-accordion-item *ngFor="let item of  taskMasterModule; let index = index;" #accordionItem="cdkAccordionItem"
+        class="cdk-accordion-item" tabindex="0" [attr.id]="'accordion-header-' + index"
+        [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' + index"
+        formGroupName={{item.id}}>
+        <ng-container>
+          <div>
+            <div class="screen-grid">
+              <div (click)="accordionItem.toggle()">{{item.title}}</div>
+
+              <div>
+                <input type="checkbox" name="checkboxe" (change)="toggleCheckboxAll($event,item,'creation')"  [checked]="taskMaster[0].creation">
+              </div>
+
+
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'selection')"  [checked]="taskMaster[0].selection">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'updation')"  [checked]="taskMaster[0].updation">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'deletion')" [checked]="taskMaster[0].deletion">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="cdk-accordion-item-body" [style.display]="accordionItem.expanded ? '' : 'none'"
+            [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
+
+            <div class="screen-grid" *ngFor="let item of item.screens" formGroupName={{item.id}}>
+              <div>{{item.title}}</div>
+              <div>
+                <input type="checkbox" formControlName="creation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="selection" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="updation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="deletion" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </cdk-accordion-item>
+
+      <cdk-accordion-item *ngFor="let item of  rolesProfilesModule; let index = index;" #accordionItem="cdkAccordionItem"
+      class="cdk-accordion-item" tabindex="0" [attr.id]="'accordion-header-' + index"
+      [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' + index"
+      formGroupName={{item.id}}>
+      <ng-container>
+        <div>
+          <div class="screen-grid">
+            <div (click)="accordionItem.toggle()">{{item.title}}</div>
+
+            <div>
+              <input type="checkbox" name="checkboxe" (change)="toggleCheckboxAll($event,item,'creation')" [checked]="rolesProfiles[0].creation">
+            </div>
+
+
+            <div>
+              <input type="checkbox" (change)="toggleCheckboxAll($event,item,'selection')" [checked]="rolesProfiles[0].selection">
+            </div>
+            <div>
+              <input type="checkbox" (change)="toggleCheckboxAll($event,item,'updation')" [checked]="rolesProfiles[0].updation">
+            </div>
+            <div>
+              <input type="checkbox" (change)="toggleCheckboxAll($event,item,'deletion')" [checked]="rolesProfiles[0].deletion">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="cdk-accordion-item-body" [style.display]="accordionItem.expanded ? '' : 'none'"
+          [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
+
+          <div class="screen-grid" *ngFor="let item of item.screens" formGroupName={{item.id}}>
+            <div>{{item.title}}</div>
+            <div>
+              <input type="checkbox" formControlName="creation" [checked]="item.selected"
+                (change)="singleCheckbox($event)">
+            </div>
+            <div>
+              <input type="checkbox" formControlName="selection" [checked]="item.selected"
+                (change)="singleCheckbox($event)">
+            </div>
+            <div>
+              <input type="checkbox" formControlName="updation" [checked]="item.selected"
+                (change)="singleCheckbox($event)">
+            </div>
+            <div>
+              <input type="checkbox" formControlName="deletion" [checked]="item.selected"
+                (change)="singleCheckbox($event)">
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+    </cdk-accordion-item>
+
+
+      <cdk-accordion-item *ngFor="let item of  employeeModule; let index = index;" #accordionItem="cdkAccordionItem"
+        class="cdk-accordion-item" tabindex="0" [attr.id]="'accordion-header-' + index"
+        [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' + index"
+        formGroupName={{item.id}}>
+        <ng-container>
+          <div>
+            <div class="screen-grid">
+              <div (click)="accordionItem.toggle()">{{item.title}}</div>
+
+              <div>
+                <input type="checkbox" name="checkboxe" (change)="toggleCheckboxAll($event,item,'creation')" [checked]="employee[0].creation">
+              </div>
+
+
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'selection')" [checked]="employee[0].selection">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'updation')" [checked]="employee[0].updation">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'deletion')" [checked]="employee[0].deletion">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="cdk-accordion-item-body" [style.display]="accordionItem.expanded ? '' : 'none'"
+            [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
+
+            <div class="screen-grid" *ngFor="let item of item.screens" formGroupName={{item.id}}>
+              <div>{{item.title}}</div>
+              <div>
+                <input type="checkbox" formControlName="creation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="selection" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="updation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="deletion" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </cdk-accordion-item>
+
+
+
+      <cdk-accordion-item *ngFor="let item of  assignModule; let index = index;" #accordionItem="cdkAccordionItem"
+        class="cdk-accordion-item" tabindex="0" [attr.id]="'accordion-header-' + index"
+        [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' + index"
+        formGroupName={{item.id}}>
+        <ng-container>
+          <div>
+            <div class="screen-grid">
+              <div (click)="accordionItem.toggle()">{{item.title}}</div>
+
+              <div>
+                <input type="checkbox" name="checkboxe" (change)="toggleCheckboxAll($event,item,'creation')" [checked]="assign[0].creation">
+              </div>
+
+
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'selection')" [checked]="assign[0].selection">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'updation')" [checked]="assign[0].updation">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'deletion')" [checked]="assign[0].deletion">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="cdk-accordion-item-body" [style.display]="accordionItem.expanded ? '' : 'none'"
+            [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
+
+            <div class="screen-grid" *ngFor="let item of item.screens" formGroupName={{item.id}}>
+              <div>{{item.title}}</div>
+              <div>
+                <input type="checkbox" formControlName="creation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="selection" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="updation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="deletion" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </cdk-accordion-item>
+
+
+      <cdk-accordion-item *ngFor="let item of  partnerModule; let index = index;" #accordionItem="cdkAccordionItem"
+        class="cdk-accordion-item" tabindex="0" [attr.id]="'accordion-header-' + index"
+        [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' + index"
+        formGroupName={{item.id}}>
+        <ng-container>
+          <div>
+            <div class="screen-grid">
+              <div (click)="accordionItem.toggle()">{{item.title}}</div>
+
+              <div>
+                <input type="checkbox" name="checkboxe" (change)="toggleCheckboxAll($event,item,'creation')"  [checked]="partner[0].creation">
+              </div>
+
+
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'selection')"  [checked]="partner[0].selection">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'updation')"  [checked]="partner[0].updation">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'deletion')"  [checked]="partner[0].deletion">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="cdk-accordion-item-body" [style.display]="accordionItem.expanded ? '' : 'none'"
+            [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
+
+            <div class="screen-grid" *ngFor="let item of item.screens" formGroupName={{item.id}}>
+              <div>{{item.title}}</div>
+              <div>
+                <input type="checkbox" formControlName="creation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="selection" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="updation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="deletion" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </cdk-accordion-item>
+
+
+      <cdk-accordion-item *ngFor="let item of  projectModule; let index = index;" #accordionItem="cdkAccordionItem"
+        class="cdk-accordion-item" tabindex="0" [attr.id]="'accordion-header-' + index"
+        [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' + index"
+        formGroupName={{item.id}}>
+        <ng-container>
+          <div>
+            <div class="screen-grid">
+              <div (click)="accordionItem.toggle()">{{item.title}}</div>
+
+              <div>
+                <input type="checkbox" name="checkboxe" (change)="toggleCheckboxAll($event,item,'creation')" [checked]="project[0].creation">
+              </div>
+
+
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'selection')" [checked]="project[0].selection">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'updation')" [checked]="project[0].updation">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'deletion')" [checked]="project[0].deletion">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="cdk-accordion-item-body" [style.display]="accordionItem.expanded ? '' : 'none'"
+            [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
+
+            <div class="screen-grid" *ngFor="let item of item.screens" formGroupName={{item.id}}>
+              <div>{{item.title}}</div>
+              <div>
+                <input type="checkbox" formControlName="creation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="selection" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="updation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="deletion" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </cdk-accordion-item>
+
+      <cdk-accordion-item *ngFor="let item of  docModule; let index = index;" #accordionItem="cdkAccordionItem"
+        class="cdk-accordion-item" tabindex="0" [attr.id]="'accordion-header-' + index"
+        [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' + index"
+        formGroupName={{item.id}}>
+        <ng-container>
+          <div>
+            <div class="screen-grid">
+              <div (click)="accordionItem.toggle()">{{item.title}}</div>
+
+              <div>
+                <input type="checkbox" name="checkboxe" (change)="toggleCheckboxAll($event,item,'creation')" [checked]="docMaster[0].creation">
+              </div>
+
+
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'selection')" [checked]="docMaster[0].selection">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'updation')" [checked]="docMaster[0].updation">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'deletion')" [checked]="docMaster[0].deletion">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="cdk-accordion-item-body" [style.display]="accordionItem.expanded ? '' : 'none'"
+            [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
+
+            <div class="screen-grid" *ngFor="let item of item.screens" formGroupName={{item.id}}>
+              <div>{{item.title}}</div>
+              <div>
+                <input type="checkbox" formControlName="creation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="selection" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="updation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="deletion" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </cdk-accordion-item>
+
+
+      <cdk-accordion-item *ngFor="let item of  taskModule; let index = index;" #accordionItem="cdkAccordionItem"
+        class="cdk-accordion-item" tabindex="0" [attr.id]="'accordion-header-' + index"
+        [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' + index"
+        formGroupName={{item.id}}>
+        <ng-container>
+          <div>
+            <div class="screen-grid">
+              <div (click)="accordionItem.toggle()">{{item.title}}</div>
+
+              <div>
+                <input type="checkbox" name="checkboxe" (change)="toggleCheckboxAll($event,item,'creation')" [checked]="tms[0].creation">
+              </div>
+
+
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'selection')" [checked]="tms[0].selection">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'updation')" [checked]="tms[0].updation">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'deletion')" [checked]="tms[0].deletion">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="cdk-accordion-item-body" [style.display]="accordionItem.expanded ? '' : 'none'"
+            [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
+
+            <div class="screen-grid" *ngFor="let item of item.screens" formGroupName={{item.id}}>
+              <div>{{item.title}}</div>
+              <div>
+                <input type="checkbox" formControlName="creation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="selection" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="updation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="deletion" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </cdk-accordion-item>
+
+
+      <cdk-accordion-item *ngFor="let item of  documentModule; let index = index;" #accordionItem="cdkAccordionItem"
+        class="cdk-accordion-item" tabindex="0" [attr.id]="'accordion-header-' + index"
+        [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' + index"
+        formGroupName={{item.id}}>
+        <ng-container>
+          <div>
+            <div class="screen-grid">
+              <div (click)="accordionItem.toggle()">{{item.title}}</div>
+
+              <div>
+                <input type="checkbox" name="checkboxe" (change)="toggleCheckboxAll($event,item,'creation')" [checked]="dms[0].creation">
+              </div>
+
+
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'selection')" [checked]="dms[0].selection">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'updation')" [checked]="dms[0].updation">
+              </div>
+              <div>
+                <input type="checkbox" (change)="toggleCheckboxAll($event,item,'deletion')" [checked]="dms[0].deletion">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="cdk-accordion-item-body" [style.display]="accordionItem.expanded ? '' : 'none'"
+            [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
+
+            <div class="screen-grid" *ngFor="let item of item.screens" formGroupName={{item.id}}>
+              <div>{{item.title}}</div>
+              <div>
+                <input type="checkbox" formControlName="creation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="selection" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="updation" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+              <div>
+                <input type="checkbox" formControlName="deletion" [checked]="item.selected"
+                  (change)="singleCheckbox($event)">
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </cdk-accordion-item>
+
+
+    </cdk-accordion>
+
+  </div>
+
+
+
+  <div class="float-rt">
+  <button mat-flat-button color='primary' 
+  (click)="addItem()" *ngIf="!update">Save</button>
+  <button mat-flat-button color='primary' 
+  (click)="updateProfile()" *ngIf="update" >Update</button>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+

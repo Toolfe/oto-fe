@@ -1,0 +1,89 @@
+
+    <mat-dialog-content>
+        <form [formGroup]="assignForm">
+            <div class="row">
+                <div class="col" >
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Department</mat-label>
+                        <mat-select required formControlName="department">
+                            <input matInput style="width: 100%; padding: 15px;" #dept placeholder="Search Department"  >
+                            <mat-option *ngFor="let item of department$ |async |search:'name':dept.value"
+                            [value]="item.name">
+                                {{item.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>
+                            Please select your department
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+                <div class="col" >
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Task Type</mat-label>
+                        <mat-select  required formControlName="typeId">
+                            <input matInput style="width: 100%; padding: 15px;"  required placeholder="Search TypeId" #typeId (keyup)="getTypeId(typeId)">
+                         <mat-option *ngFor= "let item of type$ |async |search:'name':typeId.value" searchTypeId 
+                         [value]="item.id">
+                                {{item.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>
+                            Please select your task type
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+                  
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field  appearance="standard" class="full-width">
+                        <mat-label>Priority</mat-label>
+                        <mat-select required formControlName="priority" >
+                            <mat-option *ngFor="let item of priority"[value]="item" >
+                             {{item}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>
+                            Please select your priority
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                    <div class="col">
+                        <mat-form-field  appearance="standard" class="full-width">
+                            <mat-label>Rank</mat-label>
+                           <input matInput  formControlName="count" type="number">
+                           <mat-error>
+                            Please enter your rank
+                        </mat-error>
+                        </mat-form-field>
+                    </div>
+            </div>
+
+            <div class="col">
+                <mat-form-field  appearance="standard" class="full-width">
+                    <mat-label>Employee</mat-label>
+                    <mat-select  multiple required  formControlName="employees">
+                        <input matInput style="width: 100%; padding: 15px;" #emp placeholder="Search Employee"  >
+                        <mat-option *ngFor="let item of employee$ |async | search:'fname':emp.value"
+                        [value]="item.id" >
+                           {{item.fname+' '+item.lname+" - "+item.empId}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>
+                        Please select your employee name
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+
+
+           </form> 
+    </mat-dialog-content>
+    
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Close</button>
+        <button mat-flat-button color='primary' (click)="addItem()" *ngIf="!update">Add</button>
+        <button mat-flat-button color='primary' (click)="updateAssign()"*ngIf="update" >Update</button>
+        
+       
+      </mat-dialog-actions>

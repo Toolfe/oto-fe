@@ -1,0 +1,107 @@
+
+
+  <div class="folder-container" >
+    <div class="path">
+        My docs /> <span *ngFor="let folder of selectedFolders">{{folder.folderName}}> </span>
+      </div>
+
+      <ng-container *ngIf="{folders:folders$ | async, files:files$|async} as docs; else loading">
+        <ng-container *ngIf="docs.folders==='error'||docs.files=='error'; else table">
+          <app-error></app-error>
+        </ng-container>
+        <ng-template #table>
+          <ng-container *ngIf="docs.folders?.length==0 && docs.files?.length==0; else loadData">
+            <div class="nodata-container">
+              <img src="./../../../../assets/icons/no-data-01.svg" alt="No Data" class="no-data">
+              <div>There is nothing in your trash yet!</div>
+            
+               <mat-menu #create="matMenu">
+                <button mat-menu-item (click)="addNew()" >
+                  <mat-icon>create_new_folder</mat-icon>
+                  <span>Folder</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon>article</mat-icon>
+                  <span>Text Document</span>
+                </button>
+                <mat-divider></mat-divider>
+                <button mat-menu-item (click)="uploadFile()">
+                  <mat-icon>upload</mat-icon>
+                  <span>Upload File</span>
+                </button>
+                 
+              </mat-menu>
+            </div>
+          </ng-container>
+          <ng-template #loadData>
+            <div class="grid-container">
+
+              <div class="outer" (contextmenu)="onContextMenu($event,doc,'folder')" (dblclick)="openFolder(doc)" 
+                *ngFor="let doc of docs.folders">
+                  <div class="grid-item" >
+                    <div class="item-container">
+                      <i class="bi bi-folder-fill folder"></i>
+                    </div>
+                    <div class="item-name">{{doc.folderName}}</div>
+                  </div>
+                </div>
+              <!---*******************Files **********************-->
+              
+              <div class="outer" (contextmenu)="onContextMenu($event,doc,'doc')" (dblclick)="downloadFile(doc.fileUpload)" 
+              *ngFor="let doc of docs.files">
+                <div class="grid-item"  matTooltipClass="example-tooltip-red" 
+                [matTooltip]="getTooltipText(doc)" [matTooltipShowDelay]="'1500'" >
+                  <div class="item-container"  [ngSwitch]="getType(doc.fileName)">
+                    <i class="bi bi-file-earmark-excel-fill excel" *ngSwitchCase="'xl'"></i>
+                    <i class="bi bi-file-earmark-word word" *ngSwitchCase="'do'"></i>
+                    <i class="bi bi-filetype-pdf pdf" *ngSwitchCase="'pd'"></i>
+                    <i class="bi bi-file-earmark-image image" *ngSwitchCase="'jp'"></i>         
+                    <i class="bi bi-file-earmark-ppt-fill ppt"  *ngSwitchCase="'pp'"></i>
+                    <i class="bi bi-file-earmark-image image" *ngSwitchCase="'pn'"></i>         
+                    <i class="bi bi-file-earmark-ppt-fill ppt"  *ngSwitchCase="'po'"></i>
+                    <i class="bi bi-file-zip-fill zip" *ngSwitchCase="'zi'"></i>
+                    <i class="bi bi-file-earmark-text file"  *ngSwitchDefault></i>
+                  </div>
+                  <div class="item-name">{{getFileName(doc.fileName)}}</div>
+                </div>
+              </div>
+                
+        
+            
+          
+              <div style="visibility: hidden; position: fixed"
+              [style.left]="contextMenuPosition.x"
+              [style.top]="contextMenuPosition.y"
+              [matMenuTriggerFor]="contextMenu">
+              </div>
+        
+        
+          <mat-menu #contextMenu="matMenu">
+            <ng-template matMenuContent>
+              <div class="menu">
+                <button mat-menu-item *ngIf="!isFolder"><mat-icon>edit</mat-icon>Edit</button>
+                <button mat-menu-item *ngIf="isFolder"><mat-icon>edit</mat-icon>Rename</button>
+                <button mat-menu-item (click)="downloadFile(selectedDoc)"><mat-icon>download</mat-icon>Download</button>
+                <button mat-menu-item (click)="deleteDoc(selectedDoc)"><mat-icon>delete</mat-icon>Delete</button>
+                <mat-divider>    </mat-divider>
+                <button mat-menu-item (click)="showProperty(selectedDoc)"><mat-icon>info</mat-icon>Properties</button>
+              </div>
+            </ng-template>
+          </mat-menu>
+        
+                               
+            </div>
+          </ng-template>
+        </ng-template>
+      </ng-container>
+      <ng-template #loading>
+loading.............
+      </ng-template>
+
+  </div>
+
+
+
+
+
+

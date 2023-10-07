@@ -1,0 +1,57 @@
+.main-div{
+    width: 35vw;
+}
+
+.title{
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 8px;
+    .sub-title{
+        font-size: 12px;
+        font-weight: 400;
+        color: rgb(130, 128, 128);
+    }
+}
+
+.cls-button{
+    background-color: rgb(237, 0, 0);
+    color: white;
+    font-weight: bold;
+}
+
+.key{
+    font-weight: 500;
+    font-size: 12px;
+    color: rgb(145, 145, 145);
+    padding-top: 12px;
+}
+
+.value{
+    font-weight: 400;
+    font-size: 14px;
+    color: rgb(50, 50, 50);
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.grid-footer{
+    display: flex;
+  justify-content: space-between;
+  padding-top: 24px;
+}
+.body{
+    margin-top: 24px;
+    background-color: whitesmoke;
+    padding: 16px;
+}
+
+.status{
+    cursor: pointer;  
+}
+
+.customizedStatus:hover{
+    text-decoration: underline;
+}

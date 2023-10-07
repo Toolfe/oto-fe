@@ -1,0 +1,82 @@
+
+<mat-dialog-content >
+    <div [formGroup]="accesForm" class="container" fxLayoutAlign="center center" fxFlexFill fxLayout='column'>
+        <div class="row">
+          <div class="col">
+            <mat-form-field appearance="standard" class="full-width">
+              <mat-label>Category Code</mat-label>
+              <mat-select required formControlName="categoryCode">
+                <mat-option *ngFor="let item of categoryData" [value]="item">
+                  {{item.code}}
+                </mat-option>
+            </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field appearance="standard" class="full-width">
+              <mat-label>Type Code </mat-label>
+              <mat-select required formControlName="typeCode">
+                <mat-option *ngFor="let item of typeData" [value]="item">
+                  {{item.code}}
+                </mat-option>
+            </mat-select>
+              <mat-error>
+                Please Enter Category  Name
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Folder Code</mat-label>
+                 <mat-select>
+                     <mat-option>
+                         
+                     </mat-option>
+                 </mat-select>
+                  </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Acces</mat-label>
+                 <mat-select required formControlName="access">
+                     <mat-option *ngFor="let item of employee" [value]="item.id">
+                         {{item.id}}
+                     </mat-option>
+                 </mat-select>
+                  </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>User Type</mat-label>
+                 <mat-select required formControlName="userType">
+                     <mat-option *ngFor="let item of userData" [value]="item">
+                         {{item.userType}}
+                     </mat-option>
+                 </mat-select>
+                  </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Inimation</mat-label>
+                 <mat-select required formControlName="inimation">
+                  <mat-option *ngFor="let item of employee" [value]="item.id">
+                    {{item.id}}
+                </mat-option>
+                 </mat-select>
+                  </mat-form-field>
+            </div>
+        </div>
+       
+       
+      </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-flat-button color='primary' >Save</button>
+    <button mat-button mat-dialog-close>Close</button>
+   
+  </mat-dialog-actions>

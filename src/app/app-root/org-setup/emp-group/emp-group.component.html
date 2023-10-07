@@ -1,0 +1,49 @@
+<div>
+  <mat-tab-group class="header" [(selectedIndex)]="selectedIndex" (selectedTabChange)="tabChanged($event)">
+    <mat-tab label="Emp Group" *ngIf="empGroup">
+      <app-view-emp-group  *ngIf='selectedTab ==="Emp Group"'></app-view-emp-group>
+    </mat-tab>
+    <mat-tab label="Emp Category" *ngIf="empCategory">
+      <app-view-emp-category *ngIf='selectedTab ==="Emp Category"'></app-view-emp-category>
+    </mat-tab>
+    <mat-tab label="Emp Type" *ngIf="empType">
+      <app-view-emp-type *ngIf='selectedTab ==="Emp Type"'></app-view-emp-type>
+    </mat-tab>
+    <mat-tab label="Working Group" *ngIf="workingGroup">
+      <app-view-emp-working-group *ngIf='selectedTab ==="Working Group"'></app-view-emp-working-group>
+    </mat-tab>
+    <mat-tab label="Qualification" *ngIf="qualification">
+      <app-view-emp-qualification *ngIf='selectedTab ==="Qualification"'></app-view-emp-qualification>
+    </mat-tab>
+    <mat-tab label="Skill Set" *ngIf="skillSet">
+      <app-view-emp-skills *ngIf='selectedTab ==="Skill Set"'></app-view-emp-skills>
+    </mat-tab>
+    <mat-tab label="Industry Specific Skills" *ngIf="industrySpecificSkills">
+      <app-view-emp-specific-skills *ngIf='selectedTab ==="Industry Specific Skills"'></app-view-emp-specific-skills>
+    </mat-tab>
+    <mat-tab label="Languages" *ngIf="language">
+      <app-view-emp-languages *ngIf='selectedTab ==="Languages"'></app-view-emp-languages>
+    </mat-tab>
+    <mat-tab label="Previous Company"  *ngIf="company">
+      <app-view-emp-company *ngIf='selectedTab ==="Previous Company"'></app-view-emp-company>
+    </mat-tab>
+    <mat-tab label="Industry"  *ngIf="industry">
+      <app-view-emp-industry *ngIf='selectedTab ==="Industry"'></app-view-emp-industry>
+    </mat-tab>
+    <mat-tab label="Designation"  *ngIf="designation">
+      <app-view-emp-designation *ngIf='selectedTab ==="Designation"'></app-view-emp-designation>
+    </mat-tab>
+    <mat-tab label="Work Process"  *ngIf="workProcess">
+      <app-view-emp-work-processes *ngIf='selectedTab ==="Work Process"'></app-view-emp-work-processes>
+    </mat-tab>
+    <mat-tab label="Resource"  *ngIf="resource">
+      <app-view-emp-resource *ngIf='selectedTab ==="Resource"'></app-view-emp-resource>
+    </mat-tab>
+    <mat-tab label="UOMS" *ngIf="uoms">
+      <app-view-emp-uom *ngIf='selectedTab ==="UOMS"'></app-view-emp-uom>
+      
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+

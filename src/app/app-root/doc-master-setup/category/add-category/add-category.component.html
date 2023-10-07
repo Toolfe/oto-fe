@@ -1,0 +1,75 @@
+<h2 mat-dialog-title><span *ngIf="!update">Create </span>
+  <span *ngIf="update">Edit </span>Document Category</h2>
+  <mat-dialog-content >
+    <div [formGroup]="categoryForm" class="container" fxLayoutAlign="center center" fxFlexFill fxLayout='column'>
+      
+            <mat-form-field appearance="standard" class="full-width">
+              <mat-label>Category Name </mat-label>
+              <input matInput required formControlName="name">
+              <mat-error>
+                Please Enter Category  Name
+              </mat-error>
+            </mat-form-field>
+          
+        <div class="row">
+          <div class="col">
+            <mat-form-field appearance="standard" class="full-width">
+              <mat-label>Division</mat-label>
+           <mat-select required formControlName="divisionId">
+            <div class="sticky">
+              <input matInput style="width: 100%; padding: 15px;" #division placeholder="Search Division"  >
+            </div>
+               <mat-option *ngFor="let item of division$ |async| search:'name':division.value"
+               [value]="item.id">
+                {{item.name}}
+               </mat-option>
+           </mat-select>
+           <mat-error>
+            Please Select Your Division
+          </mat-error>
+          </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field appearance="standard" class="full-width">
+              <mat-label>Unit</mat-label>
+           <mat-select required formControlName="unitId">
+            <div class="sticky">
+              <input matInput style="width: 100%; padding: 15px;" #unit placeholder="Search Unit"  >
+            </div>
+               <mat-option *ngFor="let item of unit$ |async|search:'name':unit.value " 
+               [value]="item.id">
+                {{item.name}}
+               </mat-option>
+           </mat-select>
+           <mat-error>
+            Please Select Your Unit
+          </mat-error>
+          </mat-form-field>
+          </div>
+        </div>
+   
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Department</mat-label>
+         <mat-select required formControlName="departmentId">
+          <div class="sticky">
+            <input matInput style="width: 100%; padding: 15px;" #dept placeholder="Search Department"  >
+          </div>
+             <mat-option *ngFor="let item of department$ |async |search:'name':dept.value"
+              [value]="item.id">
+               {{item.name}}
+             </mat-option>
+         </mat-select>
+         <mat-error>
+          Please Select Your Department
+        </mat-error>
+        </mat-form-field>
+       
+       
+      </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+    <button mat-flat-button color='primary' (click)="addItem()" *ngIf="!update">Save</button>
+    <button mat-flat-button color='primary' (click)="updateCategory()" *ngIf="update">Update</button>
+   
+  </mat-dialog-actions>

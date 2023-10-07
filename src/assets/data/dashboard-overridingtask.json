@@ -1,0 +1,101 @@
+{
+    "success": true,
+    "message": "task overriding list",
+    "data": [
+        {
+            "id": 1,
+            "taskName": "Jan 2023 : Daily Tally Update",
+            "subtaskName": "7 JAN - Daily Tally update : Knitting and Dyeing Bills",
+            "status": 1,
+            "targetDate": "2023-01-07T18:00",
+            "priorityFactor" : "overriding"
+        },
+        {
+            "id": 1,
+            "taskName": "Jan 2023 : Daily Tally Update",
+            "subtaskName": "7 JAN - Daily Tally Update : Factory Cash Booking",
+            "status": 1,
+            "targetDate": "2023-01-07T18:00",
+            "priorityFactor" : "overriding"
+        },
+        {
+            "id": 1,
+            "taskName": "Jan 2023 : Daily Tally Update",
+            "subtaskName": "7 JAN - Daily Tally Update : Exports Invoices",
+            "status": 1,
+            "targetDate": "2023-01-07T18:00",
+            "priorityFactor" : "overriding"
+        },
+        {
+            "id": 1,
+            "taskName": "Jan 2023 :  Daily Fabrics Update",
+            "subtaskName": "Daily Finish Fabrics Update",
+            "status": 1,
+            "targetDate": "2023-01-07T18:00",
+            "priorityFactor" : "overriding"
+        },
+        {
+            "id": 1,
+            "taskName": "Jan 2023 :  Daily Fabrics Update",
+            "subtaskName": "Daily Griege Fabrics Update",
+            "status": 1,
+            "targetDate": "2023-01-07T18:00"
+        },
+        {
+            "id": 1,
+            "taskName": "Jan 2023 :  Daily Fabrics Update",
+            "subtaskName": "Daily Griege Fabrics Update",
+            "status": 1,
+            "targetDate": "2023-01-07T18:00"
+        },
+        {
+            "id": 1,
+            "taskName": "Jan 2023 :  Daily Fabrics Update",
+            "subtaskName": "Daily Griege Fabrics Update",
+            "status": 1,
+            "targetDate": "2023-01-07T18:00"
+        },
+        {
+            "id": 1,
+            "taskName": "Jan 2023 :  Daily Fabrics Update",
+            "subtaskName": "Daily Griege Fabrics Update",
+            "status": 1,
+            "targetDate": "2023-01-07T18:00"
+        },
+        {
+            "id": 1,
+            "taskName": "Jan 2023 :  Daily Fabrics Update",
+            "subtaskName": "Daily Griege Fabrics Update",
+            "status": 1,
+            "targetDate": "2023-01-07T18:00"
+        },
+        {
+            "id": 1,
+            "taskName": "Jan 2023 :  Daily Fabrics Update",
+            "subtaskName": "Daily Griege Fabrics Update",
+            "status": 1,
+            "targetDate": "2023-01-07T18:00"
+        },
+        {
+            "id": 1,
+            "taskName": "Jan 2023 :  Daily Fabrics Update",
+            "subtaskName": "Daily Griege Fabrics Update",
+            "status": 1,
+            "targetDate": "2023-01-07T18:00"
+        },
+        {
+            "id": 1,
+            "taskName": "Jan 2023 :  Daily Fabrics Update",
+            "subtaskName": "Daily Griege Fabrics Update",
+            "status": 1,
+            "targetDate": "2023-01-07T18:00"
+        },
+        {
+            "id": 1,
+            "taskName": "Jan 2023 :  Daily Fabrics Update",
+            "subtaskName": "Daily Griege Fabrics Update",
+            "status": 1,
+            "targetDate": "2023-01-07T18:00"
+        }
+    ]
+}

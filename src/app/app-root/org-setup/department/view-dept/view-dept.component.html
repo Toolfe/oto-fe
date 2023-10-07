@@ -1,0 +1,50 @@
+<mat-dialog-content >
+    <div [formGroup]="deptForm" class="container" fxLayoutAlign="center center" fxFlexFill fxLayout='column'>
+      <div class="row">   
+        <div class="col">
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Business Unit</mat-label>
+            <mat-select required formControlName="unitId">
+              <div class="sticky">
+              <input matInput style="width: 100%; padding: 15px;" #unit placeholder="Search Unit" (keyup)="getUnit(unit)">
+              </div>
+                <mat-option *ngFor= "let item of unit$ | async | search:'name':unit.value " [value]="item.id" (click)="getUnitId(item)" >
+                {{item.name}}
+               </mat-option>  
+               </mat-select>
+               <mat-error>
+                Please Select Unit Name
+              </mat-error>
+              </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Department Code</mat-label>
+            <input matInput required formControlName="code">
+          </mat-form-field>
+        </div>
+      </div>
+         
+  
+        <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Department Name</mat-label>
+            <input matInput required formControlName="name" >
+            <mat-error>
+              Please Enter Your Department Name
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description" >
+          </mat-form-field>
+     
+      </div>  
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-flat-button color='primary' *ngIf='!update'
+  (click)="addItem()" >Add</button>
+  <button mat-flat-button color='primary' *ngIf='update'
+  (click)="updateDept()">Update</button>
+</mat-dialog-actions>
+

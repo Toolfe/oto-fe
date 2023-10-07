@@ -1,0 +1,15 @@
+<h3 mat-dialog-title>Attachments List</h3>
+<div class="attachments-container">
+  <div *ngFor="let attachment of attachment" class="attachment-item">
+    <mat-icon class="file-icon">description</mat-icon>
+    {{ attachment.fileName}}
+    
+    <button mat-icon-button class="download-button" (click)="downloadFile(attachment)">
+      <mat-icon class="download-icon">download</mat-icon>
+    </button>
+
+    <button mat-icon-button (click)="removeFile()">
+      <mat-icon class="remove-icon">cancel</mat-icon>
+    </button>
+  </div>
+</div>

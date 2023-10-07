@@ -1,0 +1,170 @@
+
+  <div fxLayoutAlign="center center" fxFlexfill fxLayout='column' >
+      <div class="col"></div>
+      <div class="col-md-8">
+          <div>
+              <div >
+
+                  <div><br>
+                      <h2 >Workflow Management</h2>
+                      <mat-card>
+                          <form  novalidate>
+                              <div>
+                                  <table class="table">
+                                      <thead>
+                                        <tr>
+                                          <th scope="col"></th>
+                                          <th scope="col">Basic</th>
+                                          <th scope="col">Premium</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td scope="row">Task Management</td>
+                                          <td><mat-icon class="tick">done</mat-icon> </td>
+                                          <td> <mat-icon class="tick">done</mat-icon></td>
+                                        </tr>
+                                        <tr>
+                                          <td scope="row">Business Process Automation </td>
+                                          <td><mat-icon class="tick">done</mat-icon></td>
+                                          <td><mat-icon class="tick">done</mat-icon></td>
+                                        </tr>
+                                        <tr>
+                                          <td scope="row">Time and Resource Management</td>
+                                          <td><mat-icon class="tick">done</mat-icon></td>
+                                          <td><mat-icon class="tick">done</mat-icon></td>
+                                        </tr>
+                                        <tr>
+                                          <td scope="row">Performance Evaluation</td>
+                                          <td><mat-icon class="x">close</mat-icon></td>
+                                          <td><mat-icon class="tick">done</mat-icon></td>
+                                        </tr>
+                                        <tr>
+                                          <td scope="row">Administration Management</td>
+                                          <td> <mat-icon class="x">close</mat-icon></td>
+                                          <td> <mat-icon class="tick">done</mat-icon></td>
+                                        </tr>
+                                        <tr>
+                                          <td scope="row">Generic App Creator </td>
+                                          <td> <mat-icon class="x">close</mat-icon></td>
+                                          <td><mat-icon class="tick">done</mat-icon></td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                              </div>
+                                    
+                            </form>
+                          </mat-card>
+                  </div>
+          <br><br>
+  
+          <div><br>
+              <h2>Data Storage</h2>
+              <mat-card  >
+                  <form  novalidate>
+                      <div>
+                          <table class="table">
+                              <thead>
+                                <tr>
+                                  <th scope="col"></th>
+                                  <th scope="col">Basic</th>
+                                  <th scope="col">Premium</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td scope="row">Document Management</td>
+                                  <td><mat-icon class="tick">done</mat-icon> </td>
+                                  <td><mat-icon class="tick">done</mat-icon> </td>    
+                                </tr>
+                                <tr>
+                                  <td scope="row">Relevant Retrieval Management </td>
+                                  <td><mat-icon class="tick">done</mat-icon></td>
+                                  <td><mat-icon class="tick">done</mat-icon></td>
+                                </tr>
+                                <tr>
+                                  <td scope="row">Global Searches within Organization</td>
+                                  <td><mat-icon class="x">close</mat-icon></td>
+                                  <td><mat-icon class="tick">done</mat-icon></td>
+                                </tr>
+                                <tr>
+                                  <td scope="row">Document Scanner/Digital Signature</td>
+                                  <td><mat-icon class="x">close</mat-icon></td>
+                                  <td><mat-icon class="tick">done</mat-icon></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                      </div>
+                            
+                    </form>
+                  </mat-card>
+          </div>
+  <br><br>
+  
+  <div><br>
+      <h2>Data Exchange</h2>
+      <mat-card>
+          <form  novalidate>
+              <div>
+                  <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col"></th>
+                          <th scope="col">Basic</th>
+                          <th scope="col">Premium</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td scope="row">Ventor Management System</td>
+                          <td><mat-icon class="x">close</mat-icon></td>
+                          <td><mat-icon class="tick">done</mat-icon></td>
+                        </tr>
+                        <tr>
+                          <td scope="row">Customized Form </td>
+                          <td><mat-icon class="x">close</mat-icon></td>
+                          <td><mat-icon class="tick">done</mat-icon></td>
+                        </tr>
+                      </tbody>
+                    </table>
+              </div>
+                    
+            </form>
+          </mat-card>
+
+  </div>
+  <br><br>
+
+  <form [formGroup]="parent">
+    <div formGroupName="appSetup">
+      <ng-container formGroupName="planDetails">
+        <ng-container formGroupName="plan">
+          <mat-radio-group formControlName="id">
+            <div class="box row" style="text-align: center;" >
+             <div class="col-6">
+               <span style="font-weight: bold; font-size: 20px;"> Select Your Plan:</span>
+             </div>
+             <div class="col">
+              <mat-radio-button value=1001>Basic</mat-radio-button>
+            </div>
+            <div class="col">
+              <mat-radio-button value=1002>Premium</mat-radio-button>
+            </div>
+            </div> 
+        </mat-radio-group>
+        </ng-container>
+      </ng-container>
+
+    </div>
+  </form>
+
+<br><br>
+
+  <button mat-button class="float-rt" color='primary' (click)="onNext()">Next</button>
+  <button mat-button (click)="onPrevious()">Back</button> <br><br>
+  </div>   
+          </div>
+      </div>
+      <div class="col"></div>
+  </div>
+

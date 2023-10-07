@@ -1,0 +1,86 @@
+
+
+  
+        <h2 style="font-weight: 500;">Report Type</h2>
+        <form  [formGroup]="reportForm">
+            <div class="row">
+                <div class="col">
+                  <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Template Code</mat-label>
+                    <input matInput required formControlName="code" >
+                    <mat-error>
+                      Please Enter Template Code
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col">
+                  <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Template Name</mat-label>
+                    <input matInput required formControlName="name">
+                    <mat-error>
+                      Please Enter Template Name
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+
+
+         
+
+         <div class="row">
+            <div class="col">
+                <mat-form-field appearance="standard" class="full-width">
+                  <mat-label>Description</mat-label>
+                  <input matInput required formControlName="description">
+                  <mat-error>
+                    Please Enter  Description
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            <div class="col">
+             <!--    <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Project</mat-label>
+                 
+                   <mat-select multiple  formControlName="projects" #project (selectionChange)="getprojectId(project)">
+                    <div class="sticky">
+                      <input matInput  required placeholder="Search Project" style="width: 100%; padding: 15px;" #project>
+                       </div>
+              
+                    <mat-option *ngFor="let project of  project$ |async| search:'projectName':project.value" [value]="project.id"  >
+                        {{project.projectName}}
+   
+                    </mat-option>
+                   </mat-select>
+                  </mat-form-field> -->
+                  <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Select projects</mat-label>
+                    <mat-select #select multiple formControlName="projects"
+                    (selectionChange)="getprojectId(select)">
+                    <div class="sticky">
+                      <input matInput style="width: 100%; padding:15px; "   required  #projects placeholder="Search Projects" autocomplete="off">
+                  </div>
+                    <mat-option *ngFor="let project of  project$ |async | search:'projectName':projects.value" [value]="project.id">
+                      {{project.projectName}}
+                    </mat-option>
+                 
+                 
+                  </mat-select>
+                  </mat-form-field>
+             
+               </div>
+   
+         </div>
+              
+</form>
+<button mat-flat-button color='primary' class="float-rt"
+  *ngIf="!isDownload" (click)="addItem()">Save</button>
+  <button mat-button class="float-rt" color='primary' mat-dialog-close >cancel</button>
+
+ <!-- <button mat-flat-button color='primary' 
+  *ngIf="!isDownload" (click)="save()">Save</button>
+  <button mat-button class="float-rt" style="background-color: green; color:white" 
+  *ngIf="isDownload" (click)="file()" >Report Extraction</button> -->
+ 
+
+

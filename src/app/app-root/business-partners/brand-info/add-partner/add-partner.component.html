@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>
+    <ng-container *ngIf="!update">Add </ng-container>
+    <ng-container *ngIf="update">Update </ng-container>Business Partner
+</h2>
+<div mat-dialog-content>
+    <form [formGroup]="partnerForm">
+        <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Code</mat-label>
+            <input matInput required formControlName="code" >
+            <mat-error>
+              Please Enter Business partner code
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Name</mat-label>
+            <input matInput required formControlName="name" >
+            <mat-error>
+              Please Enter Business partner name
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Description</mat-label>
+            <input matInput required formControlName="description" >
+            <mat-error>
+              Please Enter something about your business partner
+            </mat-error>
+          </mat-form-field>
+    </form>
+</div>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-flat-button color="primary" *ngIf="update" (click)="onUpdate()">Update</button>
+    <button mat-flat-button color="primary" *ngIf="!update" (click)="onSave()">Create</button>
+</mat-dialog-actions>

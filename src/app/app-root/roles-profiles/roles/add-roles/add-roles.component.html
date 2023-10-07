@@ -1,0 +1,137 @@
+
+<mat-dialog-content >
+  <div [formGroup]="rolesForm" class="container" fxLayoutAlign="center center" fxFlexFill fxLayout='column'>
+     <div class="row">
+      <div class="col">
+        <mat-form-field   appearance="standard" >
+         <mat-label>Role Name</mat-label>
+         <input matInput placeholder="Role Name" formControlName="name">
+         </mat-form-field>
+       </div>
+
+       <div class="col" >
+        <mat-form-field appearance="standard"  >
+          <mat-label>Assign Profile</mat-label>
+          <mat-select required formControlName="profiles" multiple>
+            <div class="sticky">
+            <input matInput style="width: 100%; padding: 15px;" #profile placeholder="Search Unit" (keyup)="getProfile(profile)">
+          </div>
+            <mat-option *ngFor="let profile of profiles$ | async | search:'profileName':profile.value" searchProfile
+             [value]="profile.id"
+              (click)="getProfileId(profile)" (click)="selectedProfile(profile)">
+              {{profile.profileName}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            please select your profile
+          </mat-error>
+        </mat-form-field>
+       </div>
+     </div>
+     <div class="row">
+      <div class="col">
+        <mat-form-field appearance="standard"  >
+          <mat-label> Locations</mat-label>
+          <mat-select required multiple formControlName="locations"  #location>
+            <div class="sticky">
+            <input matInput style="width: 100%; padding: 15px;" #loc placeholder="Search location">
+            </div>
+            <div class="select-all">
+            <mat-checkbox [(ngModel)]="allSelectedLocation"
+            [ngModelOptions]="{standalone: true}"
+            (change)="toggleAllLocation()">Select All</mat-checkbox>
+           </div>
+            <mat-option (click)="optionLocationClick()" *ngFor="let location of location$ | async |search:'name':loc.value" 
+            [value]="location.id">
+              {{location.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            please select your location
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+       <div class="col">
+        <mat-form-field appearance="standard"  >
+          <mat-label> Division</mat-label>
+          <mat-select required multiple formControlName="divisions"  #division>
+            <div class="sticky">
+            <input matInput style="width: 100%; padding: 15px;" #div placeholder="Search Division"  >
+            </div>
+            <div class="select-all">
+            <mat-checkbox [(ngModel)]="allSelecteddivision"
+            [ngModelOptions]="{standalone: true}"
+            (change)="toggleAllDivision()">Select All</mat-checkbox>
+           </div>
+            <mat-option (click)="optionDivisionClick()" *ngFor="let division of division$ | async | search:'name':div.value"
+             [value]="division.id">
+              {{division.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            please select your division
+          </mat-error>
+        </mat-form-field>
+
+      </div> 
+     </div>
+     <div class="row">
+      <div class="col">
+        <mat-form-field appearance="standard"  >
+          <mat-label> Unit</mat-label>
+          <mat-select required multiple formControlName="units"  #unit>
+            <div class="sticky">
+            <input matInput style="width: 100%; padding: 15px;" #roleUnit placeholder="Search Unit"  >
+            </div>
+            <div class="select-all">
+            <mat-checkbox [(ngModel)]="allSelectedUnit"
+            [ngModelOptions]="{standalone: true}"
+            (change)="toggleAllUnit()">Select All</mat-checkbox>
+           </div>
+            <mat-option (click)="optionUnitClick()" *ngFor="let unit of unit$ | async |search:'name':roleUnit.value" 
+            [value]="unit.id"
+            >
+              {{unit.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            please select your units
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+      <div class="col">
+        <mat-form-field appearance="standard"  >
+          <mat-label> Departments</mat-label>
+          <mat-select required multiple formControlName="departments"  #department>
+            <div class="sticky">
+              <input matInput style="width: 100%; padding: 15px;" #dept placeholder="Search Department"  >
+            </div>
+            <div class="select-all" >
+            <mat-checkbox [(ngModel)]="allSelecteddepartment"
+            [ngModelOptions]="{standalone: true}"
+            (change)="toggleAllDepartment()">Select All</mat-checkbox>
+           </div>
+            <mat-option (click)="optionDepartmentClick()" *ngFor="let department of department$ | async|search:'name':dept.value "
+             [value]="department.id">
+              {{department.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+            please select your departments
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+     </div> 
+      
+    </div>  
+</mat-dialog-content>
+ 
+<mat-dialog-actions class="footer">
+  <button mat-button class="cancel" mat-dialog-close>Cancel</button>
+  <button mat-flat-button  type="submit"  color="primary" (click)="addItem()"*ngIf="!update" >Add</button>
+  <button mat-flat-button color='primary' *ngIf="update" (click)="updateRole()">Update </button>
+</mat-dialog-actions>
+

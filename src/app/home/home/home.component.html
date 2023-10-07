@@ -1,0 +1,67 @@
+
+<div class="header">
+
+<span class="float-rt">
+    
+    <a class="hidden-mobile" mat-button [routerLink]="'../dashboard'">Dashboard</a>
+    <a mat-button [routerLink]="'../task/quick-access'">Quick Access</a>
+    <button mat-icon-button class="header-icon">
+        <mat-icon  matBadge="1" matBadgeColor="warn"
+        MatBadgeSize = 'large'>notifications</mat-icon>     
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="otomateApps"  class="header-icon hidden-mobile">
+        <mat-icon (click)="rotate()">workspaces</mat-icon>     
+    </button>
+    <br>
+
+   
+    <mat-menu #otomateApps="matMenu">
+        <div>
+            <button mat-menu-item [routerLink]="'../task'">
+                <mat-icon>vertical_split</mat-icon>
+            All Task</button>
+            <button mat-menu-item [routerLink]="'../document'">
+                <mat-icon>library_books</mat-icon>
+            Documents</button>
+            <button mat-menu-item>
+                <mat-icon>groups</mat-icon>
+                Meetings</button>
+            <button mat-menu-item [routerLink]="'../dashboard/projects'">
+                <mat-icon>view_comfy_alt</mat-icon>
+            All Projects</button>
+        </div>
+    </mat-menu>
+</span>
+
+</div>
+<div class="header">
+<span class="float-rt">
+<app-checkin-timer></app-checkin-timer>
+</span>
+</div>
+<div class="main-container">
+
+<div fxLayoutAlign="center center" fxFlexFill fxLayout='column'>
+
+    <!-- <div>
+        <button (click)="getLocation()">Get Current Location</button>
+        <p *ngIf="latitude && longitude">Latitude: {{ latitude }}</p>
+        <p *ngIf="latitude && longitude">Longitude: {{ longitude }}</p>
+        <p *ngIf="locationError">{{ locationError }}</p>
+
+        <div *ngIf="locationDetails">
+            <p>Address: {{ locationDetails.display_name }}</p>
+            <p>Address: {{ locationDetails.formatted_address }}</p>
+          </div>
+      </div> -->
+      
+    <div>
+        <img src="../../../assets/icons/product-logo.svg" alt="logo" class="logo">
+    </div>
+    <br>
+    <div>
+       <app-search class="search"></app-search>
+     
+    </div>
+</div>
+</div>

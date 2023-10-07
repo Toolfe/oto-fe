@@ -1,0 +1,240 @@
+<div class="header-container">
+  <h2>Add Business Partner
+    <button mat-icon-button class="float-rt close-btn" mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </h2>
+</div>
+
+<div mat-dialog-content>
+
+
+<form [formGroup]="subBusinessPartnerForm">
+      <mat-form-field appearance="legacy" class="full-width">
+        <mat-label>Code</mat-label>
+        <input matInput formControlName="code" required>
+        <mat-error>Please Enter Code</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="legacy" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required>
+        <mat-error>Please Enter Name</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="legacy" class="full-width">
+        <mat-label>Address</mat-label>
+        <textarea matInput formControlName="address" required></textarea>
+        <mat-error>Please Enter Address</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="standard">
+        <mat-label>Business Partner Sub Category</mat-label>
+        <mat-select required formControlName="subcategory">
+          <input matInput style="width: 100%; padding: 15px;" #subcategory placeholder="Search subcategory">
+
+          <mat-option *ngFor="let item of subcategory$ | async | search:'name':subcategory.value" [value]="item.id">
+            {{ item.name }}
+          </mat-option>
+
+        </mat-select>
+        <mat-error> Business Partner Category Required</mat-error>
+      </mat-form-field>
+
+    </form>
+
+    <form [formGroup]="partnerForm">
+      <!-- Partner form fields -->
+      <div *ngFor='let control of formFields'>
+
+        <div [ngSwitch]="control.fieldType">
+          <div class="col" *ngSwitchCase="'text'">
+            <mat-form-field appearance="legacy" class="full-width">
+              <mat-label *ngIf="control.label !== ''">{{control.fieldName}}</mat-label>
+              <input type="text" matInput [formControlName]="control.fieldName" [required]="control.fieldRequired !==0"
+                [maxlength]="control.fieldMaxLength || null">
+              <mat-error>{{"Please enter "+control.fieldName}}</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col" *ngSwitchCase="'select'">
+            <mat-form-field appearance="legacy" class="full-width">
+              <mat-label *ngIf="control.label !== ''">{{control.fieldName}}</mat-label>
+              <mat-select
+                [formControlName]="control.name|| control.firstName || control.fieldName || control.projectName || control.partnerName"
+                [required]="control.fieldRequired !==0">
+                <mat-option *ngFor="let item of currentControl(control.fieldReference)|async"
+                  [value]="item.fieldName || item.firstName || item.name|| item.projectName">
+                  {{item.name||item.firstName||item.fieldName || item.projectName}}
+                </mat-option>
+              </mat-select>
+              <mat-error>{{"Please select "+control.fieldName}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col" *ngSwitchCase="'number'">
+            <mat-form-field appearance="legacy" class="full-width">
+              <mat-label *ngIf="control.label !== ''">{{control.fieldName}}</mat-label>
+              <input type="text" matInput [formControlName]="control.fieldName" [required]="control.fieldRequired !== 0"
+                [maxlength]="control.fieldMaxLength || null" numberOnly>
+              <mat-error>{{"Please enter "+control.fieldName}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col" *ngSwitchCase="'email'">
+            <mat-form-field appearance="legacy" class="full-width">
+              <mat-label *ngIf="control.label !== ''">{{control.fieldName}}</mat-label>
+              <input matInput type="email" fieldName="email" [formControlName]="control.fieldName"
+                [required]="control.fieldRequired !==0">
+              <mat-error>Invalid email!</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col" *ngSwitchCase="'tel'">
+            <mat-form-field appearance="legacy" class="full-width">
+              <mat-label *ngIf="control.label !== ''">{{control.fieldName}}</mat-label>
+              <input matInput type="tel" [formControlName]="control.fieldName" [required]="control.fieldRequired !==0"
+                numberOnly>
+              <mat-error>{{"Please enter "+control.fieldName}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col" *ngSwitchCase="'date'">
+            <mat-form-field appearance="legacy" class="full-width">
+              <mat-label *ngIf="control.label !== ''">{{control.fieldName}}</mat-label>
+              <input matInput [matDatepicker]="picker" (focus)="picker.open()" [formControlName]="control.fieldName"
+                [required]="control.fieldRequired !==0">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error>{{"Please enter "+control.fieldName}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col" *ngSwitchCase="'textarea'">
+            <mat-form-field appearance="standard" class="full-width">
+              <mat-label *ngIf="control.label !== ''">{{control.fieldName}}</mat-label>
+              <textarea matInput [formControlName]="control.fieldName"
+                [required]="control.fieldRequired !==0"></textarea>
+              <mat-error>{{"Please enter "+control.fieldName}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col" *ngSwitchCase="'radio'">
+            <div>
+              <span>{{control.fieldName}} : &nbsp; &nbsp;</span>
+              <mat-radio-group aria-label="Select an option" class="full-width" [formControlName]="control.fieldName"
+                [required]="control.fieldRequired !==0">
+                <mat-radio-button value="Yes" style="margin-right: 30px;">Yes</mat-radio-button>
+                <mat-radio-button value="No">No</mat-radio-button>
+              </mat-radio-group><br><br>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </form>
+    
+    <form [formGroup]="contactForm">
+        <div formArrayName="contacts">
+        <div *ngFor="let contact of contacts.controls; let i = index" [formGroupName]="i" style="margin: 12px 1px;">
+          <div [ngClass]="{'active-card': i + 1}" class="field">
+            <mat-form-field appearance="legacy" class="full-width">
+              <mat-label>Contact Category</mat-label>
+              <mat-select formControlName="category" required>
+                <input matInput style="width: 100%; padding: 15px;" #business placeholder="Search contact category">
+                <mat-option *ngFor="let brand of partnerBrand$ | async | search:'name':business.value"
+                  [value]="brand.id">
+                  {{ brand.name }}
+                </mat-option>
+              </mat-select>
+              <mat-error>contact category Required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="legacy" class="full-width">
+              <mat-label>Contact Functionality</mat-label>
+              <mat-select required formControlName="functionality">
+                <input matInput style="width: 100%; padding: 15px;" #contactFunctionality
+                  placeholder="Search contactFunctionality">
+                <mat-option *ngFor="let item of contactFunctionality$ |async|search:'name':contactFunctionality.value"
+                  [value]="item.id">
+                  {{item.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error>Contact Functionality Required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="legacy" class="full-width">
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name">
+              <mat-error>Please enter a name</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="legacy" class="full-width">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email"email>
+              <mat-error>Please enter a valid email</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="legacy" class="full-width">
+              <mat-label>Phone Number</mat-label>
+              <input matInput formControlName="phone">
+              <mat-error>Please enter a phone number</mat-error>
+            </mat-form-field>
+<!-- 
+            <br>
+            <br>
+            <div class="form-group">
+              <label for="picture" style="font-weight: bold; color: #75747c;">Visiting Card</label>
+              <br>
+              <br>
+
+              <div class="custom-file">
+              <ng-container *ngIf="contact.value.selectedFileName; else noFile">
+                <input #fileInput type="file" id="customFile" class="hidden" accept=".jpg,.png,.gif"(change)="uploadFile($event, i)" />
+              </ng-container>
+              <ng-template #noFile>
+                <input type="file" id="customFile" accept=".jpg,.png,.gif"  (change)="uploadFile($event, i)" />
+              </ng-template>
+              <div class="file-name" *ngIf="contact.value.selectedFileName">
+                {{ contact.value.selectedFileName }}
+                <button mat-icon-button (click)="removeFile(i)">
+                  <mat-icon class="remove-icon">cancel</mat-icon>
+                </button>
+              </div>
+            </div>
+            </div>
+               -->
+
+            <br>
+            <span class="remove"></span>
+            <button mat-icon-button  color="warn" (click)="removeContactField(i)">
+              <mat-icon color="warn">remove_circle</mat-icon>
+              <span>Remove</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <br>
+      <button mat-button color='primary' type="button" (click)="addContactField()">Add Contact Person</button>
+      <button mat-raised-button class="float-rt"  color='primary' type="button" (click)='onSubmit()'>Submit</button>
+    </form>
+  <br>
+  <br>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <!-- <mat-form-field   appearance="legacy" class="full-width" formGroupName="tagsFrom">
+              <mat-label>Tags</mat-label>
+              <mat-chip-list #chipList aria-label="Video keywords" multiple formControlName="tags">
+                <mat-chip
+                    *ngFor="let keyword of keywords"
+                    [selected]="keyword"
+                    [value]="keyword"
+                    (removed)="removeKeyword(keyword)">
+                  {{keyword}}
+                </mat-chip>
+                <input
+                  placeholder="New keyword..."
+                  [matChipInputFor]="chipList"
+                  (matChipInputTokenEnd)="addKeywordFromInput($event)">
+              </mat-chip-list>
+              <mat-hint>Press <b>Enter key</b> to add more tags</mat-hint>
+            </mat-form-field> -->

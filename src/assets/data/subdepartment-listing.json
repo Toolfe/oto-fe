@@ -1,0 +1,36 @@
+{
+    "success": true,
+    "message": "subDepartment listing",
+    "data": [
+        {
+            "id": 22,
+            "subDepartmentCode": "MDP",
+            "subDepartmentName": "MD Personal"
+        },
+        {
+            "id": 14,
+            "subDepartmentCode": "EXP",
+            "subDepartmentName": "Exports"
+        },
+        {
+            "id": 16,
+            "subDepartmentCode": "TAXES",
+            "subDepartmentName": "Income Tax"	
+        },
+        {
+            "id": 12,
+            "subDepartmentCode": "CASE",
+            "subDepartmentName": "Case Handling"	
+        },
+        {
+            "id": 17,
+            "subDepartmentCode": "LAND",
+            "subDepartmentName": "Land and Properties"	
+        },
+        {
+            "id": 19,
+            "subDepartmentCode": "INCUS",
+            "subDepartmentName": "Incentive and Customs"	
+        }
+    ]
+}

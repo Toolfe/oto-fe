@@ -1,0 +1,34 @@
+<div>
+
+    <div class="float-rt">
+        <button mat-icon-button mat-dialog-close id="close">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <mat-card-title style="text-align: center;">Contact Verification</mat-card-title><br>
+
+    <div class="container" fxLayoutAlign="center center" fxFlexFill fxLayout='column'>
+
+        <div class="content-box">
+                <div style="text-align: center; font-size: medium;">
+                    We have sent OTP to entered {{type}},<br>
+                    Please check and enter your OTP below.
+                </div><br>
+                <div>
+                    <ng-otp-input #ngOtpInput (onInputChange)="otpChange($event)" [config]="config"></ng-otp-input>
+                    <div fxLayoutAlign="center end" fxLayout='column'>
+                        <span style="margin-top: 12px;" *ngIf='!reSend'
+                            [ngStyle]="{'color':timeLeft <= 10 ? 'red' : 'black' }">
+                            <span style="font-weight: bold;">{{timeLeft}}</span> seconds left&nbsp;</span>
+                    </div><br>
+                </div>
+                <div class="col" fxLayout="row" fxLayoutAlign="space-between center">
+                    <button mat-button color='primary' (click)='resendOtp(reqData)' *ngIf='reSend'>Resend</button>
+
+                    <button mat-flat-button color='primary' *ngIf='showVerify' (click)='onSubmit(reqData.contact,otp)'
+                        class="float-rt">Verify</button>
+                </div>
+        </div>
+
+    </div>
+</div>

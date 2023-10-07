@@ -1,0 +1,30 @@
+
+
+<mat-dialog-content>           
+             <div>
+                 <h2>Employee</h2>
+                <form    [formGroup]="roleEmployeeForm"   >
+                    <div class="col">
+                        <mat-form-field appearance="standard" class="full-width">
+                            <mat-label>Employee Id</mat-label>
+                         <input matInput formControlName="employeeId" required>
+                          </mat-form-field>
+                    </div>
+                  <div class="col">
+                       <mat-form-field appearance="standard" class="full-width">
+                           <mat-label> Customised Role</mat-label>
+                           <mat-select formControlName="customisedRole" required>
+                            <mat-option >
+                            </mat-option>
+                          </mat-select>
+                         </mat-form-field>
+                   </div>   
+                </form>
+            </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+<button mat-flat-button color='primary' (click)='addItem()'>Save</button>
+<button mat-button mat-dialog-close>Close</button>
+
+</mat-dialog-actions>

@@ -1,0 +1,158 @@
+<div class="row">
+  <mat-toolbar class="header" >
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="navMenu.toggle()">
+        <span>
+          <mat-icon>menu</mat-icon>
+        </span>
+     
+      </button>
+            <span [routerLink]="'/home'" style="cursor: pointer;">
+              <img src='./../../../assets/icons/product-logo.svg'
+              [ngStyle]="{'marginLeft': mobileQuery.matches==true ?'2px' : '20px'}" style="height: 1.9em;">
+            </span>
+        <span class="flex-spacer"></span>
+        <app-break-timer></app-break-timer>
+          <button mat-icon-button [routerLink]="'/home'" >
+            <mat-icon>home</mat-icon>
+          </button>
+          <span style="font-size: 22px;" matTooltip="Dashboard" matTooltipClass="example-tooltip-red">
+            <button mat-icon-button [routerLink]="'/dashboard'">
+              <mat-icon>dashboard</mat-icon>
+            </button>
+          </span>
+          <span    matTooltip="Admin" matTooltipClass="example-tooltip-red">
+            <button mat-icon-button [routerLink]="'/setup'"  >
+              <mat-icon>admin_panel_settings</mat-icon>
+            </button>
+          </span>
+
+
+         
+
+
+        <button mat-icon-button matTooltip="notifications" matTooltipClass="example-tooltip-red"
+       >
+          <mat-icon>notifications</mat-icon>
+        </button>
+        <div class="profile-container" [matMenuTriggerFor]="profile" matTooltip="profie" matTooltipClass="example-tooltip-red">
+          {{userName?.charAt(0)|uppercase}}
+      </div>
+    </mat-toolbar-row>
+
+    </mat-toolbar>
+</div>
+  
+  <mat-sidenav-container class="task-container">
+    <mat-sidenav [mode]="'side'" opened #navMenu>
+      <div class="list-container">
+        <div>
+          <mat-nav-list > 
+
+            <div style="text-align: center; margin: 12px;">
+              <button mat-flat-button id="create-btn" [matMenuTriggerFor]="create">Create
+                <mat-icon>add</mat-icon>
+              </button>
+             </div> 
+             <mat-divider></mat-divider>
+            <div >
+               <a mat-list-item class="nav-list" [routerLink]="'all-files'"  [routerLinkActive]="['active']">
+                <mat-icon mat-list-icon>source</mat-icon>
+                <span class="text">All Files</span>
+               </a> 
+         
+            <!-- <a mat-list-item class="nav-list" [routerLink]="'recent'" [routerLinkActive]="'active'">
+                <mat-icon mat-list-icon>history</mat-icon>
+                <span class="text">Recent</span>
+            </a> -->
+            <a mat-list-item class="nav-list" [routerLink]="'shared'" [routerLinkActive]="'active'">
+                <mat-icon mat-list-icon>people</mat-icon>
+                <span class="text">Shared with me</span>
+            </a>
+            <a mat-list-item class="nav-list" [routerLink]="'saved'" [routerLinkActive]="'active'">
+                <mat-icon mat-list-icon>bookmark</mat-icon>
+                <span class="text">Saved</span>
+            </a>
+            <mat-divider></mat-divider>
+            <a mat-list-item class="nav-list" [routerLink]="'approval'" [routerLinkActive]="'active'">
+              <mat-icon mat-list-icon>rule_folder</mat-icon>
+              <span class="text">Approval</span>
+          </a>
+          <mat-divider></mat-divider>
+            <a mat-list-item class="nav-list" [routerLink]="'trash'" [routerLinkActive]="'active'">
+              <mat-icon mat-list-icon>delete</mat-icon>
+              <span class="text">Trash</span>
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item class="nav-list" [routerLink]="'logs'" [routerLinkActive]="'active'">
+            <mat-icon mat-list-icon>perm_device_information</mat-icon>
+            <span class="text">Logs</span>
+        </a>
+            </div>
+    
+            </mat-nav-list>
+        </div>
+        <div id="download-conatiner">
+            <a mat-flat-button color="primary" class="full-width" [routerLink]="'dms-download-guide'">
+              <mat-icon>download</mat-icon> Download Otobox
+            </a>
+        </div>
+      </div>
+        
+    </mat-sidenav>
+  
+  
+    <mat-sidenav-content style="background-color: white; border-top: 0.6px solid #e0e0e0;">
+      <ng-container style="position: relative;">
+          <router-outlet></router-outlet>
+      </ng-container>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
+  <mat-menu #create="matMenu">
+    <button mat-menu-item  (click)="addNew()">
+      <mat-icon>create_new_folder</mat-icon>
+      <span>Folder</span>
+    </button>
+    <!-- <button mat-menu-item>
+      <mat-icon>article</mat-icon>
+      <span>Text Document</span>
+    </button> -->
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="uploadFile()">
+      <mat-icon>upload</mat-icon>
+      <span>Upload File</span>
+    </button>
+     
+  </mat-menu>
+
+         <!--Profile Menu-->
+         <mat-menu #profile="matMenu">
+          <div class="row" style="padding: 12px; width: 20vw;">
+            <div class="col-4">
+              <div class="profile-view">
+                {{userName?.charAt(0)|uppercase}}
+              </div>
+            </div>
+            <div class="col">
+              <span  style="font-weight: bold; text-transform: capitalize;">
+                {{userName}}
+              </span> <br>
+              <span style="font-style: oblique;">
+               OT00{{id}}
+              </span>
+        
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+        
+         <div>
+          <!-- <button mat-menu-item>
+            <mat-icon>settings</mat-icon>
+            Settings</button> -->
+          <button mat-menu-item (click)='logOut()'>
+            <mat-icon>logout</mat-icon>
+            Logout</button>
+         </div>
+        </mat-menu>

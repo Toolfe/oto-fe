@@ -1,0 +1,52 @@
+<mat-dialog-content>
+    <form  [formGroup]='groupForm'>
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Task Group Code</mat-label>
+                    <input matInput required formControlName="code"  >
+                    <mat-error>
+                        Please Enter Task Group Code
+                    </mat-error>
+                  </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Task Group Name</mat-label>
+                    <input matInput required formControlName="name" >
+                    <mat-error>
+                        Please Enter Task Group Name
+                    </mat-error>
+                  </mat-form-field>
+            </div>
+        </div>
+
+        <div class="col" >
+            <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Task Type Name</mat-label>
+             <mat-select  matInput required formControlName="taskType" multiple>
+                <div class="sticky">
+                <input matInput style="width: 100%; padding: 15px;" required placeholder="Search TaskType" #taskType (keyup)="getTaskType(taskType)">   
+            </div> 
+                <mat-option  *ngFor="let item of type$ | async|search:'name':taskType.value"searchTaskType [value]='item.id'>
+                    {{item.name}}
+                 </mat-option>
+             </mat-select>
+                <mat-error>
+                    Please Enter Task Type Name
+                </mat-error>
+              </mat-form-field>
+        </div>
+             
+                    
+     </form> 
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-flat-button color='primary' *ngIf='!update'
+    (click)="addItem()" >Add</button>
+    <button mat-flat-button color='primary' *ngIf='update'
+    (click)="updateGroup()">Update</button>
+  </mat-dialog-actions>

@@ -1,0 +1,20 @@
+<mat-dialog-content>
+    <form  [formGroup]='priorityForm'>
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Priority</mat-label>
+                        <input matInput formControlName="priority">
+                        <mat-error>
+                        please select priority
+                        </mat-error>
+                      </mat-form-field>
+                </div>          
+     </form> 
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+<button mat-flat-button color='primary' >Save</button>
+<button mat-button mat-dialog-close>Close</button>
+
+</mat-dialog-actions>

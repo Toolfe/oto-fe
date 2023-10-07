@@ -1,0 +1,105 @@
+ 
+            <div class="container ">  
+          
+            <div class="row">
+                    <div class=col-6>
+                        Employee Group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;{{data.grouping.empGroup}}
+                    </div>
+                    <div class=col-6>
+                     Employee Category&nbsp;: &nbsp;{{data.grouping.category}}
+                 </div>
+ 
+            </div><br>
+             <div class="row">
+                 <div class=col-6>
+                     Employee Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;{{data.grouping.type}}
+                 </div>
+                 <div class=col-6>
+                   Working Group&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  : &nbsp;{{data.grouping.workingGroup}}
+              </div>
+ 
+             </div><br>
+             <div class="row">
+                <div class="col">
+                    Languages&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;:&nbsp;{{data.skills.language}}
+                </div>
+                 
+                 <div class=col-6>
+                   Ethnic Origin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;{{data.specific.ethinicOrigin}}
+              </div>
+ 
+             </div><br>
+             <div class="row">
+                <div class=col-6>
+                    Parent Profession&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;{{data.specific.parentsProf}}
+               </div>
+                 <div class=col-6>
+                     Sibling Profession&nbsp;: &nbsp;{{data.specific.siblingsProf}}
+                 </div>
+             </div><br>
+             <div class="row">
+                 <div class=col-6>
+                     Family Business&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;{{data.specific.familyBusiness}}
+                 </div>
+                 <div class=col-6>
+                   Native Place&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;{{data.specific.nativePlace}}
+              </div>
+ 
+             </div><br>
+             <div class="row">
+                 <div class=col-6>
+                     Company&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;{{data.specific.companyNames}}
+                 </div>
+                 <div class=col-6>
+                   Industry&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;{{data.specific.industry}}
+              </div>
+ 
+             </div><br>
+             <div class="row">
+                 <div class=col-6>
+                    Business Contact &nbsp;:&nbsp;{{data.specific.businessContacts}}
+                 </div>
+                 <div class=col-6>
+                   Close Relationship&nbsp;&nbsp;&nbsp;:&nbsp;{{data.specific.closeRelationship}}
+              </div>
+ 
+             </div><br>
+           </div>
+          
+           <div class="container ">  
+         
+              <div class="row">
+                  <div class="col">
+                     Skill Set&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;{{data.skills.skillSet}}
+                  </div>
+                  <div class="col">
+                     Industry Specific Skills&nbsp;:&nbsp;{{data.skills.industrySpecificSkill}}
+                  </div><br>
+ 
+                   
+              </div><br>
+              <div class="row">
+                 <div class="col">
+                     Work Process&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     &nbsp;:&nbsp;{{data.skills.workProcess}}
+                 </div>
+                 <div class="col">
+                    Resource&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;{{data.skills.resource}}
+                 </div>
+             </div><br>
+             <div class="row">
+                 <div class="col">
+                    Function Reporting&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;{{data.hierachy.functionReporting.fname}}
+                 </div>
+             <div class="col">
+                 Business Reporting&nbsp;&nbsp;:&nbsp;{{data.hierachy.businessReporting.fname}}
+             </div>
+            </div>
+     
+            <button class="float-rt" color="primary" mat-raised-button [mat-dialog-close]="true">Close</button>
+      

@@ -1,0 +1,86 @@
+@use 'src/styles/variables' as var;
+
+.table-container
+{
+height: 67vh;
+ overflow-y: scroll;
+}
+
+a{
+    color:black;
+    text-decoration:none;
+}
+a:hover{
+    color: var.$secondary;
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+  }
+  
+  tr.example-detail-row {
+    height: 0;
+  }
+  
+  tr.bp-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+  }
+  
+  tr.bp-row:not(.example-expanded-row):active {
+    background: #efefef;
+  }
+  
+  .bp-row td {
+    border-bottom-width: 0;
+  }
+  
+  .bp-detail {
+    overflow: hidden;
+    display: flex;
+    //justify-content: center;
+  }
+  
+
+  
+
+  
+  .bp-description {
+    padding: 16px;
+    background-color: whitesmoke;
+    margin-bottom: 16px;
+
+    table {
+      font-family: arial, sans-serif;
+      width: 400px;
+    }
+    
+    td, th {
+      //border: 1px solid #dddddd;
+      text-align: left !important;
+      width: 200px;
+      max-width: fit-content;
+      padding: 8px 0;
+    }
+
+  }
+  
+  .bp-description-attribution {
+    opacity: 0.5;
+  }
+  
+  .key{
+    color: rgb(112, 112, 112);
+    font-weight: 400;
+  }
+
+  .bp-footer{
+    zoom: 0.8;
+  }
+  .table-containers {
+    margin-top: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  

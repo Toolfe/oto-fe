@@ -1,0 +1,31 @@
+<mat-dialog-content>
+    <form  [formGroup]='ratingForm'>
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Define Rating</mat-label>
+                        <input matInput required formControlName="code"  >
+                        <mat-error>
+                          
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Rating Value</mat-label>
+                        <input matInput required formControlName="value" >
+                        <mat-error>
+                          
+                        </mat-error>
+                      </mat-form-field>
+                </div>          
+     </form> 
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-flat-button color='primary' *ngIf='!update'
+    (click)="addItem()" >Add</button>
+    <button mat-flat-button color='primary' *ngIf='update'
+    (click)="updateRating()">Update</button>
+  </mat-dialog-actions>

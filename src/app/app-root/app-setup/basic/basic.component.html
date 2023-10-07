@@ -1,0 +1,69 @@
+<div >
+
+    <div fxLayoutAlign="center center" fxFlexfill fxLayout='column' style="height: 90vh;">
+        <mat-card  class="col-md-6" >
+            <form [formGroup]="parent">
+                <div formGroupName="appSetup">
+                    <div class="row" >
+                       <div class="col">
+                        <mat-form-field appearance="standard" class="full-width">
+                            <mat-label>Company Name</mat-label>
+                            <input matInput required formControlName="companyName" >
+                            <mat-error>
+                           Company Name cannot be empty! </mat-error>
+                          </mat-form-field>
+                       </div>
+                       <div class="col">
+                        <mat-form-field appearance="standard" class="full-width">
+                            <mat-label>Leagal Entity Ref</mat-label>
+                            <input matInput required formControlName="legalEntityRef">
+                            <mat-error>
+                                This Field cannot be empty
+                            </mat-error>
+                          </mat-form-field>
+                       </div>
+                    </div>
+                      <div class="row">
+                        <div class="col">
+                            <mat-form-field appearance="standard" class="full-width">
+                                <mat-label>Business Nature</mat-label>
+                                <input matInput required formControlName="businessNature">
+                                <mat-error>
+                                    Please Enter Your Business Nature
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field appearance="standard" class="full-width">
+                                <mat-label>Reporting Currency</mat-label>
+                                <mat-select formControlName='currency'>
+                                    <input matInput id="myinput" myInputField type="text" style="width: 100%; padding: 15px;"
+                                    [(ngModel)]="searchCurrency" formControlName="currency"
+                                    placeholder="Search Currency Name or Code">
+                                      <mat-option *ngFor='let data of currency$ |filter:searchCurrency' [value]='data' >
+                                    {{data.currencyName}}-{{data.currencyCode}}
+                                      </mat-option>
+                                </mat-select>
+                                <mat-error>
+                                    Please Enter Your Business Nature
+                                </mat-error>
+                              </mat-form-field>
+                        </div>
+                        </div>
+                        <div class="row">
+                                <mat-form-field appearance="fill" class="full-width">
+                                    <mat-label>Address</mat-label>
+                                    <textarea matInput formControlName="address" required style="min-height: 100px;"></textarea>
+                                    <mat-error>
+                                        Address cannot be empty!
+                                    </mat-error>
+                                  </mat-form-field>     
+                            </div>
+                </div>      
+        <button  mat-button (click)="onNext()" color='primary'
+        style="float: right;">Next</button>
+                      
+              </form>
+            </mat-card>
+    </div>
+</div>

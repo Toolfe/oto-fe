@@ -1,0 +1,138 @@
+@use 'src/styles/variables' as var;
+
+.header {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 5px 0px;
+  z-index: 10;
+}
+
+.search {
+  font-weight: normal;
+  z-index: 1000;
+  position: relative;
+  //top: 25px;
+  margin-right: 20px;
+  width: 31vw;
+}
+
+.text {
+  margin-left: 8px;
+}
+
+.create-btn {
+  position: relative;
+  margin-left: 8px;
+  margin-bottom: 16px;
+  background-color: white;
+  // border-radius: 20px;
+  color: #4c1487;
+  border: 2px solid #4c1487;
+  width: 120px;
+  padding: 4px 14px;
+}
+
+.nav-list {
+  color: rgb(95, 95, 95);
+}
+
+.nav-list:hover {
+  color: var.$primary;
+}
+
+#create-btn {
+  background-image: linear-gradient(to left, var.$primary, var.$secondary);
+  color: white;
+  border-radius: 50px;
+  width: 80%;
+}
+
+.mat-list-item.active {
+  background-color: #ddf0f4;
+  color: var.$primary;
+
+
+}
+
+.profile-container {
+  width: 30px;
+  margin: 14px;
+  border-radius: 100%;
+  height: 30px;
+  background-color: #662d91;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  cursor: pointer !important;
+}
+
+.profile {
+  height: 30px;
+  overflow: hidden;
+  width: 30px;
+  border-radius: 100%;
+
+}
+
+.profile-view {
+  height: 50px;
+  overflow: hidden;
+  width: 50px;
+  border-radius: 100%;
+  background-color: #662d91;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 30px;
+}
+
+.active-route {
+  background-color: #f5edff !important;
+  color: var.$primary !important;
+  border-left: 6px solid var.$primary;
+  border-radius: 2px;
+}
+
+.mat-list-base {
+  padding-top: 0;
+}
+
+
+.centre {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Amaranth', sans-serif;
+  /* it center the item vertically */
+  justify-content: center;
+  /* it center the item horizontally */
+}
+
+.text-1 {
+  font-size: 11px;
+}
+
+.mat-list-item-content {
+  display: block !important
+}
+
+.matmenuview{
+  width: 20vw;
+}
+
+
+/* Adjust styles for mat-sidenav in mobile view */
+@media (max-width: 600px) {
+
+  // Set your mobile breakpoint here
+  mat-sidenav {
+    /* Your mobile styles here */
+    display: none; // Hide the mat-sidenav
+  }
+
+  .matmenuview {
+    width: 60vw;
+  }
+
+}

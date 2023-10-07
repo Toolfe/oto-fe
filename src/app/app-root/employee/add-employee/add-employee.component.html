@@ -1,0 +1,544 @@
+<mat-dialog-content >
+    <div [formGroup]="employeeForm">
+        <div class="box1 pd-8"  >
+            <mat-card-title>Basic Info</mat-card-title>
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>First Name</mat-label>
+                        <input matInput required formControlName="firstName" textOnly>
+                        <mat-error>
+                         Please enter your first name
+                        </mat-error>
+                   
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput required formControlName="lastName" textOnly>
+                        <mat-error>
+                         Please enter your last name
+                        </mat-error>
+                   
+                      </mat-form-field>
+                </div>
+            </div>
+         
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Employee Id</mat-label>
+                        <input matInput required formControlName="employeeCode" #eId (keyup)='getId(eId.value)' >
+                        <mat-error>
+                            Please Enter Employee id
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>National Id</mat-label>
+                        <input matInput  formControlName="nationalCode" >
+                        <mat-error>
+                            Please Enter National Id
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field appearance="standard" class="full-width">
+                            <mat-label>Remark 1</mat-label>
+                            <input matInput  formControlName="remark1" >
+                            <mat-error>
+                              
+                            </mat-error>
+                          </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Remark 2</mat-label>
+                        <input matInput  formControlName="remark2" >
+                        <mat-error>
+                            
+                        </mat-error>
+                      </mat-form-field>
+                    </div> 
+                </div>
+            
+
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field appearance="standard" class="full-width">
+                            <mat-label>Primary Email</mat-label>
+                            <input matInput required type="email" formControlName="primaryEmail" >
+                            <mat-error>
+                              Invalid email
+                            </mat-error>
+                          </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Secondary Email</mat-label>
+                        <input matInput type="email" formControlName="secondaryEmail" >
+                        <mat-error>
+                          Invalid email
+                        </mat-error>
+                      </mat-form-field>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col" >
+                        <mat-form-field appearance="standard" class="full-width">
+                            <mat-label>Primary Phone</mat-label>
+                            <input matInput required type="number"formControlName ='primaryPhone'>
+                            <mat-error>
+                              Please enter valid phone number
+                            </mat-error>
+                          </mat-form-field>
+                    </div>
+                        <div class="col">
+                            <mat-form-field appearance="standard" class="full-width">
+                            <mat-label>Defalut Password</mat-label>
+                            <input type="text" matInput formControlName ='password'> 
+                          </mat-form-field>
+                        </div> 
+                </div>
+              <!--   <div class="row" >
+                      <app-emp-photo  (imageAddress)="imageString($event)"></app-emp-photo>
+                </div> -->
+            </div><br>
+        
+
+        <div class="box1 pd-8">
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Permanent Address</mat-label>
+                        <textarea matInput required style="min-height: 70px; max-height: 100px;" 
+                        formControlName="permanentAddress"></textarea>
+                        <mat-error>
+                            Please Enter Permenent Address
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Present Address <Address></Address></mat-label>
+                        <textarea matInput style="min-height: 70px; max-height: 100px;"
+                        formControlName="presentAddress"></textarea>
+                        <mat-error>
+                            Please Enter Your Current Address
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div class="box1 pd-8">
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Joining Date</mat-label>
+                        <input matInput [matDatepicker]="picker1" formControlName="joiningDate"  >
+                     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1 ></mat-datepicker>
+                        <mat-error>
+                            Please Select Your Joining Date
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Resign Date</mat-label>
+                       <input matInput [matDatepicker]="picker" formControlName="resignDate" [disabled]="!edit" >
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                           <mat-datepicker #picker ></mat-datepicker>
+                        <mat-error>
+                            Please Select Your Resign Date
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+            </div>
+          
+                <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Department</mat-label>
+                        <mat-select required formControlName="departmentId"   >
+                            <input matInput style="width: 100%; padding: 15px;" #dept placeholder="Search Dept"  >
+                            <mat-option *ngFor="let item of department$ |async|search:'name':dept.value " 
+                            [value]=item.id (click)="getDepartment(item)" (onSelectionChange)="getDepartment(item)">{{item.name}}</mat-option>
+                        </mat-select> 
+                    
+                        <mat-error>
+                            This Filed can't be Empty!
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Sub Department</mat-label>
+                        <mat-select  formControlName="subDepartmentId">
+                            <input matInput style="width: 100%; padding: 15px;" #subdept placeholder="Search Sub-Dept"  >
+                            <mat-option  *ngFor="let item of subDept$ |async | search:'name':subdept.value" 
+                            [value]=item.id>{{item.name}}</mat-option>
+                        </mat-select> 
+                        <mat-error>
+                            This Filed can't be Empty!
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Designation</mat-label>
+                        <mat-select formControlName="designationId">
+                            <input matInput style="width: 100%; padding: 15px;" #designation placeholder="Search Designation">
+                            <mat-option *ngFor="let item of designation$ |async |search:'name':designation.value"
+                            [value]= item.id>{{item.name}}
+                            </mat-option>
+                        </mat-select>
+                       
+                        <mat-error>
+                            This Filed can't be Empty!
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+                <div class="col" >
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Role</mat-label>
+                        <mat-select formControlName="roleId">
+                            <input matInput style="width: 100%; padding: 15px;" #role placeholder="Search Role"  >
+                            <mat-option *ngFor="let item of role$ |async |search:'roleName':role.value"
+                            [value]= item.id>{{item.name}}
+                            </mat-option>
+                        </mat-select>
+                       <mat-error>
+                            This Filed can't be Empty!
+                        </mat-error>
+                      </mat-form-field>
+                 </div> 
+            </div> 
+        </div><br>
+        
+  <div>
+    <div class="box1 pd-8">
+        <mat-card-title>Grouping</mat-card-title>
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Employee Group</mat-label>
+                    <mat-select required formControlName="employeeGroupId">
+                        <input matInput style="width: 100%; padding: 15px;" #empGroup placeholder="Search Employee Group"  >
+                        <mat-option *ngFor="let item of empgroup$ |async |search:'name':empGroup.value"
+                        [value]="item.id">{{item.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>
+                        Please Select Employee Group
+                    </mat-error>
+                  </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Employee Category</mat-label>
+                   <mat-select required formControlName="employeeCategoryId">
+                    <input matInput style="width: 100%; padding: 15px;" #empcat placeholder="Search Employee Category" >
+                       <mat-option *ngFor="let item of empcategory$ |async|search:'name':empcat.value"
+                       [value]="item.id">{{item.name}}
+                       </mat-option>
+                   </mat-select>
+                    <mat-error>
+                        Please select Employee Category
+                    </mat-error>
+                  </mat-form-field>
+            </div>
+        </div>
+       <div class="row">
+           <div class="col">
+               <mat-form-field appearance="standard" class="full-width">
+                   <mat-label>Employee Type</mat-label>
+                  <mat-select required formControlName="employeeTypeId">
+                    <input matInput style="width: 100%; padding: 15px;" #empType placeholder="Search Employee Type"  >
+                      <mat-option *ngFor="let item of emptype$ |async |search:'name':empType.value"
+                      [value]="item.id">{{item.name}}
+                      </mat-option>
+                  </mat-select>
+                   <mat-error>
+                       Please select Employee Type
+                   </mat-error>
+                 </mat-form-field>
+           </div>  
+           <div class="col">
+               <mat-form-field appearance="standard" class="full-width">
+                   <mat-label>Working Group</mat-label>
+                   <mat-select  required formControlName="employeeWorkingGroupId">
+                    <input matInput style="width: 100%; padding: 15px;" #workGroup placeholder="Search WorkingGroup">
+                       <mat-option *ngFor="let item of workinggroup$ |async | search:'name':workGroup.value" [value]="item.id">
+                           {{item.name}}
+                       </mat-option>
+                   </mat-select>
+                   <mat-error>
+                       Please select Working Group
+                   </mat-error>
+                 </mat-form-field>
+           </div>
+           </div>
+     
+     
+    </div>
+  </div><br> 
+  
+<div>
+    <div class="box1 pd-8">
+        <mat-card-title>
+            Family Background
+        </mat-card-title>
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Parent Profession</mat-label>
+                    <input matInput required formControlName="parentProfession" >
+                    <mat-error>
+                       This field cannot be empty!
+                    </mat-error>
+                  </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Sibling Profession</mat-label>
+                    <input matInput formControlName="siblingProfession" >
+                  </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Family Business</mat-label>
+                    <input matInput  formControlName="familyBusiness">
+                  </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Native Place</mat-label>
+                <input matInput required formControlName="nativePlace" >
+                <mat-error>
+                    This field can't be empty!
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Ethnic Origin</mat-label>
+                    <input matInput  formControlName="ethnicOrigin">
+                  </mat-form-field>
+            </div>
+        </div>
+    </div><br>
+    <div class="box1 pd-8" >
+        <mat-card-title>
+           Previous Employment
+        </mat-card-title>
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Company Name</mat-label>
+                    <input matInput  formControlName="previousCompanyName">                  
+                  </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Industry</mat-label>
+                    <input matInput  formControlName="previousIndustry">
+                  </mat-form-field>
+            </div>
+        </div>
+    </div><br>
+    <div class="box1 pd-8" >
+        <mat-card-title>
+            Extra Capabilites
+        </mat-card-title>
+        <div class="row" >
+            <div class="col">
+                <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Business Contact</mat-label>
+                    <input matInput  formControlName="businessContact">
+                  </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="standard" class="full-width">
+                    <mat-label>Close Relationship</mat-label>
+                    <input matInput formControlName="closeRelationship" >
+                  </mat-form-field>
+            </div>
+        </div>
+    </div><br>
+</div>
+
+<div>
+    <div class="box1 pd-8">
+    <mat-card-title>Skills</mat-card-title>
+    <div class="row">
+      <div class="col">
+            <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Skill Set</mat-label>
+                <mat-select required formControlName="skillSet" multiple>
+                    <input matInput style="width: 100%; padding: 15px;" #skill placeholder="Search Skill"  >
+                    <ng-container >
+                        <mat-option *ngFor="let item of skillset$ |async |search:'name':skill.value" 
+                        [value]="item.id">{{item.name}}</mat-option>
+                      </ng-container>
+                </mat-select>
+               <mat-error>
+
+               </mat-error>
+            </mat-form-field>
+        </div>
+       
+        <div class="col">
+            <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Industry Specific Skill</mat-label>
+                <mat-select required formControlName="industrySpecificSkill" multiple>
+                    <input matInput style="width: 100%; padding: 15px;" #indSkill placeholder="Search Industry Skill"  >
+                    <ng-container >
+                        <mat-option *ngFor="let item of specificskill$ | async |search:'name':indSkill.value"
+                         [value]="item.id">{{item.name}}</mat-option>
+                      </ng-container>
+                </mat-select>
+               <mat-error>
+
+               </mat-error>
+            </mat-form-field>
+        </div>
+       
+     
+    </div>
+   <div class="row">
+    <div class="col">
+        <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Previous Company</mat-label>
+            <mat-select required formControlName="previousCompany" multiple>
+                <input matInput style="width: 100%; padding: 15px;" #previousCompany placeholder="Search previousCompany" >
+                <ng-container >
+                    <mat-option *ngFor="let item of company$ |async |search:'name':previousCompany.value" 
+                    [value]="item.id">{{item.name}}</mat-option>
+                  </ng-container>
+            </mat-select>
+           <mat-error>
+
+           </mat-error>
+        </mat-form-field>
+    </div>
+  
+       <div class="col">
+        <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Work Process</mat-label>
+            <mat-select required formControlName="workProcess" multiple>
+                <input matInput style="width: 100%; padding: 15px;" #workProcess placeholder="Search Work Process"  >
+                <ng-container >
+                    <mat-option *ngFor="let item of workprocess$ |async |search:'name':workProcess.value"
+                     [value]="item.id">{{item.name}}</mat-option>
+                  </ng-container>
+            </mat-select>
+           <mat-error>
+
+           </mat-error>
+        </mat-form-field>
+    </div>
+  
+    </div>
+   
+
+       <div class="row">
+         <div class="col">
+            <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Languages</mat-label>
+                <mat-select required formControlName="language" multiple>
+                    <input matInput style="width: 100%; padding: 15px;" #language placeholder="Search Language"  >
+                    <ng-container >
+                        <mat-option *ngFor="let item of language$ | async |search:'name':language.value"
+                         [value]="item.id">{{item.name}}</mat-option>
+                      </ng-container>
+                </mat-select>
+               <mat-error>
+
+               </mat-error>
+            </mat-form-field>
+        </div>
+      
+        <div class="col">
+            <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Resource</mat-label>
+                <mat-select required formControlName="resource" multiple>
+                    <input matInput style="width: 100%; padding: 15px;" #resource placeholder="Search Resource"  >
+                    <ng-container >
+                        <mat-option *ngFor="let item of resources$ |async|search:'name':resource.value"
+                        [value]="item.id">{{item.name}}</mat-option>
+                      </ng-container>
+                </mat-select>
+               <mat-error>
+
+               </mat-error>
+            </mat-form-field>
+        </div>
+       </div>
+      
+      
+    
+    
+</div>
+</div>
+
+
+<div class="box1 pd-8">
+    <mat-card-title>Hierarchy</mat-card-title>
+    <div class="row">
+        <div class="col">
+            <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Functional Reporting</mat-label>
+              <mat-select  formControlName="functionalReportingId" >
+                <input matInput style="width: 100%; padding: 15px;" #hierarchy placeholder="Search Hierarchy"  >
+                  <mat-option *ngFor="let item of employee$ |async | search:'firstName':hierarchy.value" 
+                  [value]="item.id" >
+                    {{item.firstName}}
+                  </mat-option>
+              </mat-select>
+            
+              </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Business Reporting</mat-label>
+             <mat-select   formControlName="businessReportingId" >
+                <input matInput style="width: 100%; padding: 15px;" #BusinessReport placeholder="Search Business Reporting">
+                 <mat-option *ngFor="let item of employee$ |async | search:'firstName':BusinessReport.value"
+                 [value]="item.id" >
+                       {{item.firstName}}
+                 </mat-option>
+             </mat-select>
+             <mat-error>
+                select your business reporting
+            </mat-error>
+              </mat-form-field>
+        </div>
+    </div>
+</div>
+
+
+   
+    </div>
+<br>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  
+    <button mat-flat-button color='primary'type="Button" class="float-rt"   (click)="addItem()" *ngIf="!update" >Save</button>
+    <button mat-flat-button color='primary'type="Button" class="float-rt"   (click)="updateEmployee()" *ngIf="update" >Update</button>
+    <button mat-button mat-dialog-close class="float-rt">Close</button>
+</mat-dialog-actions>

@@ -1,0 +1,115 @@
+<div [formGroup]="recordingForm">
+    <div class="row">
+        <div class="col">
+            <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Doc Code </mat-label>
+                <input matInput required  >
+                <mat-error>
+                   
+                </mat-error>
+              </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Doc Type </mat-label>
+                <input matInput required  formControlName='name'>
+                <mat-error>
+                   
+                </mat-error>
+              </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Doc Title </mat-label>
+                <input matInput required  >
+                <mat-error>
+                   
+                </mat-error>
+              </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Doc Date </mat-label>
+                <input matInput required  formControlName='name'>
+                <mat-error>
+                   
+                </mat-error>
+              </mat-form-field>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            <mat-form-field class="full-width" appearance="standard" >
+                <mat-label>Business Unit </mat-label>
+                <mat-select  required>
+                    <mat-option >
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field class="full-width" appearance="standard" >
+                <mat-label>Department </mat-label>
+                <mat-select  required>
+                    <mat-option >
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+   
+    <div class="row">
+        <div class="col">
+            <mat-form-field class="full-width" appearance="standard" >
+                <mat-label>Business Partner </mat-label>
+                <mat-select  required>
+                    <mat-option >
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field class="full-width" appearance="standard" >
+                <mat-label>Project </mat-label>
+                <mat-select formControlName="department" required>
+                    <mat-option >
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <mat-form-field appearance="standard" class="full-width">
+                <mat-label>External Reference </mat-label>
+                <input matInput required  >
+                <mat-error>
+                   
+                </mat-error>
+              </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field appearance="standard" class="full-width">
+                <mat-label>Customised Date </mat-label>
+                <input matInput required  >
+                <mat-error>
+                   
+                </mat-error>
+              </mat-form-field>
+        </div>
+    </div>
+
+  </div>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-flat-button color='primary' *ngIf='!update'
+ >Add</button>
+    <button mat-flat-button color='primary' *ngIf='update'
+ >Update</button>
+  </mat-dialog-actions>

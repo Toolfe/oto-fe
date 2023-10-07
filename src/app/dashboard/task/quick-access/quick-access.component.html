@@ -1,0 +1,85 @@
+<!-- Display the toolbar only on mobile view (xs) -->
+<!-- <mat-toolbar color="primary" fxHide.gt-xs>
+  <button mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar> -->
+<mat-card>
+  <mat-card-content>
+    <mat-form-field class="filter">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search">
+    </mat-form-field>
+
+    <button mat-button id="create-btn" (click)="createTask()"
+      [ngStyle]="{'cursor': isEnable('creation') ? 'no-drop' : 'pointer' }">Assignment</button>
+
+    <mat-chip-list style="padding: 10px;" fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="8px">
+      <mat-chip (click)="tableSelection('assignToMe')" style="cursor:pointer;" [selected]="assignToMe"
+        color="primary">Assigne to me</mat-chip>
+      <mat-chip (click)="tableSelection('assignByMe')" style="cursor:pointer;" [selected]="assignByMe"
+        color="primary">Assigned by me</mat-chip>
+      <mat-chip (click)="tableSelection('completed')" style="cursor:pointer;" [selected]="completed"
+        color="primary">Completed</mat-chip>
+    </mat-chip-list>
+
+    <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData(dataSource)">
+        <!-- Define the columns -->
+        <ng-container matColumnDef="taskName">
+          <mat-header-cell style="display: none;" *matHeaderCellDef>Task Name</mat-header-cell>
+          <mat-cell *matCellDef="let item"> <span id="task-title" (click)="selectedTask(item)"> {{ item.subtaskTitle }}</span></mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="initiator">
+          <mat-header-cell style="display: none;" *matHeaderCellDef>Initiator</mat-header-cell>
+          <mat-cell class="cell-container" *matCellDef="let item">
+            <!-- <span *ngIf="completed">{{item.initiatorName }}</span> -->
+            <span>{{ item.initiatorName?item.initiatorName:item.assigneeName }}</span>
+            <button style="float: left;" *ngIf="!item.activeStatus && assignToMe" mat-button id="start"
+              (click)="onStartStop(item.id,1)"> <mat-icon
+                style="margin-left: -10px;">play_arrow</mat-icon>Start</button>
+            <button style="float: left;" *ngIf="item.activeStatus && assignToMe" mat-button color="accent"
+              (click)="onStartStop(item.id,0)"><mat-icon style="margin-left: -10px;">stop</mat-icon>Stop</button>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <mat-header-cell style="display: none;" *matHeaderCellDef> Status </mat-header-cell>
+          <mat-cell *matCellDef="let item">
+            <span *ngIf="completed" style="width: 70%;" matTooltip='Assignee' >{{item.assigneeName }}</span>
+            <div *ngIf="assignByMe && item.subtaskStatusId == 1" style="cursor:pointer;box-shadow: 1px 1px 1px 1px;"
+              class="status-pill">Todo</div>
+            <div *ngIf="assignByMe && item.subtaskStatusId == 2" style="cursor:pointer;box-shadow: 1px 1px 1px 1px;"
+              class="status-pill is--snagging">In-Progress</div>
+            <div *ngIf="(assignByMe || completed) && item.subtaskStatusId == 3" style="cursor:pointer;box-shadow: 1px 1px 1px 1px;"
+              class="status-pill is--active">Done</div>
+
+            <div *ngIf="assignToMe && item.subtaskStatusId == 1" style="cursor:pointer;box-shadow: 1px 1px 1px 1px;"
+              class="status-pill">Todo</div>
+            <div (click)="onStatusChange(item,1);" *ngIf="assignToMe && item.subtaskStatusId != 1"
+              style="cursor: pointer;" class="status-pill">Todo</div>
+            <div *ngIf="assignToMe && item.subtaskStatusId == 2"
+              style="cursor:pointer;box-shadow: 1px 1px 1px 1px; margin-left: 10px;" class="status-pill is--snagging">
+              In-Progress</div>
+            <div (click)="onStatusChange(item,2);" *ngIf="assignToMe && item.subtaskStatusId != 2"
+              style="cursor: pointer;margin-left: 10px;" class="status-pill is--snagging">In-Progress</div>
+            <div *ngIf="assignToMe && item.subtaskStatusId == 3"
+              style="cursor:pointer;box-shadow: 1px 1px 1px 1px; margin-left: 10px;" class="status-pill is--active">Done
+            </div>
+            <div (click)="onStatusChange(item,3);" *ngIf="assignToMe && item.subtaskStatusId != 3"
+              style="cursor: pointer;margin-left: 10px;" class="status-pill is--active">Done</div>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Specify column definitions -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row class="row-card" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+    <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="false">
+    </mat-paginator>
+  </mat-card-content>
+
+
+</mat-card>

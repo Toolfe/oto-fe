@@ -1,0 +1,151 @@
+.cdk-accordion {
+  
+    display: block;
+    
+  }
+  
+  .cdk-accordion-item {
+   
+    display: block;
+    border: solid 1px #ccc;
+   
+  }
+  
+  .cdk-accordion-item + .cdk-accordion-item {
+    border-top: none;
+  }
+  
+  .cdk-accordion-item-header {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+   
+    
+  }
+  
+  .cdk-accordion-item-description {
+  
+    font-size: 0.85em;
+    color: rgb(255, 255, 255);
+    
+    
+  }
+  
+  .cdk-accordion-item-header,
+  .cdk-accordion-item-body {
+    //padding: 16px;
+    background-color: white;
+  }
+  
+  .cdk-accordion-item-header:hover {
+    cursor: pointer;
+    background-color: #eee;
+  }
+  
+  .cdk-accordion-item:first-child {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+  
+  .cdk-accordion-item:last-child {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  .mat-expansion-panel-header-title{
+      align-items: center;
+  }
+
+  .grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1.2fr;
+        margin-left: 63%;   
+  }
+  .grid1{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-left: 60%;
+   
+   
+    
+}
+
+
+
+  .panel-des{
+    margin-right:5% ;
+  }
+
+  .check{
+    margin-right:93px ;
+  }
+
+  .check-section {
+    margin: 12px 0;
+  }
+
+  .save-btn{
+    margin-left:92%;
+    margin-top: 10px;
+  }
+
+  .tag{
+    margin-left:10px;
+    background-color: rgb(182, 182, 182);
+    color: white;
+    border-radius: 5px;
+    padding: 0px 8px 4px 8px;
+  }
+  .float-rt{
+    padding: 10px;
+    margin-right: 80px;
+    
+  }
+
+  .screen-grid{
+    display: grid;
+    grid-template-columns: 16.6fr 2.54fr 2.53fr 2.49fr 1.76fr;
+   padding: 12px;
+   
+  }
+
+  .toggle-item{
+    padding: 10px;
+    height: 6vh;
+  }
+  .header-grid{
+    display: grid;
+    grid-template-columns: 18fr 6fr ;
+    padding: 3px;
+    
+  }
+  .t-grid{
+    display: grid;
+    grid-template-columns:  18fr 18fr 30fr 12fr ;
+    
+  }
+
+  .example-accordion-item-description {
+    font-size: 0.85em;
+    color: #999;
+  }
+  
+  .example-accordion-item-header,
+  .example-accordion-item-body {
+    padding: 16px;
+  }
+  
+  .cdk-accordion-item:hover {
+    cursor: pointer;
+    background-color: #eee;
+  }
+
+  .module-container{
+    padding: 10px;
+  }
+  .create-profile{
+    font-size: 20px;
+    font-weight: bold; 
+    margin-left: 8px;
+  }
+  

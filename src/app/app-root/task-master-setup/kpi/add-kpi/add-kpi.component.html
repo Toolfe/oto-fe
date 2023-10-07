@@ -1,0 +1,31 @@
+<mat-dialog-content>
+    <form  [formGroup]='kpiForm'>
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>KPI Code</mat-label>
+                        <input matInput required formControlName="code"  >
+                        <mat-error>
+                            Please Enter Kpi Code
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>KPI Name</mat-label>
+                        <input matInput required formControlName="name" >
+                        <mat-error>
+                            Please Enter Kpi Name
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+                    
+     </form> 
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-flat-button color='primary' *ngIf='!update'
+    (click)="addItem()" >Add</button>
+    <button mat-flat-button color='primary' *ngIf='update'
+    (click)="updateKpi()">Update</button>
+  </mat-dialog-actions>

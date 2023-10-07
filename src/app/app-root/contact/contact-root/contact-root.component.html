@@ -1,0 +1,46 @@
+<!-- <ul class="nav header" >
+ 
+   <li  *ngFor='let item of menuList' [ngClass]="{'active':selectedList===item}" >
+       <span [ngClass]="{'title':selectedList!=item}" (click)='openMenuList(item)'>{{item}}</span>
+   </li>
+</ul>
+
+
+<div class="col" style="height: 86vh;">
+<ng-container *ngIf='selectedList ==="Define"'>
+   <app-define></app-define>
+</ng-container>
+<ng-container *ngIf='selectedList ==="Data Fields"'>
+   <app-data-fields></app-data-fields>
+</ng-container>
+</div>  -->
+
+<div style="background-color: white;">
+
+   <!-- <mat-tab-group> -->
+   <mat-tab-group  [(selectedIndex)]="selectedIndex" (selectedTabChange)="tabChanged($event)">
+     <mat-tab label="Contact Category">
+         <app-category *ngIf='selectedTab ==="Contact Category"'></app-category>
+     </mat-tab>
+ 
+ 
+   <!--  <mat-tab label="Contact Sub Category">
+     <app-sub-category *ngIf='selectedTab ==="Contact Sub Category"'></app-sub-category>
+     </mat-tab>
+ 
+     <mat-tab label="Contact Type 1">
+    <app-contact-type1 *ngIf='selectedTab ==="Contact Type 1"'></app-contact-type1>
+     </mat-tab>
+ 
+     <mat-tab label="Contact Type 2">
+     <app-contact-type2 *ngIf='selectedTab ==="Contact Type 2"'></app-contact-type2>
+     </mat-tab> -->
+ 
+     <mat-tab label="Contact Functionality">
+     <app-functionality *ngIf='selectedTab ==="Contact Functionality"'></app-functionality>
+     </mat-tab>
+ 
+ 
+   </mat-tab-group>
+ 
+ </div>

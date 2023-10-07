@@ -1,0 +1,79 @@
+<mat-toolbar style="background-color: white;">
+  <button mat-icon-button [routerLink]="'/login'">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <img src="./../../../assets/icons/product-logo.svg" id="logo">
+  <span class="flex-spacer"></span>
+  <button mat-button color="primary" [routerLink]="'/login'">
+    Login
+  </button>
+
+</mat-toolbar><br><br><br><br><br>
+
+<div>
+  <div fxLayoutAlign="center center" fxFlexFill fxLayout='column'>
+
+    <div class="box1">
+      <form fxLayout="column" [formGroup]="loginForm">
+        <span id="reset">Reset Your Password</span>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" name="email" required formControlName="userName">
+          <mat-error>
+            <div *ngIf="email.errors?.required && email.touched">
+              This field can't be empty
+            </div>
+            <div *ngIf="email.errors?.email">Invalid Email
+            </div>
+          </mat-error>
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>New Password</mat-label>
+          <input matInput [type]="hide ? 'newPassword' : 'text'" formControlName="newPassword">
+          <mat-error *ngIf="newPassword.errors?.required && newPassword.touched">
+            New Password can't be Empty!
+          </mat-error>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide newPassword'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput [type]="hide ? 'confrimPassword' : 'text'" formControlName="confrimPassword">
+          <mat-error *ngIf="confrimPassword.errors?.required && confrimPassword.touched">
+             Confrim Password can't be Empty!
+          </mat-error>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide confrimPassword'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <!-- <mat-form-field appearance="outline" class="full-width">
+          <mat-label>New Password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput type="password">
+          <mat-icon matSuffix>password</mat-icon>
+        </mat-form-field> -->
+        <button mat-flat-button  class="btn-primary"  color="primary" type="button" (click)="logSubmit()">Submit</button>
+
+      </form>
+    </div>
+    <br>
+    <b>Doesn't have an account yet? <a routerLink="/welcome/register-admin"><u>Sign Up</u></a></b>
+
+
+  </div>
+</div>

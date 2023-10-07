@@ -1,0 +1,17 @@
+.form-control{
+    width: 25vw;
+    }
+    .form-control:focus {
+    border-color: #662d91;
+    box-shadow: 0 0 0 0.1rem rgba(74, 40, 167, 0.25);
+    width: 28vw;
+    } 
+    
+    #file-upload{
+    display: none;
+    }
+    .table-container
+{
+height: 67vh;
+ overflow-y: scroll;
+}

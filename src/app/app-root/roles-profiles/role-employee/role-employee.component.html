@@ -1,0 +1,35 @@
+
+ <mat-toolbar>
+    <div class="col-5 search">
+        <input type="search" class="form-control" placeholder="Search">
+      </div>
+      <span class='flex-spacer'></span>
+      <button mat-button>Import</button>
+      <button mat-button (click)='addNew()'>New</button>
+  </mat-toolbar>
+  
+  <div class="col-12"  style="height: 500px; overflow-y: scroll;">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+         <th scope="col">Employee Id</th>
+          <th scope="col">Customised Role</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let item of $roleEmp'>
+        <td>{{item.employeeId}}</td>
+          <td>{{item.customisedRole}}</td>
+          
+          <td>
+          <button mat-icon-button matTooltipClass="example-tooltip-red" matTooltipPosition='right'
+          matTooltip='Edit'><i class="bi bi-pencil-fill"></i></button> 
+        <button mat-icon-button matTooltipClass="example-tooltip-red" matTooltipPosition='right'
+          matTooltip='Delete' (click)="removeItem(item)"><i class="bi bi-trash-fill"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button mat-flat-button (click)="onSubmit()">Submit</button>
+  </div>

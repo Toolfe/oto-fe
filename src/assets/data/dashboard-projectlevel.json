@@ -1,0 +1,97 @@
+{
+    "success": true,
+    "message": "project level",
+    "data": [
+        {
+            "projectId": 22,
+            "taskId": 65,
+            "projectName": "Test",
+            "taskName": "T2",
+            "taskDuration": 489
+        },
+        {
+            "projectId": 22,
+            "taskId": 90,
+            "projectName": "Test",
+            "taskName": "Test Task",
+            "taskDuration": 0
+        },
+        {
+            "projectId": 22,
+            "taskId": 96,
+            "projectName": "Test",
+            "taskName": "Warranty",
+            "taskDuration": 322058
+        },
+        {
+            "projectId": 22,
+            "taskId": 97,
+            "projectName": "Test",
+            "taskName": "Test Project ",
+            "taskDuration": 0
+        },
+        {
+            "projectId": 22,
+            "taskId": 98,
+            "projectName": "Test",
+            "taskName": "testing 01",
+            "taskDuration": 0
+        },
+        {
+            "projectId": 22,
+            "taskId": 99,
+            "projectName": "Test",
+            "taskName": "Testing",
+            "taskDuration": 0
+        },
+        {
+            "projectId": 22,
+            "taskId": 100,
+            "projectName": "Test",
+            "taskName": "Testing",
+            "taskDuration": 0
+        },
+        {
+            "projectId": 22,
+            "taskId": 101,
+            "projectName": "Test",
+            "taskName": "Hello",
+            "taskDuration": 0
+        },
+        {
+            "projectId": 22,
+            "taskId": 103,
+            "projectName": "Test",
+            "taskName": "Testing",
+            "taskDuration": 0
+        },
+        {
+            "projectId": 14,
+            "taskId": 0,
+            "projectName": "Project001",
+            "taskName": "-",
+            "taskDuration": 0
+        },
+        {
+            "projectId": 1,
+            "taskId": 1,
+            "projectName": "Project 1",
+            "taskName": "T1",
+            "taskDuration": 1103
+        },
+        {
+            "projectId": 1,
+            "taskId": 67,
+            "projectName": "Project 1",
+            "taskName": "T2",
+            "taskDuration": 9
+        },
+        {
+            "projectId": 1,
+            "taskId": 102,
+            "projectName": "Project 1",
+            "taskName": "Create Task",
+            "taskDuration": 0
+        }
+    ]
+}

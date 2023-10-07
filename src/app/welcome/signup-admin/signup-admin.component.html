@@ -1,0 +1,175 @@
+<div>
+    <img style="height: 90px;" src="./../../../assets/icons/product-logo.svg">
+
+<div  style="height: 83vh;">
+    <div class="container" fxLayoutAlign="center center" fxFlexFill fxLayout='column'>
+        <mat-card  class="col-md-6">
+             
+        <form [formGroup]="adminForm">
+            <mat-card-header>
+                <mat-card-title >Admin Registration</mat-card-title>
+            </mat-card-header>
+        
+              <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>First Name</mat-label>
+                        <input matInput required formControlName="fname" type="text" #fname  autocomplete="off"
+                        textOnly>
+                        <mat-error>
+                            Please Enter Your First Name
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="standard" class="full-width">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput required formControlName="lname" type="text" #lname  autocomplete="off"
+                        textOnly>
+                        <mat-error>
+                            Please Enter Your Last Name
+                        </mat-error>
+                      </mat-form-field>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field appearance="standard" class="full-width">
+                            <mat-label>Email</mat-label>
+                            <input matInput required formControlName="primaryEmail" #email  autocomplete="off" >
+                            <mat-error>
+                                Please Enter Your valid email
+                            </mat-error>
+                            <mat-hint class="float-rt">
+                                <span *ngIf="emailVerified==false">
+                                    <a class="fill-button">
+                                        <span class="fill-button-hover">		
+                                            <span class="fill-button-text" (click)="sendOtp('email')">Verify Email</span>
+                                        </span>
+                                        </a>
+                                </span>
+                                <span *ngIf="emailVerified==true">
+                                    Verified <i style="color: green;" class="bi bi-patch-check-fill"></i>
+                                </span>
+                            </mat-hint>
+                          </mat-form-field>  
+                    </div>
+                    
+                     
+		<div class="col">
+            <div class="tel" >
+                <mat-form-field appearance="standard" class="full-width">
+                    <app-tel-input   required></app-tel-input>
+                    <mat-label>Phone Number</mat-label>
+                    <mat-hint class="float-rt">
+                        <span *ngIf="phoneVerified==false">
+                            <a class="fill-button">
+                                <span class="fill-button-hover">		
+                                    <span class="fill-button-text" (click)="sendOtp('phone')">Verify Phone</span>
+                                </span>
+                                </a>
+                        </span>
+                        <span *ngIf="phoneVerified==true">
+                            Verified <i style="color: green;" class="bi bi-patch-check-fill"></i>
+                        </span>
+                    </mat-hint>
+                    <mat-error>
+                        Please Enter valid Phone number
+                    </mat-error>
+                       
+                  </mat-form-field>
+            </div>
+
+    </div>
+    
+    
+                    </div><br>
+                   <div class="row">
+                       <div class="col">
+                        <ng-template #popTemplate>
+                            <label class="col" [ngClass]="adminForm.controls['password'].hasError('required') || adminForm.controls['password'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+                                <i class="material-icons">{{ adminForm.controls['password'].hasError('required') ||
+                                  adminForm.controls['password'].hasError('hasSmallCase') ? 'cancel' :
+                                  'check_circle' }}</i>
+                                Must contain at least 1 Letter in Small Case!
+                              </label>
+
+                              <label class="col" [ngClass]="adminForm.controls['password'].hasError('required') || adminForm.controls['password'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+                                <i class="material-icons">{{ adminForm.controls['password'].hasError('required') ||
+                                  adminForm.controls['password'].hasError('hasCapitalCase') ? 'cancel' :
+                                  'check_circle' }}</i>
+                                Must contain at least 1 in Capital Case!
+                              </label>
+                              
+                            <label class="col" [ngClass]="adminForm.controls['password'].hasError('required') || adminForm.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+                              <i class="material-icons">{{ adminForm.controls['password'].hasError('required') ||
+                                adminForm.controls['password'].hasError('hasNumber') ? 'cancel' :
+                                'check_circle' }}</i>
+                              Must contain at least 1 number!
+                            </label>
+
+                            <label class="col" [ngClass]="adminForm.controls['password'].hasError('required') || adminForm.controls['password'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
+                              <i class="material-icons">{{ adminForm.controls['password'].hasError('required') ||
+                                adminForm.controls['password'].hasError('hasSpecialCharacters') ? 'cancel' :
+                                'check_circle' }}</i>
+                              Must contain at least 1 Special Character!
+                            </label>
+                            
+                            <label class="col" [ngClass]="adminForm.controls['password'].hasError('required') || adminForm.controls['password'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+                                <i class="material-icons">{{ adminForm.controls['password'].hasError('required') ||
+                                  adminForm.controls['password'].hasError('minlength') ? 'cancel' :
+                                  'check_circle' }}</i>
+                                Must be at least 8 characters!
+                              </label>
+                        </ng-template>
+                        <mat-form-field appearance="standard" class="full-width">
+                            <mat-label>Password</mat-label>
+                            <input matInput required type="password"   [type]="hide ? 'password' : 'text'"  formControlName="password" 
+                            placement="left" [popover]="popTemplate" triggers="focus">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" 
+                            [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="adminForm.controls['password'].invalid || adminForm.controls['password'].touched">
+                                Please Enter Your Password
+                            </mat-error>
+                        </mat-form-field>
+                       </div>
+                       <div class="col">
+                        <mat-form-field appearance="standard" class="full-width">
+                            <mat-label>Confirm Password</mat-label>
+                            <input matInput type="password" required formControlName="confirmPassword" >
+                    <mat-error *ngIf="adminForm.controls['confirmPassword'].pristine || adminForm.controls['confirmPassword'].errors?.MatchPassword">Password does not match</mat-error>
+                        </mat-form-field>
+                       </div>
+    
+                   </div>
+                    
+                    <div class="mb-3 mt-3">
+                        By submiting this form, you agree to all our&nbsp; <a >Terms & Conditions</a>
+                </div> 
+    
+    
+                    <div class="row">
+                        <div class="col">
+                            <button mat-button [routerLink]="'/'">Back</button>
+                        </div>
+                        <div class="col">
+                            <div class="col">
+                                <button mat-flat-button color="primary" type="button" (click)="onSubmit()"
+                                *ngIf="!submitted" class="full-width" [disabled]="!emailVerified==true || !phoneVerified==true">Submit</button>
+                                  <button mat-flat-button color="primary" *ngIf="submitted"
+                                  class="full-width">
+                                 Submitting...
+                                </button>
+                            </div>
+                        </div>
+                        </div>
+          </form>
+        </mat-card>
+    </div>
+</div>
+
+
+</div>
+   

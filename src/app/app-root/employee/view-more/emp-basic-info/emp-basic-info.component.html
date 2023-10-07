@@ -1,0 +1,78 @@
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-6">
+            <strong class="semi-bold-text">First Name :</strong>{{ data.firstName }}
+        </div>
+        <div class="col-6">
+            <strong class="semi-bold-text">Last Name :</strong> {{ data.lastName }}
+        </div>
+    </div><br>
+
+    <div class="row">
+        <div class="col-6">
+            <strong class="semi-bold-text"> Employee Id :</strong> {{ data.employeeCode }}
+        </div>
+        <div class="col-6">
+            <strong class="semi-bold-text">National Id :</strong> {{ data.nationalCode }}
+        </div>
+    </div><br>
+
+    <div class="row">
+        <div class="col-6">
+            <strong class="semi-bold-text">Remarks1 :</strong> {{ data.remark1 }}
+        </div>
+        <div class="col-6">
+            <strong class="semi-bold-text">Remarks 2 :</strong> {{ data.remark2 }}
+        </div>
+    </div><br>
+
+    <div class="row">
+        <div class="col-6">
+            <strong class="semi-bold-text">Primary Phone :</strong> {{ data.primaryPhone }}
+        </div>
+        <div class="col-6">
+            <strong class="semi-bold-text">Primary Email :</strong> {{ data.primaryEmail }}
+        </div>
+    </div><br>
+
+    <div class="row">
+        <div class="col-6">
+            <strong class="semi-bold-text">Secondary Email :</strong> {{ data.secondaryEmail }}
+        </div>
+        <div class="col-6">
+            <strong class="semi-bold-text">Join Date :</strong> {{ data.joiningDate.substring(0, 10) }}
+        </div>
+    </div>
+</div><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <strong class="semi-bold-text">Present Address :</strong> {{ data.presentAddress }}
+        </div>
+        <div class="col-6">
+            <strong class="semi-bold-text">Permanent Address :</strong> {{ data.permanentAddress }}
+        </div>
+    </div><br>
+
+    <div class="row">
+        <div class="col-6">
+            <strong class="semi-bold-text">Department :</strong> {{ data.departmentName }}
+        </div>
+        <div class="col-6">
+            <strong class="semi-bold-text">Sub Department :</strong> {{ data.subDepartmentName }}
+        </div>
+    </div><br>
+
+    <div class="row">
+        <div class="col-6">
+            <strong class="semi-bold-text">Designation :</strong> {{ data.designationName }}
+        </div>
+        <div class="col-6">
+            <strong class="semi-bold-text">Role :</strong> {{ data.roleName }}
+        </div>
+    </div>
+</div>
+<br><br><br>
+<button class="float-rt" color="primary" mat-raised-button [mat-dialog-close]="true">Close</button>

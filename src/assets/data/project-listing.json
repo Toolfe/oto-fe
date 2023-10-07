@@ -1,0 +1,21 @@
+{
+    "success": true,
+    "message": "project listing",
+    "data": [
+        {
+            "id": 22,
+            "projectCode": "0076",
+            "projectName": "Test"
+        },
+        {
+            "id": 14,
+            "projectCode": "P001",
+            "projectName": "Project001"
+        },
+        {
+            "id": 1,
+            "projectCode": "001",
+            "projectName": "Project 1"
+        }
+    ]
+}

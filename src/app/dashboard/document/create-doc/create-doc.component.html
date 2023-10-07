@@ -1,0 +1,276 @@
+<h2>Upload Document</h2>
+
+<div mat-dialog-content>
+    <form [formGroup]="fileUploadForm">
+        <div>
+          <mat-form-field appearance="standard"  class="full-width">
+            <mat-label>Document Type</mat-label>
+            <mat-select required #type (selectionChange)="dropdownChange(type.value)">
+              <mat-option value=null>None</mat-option>
+              <mat-option [value]=type *ngFor="let type of docType$ | async">{{type.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <!-- <div class="col">
+          <mat-form-field appearance="standard">
+            <mat-label>Share with</mat-label>
+            <mat-select formControlName="sharedWith" required>
+              <mat-option value=null>None</mat-option>
+              <mat-option value=1>Employee</mat-option>
+              <mat-option value=2>Emp Group</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div> -->
+  
+    <!-- <ng-container>
+      <div class="row" >
+        <mat-form-field appearance="standard"  class="full-width"
+          *ngIf="fileUploadForm.controls['sharedWith'].value== 1">
+            <mat-label>User</mat-label>
+            <mat-select formControlName="users" required multiple>
+              <ng-container *ngFor="let employee of employees$ | async">
+                <mat-option *ngIf="currentUser!=employee.id" [value]=employee.id>{{employee.firstName+' '+employee.lastName}}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+  
+  
+          <mat-form-field appearance="standard"  class="full-width"
+          *ngIf="fileUploadForm.controls['sharedWith'].value== 2">
+            <mat-label>User Group</mat-label>
+            <mat-select formControlName="userGroups" required multiple>
+              <mat-option [value]=empGroup.id *ngFor="let empGroup of employeeGroup$ | async">{{empGroup.name}}</mat-option>
+            
+  
+            </mat-select>
+          </mat-form-field>
+      </div>
+      <div formGroupName="permission" class="permissions"
+       *ngIf="fileUploadForm.controls['sharedWith'].value== 1 || fileUploadForm.controls['sharedWith'].value== 2">Permissions Allowed: &nbsp;
+        <mat-checkbox formControlName="viewPermission">Read</mat-checkbox> &nbsp; &nbsp; 
+        <mat-checkbox formControlName="editPermission">Write</mat-checkbox> &nbsp; &nbsp; 
+        <mat-checkbox formControlName="deletePermission">Edit</mat-checkbox> &nbsp; &nbsp; 
+      </div>
+    </ng-container> -->
+    <div>
+      <mat-form-field  appearance="standard"  class="full-width" formGroupName="tagsFrom">
+        <mat-label>Tags</mat-label>
+        <mat-chip-list #chipList aria-label="Video keywords" multiple formControlName="tags">
+          <mat-chip
+              *ngFor="let keyword of keywords"
+              [selected]="keyword"
+              [value]="keyword"
+              (removed)="removeKeyword(keyword)">
+            {{keyword}}
+          </mat-chip>
+          <input
+            placeholder="New keyword..."
+            [matChipInputFor]="chipList"
+            (matChipInputTokenEnd)="addKeywordFromInput($event)">
+        </mat-chip-list>
+        <mat-hint>Press <b>Enter key</b> to add more tags</mat-hint>
+      </mat-form-field>
+    </div>
+  
+    <div class="radio-btn"> 
+        &nbsp; &nbsp;<label>Approval Required: </label>&nbsp; &nbsp;
+        <mat-radio-group formControlName="approvalRequired" required>
+          <mat-radio-button [value]=true>Yes</mat-radio-button> &nbsp; &nbsp;
+          <mat-radio-button [value]=false>No</mat-radio-button>
+        </mat-radio-group>
+    </div>
+  
+      <ng-container *ngIf="fileUploadForm.controls['approvalRequired'].value==true">
+           <div>
+             <div class="col"  >
+               <mat-form-field  class="full-width"  appearance="standard">
+               <mat-label>Num of Approval</mat-label>
+               <mat-select #approval formControlName="numberOfApproval" required>
+                 <mat-option [value]=1>One</mat-option>
+                 <mat-option [value]=2>Two</mat-option>
+                 <mat-option [value]=3>Three</mat-option>
+               </mat-select>
+             </mat-form-field>
+            </div>
+            <div class="col" *ngIf="approval.value==1" formGroupName="approvalFrom1">
+              <mat-form-field class="full-width" appearance="standard">
+                <mat-label>1. Approval From</mat-label>
+                <mat-select formControlName="id" required>
+                  <ng-container *ngFor="let employee of employees$ | async">
+                    <mat-option *ngIf="currentUser!=employee.id" [value]=employee.id>{{employee.firstName+' '+employee.lastName}}</mat-option>
+                  </ng-container>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="row" *ngIf="approval.value==2">
+              <div class="col" formGroupName="approvalFrom1">
+                <mat-form-field appearance="standard">
+                  <mat-label>1. Approval From</mat-label>
+                  <mat-select formControlName="id" required>
+                    <ng-container *ngFor="let employee of employees$ | async">
+                      <mat-option *ngIf="currentUser!=employee.id" [value]=employee.id>{{employee.firstName+' '+employee.lastName}}</mat-option>
+                    </ng-container>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col" formGroupName="approvalFrom2">
+                <mat-form-field appearance="standard">
+                  <mat-label>2. Approval From</mat-label>
+                  <mat-select formControlName="id" required>
+                    <ng-container *ngFor="let employee of employees$ | async">
+                      <mat-option *ngIf="currentUser!=employee.id" [value]=employee.id>{{employee.firstName+' '+employee.lastName}}</mat-option>
+                    </ng-container>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+           </div>
+           
+            <div class="col" *ngIf="approval.value==3" formGroupName="approvalFrom1">
+              <mat-form-field class="full-width"  appearance="standard">
+                <mat-label>1. Approval From</mat-label>
+                <mat-select formControlName="id" required>
+                  <ng-container *ngFor="let employee of employees$ | async">
+                    <mat-option *ngIf="currentUser!=employee.id" [value]=employee.id>{{employee.firstName+' '+employee.lastName}}</mat-option>
+                  </ng-container>
+                </mat-select>
+              </mat-form-field>
+            </div>
+         
+          <div class="row" *ngIf="approval.value==3"> 
+            <div class="col" formGroupName="approvalFrom2">
+              <mat-form-field appearance="standard">
+                <mat-label>2. Approval From</mat-label>
+                <mat-select formControlName="id" required>
+                  <ng-container *ngFor="let employee of employees$ | async">
+                    <mat-option *ngIf="currentUser!=employee.id" [value]=employee.id>{{employee.firstName+' '+employee.lastName}}</mat-option>
+                  </ng-container>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col" formGroupName="approvalFrom3">
+              <mat-form-field appearance="standard">
+                <mat-label>3. Approval From</mat-label>
+                <mat-select formControlName="id" required>
+                  <ng-container *ngFor="let employee of employees$ | async">
+                    <mat-option *ngIf="currentUser!=employee.id" [value]=employee.id>{{employee.firstName+' '+employee.lastName}}</mat-option>
+                  </ng-container>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+      </ng-container>
+    </form>
+    
+    <form [formGroup]="docFields">
+      <div *ngFor='let control of formFields'> 
+      
+        <div [ngSwitch]="control.type" > 
+            <div class="col" *ngSwitchCase="'text'"> 
+            <mat-form-field appearance="legacy" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <input type="text" matInput [formControlName]="control.name" [required]="control.required">
+                <mat-error>{{"Please enter "+control.name}}</mat-error>
+              </mat-form-field>
+            </div>
+    
+            <div class="col" *ngSwitchCase="'select'" > 
+            <mat-form-field appearance="legacy" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <mat-select [formControlName]="control.name" [required]="control.required">
+                  <mat-option  *ngFor="let item of currentControl(control.reference)|async" [value]="item.name">
+                    {{item.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error>{{"Please select "+control.name}}</mat-error>
+              </mat-form-field>
+            </div>  
+            <div class="col" *ngSwitchCase="'number'"> 
+              <mat-form-field appearance="legacy" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <input matInput type="number" [formControlName]="control.name" [required]="control.required">
+                <mat-error>{{"Please enter "+control.name}}</mat-error>
+              </mat-form-field>
+            </div>  
+            <div class="col" *ngSwitchCase="'email'"> 
+              <mat-form-field appearance="legacy" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <input matInput type="email"  name="email" [formControlName]="control.name" [required]="control.required">
+                <mat-error>Invalid email!</mat-error>
+              </mat-form-field>
+            </div>  
+            <div class="col" *ngSwitchCase="'tel'"> 
+              <mat-form-field appearance="legacy" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <input matInput type="tel" [formControlName]="control.name" [required]="control.required" numberOnly>
+                <mat-error>{{"Please enter "+control.name}}</mat-error>
+              </mat-form-field>
+            </div> 
+            <div class="col" *ngSwitchCase="'textarea'"> 
+              <mat-form-field appearance="standard" class="full-width">
+                <mat-label *ngIf="control.label !== ''">{{control.name}}</mat-label>
+                <textarea matInput [formControlName]="control.name" [required]="control.required"></textarea>
+                <mat-error>{{"Please enter "+control.name}}</mat-error>
+              </mat-form-field>
+            </div> 
+            <div class="col"  *ngSwitchCase="'radio'">
+                <div>
+                    <span>{{control.name}} : &nbsp; &nbsp;</span>
+                    <mat-radio-group aria-label="Select an option" class="full-width" [formControlName]="control.name" [required]="control.required">
+                        <mat-radio-button value="Yes" style="margin-right: 30px;">Yes</mat-radio-button>
+                        <mat-radio-button value="No">No</mat-radio-button>
+                      </mat-radio-group><br><br>
+                </div>
+    
+            </div> 
+    </div>
+    
+    </div>
+    </form>
+</div>
+
+  <mat-dialog-actions>
+    <div class="footer" >
+      <div>
+        <ng-container *ngIf="docSize">
+          <input #fileInput type="file" required (change)="uploadFile($event)">
+        </ng-container>
+      </div>
+      <!-- <div>
+        <mat-card>
+      
+          <mat-card-header class="mb-3">
+            <mat-card-title>File Uploads</mat-card-title>
+          </mat-card-header>
+      
+          <div id="drag_zone" class="file-upload-wrapper" (drop)="dropFiles($event)" (dragover)='dragOverHandler($event)'>Drag
+            your thing here</div>
+      
+          <mat-list>
+            <mat-list-item *ngFor="let file of this.selectedFiles" [class.upload-sucess]="file.uploadCompleted">
+              <mat-icon mat-list-icon>note</mat-icon>
+              <div mat-line>{{file.fileName}}</div>
+      
+              <mat-progress-bar class="mr-4" mode="determinate" value="{{file.uploadedPercent}}"></mat-progress-bar>
+      
+              <div>
+                <mat-icon style="cursor: grab;margin-top: 2px;" (click)="deleteFile(file)">delete</mat-icon>
+              </div>
+              <mat-divider></mat-divider>
+            </mat-list-item>
+          </mat-list>
+      
+          <button (click)="uploadFiles()" class="btn btn-primary mt-3" > upload
+            Files
+          </button>
+      
+      
+        </mat-card>
+      </div> -->
+      <div class="float-rt">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-flat-button color="primary" (click)="onSubmit()">Upload</button>
+      </div>
+    </div>
+  </mat-dialog-actions>

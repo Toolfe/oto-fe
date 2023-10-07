@@ -1,0 +1,297 @@
+<div class="header-grid">
+
+  <div class="horizontal-container">
+
+    <mat-form-field class="custom-dropdown">
+      <mat-label> Text Filter</mat-label>
+      <input matInput type="text" placeholder="" [(ngModel)]="searchFilter">
+    </mat-form-field>
+    <mat-icon matSuffix (click)="onResetFilter()"  style="cursor: pointer;" matTooltip="Reset">highlight_off</mat-icon>
+    <!-- <button mat-icon-button (click)="onResetFilter()"><mat-icon>highlight_off</mat-icon> </button> -->
+
+    <div class="dropdown">
+      <mat-form-field class="custom-dropdown">
+        <mat-label>Initiator By</mat-label>
+        <mat-select [(ngModel)]="selectedInitiatorvalue" multiple>
+          <div class="sticky">
+            <input matInput style="width: 100%; padding: 15px;" required placeholder="Search Assigned By" #create>
+          </div>
+          <mat-option *ngFor="let user of emp$ |async| search :'firstName':create.value"
+            [value]="user.id">
+            {{user.firstName + user.lastName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- <div> -->
+      <mat-icon matSuffix (click)="onResetCreatedByme()"  style="cursor: pointer;" matTooltip="Reset">highlight_off</mat-icon>
+      <!-- <button mat-icon-button (click)="onResetCreatedByme()"><mat-icon>highlight_off</mat-icon> </button> -->
+    <!-- </div> -->
+
+    <div class="dropdown">
+      <mat-form-field class="custom-dropdown">
+        <mat-label>Assigned By</mat-label>
+        <mat-select [(ngModel)]="selectedAssignedEmpvalue" multiple>
+          <div class="sticky">
+            <input matInput style="width: 100%; padding: 15px;" required placeholder="Search Assigned By" #create>
+          </div>
+          <mat-option *ngFor="let user of emp$ |async| search :'firstName':create.value"
+            [value]="user.id">
+            {{user.firstName + user.lastName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- <div> -->
+      <mat-icon matSuffix (click)="onResetAssignedByme()"  style="cursor: pointer;" matTooltip="Reset">highlight_off</mat-icon>
+      <!-- <button mat-icon-button (click)="onResetAssignedByme()"><mat-icon>highlight_off</mat-icon> </button> -->
+    <!-- </div> -->
+
+
+    <div class="dropdown">
+      <mat-form-field class="custom-dropdown">
+        <mat-label>Project</mat-label>
+        <mat-select [(ngModel)]="selectedProjectValue" multiple>
+          <div class="sticky">
+            <input matInput style="width: 100%; padding: 15px;" required placeholder="Search Project" #projectsearch>
+          </div>
+          <mat-option *ngFor="let project of project$ |async|search:'name':projectsearch.value" [value]="project.id">
+            {{project.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- <div> -->
+      <mat-icon matSuffix (click)="onResetProject()"  style="cursor: pointer;" matTooltip="Reset">highlight_off</mat-icon>
+      <!-- <button mat-icon-button (click)="onResetProject()"><mat-icon>highlight_off</mat-icon> </button> -->
+    <!-- </div> -->
+
+    <div class="dropdown">
+      <mat-form-field class="custom-dropdown">
+        <mat-label>Order Number</mat-label>
+        <mat-select [(ngModel)]="selectedOrderValue" multiple>
+          <div class="sticky">
+            <input matInput style="width: 100%; padding: 15px;" required placeholder="Search Order Number" #orderNumber>
+          </div>
+          <mat-option *ngFor="let order of order$ |async|search:'name':orderNumber.value" [value]="order.id">
+            {{order.orderNumber}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- <div> -->
+      <mat-icon matSuffix (click)="onResetOrder()"  style="cursor: pointer;" matTooltip="Reset">highlight_off</mat-icon>
+      <!-- <button mat-icon-button (click)="onResetOrder()"><mat-icon>highlight_off</mat-icon> </button> -->
+    <!-- </div> -->
+
+    <div class="dropdown">
+      <mat-form-field class="custom-dropdown">
+        <mat-label>Priority</mat-label>
+        <mat-select [(ngModel)]="selectedPriorityValue" multiple>
+          <mat-option *ngFor="let priority of  taskPriority$ |async| search :'name':create.value" [value]="priority.id">
+            {{priority.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- <div> -->
+      <mat-icon matSuffix (click)="onResetPriority()"  style="cursor: pointer;" matTooltip="Reset">highlight_off</mat-icon>
+      <!-- <button mat-icon-button (click)="onResetPriority()"><mat-icon>highlight_off</mat-icon> </button> -->
+    <!-- </div> -->
+    <div class="dropdown">
+      <mat-form-field class="custom-dropdown">
+        <mat-label>Task Status</mat-label>
+        <mat-select [(ngModel)]="taskStatus" multiple>
+          <mat-option *ngFor="let task of tasks" [value]="task.id">
+            {{task.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <mat-icon matSuffix (click)="onResetTaskStatus()"  style="cursor: pointer;" matTooltip="Reset">highlight_off</mat-icon>
+      <!-- <button mat-icon-button (click)="onResetTaskStatus()"><mat-icon>highlight_off</mat-icon> </button> -->
+      <button style="margin-left: 10px;" mat-button class="btn-blue" (click)="filtersSearch()">Search</button>
+      <button style="margin-left: 5px;" mat-button class="btn-white" (click)="resetSearch()">Reset</button>
+      <button mat-button id="create-btn" (click)="createTask()" [disabled]="isEnable('creation')"
+      [ngStyle]="{'cursor': isEnable('creation') ? 'no-drop' : 'pointer' }">Create Task</button> 
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="task-container">
+  <ng-container *ngIf="(task$ | async) as tasklists; else loading">
+
+    <ng-container *ngIf="tasklists==='error' ; else table">
+      <app-error></app-error>
+    </ng-container>
+
+    <ng-template #table>
+      <ng-container *ngIf="dataSource.data.length>0; else noData">
+
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z1">
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef>
+              <span [style.paddingLeft.px]="40"> Title </span>
+            </th>
+            <td mat-cell *matCellDef="let element; let i = index" class="t-Title">
+
+              <button mat-icon-button [style.visibility]="!element.expandable ? 'hidden' : ''"
+                [style.marginLeft.px]="element.level * 32" (click)="treeControl.toggle(element)"
+                (click)="clicktask(element); getsubtaskList(element,i);">
+                <mat-icon class="mat-icon-rtl-mirror">
+                  {{treeControl.isExpanded(element) ? 'expand_more' : 'chevron_right'}}
+                </mat-icon>
+              </button>
+              <span id="task-title" (click)=" selectedTask(element)">{{element.taskTitle}}</span>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="project">
+            <th mat-header-cell *matHeaderCellDef>Project</th>
+            <td mat-cell *matCellDef="let element">
+              {{element.projectName}}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="initiator">
+            <th mat-header-cell *matHeaderCellDef>Asg/Init</th>
+            <td mat-cell *matCellDef="let element">{{element.initiatorName}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="target">
+            <th mat-header-cell *matHeaderCellDef>Target</th>
+            <td mat-cell *matCellDef="let element">
+              <span *ngIf="element.target">{{element.target | date}}</span>
+              <span *ngIf="element.targetDate">{{element.targetDate | date}}</span>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="timeSpend">
+            <th mat-header-cell *matHeaderCellDef>Time Taken</th>
+            <td mat-cell *matCellDef="let element">
+              <span>{{element.duration | secsToMin}}</span>
+              <!-- <span *ngIf="element.type==undefined">{{element.taskTimer|secsToMin}}</span>
+              <span>{{element.duration | number:'1.0-0'}}</span> -->
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">
+              <span class="todo" *ngIf="element.statusId==1">Todo</span>
+              <span class="inprogress" *ngIf="element.statusId==2">Inprogress</span>
+              <span class="done" *ngIf="element.statusId==3">Done</span>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="priority">
+            <th mat-header-cell *matHeaderCellDef>Priority</th>
+            <td mat-cell *matCellDef="let element">{{element.priorityName}}</td>
+          </ng-container>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element">
+              <button *ngIf="element.type=='task'" mat-button (click)="editData(element)">Edit</button>
+              <button *ngIf="!element.type" mat-button (click)="editsubtask(element)">Edit</button>
+              <ng-container *ngIf="element.type=='subtask'">
+                <button *ngIf="!element.activeStatus && userRoleAccess.employeeId == element.assigneeId" mat-button id="start"
+                  (click)="onStartStop(element.id,1)">Start</button>
+                <button *ngIf="element.activeStatus && userRoleAccess.employeeId == element.assigneeId" mat-button color="accent"
+                  (click)="onStartStop(element.id,0)">Stop</button>
+              </ng-container>
+
+              <button style="margin-left: -10px;" *ngIf="element.type=='task'; else attachment" mat-button [matMenuTriggerFor]="menu">
+                <mat-icon style="color: gray;"> more_vert</mat-icon>
+              </button>
+
+              <ng-template #attachment>
+                <button mat-button (click)="openTaskFiles(element)" *ngIf="element.type!='subtask'">
+                  <mat-icon style="color: gray;">attach_file</mat-icon>
+                </button>
+              </ng-template>
+
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="copyTask(element)">Duplicate</button>
+                <button mat-menu-item [disabled]="isEnable('deletion')" (click)="deleteItem(element)">Delete
+                </button>
+              </mat-menu>
+              <button style="margin-left: -10px;" *ngIf="element.type=='subtask'" mat-button [matMenuTriggerFor]="menu1">
+                <mat-icon style="color: gray;"> more_vert</mat-icon>
+              </button>
+              <mat-menu #menu1="matMenu">
+                <button mat-menu-item (click)="editSubTaskData(element)">Edit</button>
+                <button mat-menu-item (click)="openTaskFiles(element)">Attachments</button>
+              </mat-menu>
+            </td>
+          </ng-container>
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+      </ng-container>
+      <ng-template #noData>
+        <div class="nodata-container">
+          <img src="./../../../../assets/icons/no-data-01.svg" alt="No Data" class="no-data">
+          <div>Oops! Seems like there's<br>nothing in this folder yet. </div>
+          <!--           <button mat-flat-button color="primary" (click)="addNew()" [disabled]="isEnable('creation')">Add New</button>
+ -->
+        </div>
+      </ng-template>
+    </ng-template>
+
+
+
+  </ng-container>
+
+  <ng-template #loading>
+    <ng-container *ngFor="let item of Refreshing">
+      <div class="loading-grid">
+        <span class="div2" loading></span>
+        <span class="div3" loading></span>
+        <span class="div4" loading></span>
+      </div>
+    </ng-container>
+
+  </ng-template>
+ </div> 
+
+ <!-- <mat-paginator [pageSizeOptions]="[10,30, 25, 100]" (page)="pageChanged($event)"aria-label="Select page of users"></mat-paginator> -->
+<br>
+<div class="pagination-container">
+  <div class="items-per-page">
+    <mat-label style="padding-right: 10px;">Items Per Page</mat-label> 
+    <mat-form-field  style=  "width: 50px;" >
+      <mat-select [(ngModel)]="itemsPerPage" (ngModelChange)="onItemsPerPageChange()" #itemsPerPageSelect>         
+        <mat-option value="10">10</mat-option>
+        <mat-option value="20">20</mat-option>
+        <mat-option value="50">50</mat-option>
+        <mat-option value="100">100</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="page-info">
+    <span>{{ startIndex }} - {{ endIndex }} of {{ totalItems }}</span>
+  </div>
+  <div class="pagination-buttons">
+     <button mat-icon-button (click)="onPrevClick()" [disabled]="currentPage === 1" >
+      <mat-icon style="cursor: pointer;font-size: 17px;" type="button" class="icon-md mat-icon material-icons" role="img" aria-hidden="true"  matTooltip="Previous"> arrow_back_ios</mat-icon>
+  </button>
+      <button mat-icon-button (click)="onNextClick()" [disabled]="endIndex >= totalItems" >
+        <mat-icon style="cursor: pointer;font-size: 17px;" type="button" class="icon-md mat-icon material-icons" role="img" aria-hidden="true"  matTooltip="Next"> arrow_forward_ios </mat-icon>
+    </button>
+  
+  </div>
+</div>

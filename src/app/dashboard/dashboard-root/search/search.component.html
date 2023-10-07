@@ -1,0 +1,40 @@
+
+            <form class="d-flex">
+                <mat-card style="width: 100%;">
+                  <div class="search-box">
+                      <input type="search"  [(ngModel)]="searchData" placeholder="Search Anything"
+                      name="searchData" (focus)="show=true" (blur)="show=false">
+                    <span style="float: right;">
+                     <button mat-icon-button style="position: relative;">
+                       <mat-icon class="search-icon">search</mat-icon>
+                     </button>
+                    </span>
+                  </div>
+                  <div *ngIf="show" class="suggest">
+                    <mat-divider></mat-divider>
+                    <span class="hint">Recent history</span>
+
+                <mat-selection-list [multiple]="false">
+                    <mat-list-option style="height: fit-content;">
+                       <div><mat-icon class="recent">history</mat-icon>hello</div>
+                       </mat-list-option>
+                       <mat-list-option style="height: fit-content;">
+                        <div><mat-icon class="recent">history</mat-icon>hello</div>
+                        </mat-list-option><mat-list-option style="height: fit-content;">
+                            <div><mat-icon class="recent">history</mat-icon>hello</div>
+                            </mat-list-option>
+                      
+                </mat-selection-list>
+                   
+
+                   <mat-divider style="margin: 6px;"></mat-divider>
+                   <span class="hint">Discover more</span>
+                   <mat-selection-list [multiple]="false">
+                    <mat-list-option style="height: fit-content;">
+                       <div><mat-icon class="recent">search</mat-icon>hello</div>
+                       </mat-list-option>
+                   </mat-selection-list>
+                  </div>
+                  </mat-card>
+  
+              </form>

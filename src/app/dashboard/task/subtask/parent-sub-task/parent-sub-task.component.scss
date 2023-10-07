@@ -1,0 +1,56 @@
+@use 'src/styles/variables' as var;
+
+.header-grid1{
+    display: grid;
+    grid-template-columns: 4fr 3fr;
+    padding: 16px;
+    .container-1{
+      display: flex;
+      flex-wrap: nowrap;
+      position: relative;
+    }
+    
+    .container-2{
+      display: flex;
+      justify-content: space-around;
+  
+      .priority,.cStatus{
+        font-weight: 500;
+        cursor: pointer;
+      }
+
+      .cStatus:hover{
+        color: var.$primary;
+        text-decoration: underline;
+      }
+      .overRiding{
+        color: red;
+      }
+      .overWhelming{
+        color: #ff8c00;
+      }
+      .moderatePriority{
+        color: #ffc800;
+      }
+      .subjectivePriority{
+        color: rgb(0, 42, 255);
+      }
+      .normalPriority{
+        color: green;
+      }
+  
+    }
+  }
+
+  .created1{
+    font-weight: 500;
+    font-style: oblique;
+    color: #6d6d6d;
+    font-size: 12px;
+    cursor: pointer;
+  
+  }
+ .mid-container{
+  display: grid;
+  grid-template-columns: 6fr 1fr 1fr 1fr;
+ }

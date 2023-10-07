@@ -1,0 +1,53 @@
+<mat-dialog-content>
+  <form [formGroup]='scaleSetRangeForm'>
+    <div class="row">
+      <mat-card-title>Set Scale Range</mat-card-title> 
+      <div class="col">
+        <mat-form-field appearance="standard" class="full-width" >
+          <mat-label>Minium Range</mat-label>
+          <input matInput required formControlName="minimumRange" type="number">
+          <mat-error>
+            
+            <span *ngIf="minimumRange.errors?.required && minimumRange.touched">Please Enter Minimum Range Value</span>
+          <span *ngIf="scaleSetRangeForm.value.maximumRange <  scaleSetRangeForm.value.minimumRange">Minimum Range should be lesser than Maximum Range</span>            
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="standard" class="full-width">
+          <mat-label>Maxium Range</mat-label>
+          <input matInput required formControlName="maximumRange" type="number">
+          <mat-error>
+             <span> Please Enter Maximum Range Value</span>
+              <span *ngIf="scaleSetRangeForm.value.maximumRange < scaleSetRangeForm.value.minimumRange &&
+              scaleSetRangeForm.controls.minimumRange.touched &&
+              scaleSetRangeForm.controls.maximumRange.touched" >
+                The minimumRange  need to be smaller than maximumRange!
+              </span>
+          </mat-error>
+         </mat-form-field>
+      </div>
+    </div>
+  <!--   <div class="col">
+      <mat-form-field appearance="standard" class="full-width">
+        <mat-label>Date</mat-label>
+     <input matInput formControlName="date" type="date">
+      </mat-form-field>
+    </div>
+    <br> -->
+    <!-- Warning Alert -->
+    <div class="alert alert-warning alert-dismissible d-flex align-items-center fade show" >
+        <strong class="mx-2">Note:</strong> Range Value should be constant.
+    </div>
+</form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-flat-button color='primary'  (click)="addRange()" *ngIf='!update'>Save</button>
+  <button mat-flat-button color='primary' (click)="updateRange()" *ngIf='update'>Update</button>
+ </mat-dialog-actions>
+
+
+

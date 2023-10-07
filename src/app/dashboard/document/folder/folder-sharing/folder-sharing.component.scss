@@ -1,0 +1,29 @@
+.radio{
+    margin: 8px 0 12px 0;
+}
+
+mat-radio-button{
+    margin-left: 8px;
+}
+
+mat-chip-list{
+    zoom: 0.8;
+}
+
+
+.report-container{
+    padding: 4px 0;
+    margin-bottom: 2px;
+
+    label{
+        font-weight: 500;
+        color: rgb(113, 113, 113);
+    }
+    span{
+        font-weight: 500;
+        color: rgb(37, 37, 37);
+    }
+}
+.permissions{
+    margin-top: 6px;
+}
